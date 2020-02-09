@@ -1,0 +1,55 @@
+/*
+Theme Name: Inperspective Records
+Theme URI: https://Inperspectiverecords.com
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+Description: 
+Version: 0.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: svsdesign, insperspective records
+Text Domain:  
+*/
+
+@import "compass";
+@import "compass/reset";
+@import "_partials/mixins";
+@import "_partials/variables";
+@import "_partials/gridsystem";
+@import "_partials/icons";
+@import "_partials/typography";
+@import "_partials/navigation";
+@import "_partials/archivelist"; // needs tidying
+@import "_partials/artists"; // needs tidying
+@import "_partials/releases"; // needs tidying
+@import "_partials/news"; // needs tidying
+@import "_partials/events"; // needs tidying
+@import "_partials/radio"; // needs tidying
+@import "_partials/about"; // needs tidying
+@import "_partials/footer"; // needs tidying
+
+/*blocks */
+@import "_partials/block-testimonial"; // do I really want to import block styles if they not being used?
+@import "_partials/block-credit"; // do I really want to import block styles if they not being used?
+@import "_partials/block-artist"; // do I really want to import block styles if they not being used?
+@import "_partials/block-text"; // do I really want to import block styles if they not being used?
+@import "_partials/block-sound"; // do I really want to import block styles if they not being used?
+@import "_partials/block-release"; // do I really want to import block styles if they not being used?
+
+/* end blocks */
+
+/*
+compass watch ~/sites/inp-wp/wp-content/themes/inperspectiverecords/
+cd ~/sites/inp-wp/wp-content/themes/inperspectiverecords/
+*/
+
+/* START */
+
+body {
+background: $background-color;
+}
+
+
+
+
+/* START */
