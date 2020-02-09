@@ -1,0 +1,129 @@
+/*
+Theme Name: theseus
+Theme URI:  theseus.agency
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+@font-face {
+  font-family: 'Helv-Light';
+  src: url('./assets/fonts/helvetica-neue-light.eot'); /* IE9 Compat Modes */
+  src: url('./assets/fonts/helvetica-neue-light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('./assets/fonts/helvetica-neue-light.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./assets/fonts/helvetica-neue-light.woff') format('woff'), /* Pretty Modern Browsers */
+       url('./assets/fonts/helvetica-neue-light.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('./assets/fonts/helvetica-neue-light.svg#HelveticaNeueLight') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Helv-Norm';
+  src: url('./assets/fonts/helvetica-neue-medium.eot'); /* IE9 Compat Modes */
+  src: url('./assets/fonts/helvetica-neue-medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('./assets/fonts/helvetica-neue-medium.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./assets/fonts/helvetica-neue-medium.woff') format('woff'), /* Pretty Modern Browsers */
+       url('./assets/fonts/helvetica-neue-medium.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('./assets/fonts/helvetica-neue-medium.svg#HelveticaNeueNormal') format('svg'); /* Legacy iOS */
+}
+
+
+/* no need for bold? - delete */
+@font-face {
+  font-family: 'Helv-Bold';
+  src: url('./assets/fonts/helvetica-neue-bold.eot'); /* IE9 Compat Modes */
+  src: url('./assets/fonts/helvetica-neue-bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('./assets/fonts/helvetica-neue-bold.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./assets/fonts/helvetica-neue-bold.woff') format('woff'), /* Pretty Modern Browsers */
+       url('./assets/fonts/helvetica-neue-bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('./assets/fonts/helvetica-neue-bold.svg#HelveticaNeueBold') format('svg'); /* Legacy iOS */
+}
+
+ 
+
+@each $scheme in $schemes { // start colour scheme
+ 
+  body.#{nth($scheme, 1)},
+  body.#{nth($scheme, 1)}.wp-admin .wp-block // admin block styling - but need the colour scheme in admin aswell?
+  {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: nth($scheme, 3);
+  background-color: nth($scheme, 2);
+  font-family: $light-font-family;
+  @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*1, map-get($fontsize, lg)*1); // fixed sizing 
+  @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*1, map-get($fontsize, xxl)*1); // viewport sizing 
+  @include fluid-type(line-height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+  @include fluid-type(line-height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing 
+  
+    /* START HEADERS */
+
+    h1.intro{
+    @include type-large;
+
+    @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // px sizing
+    @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
+
+    }
+
+    h2,
+    .h2
+    {
+    @include h2;
+    }
+
+
+    h3,
+    .h3{
+    @include h3;
+    }
+
+    h4,
+    .h4{
+    @include h4;
+    }
+
+
+
+    /* END HEADERS */
+
+
+    /* START LINKS */
+
+    a,
+    a:visited{
+    text-decoration: underline;
+    color: nth($scheme, 3);
+    }
+
+    a:hover,
+    a:active{
+    text-decoration: none;
+    }
+
+    /* START SELECT - inverse colors */   
+
+    ::-moz-selection{ 
+    color: nth($scheme, 2);
+    background: nth($scheme, 3);
+    }  
+
+    ::selection{ 
+    color: nth($scheme, 2);
+    background: nth($scheme, 3);
+    }  
+
+    /* REMOVE OUTLINE */
+
+    body:not(.user-is-tabbing) button:focus,
+    body:not(.user-is-tabbing) input:focus,
+    body:not(.user-is-tabbing) select:focus,
+    body:not(.user-is-tabbing) textarea:focus {
+      outline: none;
+    }
+
+
+  }// body
+
+} //@each $scheme in $schemes // end colour scheme
+
+
+/*END LINKS */

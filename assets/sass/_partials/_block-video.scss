@@ -1,0 +1,39 @@
+/*
+Theme Name: theseus
+Theme URI:  theseus.agency
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+/* to do:
+
+- responsive video js sripct - probaly a good idea to set this up?
+
+*/
+
+
+.video-block{
+
+	.video-area{
+	width: 100%;
+    height: inherit;
+    display: block;
+    overflow: hidden;
+    position: relative;
+
+		.video-wrap{
+	    height: inherit;
+	    display: block;
+	    width: 100%;
+
+
+			iframe{
+			width: 100%;
+			//height: auto;
+			}
+
+		}//.video-wrap
+
+	}//.video-areq
+	
+} //.video-block

@@ -1,0 +1,36 @@
+/*
+Theme Name: theseus
+Theme URI:  theseus.agency
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+
+
+
+@each $scheme in $schemes { // start colour scheme
+ 
+  body.#{nth($scheme, 1)} {
+
+    .line-block{
+
+    width: 100%;
+    display: block;
+    @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing 
+    @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
+    @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing 
+    @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing 
+
+        .line{
+        height: 1px;
+        background: nth($scheme, 3);
+        width: 100%;
+        display: block;
+        }
+     
+     }//.line-block
+
+  }// body
+
+} //@each $scheme in $schemes // end colour scheme
+

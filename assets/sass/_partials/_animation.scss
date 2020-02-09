@@ -1,0 +1,33 @@
+/*
+Theme Name: theseus
+Theme URI:  theseus.agency
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+
+/* start animation */
+
+.animation-done{
+
+
+  #intro-area{
+
+  }
+
+}//.animation-done
+
+.animation-hide{ 
+  // this possibly abit gltichy? because class not assigned on time - ie not during the ajax loading - but maybe we want to keep the image during load?
+  // maybe remove with js - or look at others ways to hide; i.e regardless of body class? come back to this
+  // also probably review with mark?
+
+  #intro-area{
+    display: none!important;// never show the intro area
+    min-height: 0vh!important;
+    height: 0px!important;
+    opacity: 0; // this could maybe have transition?
+  }
+
+
+}//.animation-hide

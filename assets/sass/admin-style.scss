@@ -1,0 +1,102 @@
+/*
+Theme Name: theseus
+Theme URI:  theseus.agency
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+
+Version: 2.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: svsdesign, theseus, theseus 2020
+Text Domain: theseus
+*/
+
+
+
+/* sitewide styling */
+
+//@import "compass";
+//@import "compass/reset";
+@import "_partials/mixins";
+@import "_partials/variables";
+@import "_partials/grid";
+@import "_partials/typography";
+@import "_partials/navigation"; // review this!!
+ /*  end sitewide styling */
+
+
+
+@import "_partials/layouts"; // general layout; css collumns etc
+
+ 
+/* admin only side styling */
+ //@import "_partials/adminstyle-news";// 
+ @import "_partials/blocks-reset"; 
+
+//@import "_partials/adminstyle-pages-legal";
+
+
+/* blocks - styles applied to front and back end */
+ 
+ /*
+@import "_partials/block-two-col";  // 2 column text block
+@import "_partials/block-two-col-header";  // 2 column text block -w/ header
+@import "_partials/block-two-col-left-header";  // 
+@import "_partials/block-two-col-vacancy-header"; // 
+@import "_partials/block-two-col-text-image-caption"; // 
+@import "_partials/block-one-col-image-caption"; //
+@import "_partials/block-multiple-image-caption"; // ca
+@import "_partials/block-slider-image-caption"; // ca
+@import "_partials/block-contact-map"; // ca
+@import "_partials/block-video"; // ca
+@import "_partials/block-logos"; // 
+*/
+/* end blocks */
+ 
+@import "_partials/block-one-col";  // 1 column text block
+@import "_partials/block-two-col";  // 2 column text block
+
+@import "_partials/block-line";  // line block
+@import "_partials/block-client-logos";  // client logos block
+@import "_partials/block-slideshow";  // slideshow
+@import "_partials/block-contact";  // contact block
+@import "_partials/block-video";  // contact block
+
+
+/* further reading:
+
+https://github.com/WordPress/gutenberg
+- Official Guttenberg project
+
+	A. Theme support:
+	- https://developer.wordpress.org/block-editor/developers/themes/theme-support/
+
+
+https://robinroelofsen.com/editor-styling-gutenberg
+- some insights regardign styling blocks on admin style
+
+
+https://github.com/WordPress/gutenberg/issues/9534
+- Debate on approach to admin themuing issues
+
+https://github.com/WordPress/gutenberg/issues/4001
+- further chat about styles "bleeding" across admin views
+
+https://github.com/WordPress/gutenberg/issues/5360
+- Blocks and Theme Styling Overview #5360
+
+
+https://github.com/WordPress/gutenberg/blob/master/packages/block-library/src/editor.scss
+- editor styles; 
+
+
+https://johnregan3.wordpress.com/2018/12/21/how-to-add-custom-editor-styles-to-gutenberg/
+- starting point for styling - css file included
+
+https://jasonyingling.me/working-with-editor-styles-in-gutenberg/
+- 'Working with Editor Styles in Gutenberg'
+
+
+http://jschof.com/gutenberg-blocks/tutorial/beginner-gutenberg-block-an-easy-media-block-with-media-upload-and-richtext/
+- building a guttenberg block - using react - so I guess eventually I will need to learn this :(
+*/

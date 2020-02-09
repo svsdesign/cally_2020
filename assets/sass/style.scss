@@ -1,0 +1,269 @@
+/*
+Theme Name: theseus
+Theme URI:  theseus.agency
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+
+Version: 2.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: svsdesign, theseus, theseus 2020 
+Text Domain: theseus
+*/
+
+//cd theseus-wp-v2/wp-content/themes/theseus_2020/
+ 
+@import "compass";
+@import "compass/reset";
+ 
+// Here we import our partials
+@import "_partials/mixins";
+@import "_partials/variables";
+@import "_partials/grid";
+@import "_partials/typography";
+@import "_partials/layouts";
+
+@import "_partials/navigation";
+
+// START reveiw in line with the admin stules im also enqueing:
+
+@import "_partials/block-one-col";  // 1 column text block
+@import "_partials/block-two-col";  // 2 column text block
+
+@import "_partials/block-line";  // line block
+@import "_partials/block-client-logos";  // client logos block
+@import "_partials/block-slideshow";  // Slideshow block
+@import "_partials/block-contact";  // contact block
+@import "_partials/block-video";  // contact block
+
+/*@import "_partials/block-two-col-header";  // 2 column text block -w/ header
+@import "_partials/block-two-col-left-header";  // 
+@import "_partials/block-two-col-vacancy-header"; // 
+@import "_partials/block-two-col-text-image-caption"; // 
+@import "_partials/block-one-col-image-caption"; //
+@import "_partials/block-multiple-image-caption"; // ca
+@import "_partials/block-slider-image-caption"; // ca
+@import "_partials/block-contact-map"; // ca
+@import "_partials/block-video"; // ca
+@import "_partials/block-logos"; // 
+*/
+
+// END reveiw in line with the admin stules im also enqueing:
+
+@import "_partials/animation";
+
+
+/*
+
+/*I'd say the following needs to dissapear into the appropriat eblocks????
+*/
+
+@each $scheme in $schemes { // start colour scheme
+ 
+  body.#{nth($scheme, 1)} {
+  
+  width: 100%;
+
+    /* SVG */
+
+    .svg-icon svg{
+    width: 100%;
+    height: 100%;
+    }
+
+    /* END SVG ICON */
+
+
+
+
+    /* Structure */
+
+    .wrapper {
+    position: relative;
+    overflow: hidden; 
+    height: auto;
+    width: 100%;// was 100vh- review + delete comment
+    min-height: 100vh;// ensure's that nav always top of the screen - even if pagecontent not quite 100vh
+    display:block;
+    }
+
+    section.content-item{ // this to become a bloick class?? .content-item
+    margin-bottom: -10vh; // create a negative offset 
+    padding-top: 10vh // visually restore - means the active item is now 10vh from top - need to change the click function.
+    }
+
+    section.content-item {
+    clear: both;
+
+    display: block;
+    box-sizing: border-box; 
+    overflow: hidden;
+    @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // px sizing
+    @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*2, map-get($lineheight, xxl)*2); // viewport sizing
+   // @include animation(0, 0.25s, focus-opacity-out, ease-out);
+    }
+
+    section.content-item.section-active{
+   // @include animation(0, 0.25s, focus-opacity-in, ease-in);
+    }
+
+    #item-1{ //. first blcok
+    margin-top: -1px; // this means the nav comes in when we scroll to area
+    padding-top: 10vh;
+    }
+
+    .content-item:last-child{ // last block
+    min-height: calc(110vh + 1px); // 10vh added to included more space for the negative offset
+    overflow: visible;
+    }
+
+    /* END Structure */
+
+    /* START Sections styling */
+
+    /* intro area */
+
+    #intro-area{
+    min-height: 100vh;
+    display: block;
+    width: 100%;
+    position: relative;
+    background: nth($scheme, 2);
+  
+      #animation-large,
+      #animation-small{
+      width:100%;
+      height:100vh;
+      display:block;
+      overflow: hidden;
+      transform: translate3d(0,0,0);
+      text-align: center;
+      opacity: 1;
+      } 
+
+      @media (min-width: map-get($breakpoints, xs)) {
+        #animation-small{
+          display: block;
+        }
+          #animation-large{
+          display: none;
+        }
+
+      }
+      
+      @media (min-width: map-get($breakpoints, md)) {
+        #animation-small{
+          display: none;
+        }
+          #animation-large{
+          display: block;
+        }
+
+      }
+
+    }
+
+    //body
+    &.animation-fix{
+    overflow: hidden;
+    position: fixed;
+    bottom:0px;
+    top: 0px;
+  //  height:100%;
+   // width:100%;
+    } // body animation-fix
+
+    //body
+    &.hide-intro {
+
+    	#intro-area{
+    	min-height: 0vh;
+    	display: none;
+     	height: 0;
+    	}
+
+    	.nav-toggle-wrapper{
+    	opacity: 1; /* show nav toggle */
+      pointer-events:initial; /* allow it be clicked */
+    	}
+
+    	@media (min-width: map-get($breakpoints, lg)) {
+
+    		.nav-wrapper{
+    		opacity: 1; /* show nav wrapper - because we hit full size */
+    		}
+    	}
+
+    }// hide-intro
+
+    /* approach */
+
+    h3.approach-item{
+    @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing 
+    @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
+    }
+
+    .description{
+    @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing 
+    @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
+    }
+
+    .description:last-child{
+    padding-bottom: 0;
+    }
+
+    /* approach
+
+ 
+
+    /* start client contact */
+
+    .logo-item{
+    float: left;
+    display: block;
+    width: 25%;
+    @include fluid-type(padding, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*0.5, map-get($gutter, lg)*0.5); // fixed sizing
+    @include fluid-type(padding, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*0.5, map-get($gutter, xxl)*0.5); // viewport sizing
+   }
+
+    /* end client contact */
+
+    /* contact */
+
+    .contact-item{
+    float:left;
+    clear:both;
+    }
+
+    /* end contact */
+
+
+   
+
+
+
+
+    /* END Sections styling */
+
+  }// body
+
+} //@each $scheme in $schemes // end colour scheme
+
+
+body.white-scheme{
+  
+
+ /* clients */
+
+  svg.client-logo,
+  img.client-logo {
+    -webkit-filter: invert(100%);  // invert the logos because they uploaded as white images
+            filter: invert(100%);
+  }
+
+/* clients */
+
+} //body.white-scheme
+
+
+

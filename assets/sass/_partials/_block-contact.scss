@@ -1,0 +1,100 @@
+/*
+Theme Name: theseus
+Theme URI:  theseus.agency
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+
+
+.contact-block{
+overflow: hidden;
+position: relative;
+
+	> div{ // for left + right area
+	-webkit-column-break-inside: avoid;
+	page-break-inside: avoid;
+	break-inside: avoid-column;
+	display: table;
+	position: relative;
+	overflow:	hidden;
+	width: 100%;
+	//display: block;
+	}
+
+	.left-area{
+	//width: 100%;
+	//display:block;
+
+
+		.logos{
+		width: 100%;
+		clear: both;
+
+			.logo{
+			width: 25%;
+			float: left;
+			}
+
+			img{
+			display: block;
+			width: 100%;
+			height: auto;
+			}
+
+		}//.logos
+		
+	}//.left-area
+
+	.right-area{
+	//width: 100%;
+	//display:block;
+	height: 40vh;// added becaise not working - this height thing maybe needs reviewing?
+	//height: inherit;
+	pointer-events:none;
+	overflow: hidden;
+
+		.map-wrap{
+	    position: relative;
+	    width: inherit;
+	    height: inherit;
+
+		  	/*google maps */
+
+			#g-map-mask{
+		    position: relative;
+		    display: block;
+		    width: 100%; 
+		    overflow: hidden;
+		    bottom: -40px;
+		    height: 100%;
+		    }
+
+		    #g-map-holder{
+		    pointer-events:initial;
+		    width: 100%;
+		    height: inherit; //w wasauto;
+		    /* min-height: 100vh; */
+		    max-height: 40vh;
+		    overflow: hidden;
+		    position: absolute;
+		    left: 0px;
+		    right: 0px;
+		    bottom: 0px;
+		    top: 0px
+		    }
+
+		    #g-map{
+		    width: 100%;
+		    height: 40vh!important;
+		    }
+
+		    #g-map img{
+		    opacity: 1;
+		    }
+
+		}//.map-wrap
+
+	}//.right-area
+
+} //.contact-block

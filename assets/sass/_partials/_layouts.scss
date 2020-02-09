@@ -1,0 +1,166 @@
+/*
+Theme Name: theseus
+Theme URI:  theseus-agency.com
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+//th-block:
+// general styling
+
+
+.th-block-holder{
+//@extend .grid-row-holder
+}
+
+.th-block{
+overflow: hidden;
+//display: block;
+ }
+
+// end th-block
+
+
+
+
+
+.clear-col-item{
+//https://stackoverflow.com/questions/23800485/force-div-to-next-column
+break-after:column;
+display:block;
+}
+
+
+// 1 column:
+.one-col-block{
+
+
+}
+
+
+// end 1 column
+
+
+// 2 columns: 
+
+.two-col-block{
+
+
+  // one col 
+  @include fluid-type(column-gap, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing
+  @include fluid-type(column-gap, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
+
+  // 2 col
+
+  @media (min-width: map-get($breakpoints, md)) {
+  column-count: 2;
+  }
+
+  > div{ // ensure items float in grid?
+	float: left;
+  }
+
+}//.two-col-block
+// end 2 columns
+
+
+.two-col-block.clear-right-col{
+// for the jobs - 
+
+  // one col 
+  @include fluid-type(column-gap, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing
+  @include fluid-type(column-gap, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
+
+  // 2 col
+
+  @media (min-width: map-get($breakpoints, md)) {
+  column-count: 1;
+  	// but width only 50%;
+  width: 50%
+  }
+
+
+}
+
+
+// 2 columns - left header
+// what to do here:
+
+// i.e one column = 25% other is 75% at lg breakpoint
+
+// end 2 columns - left header
+
+
+
+
+// 3 columns: 
+
+.three-col-block{
+
+
+  // one col 
+  @include fluid-type(column-gap, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing
+  @include fluid-type(column-gap, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
+
+  // 2 col
+
+  @media (min-width: map-get($breakpoints, md)) {
+ // column-count: 2;// hmm what to do?
+  }
+
+  @media (min-width: map-get($breakpoints, lg)) {
+  column-count: 3;
+  }
+
+  > div{ // ensure items float in grid?
+	float: left;
+  }
+
+}//.three-col-block
+
+
+
+// 4 columns: 
+
+.four-col-block{
+
+
+  // one col 
+  @include fluid-type(column-gap, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing
+  @include fluid-type(column-gap, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
+
+  // 2 col
+
+  @media (min-width: map-get($breakpoints, md)) {
+  column-count: 2;
+  }
+
+  @media (min-width: map-get($breakpoints, lg)) {
+  column-count: 4;
+  }
+
+  > div{ // ensure items float in grid?
+	float: left;
+  }
+
+}//.four-col-block
+
+
+// end 4 columns
+
+
+// START image blocks; general
+
+
+.image-wrap{
+width: 100%;
+
+	img{
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+}//.image-wrap
+
+// END image blocks; general
+
