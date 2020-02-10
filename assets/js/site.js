@@ -411,12 +411,17 @@ var app = (function() {
         var animation_height = $(window).innerHeight() * 0.25; // was 0.25
         var ratio = Math.round( (1 / animation_height) * 10000 ) / 10000; //ratio
 
-            $('.fade-item').each(function() {
-                
+           // $('.fade-item').each(function() {
+           $('.th-block').each(function() { // might need to review this
+   
+    console.log(".th-block each");// each
                 var objectTop = $(this).offset().top;
                 var windowBottom = $(window).scrollTop() + ($(window).innerHeight() *0.8);
                 
                 if ( objectTop < windowBottom ) {
+
+                                          console.log("if ( objectTop < windowBottom");
+
                     if ( objectTop < windowBottom - animation_height ) {
                        // $(this).html( 'fully visible' );
                
@@ -425,6 +430,7 @@ var app = (function() {
                             transition: 'opacity 0.1s linear',
                             opacity: 1
                         } );
+                        console.log("hello fade into 1");
 
                     } else {
                     //    $(this).html( 'fading in/out' );
@@ -434,6 +440,8 @@ var app = (function() {
                         } );
                     }
                 } else {
+                                          console.log("else so not fading into 1");
+
                    // $(this).html( 'not visible' );
                     $(this).css( 'opacity', 0.1 );
                 }
@@ -831,6 +839,11 @@ var app = (function() {
 
                     };// .slideshow-block
 
+                     $(window).scroll(function(){
+                     //console.log("$(window).scroll(function(){");
+                     fade();
+                    });//  $(window).scroll(function(){
+
 
                     var rtime;
                     var timeout = false;
@@ -849,6 +862,7 @@ var app = (function() {
                         if (new Date() - rtime < delta) {
                             setTimeout(resizeend, delta);
                         } else {
+                        fade();
 
                         timeout = false; 
                         orientation(); // check for orientation changes
@@ -869,6 +883,7 @@ var app = (function() {
 
             $(function () // on document.ready()
             {
+              // delete this function
                // if ($('body.home').length > 0) 
                if ($('body.home').length > 0) 
 
@@ -896,7 +911,7 @@ var app = (function() {
                         timeout = false;
                         //console.log("hello resize");
                        // index_nav_sections(); // re-adjust nav marker positions
-                        fade(); // re-adjust fade
+                       // fade(); // re-adjust fade
 
                         } //else 
 
@@ -919,6 +934,7 @@ var app = (function() {
 
             $(function () // on document.ready()
             {
+              // remove this function not needed?
                 if ($('body.privacy-policy').length > 0) 
                 {
 
@@ -944,7 +960,7 @@ var app = (function() {
 
                     timeout = false;
                   //  nav_sections(); // rnot needed i don't thi k
-                    fade(); // this required?
+                    //fade(); // this required?
 
                     } //else 
 
