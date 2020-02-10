@@ -16,7 +16,7 @@ if( !empty($block['anchor']) ) {
 }
 
 // Create class attribute allowing for custom "className" and "align" values.
-$className = ' th-block contact-block two-col-block';
+$className = ' th-block contact-block';//
 if( !empty($block['className']) ) {
     $className .= ' ' . $block['className'];
 }

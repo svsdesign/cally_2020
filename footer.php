@@ -19,6 +19,8 @@
 
 
 <?php if (home_url() == "http://localhost:8888/theseus-wp-v2") :?>
+<?php //if (home_url() == "dontshow") :?>
+
 	<div class="dev-grid-toggle">
 	</div>
 

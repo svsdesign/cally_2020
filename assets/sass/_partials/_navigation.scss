@@ -313,7 +313,9 @@ Author URI: http://svs.design
     overflow: hidden;
     display: block;
     margin:auto;
-
+    @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*2, map-get($lineheight, lg)*2); // fixed sizing // offset grid   
+    @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*2, map-get($lineheight, xxl)*2); // viewport sizing
+    
         .menu{
           width: 100%;//
 
@@ -324,6 +326,75 @@ Author URI: http://svs.design
             } //a
           
             
+
+
+            .menu-item{
+            display: block;
+            float: left;
+            font-family: $light-font-family;
+           width: 50%;
+           // @extend .nav-grid-size; // review tis + also based on the number of links - set this maybe using a data attribute? then loop through the data attrabiutes + caluclate sizes accordingly
+            @include fluid-type(padding-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+            @include fluid-type(padding-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+            @include fluid-type(padding-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+            @include fluid-type(padding-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+           
+                padding-bottom: 0px;
+
+                  // what if more than 4? / set up a 
+            
+                @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
+              //  padding-top: 0px;
+                width: 25%;
+            //    @include fluid-type(border-top-width, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*1, map-get($gutter, lg)*1); // fixed sizing
+            //    @include fluid-type(margin-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*1, map-get($gutter, lg)*1); // fixed sizing
+               // @include fluid-type(padding-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
+             //   @include fluid-type(margin-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*1, map-get($gutter, lg)*1); // fixed sizing
+             //   @include fluid-type(padding-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
+                }
+
+
+                a{
+
+                text-align: left;
+                width: 100%;
+                height: inherit;
+                border-top: none;
+                border-top-style:none;
+                border-bottom-style:solid;
+
+           // @include fluid-type(border-bottom-width, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($gutter, lg)*1); // fixed sizing
+           // @include fluid-type(border-bottom-width, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
+
+              
+                //   @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
+                  
+                   @include fluid-type(border-bottom-width, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
+                   @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
+                   padding-top: 0px;
+                   border-color:transparent;//  
+                   //border-top-style: none;
+                //   }
+              
+                }
+
+              &.current_page_item{ // active itme; assign the appropriat colou:
+              font-family: $medium-font-family;
+
+                    a{
+                    border-top: none;
+                      
+                      //  @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
+                        border-color: nth($scheme, 3);     
+                      //  }
+
+                    }
+
+                }//&.current_page_item
+          
+            }//.menu-item
+
+/*
             .menu-item {  
             width: 50%;
             border-color:transparent;  
@@ -333,7 +404,7 @@ Author URI: http://svs.design
             @include fluid-type(border-bottom-width, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($gutter, lg)*1); // fixed sizing
             @include fluid-type(border-bottom-width, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
 
-              @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
+              @media (min-width: map-get($breakpoints, lg)) { // after toggle - 
               width: 25%;
               }
 
@@ -343,13 +414,11 @@ Author URI: http://svs.design
                  border-color: nth($scheme, 3);     
 
 
-                  //  @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
-                   // border-color: nth($scheme, 3);     
-                    //}
+                 
 
                 }
 
-            }//.menu-item 
+            }//.menu-item  */
 
 
         }//.menu
@@ -823,7 +892,13 @@ animation: 0.5s forwards slideUp;
 
 // reules for pinning based on where we are on the page
 
+/*
+if link has following class, don't allow clicking (for footer theseus thing)
+*/
+.no-link{
+pointer-events:none;
+}
 
-
+/*END if link has following class */
 /* END new navigation */
 

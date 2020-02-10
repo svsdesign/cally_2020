@@ -52,7 +52,7 @@ wp_enqueue_script( 'navigation', get_template_directory_uri() . '/assets/js/navi
 
 //	wp_enqueue_script( 'packery', 'https://unpkg.com/packery@2/dist/packery.pkgd.js', array(), '1.0.0', true );
  //   wp_enqueue_script( 'packery-drag', 'https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.js', array(), '1.0.0', true );
-wp_enqueue_script( 'site', get_template_directory_uri() . '/assets/js/site.js', array(), '1.0.0', true );
+wp_enqueue_script( 'site', get_template_directory_uri() . '/assets/js/site.js', array('jquery'), false, true );
   
 
 

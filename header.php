@@ -78,9 +78,10 @@
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/lottie.js" type="text/javascript"></script>
 
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/imagesloaded.pkgd.min.js" type="text/javascript"></script>
-<!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUXYryE2krCQ7nIvVcXcFzWEPY0cEcXbE"></script> -->
 <script type="text/ecmascript" xlink:href="<?php echo get_template_directory_uri(); ?>/assets/js/smil.user.js"></script>
  
+
+<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUXYryE2krCQ7nIvVcXcFzWEPY0cEcXbE"></script> -->
 
 <!-- END SCRIPTS -->
 
@@ -105,8 +106,12 @@
 /* used for determining if we're local or live */
   theme_directory = "<?php echo get_template_directory_uri() ?>";
   home_directory = "<?php echo home_url();?>";
-  introanimationdone = false;
 
+// determine if intro animation has been or not
+  introanimationdone = false;
+// determine if gmap scrip loaded or not
+ var gMapsLoaded = false; // maybe I need to put this variable else where?
+console.log("Header gMapsLoaded = " +gMapsLoaded+"");
 </script>
 
 <?php if( get_field('colour_scheme', 'option') == 'black' ): ?>
