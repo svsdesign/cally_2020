@@ -60,8 +60,7 @@ Author URI: http://svs.design
     display: block;
     width: 100%;//review?
     position: absolute;// this will change depending on where we are onthe page - in baase on intor are
-     z-index: 9; // reivew
-     
+    z-index: 9; // reivew 
     @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing // offset grid 
     @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing // offset grid 
 
@@ -76,15 +75,13 @@ Author URI: http://svs.design
       @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*0, map-get($lineheight, xxl)*0); // viewport sizing
       }
 
-    }
-
+    }//#header-nav-area
 
     .nav-fixer{
-    
-        position: fixed; // reivew this?
-        z-index: 2;// 1 above .main
-        min-height: 100vh;
- 
+    position: fixed; // reivew this?
+    z-index: 2;// 1 above .main
+    min-height: 100vh;
+
         @media (max-width: map-get($breakpoints, lg)) {
         width: 200px;
         right: -200px!important;// dirty override 
@@ -93,49 +90,36 @@ Author URI: http://svs.design
         @media (min-width: map-get($breakpoints, lg)) {
         min-height: inherit; // no longer on the left
         position: relative;// no longer needs to be fixed; other 
-
         }
    
-     }
-
+     }// .nav-fixer
 
     .grid-container.navigation{  
     @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing // offset grid 
     @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing // offset grid 
-
     @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
     @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
-     @media (min-width: map-get($breakpoints, lg)) {
-
-       padding-left: 0px;
-       padding-right: 0px;
-
+    
+        @media (min-width: map-get($breakpoints, lg)) {
+        padding-left: 0px;
+        padding-right: 0px;
         padding-top: 0px;
- 
-   //    @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing // offset grid 
-       @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing // offset grid 
-
-     //  @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
-       @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
-       }
+        @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing // offset grid 
+        @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
+        }
 
      }// .grid-container.navigation
 
     .nav-wrapper {
-      opacity: 0;/* hide wrapper */
-      //width: auto; /* was 20vw */
-      float: left;
-      display: block;
-      overflow: visible;
-      pointer-events: none;
-      height: auto;
-    //  padding: 0!important;
-    //  position: fixed;
-    //  top: 0px;
-
-      @include fluid-type(margin-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*-2, map-get($gutter, lg)*-2); // fixed sizing
-      @include fluid-type(margin-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*-2, map-get($gutter, xxl)*-2); // viewport sizing
-
+    opacity: 0;/* hide wrapper */
+    //width: auto; /* was 20vw */
+    float: left;
+    display: block;
+    overflow: visible;
+    pointer-events: none;
+    height: auto;
+    @include fluid-type(margin-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*-2, map-get($gutter, lg)*-2); // fixed sizing
+    @include fluid-type(margin-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*-2, map-get($gutter, xxl)*-2); // viewport sizing
 
         @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
 
@@ -144,65 +128,85 @@ Author URI: http://svs.design
     }//.nav-wrapper
    
     .menu {
-      float: left;
-      width: 100%;//auto; /* was 30% */
-      display: block;
-      margin:auto;
-      position: relative;
-      overflow: hidden;
-      pointer-events: initial;
-     }
+    float: left;
+    width: 100%;//auto; /* was 30% */
+    display: block;
+    margin:auto;
+    position: relative;
+    overflow: hidden;
+    pointer-events: initial;
+    }
 
+   
+    .menu-item{
+    display: block;
+    float: left;
+    font-family: $light-font-family;
+    @extend .nav-grid-size; // review tis + also based on the number of links - set this maybe using a data attribute? then loop through the data attrabiutes + caluclate sizes accordingly
+    @include fluid-type(padding, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+    @include fluid-type(padding, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+
+          // what if more than 4? / set up a 
+    
+        @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
+        padding-top: 0px;
+        padding-top: 0px;
+    //    @include fluid-type(border-top-width, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*1, map-get($gutter, lg)*1); // fixed sizing
+    //    @include fluid-type(margin-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*1, map-get($gutter, lg)*1); // fixed sizing
+        @include fluid-type(padding-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
+     //   @include fluid-type(margin-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*1, map-get($gutter, lg)*1); // fixed sizing
+        @include fluid-type(padding-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
+        }
+
+
+        a{
+
+        text-align: left;
+        width: 100%;
+        height: inherit;
+      
+           @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
+           @include fluid-type(border-top-width, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
+           @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
+
+           border-color:transparent;//  
+           border-top-style: solid;
+            }
+      
+        }
+
+      &.current_page_item{ // active itme; assign the appropriat colou:
+      font-family: $medium-font-family;
+
+            a{
+                @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
+                border-color: nth($scheme, 3);     
+                }
+
+            }
+
+        }//&.current_page_item
+  
+    }//.menu-item
 
     .menu-item a,
     .menu-item a:visited
     { 
-      display: block;
-      float: left;
-      clear: both;
-      font-weight: 100;
-      color: white;
-      text-decoration: none;
-      //height: 20px;/* set with variable */
-      color: nth($scheme, 2);
-
-      @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
-      color: nth($scheme, 3); 
-     // height: map-get($lineheight, lg); 
-     // line-height: map-get($lineheight, lg); 
-     }
-     
-    // @include fluid-type(top, map-get($breakpoints, xs), map-get($breakpoints, lg), 10px, 10px);
-    //  @include fluid-type(top, map-get($breakpoints, lg), map-get($breakpoints, xxl), 8px, 32px);
-
-    }
-
-
-
-
-    .menu-item {   
-    font-family: $light-font-family;
+    display: block;
+    float: left;
+    clear: both;
+    font-weight: 100;
+    color: white;
+    text-decoration: none;
+    //height: 20px;/* set with variable */
+    color: nth($scheme, 2);
 
         @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
-        border-color:transparent;//  
-        border-top-style: solid;
-        @include fluid-type(border-top-width, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($gutter, lg)*1); // fixed sizing
-        @include fluid-type(border-top-width, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
+        color: nth($scheme, 3); 
         }
+ 
+    }//.menu-item a etc
 
-       &.current_page_item{ // active itme; assign the appropriat colou:
-       font-family: $medium-font-family;
-    //   background: red;
-
-            @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
-            border-color: nth($scheme, 3);     
-            // @include h3;//heavier weigth only
-
-            }
-
-        }
-
-    }//.menu-item 
 
 
     // nav off:// loop over the breakpoints for grid item sizing
@@ -257,57 +261,51 @@ Author URI: http://svs.design
     right: 0px;
     top: 0;// review
  
-      @media (min-width: map-get($breakpoints, lg)) { 
-      width: 80%; // this was 80vw
-      left: 0;
-      right: 0;
-      margin: auto;
-      }
-      
-      @media (max-width: map-get($breakpoints, lg)) { 
-       // background:red; 
-             background: nth($scheme, 3);
+        @media (min-width: map-get($breakpoints, lg)) { 
+        width: 80%; // this was 80vw
+        left: 0;
+        right: 0;
+        margin: auto;
+        }
 
+        @media (max-width: map-get($breakpoints, lg)) { 
+        background: nth($scheme, 3);
         @include animation(0, 0.5s,toggle-animation-slide-in-left, ease); // i need to ensure this doesn't run initially?
         //was 0.5 s
         // maybe hided during intial load of site -
-      }
-
-
-      .menu{
-      pointer-events:none;// so people can't click links when nav closed
-     
-        @media (min-width: map-get($breakpoints, lg)) { 
-        pointer-events:initial;// so people can now click links when nav open
-        width: 100%;//
         }
-      }
 
-    }
+        .menu{
+        pointer-events:none;// so people can't click links when nav closed
+     
+            @media (min-width: map-get($breakpoints, lg)) { 
+            pointer-events:initial;// so people can now click links when nav open
+            width: 100%;//
+            }
+
+      }//.menu
+
+    }//.nav-fixer
 
 
     .main-fixer{
     position: relative;
     left:0px;
     right: 0px;
-
     // this padding to reflect the height of either the toggle area thing
     @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*4, map-get($lineheight, lg)*4); // fixed sizing // offset grid 
-
     @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*4, map-get($lineheight, xxl)*4); // viewport sizing
   
-      @media (min-width: map-get($breakpoints, lg)) {
-     
-      @include animation(0, 0.5s, animation-slide-in-left, ease);
-      // or reflect teh height of the full navigation
-      @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*8, map-get($lineheight, lg)*8); // fixed sizing // offset grid 
-      @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*8, map-get($lineheight, xxl)*8); // viewport sizing
-       }
+        @media (min-width: map-get($breakpoints, lg)) {
+
+        @include animation(0, 0.5s, animation-slide-in-left, ease);
+        // or reflect teh height of the full navigation
+        @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*8, map-get($lineheight, lg)*8); // fixed sizing // offset grid 
+        @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*8, map-get($lineheight, xxl)*8); // viewport sizing
+        }
    
-    }
-
-
-        
+    }// .main-fixer
+       
     // start footer nav
 
     #footer-nav-area{
@@ -316,47 +314,25 @@ Author URI: http://svs.design
     display: block;
     margin:auto;
 
-
-        @media (max-width: map-get($breakpoints, lg)) {
-        //width: 100%;
-        }
-
         .menu{
           width: 100%;//
 
            .menu-item a,
-           .menu-item a:visited
-            { 
-             // display: block;
-             // float: left;
-             // clear: both;
-             // font-weight: 100;
-              //color: white;
-              text-decoration: none;
-              color: nth($scheme, 3);
-
+           .menu-item a:visited{ 
+            text-decoration: none;
+            color: nth($scheme, 3);
             } //a
           
             
             .menu-item {  
+            width: 50%;
+            border-color:transparent;  
+            border-top:none;
+            border-bottom-style:solid;
 
+            @include fluid-type(border-bottom-width, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($gutter, lg)*1); // fixed sizing
+            @include fluid-type(border-bottom-width, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
 
-
-           // color: nth($scheme, 3);     
- 
-           // font-family: $light-font-family;
-              width: 50%;
-
-             //   @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
-                border-color:transparent;//  
-             //   border-top-style: solid;
-                border-top:none;
-                border-bottom-style:solid;
-              //  border-color: nth($scheme, 3);     
-
-                @include fluid-type(border-bottom-width, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($gutter, lg)*1); // fixed sizing
-                @include fluid-type(border-bottom-width, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
- 
               @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
               width: 25%;
               }
@@ -418,39 +394,39 @@ Author URI: http://svs.design
 
 
       .nav-fixer{
-        width: 200px; // from 0px; - animate this width
-        background: nth($scheme, 3);
-        position: absolute; // so when one it remains below the anim thing
+      width: 200px; // from 0px; - animate this width
+      background: nth($scheme, 3);
+      position: absolute; // so when one it remains below the anim thing
 
-        @media (min-width: map-get($breakpoints, lg)) { 
-        width: 80%;// review? 
-        padding-top: 0px;
-         background: nth($scheme, 2);
+            @media (min-width: map-get($breakpoints, lg)) { 
+            width: 80%;// review? 
+            padding-top: 0px;
+             background: nth($scheme, 2);
 
-        }
-        @media (max-width: map-get($breakpoints, lg)) { 
-       // background: transparent; 
-        @include animation(0, 0.5s,animation-slide-out-left, ease);
-        //was 0.5s
-        }
- 
-      
-        .menu{
-        pointer-events:initial;// so people can now click links when nav open
-        
-            li.menu-item{
+            }
+            @media (max-width: map-get($breakpoints, lg)) { 
+           // background: transparent; 
+            @include animation(0, 0.5s,animation-slide-out-left, ease);
+            //was 0.5s
+            }
+       
+             
+          .menu{
+            pointer-events:initial;// so people can now click links when nav open
+            
+                li.menu-item{
 
-              a{// invert colour
+                  a{// invert colour
 
-                    @media (min-width: map-get($breakpoints, lg)) { 
-                
-                    }
+                        @media (min-width: map-get($breakpoints, lg)) { 
+                    
+                        }
 
-              }
+                  }
 
-            }//li.menu-item
+                }//li.menu-item
 
-        }// .menu
+            }// .menu
 
       }//.nav-fixer
 
@@ -695,27 +671,6 @@ overflow: hidden;
 @include fluid-type(margin-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($offsetgutter, lg), map-get($offsetgutter, xxl)); // viewport sizing
 
 
-    li.menu-item{
-    display: block;
-     float: left;
- 
-   // display: flex;
-    //flex-grow: 1;
-    //text-align: center;
-    @extend .nav-grid-size; // review tis + also based on the number of links - set this maybe using a data attribute? then loop through the data attrabiutes + caluclate sizes accordingly
-     // gutter 
-    @include fluid-type(padding, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
-    @include fluid-type(padding, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
-
-          // what if more than 4? / set up a 
-       
-        a{
-        text-align: left;
-        width: 100%;
-        height: inherit;
-        }
-
-    }//li.menu-item
 
 }//.menu
 

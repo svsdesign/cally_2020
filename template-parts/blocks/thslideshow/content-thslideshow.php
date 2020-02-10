@@ -59,11 +59,11 @@ if( $images ): ?>
         
         </div><!--.slideshow-carousel-->
 
-        <?php if( $image_caption): ?>
+        <?php if( $imagecaption): ?>
             
             <div class="image-caption">
             
-                <?php echo $image_caption; ?>
+                <?php echo $imagecaption; ?>
             
             </div><!-- .image-caption -->
 
