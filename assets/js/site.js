@@ -63,7 +63,7 @@ var app = (function() {
 
       function devgrid() {
 
-       console.log('devgrid function - reactiave it')
+      // console.log('devgrid function - reactiave it')
     
             if ($('.dev-grid').length > 0) 
             {
@@ -77,7 +77,7 @@ var app = (function() {
                   vwlineheight = '1vw',//vw
                   baselinecount =  documentGridHeight / pxlineheight;
 
-console.log("documentGridHeight " +documentGridHeight+"");
+//console.log("documentGridHeight " +documentGridHeight+"");
                  // temp turned of - used when we nee dto sort linehiegh
   $baselines.css("height",documentGridHeight);// set height of the baseline area as documentGridHeight
 
@@ -142,9 +142,9 @@ console.log("documentGridHeight " +documentGridHeight+"");
             } else {
 
 
-            //  console.log('animation has been loaded - so only add fading stuff in?')
+           //   console.log('animation has been loaded - so only add fading stuff in?')
              $('.fade-item').css( 'opacity', 0 ); // intial run
-             $('body').addClass('animation-hide'); //add class so now hidden at all times?
+            // moved this in to the AJAx js: $('body').addClass('animation-hide'); //add class so now hidden at all times?
 
              fade(); // intial run
             
@@ -791,10 +791,10 @@ console.log("documentGridHeight " +documentGridHeight+"");
                     // if blocks exist: Slideshow
                     if ($('.slideshow-block').length > 0) 
                     {
-                      console.log("if slideshow-block");
+                     // console.log("if slideshow-block");
 
                       var $thisblock = $(this);  
-                      console.log($thisblock);
+                  //    console.log($thisblock);
 
                       slideshow($thisblock);// run js if slideshow item exist
 
@@ -804,10 +804,10 @@ console.log("documentGridHeight " +documentGridHeight+"");
                               // if blocks exist: Slideshow
                     if ($('.contact-block').length > 0) 
                     {
-                      console.log("if contacy-block");
+                     // console.log("if contacy-block");
 
                       var $thisblock = $(this);  
-                      console.log($thisblock);
+                   //   console.log($thisblock);
 
                       map($thisblock);// run js if slideshow item exist
 
