@@ -14,6 +14,9 @@ Author URI: http://svs.design
   .client-logo-image{
   width: 100%;
   overflow: hidden;
+  @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing 
+  @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
+
 
     img{
       width: 100%;

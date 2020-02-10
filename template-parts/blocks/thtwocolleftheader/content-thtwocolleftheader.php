@@ -57,7 +57,7 @@ if( $columnsizing == '25-75' ) {
         <?php while( have_rows('two_col_content_left_header') ): the_row(); 
             // vars
             $title = get_sub_field('title');
-            $subtitle = get_sub_field('sub_title');
+            $subtitle = get_sub_field('subtitle');
             $text_area = get_sub_field('text_area');
             ?>
 

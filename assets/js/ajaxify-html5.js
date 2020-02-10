@@ -267,93 +267,65 @@
           $menuChildren.filter(activeSelector).removeClass(activeClass); // page class
           $menuChildren.filter(activeMenuSelector).removeClass(activeMenuClass); // menu class
           
- /* if  ($menuChildren.is('menu-item-home'){
-
-
-  } else{
-
-  }
-*/
-console.log("relativeUrl = "+ relativeUrl +"");
-console.log("url = "+ url +"");
-console.log("rootUrl = "+ rootUrl +"");
-
-// 
-
-// issues with the homepage link
- //chekck if local first
-
- /*
-if ((rootUrl == 'http://localhost:8888/') && (relativeUrl == ''))
-{
-  // check if w
-// the home urls given is /theseus-wp-v2/
-
-} else if ((rootUrl == '') && (relativeUrl == '')){
-
-
-
-}
-
-*/
-
-if (rootUrl == 'http://localhost:8888/') {
-// local:
-
- console.log("relativeUrl" +relativeUrl +"")
-  if (relativeUrl == 'theseus-wp-v2/'){
-    // if theseus-wp-v2/ blank then this is likely to tbe the home-page link:
-    // check if it could be anything else
-    // hompage
-  console.log("local site & should have just clicked on home page link?")
-  $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]').filter('.menu-item-home');
-
-
-  } else {
-    //not homepage
-  console.log("local site & clickedsomething else?")
-  $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
-
-
-  }//if (relativeUrl == '')
-
-}else{ //if (rootUrl == 'http://localhost:8888/') 
-// not local:
-
-  if (relativeUrl == ''){ 
-    // if blank then this is likely to tbe the home-page link:
-    // check if it could be anything else
-    // hompage
-  console.log("live site & should have just clicked on home page link?")
-  $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]').filter('.menu-item-home');
-
-  } else{
-    //not homepage
-  console.log("live site & clickedsomething else?")
-  $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
-
-
-  }//if (relativeUrl == '')
-
-
-}// if (rootUrl == 'http://localhost:8888/') 
-
-
  
- 
-    
-          // if home page active the length = 4; so its obvs selecting ; filter the wrong links- too many? 
-// ites because the home page link is has teh base url item; so basically if the menu
-//
-       // console.log("we have"+ $menuChildren.length +"links - it should be one!?");
-        // was this: -
-        //  $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
-     
+         // console.log("relativeUrl = "+ relativeUrl +"");
+         // console.log("url = "+ url +"");
+         // console.log("rootUrl = "+ rootUrl +"");
+
+          
+
+  
+          /* TO DO - tidy this mess up
+
+                    // issues with the homepage link - so additional js added here
+               */
+          if (rootUrl == 'http://localhost:8888/') {
+          // local:
+
+           //console.log("relativeUrl" +relativeUrl +"")
+            if (relativeUrl == 'theseus-wp-v2/'){
+              // if theseus-wp-v2/ blank then this is likely to tbe the home-page link:
+              // check if it could be anything else
+              // hompage
+            //console.log("local site & should have just clicked on home page link?")
+            $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]').filter('.menu-item-home');
 
 
-        // end was this
+            } else {
+              //not homepage
+            //console.log("local site & clickedsomething else?")
+            $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
 
-        // if the menuchld link  menu-item-home
+
+            }//if (relativeUrl == '')
+
+          }else{ //if (rootUrl == 'http://localhost:8888/') 
+          // not local:
+
+            if (relativeUrl == ''){ 
+              // if blank then this is likely to tbe the home-page link:
+              // check if it could be anything else
+              // hompage
+          //  console.log("live site & should have just clicked on home page link?")
+            $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]').filter('.menu-item-home');
+
+            } else{
+              //not homepage
+            //console.log("live site & clickedsomething else?")
+            $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
+
+
+            }//if (relativeUrl == '')
+
+
+          }// if (rootUrl == 'http://localhost:8888/') 
+
+               // was this: -
+                    //  $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
+
+          /* END TO DO - tidy this mess up */
+
+
 
           if ( $menuChildren.length === 1 ) {
            $menuChildren.addClass(activeClass); 

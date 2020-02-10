@@ -27,6 +27,11 @@ position: relative;
 	//display:block;
 
 
+		.text-area{
+		@include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*2, map-get($lineheight, lg)*2); // fixed sizing 
+  		@include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*2, map-get($lineheight, xxl)*2); // viewport sizing
+		}
+
 		.logos{
 		width: 100%;
 		clear: both;
@@ -44,6 +49,8 @@ position: relative;
 
 		}//.logos
 		
+
+
 	}//.left-area
 
 	.right-area{

@@ -54,11 +54,15 @@ $video_caption = get_field('video_caption') ?: 'Your Caption here...';
 
         <?php if( $video_caption): ?>
             
-            <div class="video-caption">
+            <div class="grid-row-holder">
             
-                <?php echo $video_caption; ?>
+               <div class="video-caption grid-item grid-xs-12 grid-md-6">
+
+                    <?php echo $video_caption; ?>
             
-            </div><!-- .video-caption -->
+                </div><!-- .video-caption -->
+          
+            </div><!--.grid-row-holder-->
 
         <?php endif; //if $video_caption?>
               

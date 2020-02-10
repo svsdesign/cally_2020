@@ -105,7 +105,7 @@
 /* used for determining if we're local or live */
   theme_directory = "<?php echo get_template_directory_uri() ?>";
   home_directory = "<?php echo home_url();?>";
-  introanimationdone = false; // hopefully we can change this?
+  introanimationdone = false;
 
 </script>
 

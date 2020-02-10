@@ -43,7 +43,7 @@ center - this just left alligned?
         // vars
        // $title = get_sub_field('title');
         $image = get_sub_field('image');
-        $image_caption = get_field('image_caption') ?: 'Your Caption here...';
+        $image_caption = get_sub_field('image_caption') ?: 'Your Caption here...';
         ?>
             <div class="repeater-row">        
 
