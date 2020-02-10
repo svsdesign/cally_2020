@@ -1997,11 +1997,9 @@ body.white-scheme.wp-admin .wp-block .h2 {
   }
 }
 /* line 74, assets/sass/_partials/_typography.scss */
-body.white-scheme h3, body.white-scheme .text-two-col-block-left-header .text-area, .text-two-col-block-left-header body.white-scheme .text-area,
+body.white-scheme h3,
 body.white-scheme .h3,
 body.white-scheme.wp-admin .wp-block h3,
-body.white-scheme.wp-admin .wp-block .text-two-col-block-left-header .text-area,
-.text-two-col-block-left-header body.white-scheme.wp-admin .wp-block .text-area,
 body.white-scheme.wp-admin .wp-block .h3 {
   font-family: "Helv-Norm", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
@@ -2304,11 +2302,9 @@ body.black-scheme.wp-admin .wp-block .h2 {
   }
 }
 /* line 74, assets/sass/_partials/_typography.scss */
-body.black-scheme h3, body.black-scheme .text-two-col-block-left-header .text-area, .text-two-col-block-left-header body.black-scheme .text-area,
+body.black-scheme h3,
 body.black-scheme .h3,
 body.black-scheme.wp-admin .wp-block h3,
-body.black-scheme.wp-admin .wp-block .text-two-col-block-left-header .text-area,
-.text-two-col-block-left-header body.black-scheme.wp-admin .wp-block .text-area,
 body.black-scheme.wp-admin .wp-block .h3 {
   font-family: "Helv-Norm", Helvetica Neue, Helvetica, Arial, sans-serif;
 }

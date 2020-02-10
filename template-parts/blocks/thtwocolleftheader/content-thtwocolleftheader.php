@@ -10,7 +10,7 @@
  */
 
 // Create id attribute allowing for custom "anchor" value.
-$id = 'text-two-col-left-header' . $block['id'];
+$id = 'text-two-col-left-header-' . $block['id'];
 if( !empty($block['anchor']) ) {
     $id = $block['anchor'];
 }
@@ -76,11 +76,11 @@ if( $columnsizing == '25-75' ) {
 
                         <?php if( $subtitle ): ?>
 
-                             <h3 class="title grid-item">
+                             <div class="subtitle">
                                 
                                 <?php echo $subtitle; ?>
        
-                            </h3><!-- .title -->
+                            </div><!-- .subtitle -->
          
                         <?php endif; // subtitle ?>
 

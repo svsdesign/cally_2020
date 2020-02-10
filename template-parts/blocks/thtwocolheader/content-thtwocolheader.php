@@ -10,13 +10,13 @@
  */
 
 // Create id attribute allowing for custom "anchor" value.
-$id = 'text-two-col-left-header-' . $block['id'];
+$id = 'text-two-col-header-' . $block['id'];
 if( !empty($block['anchor']) ) {
     $id = $block['anchor'];
 }
 
 // Create class attribute allowing for custom "className" and "align" values.
-$className = 'th-block text-two-col-block-left-header two-col-block';
+$className = 'th-block text-two-col-block-header two-col-block';
 if( !empty($block['className']) ) {
     $className .= ' ' . $block['className'];
 }

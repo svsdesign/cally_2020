@@ -12,7 +12,7 @@ Text Domain: theseus
 */
 /* line 5, ../../../../../.rvm/gems/ruby-2.6.2/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, .text-two-col-block-left-header .text-area, h4, h5, h6, p, blockquote, pre,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -2061,11 +2061,9 @@ body.white-scheme.wp-admin .wp-block .h2 {
   }
 }
 /* line 74, assets/sass/_partials/_typography.scss */
-body.white-scheme h3, body.white-scheme .text-two-col-block-left-header .text-area, .text-two-col-block-left-header body.white-scheme .text-area,
+body.white-scheme h3,
 body.white-scheme .h3,
 body.white-scheme.wp-admin .wp-block h3,
-body.white-scheme.wp-admin .wp-block .text-two-col-block-left-header .text-area,
-.text-two-col-block-left-header body.white-scheme.wp-admin .wp-block .text-area,
 body.white-scheme.wp-admin .wp-block .h3 {
   font-family: "Helv-Norm", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
@@ -2368,11 +2366,9 @@ body.black-scheme.wp-admin .wp-block .h2 {
   }
 }
 /* line 74, assets/sass/_partials/_typography.scss */
-body.black-scheme h3, body.black-scheme .text-two-col-block-left-header .text-area, .text-two-col-block-left-header body.black-scheme .text-area,
+body.black-scheme h3,
 body.black-scheme .h3,
 body.black-scheme.wp-admin .wp-block h3,
-body.black-scheme.wp-admin .wp-block .text-two-col-block-left-header .text-area,
-.text-two-col-block-left-header body.black-scheme.wp-admin .wp-block .text-area,
 body.black-scheme.wp-admin .wp-block .h3 {
   font-family: "Helv-Norm", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
@@ -7406,31 +7402,31 @@ body.white-scheme.hide-intro .nav-toggle-wrapper {
   }
 }
 /* line 204, assets/sass/style.scss */
-body.white-scheme h3.approach-item, body.white-scheme .text-two-col-block-left-header .approach-item.text-area, .text-two-col-block-left-header body.white-scheme .approach-item.text-area {
+body.white-scheme h3.approach-item {
   padding-bottom: 16px;
   padding-bottom: 16px;
 }
 @media screen and (min-width: 0px) {
   /* line 204, assets/sass/style.scss */
-  body.white-scheme h3.approach-item, body.white-scheme .text-two-col-block-left-header .approach-item.text-area, .text-two-col-block-left-header body.white-scheme .approach-item.text-area {
+  body.white-scheme h3.approach-item {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 204, assets/sass/style.scss */
-  body.white-scheme h3.approach-item, body.white-scheme .text-two-col-block-left-header .approach-item.text-area, .text-two-col-block-left-header body.white-scheme .approach-item.text-area {
+  body.white-scheme h3.approach-item {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 204, assets/sass/style.scss */
-  body.white-scheme h3.approach-item, body.white-scheme .text-two-col-block-left-header .approach-item.text-area, .text-two-col-block-left-header body.white-scheme .approach-item.text-area {
+  body.white-scheme h3.approach-item {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 204, assets/sass/style.scss */
-  body.white-scheme h3.approach-item, body.white-scheme .text-two-col-block-left-header .approach-item.text-area, .text-two-col-block-left-header body.white-scheme .approach-item.text-area {
+  body.white-scheme h3.approach-item {
     padding-bottom: 64px;
   }
 }
@@ -7654,31 +7650,31 @@ body.black-scheme.hide-intro .nav-toggle-wrapper {
   }
 }
 /* line 204, assets/sass/style.scss */
-body.black-scheme h3.approach-item, body.black-scheme .text-two-col-block-left-header .approach-item.text-area, .text-two-col-block-left-header body.black-scheme .approach-item.text-area {
+body.black-scheme h3.approach-item {
   padding-bottom: 16px;
   padding-bottom: 16px;
 }
 @media screen and (min-width: 0px) {
   /* line 204, assets/sass/style.scss */
-  body.black-scheme h3.approach-item, body.black-scheme .text-two-col-block-left-header .approach-item.text-area, .text-two-col-block-left-header body.black-scheme .approach-item.text-area {
+  body.black-scheme h3.approach-item {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 204, assets/sass/style.scss */
-  body.black-scheme h3.approach-item, body.black-scheme .text-two-col-block-left-header .approach-item.text-area, .text-two-col-block-left-header body.black-scheme .approach-item.text-area {
+  body.black-scheme h3.approach-item {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 204, assets/sass/style.scss */
-  body.black-scheme h3.approach-item, body.black-scheme .text-two-col-block-left-header .approach-item.text-area, .text-two-col-block-left-header body.black-scheme .approach-item.text-area {
+  body.black-scheme h3.approach-item {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 204, assets/sass/style.scss */
-  body.black-scheme h3.approach-item, body.black-scheme .text-two-col-block-left-header .approach-item.text-area, .text-two-col-block-left-header body.black-scheme .approach-item.text-area {
+  body.black-scheme h3.approach-item {
     padding-bottom: 64px;
   }
 }
