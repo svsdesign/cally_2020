@@ -675,30 +675,40 @@ var app = (function() {
     function slideshow($block){
 
       //https://flickity.metafizzy.co/options.html
-   // console.log("slideshow function");
-   // console.log("" + $block + " = slideshow-block");
+   //  console.log("slideshow function");
+   console.log("function slideshow($block)" + $block + " = slideshow-block");
 
+        //     wp_enqueue_script('flickity-pgkd', 'https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array( 'jquery' ), '', true ); // 
+//             $.getScript( ""+themeurl+'/assets/js/site.js', function( data, textStatus, jqxhr ) {
+             $.getScript( "https://npmcdn.com/flickity@2/dist/flickity.pkgd.js", function( data, textStatus, jqxhr ) {
+
+
+   console.log(" hello function slideshow($block)")
       var $thisgallery = $block.find(".slideshow-carousel");  
 
-        $thisgallery.css("background","green");
- 
+       // $thisgallery.css("background","green");
+     
 
-       $thisgallery.flickity({
-            imagesLoaded: true, 
-            setGallerySize: false, //if you prefer to size the carousel with CSS, rather than using the size of cells.
-       // default cellAlign: 'center'
-            percentPosition: false, 
-            freeScroll: false, 
-            wrapAround: true, 
-            arrowShape: { 
-                x0: 20,
-                x1: 50, y1: 50,
-                x2: 60, y2: 50,
-                x3: 30
-            }
-//            arrowShape: '82.9312793 24.4501626 86.9653917 27.5504528 49.7576146 75.9653917 12.5498374 27.5504528 16.5839498 24.4501626 49.7576146 67.615895',
+           $thisgallery.flickity({
+                imagesLoaded: true, 
+                setGallerySize: false, //if you prefer to size the carousel with CSS, rather than using the size of cells.
+           // default cellAlign: 'center'
+                percentPosition: false, 
+                freeScroll: false, 
+                wrapAround: true, 
+                arrowShape: { 
+                    x0: 20,
+                    x1: 50, y1: 50,
+                    x2: 60, y2: 50,
+                    x3: 30
+                }
+    //            arrowShape: '82.9312793 24.4501626 86.9653917 27.5504528 49.7576146 75.9653917 12.5498374 27.5504528 16.5839498 24.4501626 49.7576146 67.615895',
 
-         });
+             });
+
+
+          });//get flickity pkg script
+
 
     } // function gallery($block)
 
@@ -799,7 +809,7 @@ var app = (function() {
                     // if blocks exist: Slideshow
                     if ($('.slideshow-block').length > 0) 
                     {
-                     // console.log("if slideshow-block");
+                       console.log("if slideshow-block");
 
                       var $thisblock = $(this);  
                   //    console.log($thisblock);

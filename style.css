@@ -7603,8 +7603,9 @@ Author URI: http://svs.design
   overflow: hidden;
   bottom: -40px;
   height: 100%;
+  top: 0px;
 }
-/* line 96, assets/sass/_partials/_block-contact.scss */
+/* line 97, assets/sass/_partials/_block-contact.scss */
 .contact-block .right-area .map-wrap #g-map-holder {
   pointer-events: initial;
   width: 100%;
@@ -7618,12 +7619,12 @@ Author URI: http://svs.design
   bottom: 0px;
   top: 0px;
 }
-/* line 113, assets/sass/_partials/_block-contact.scss */
+/* line 114, assets/sass/_partials/_block-contact.scss */
 .contact-block .right-area .map-wrap #g-map {
   width: 100%;
   height: calc(40vh + 40px);
 }
-/* line 118, assets/sass/_partials/_block-contact.scss */
+/* line 119, assets/sass/_partials/_block-contact.scss */
 .contact-block .right-area .map-wrap #g-map img {
   opacity: 1;
 }
@@ -7649,13 +7650,21 @@ Author URI: http://svs.design
 }
 /* line 24, assets/sass/_partials/_block-video.scss */
 .video-block .video-area .video-wrap {
-  height: inherit;
   display: block;
   width: 100%;
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 25px;
+  height: 0;
 }
-/* line 30, assets/sass/_partials/_block-video.scss */
+/* line 34, assets/sass/_partials/_block-video.scss */
 .video-block .video-area .video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
 }
 
 /*@import "_partials/block-two-col-header";  // 2 column text block -w/ header

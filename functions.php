@@ -2273,8 +2273,8 @@ function my_acf_init() {
             //  wp_enqueue_script('flickity-pgkd','https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array('jquery'), false, true);
            //    wp_enqueue_style( 'flickity styles', 'https://npmcdn.com/flickity@2.2.1/dist/flickity.css' );
 //  //  wp_enqueue_style( 'flickity-style', 'https://npmcdn.com/flickity@2.2.1/dist/flickity.css'); // Styles moved into "block-gallery.scss"
-              wp_enqueue_script('flickity-pgkd', 'https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array( 'jquery' ), '', true ); // 
-              wp_enqueue_script('th-slide-show-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thslideshow/assets/js/script.js', array( 'jquery' ), '', true );
+           //   wp_enqueue_script('flickity-pgkd', 'https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array( 'jquery' ), '', true ); // 
+           //   wp_enqueue_script('th-slide-show-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thslideshow/assets/js/script.js', array( 'jquery' ), '', true );
 
             },
 

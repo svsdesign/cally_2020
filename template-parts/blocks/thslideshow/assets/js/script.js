@@ -31,7 +31,7 @@ console.log("hello - slider script");
       //  console.log('initializeBlock = function( $block ) - slideshow block');
  
         var $thiscontainer = $block.find(".slideshow-carousel");   // review this   class name 
-       //     console.log('initializeBlock = function( $block ) - slideshow block');
+    console.log('initializeBlock = function( $block ) - slideshow block from its own script.js file');
 
         $thiscontainer.css("background","red");
         /*
