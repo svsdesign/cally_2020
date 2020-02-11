@@ -31,6 +31,8 @@ Text Domain: theseus
 @import "_partials/block-two-col";  // 2 column text block
 
 @import "_partials/block-two-col-left-header";  // 2 column text block: left header
+@import "_partials/block-two-col-left-header-image";  // 2 column text block: left header + Image
+
 @import "_partials/block-two-col-jobs";  // 2 column text block: jobs
 
 @import "_partials/block-line";  // line block
@@ -273,6 +275,7 @@ body.white-scheme{
 body.main-reached.hide-intro-logo{
 // if hide intor logo options is turned on & as soon as we reach the main; don't show the intor area ever again
 // review if this makes things buggy? - delete comment if not
+
   #intro-area{
   display: none!important;
   height: 0px;
