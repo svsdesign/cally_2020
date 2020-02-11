@@ -62,7 +62,7 @@ position: relative;
 		position: relative;
 		@include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
   		@include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing
-
+  		overflow: hidden;
 	
 		@media (min-width: map-get($breakpoints,md)) {
 		bottom: 0;

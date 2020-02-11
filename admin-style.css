@@ -6630,10 +6630,6 @@ Author URI: http://svs.design
     column-count: 2;
   }
 }
-/* line 59, assets/sass/_partials/_layouts.scss */
-.two-col-block > div {
-  float: left;
-}
 
 /* line 67, assets/sass/_partials/_layouts.scss */
 .two-col-block.clear-right-col {
@@ -6707,10 +6703,6 @@ Author URI: http://svs.design
     column-count: 3;
   }
 }
-/* line 115, assets/sass/_partials/_layouts.scss */
-.three-col-block > div {
-  float: left;
-}
 
 /* line 125, assets/sass/_partials/_layouts.scss */
 .four-col-block {
@@ -6752,10 +6744,6 @@ Author URI: http://svs.design
   .four-col-block {
     column-count: 4;
   }
-}
-/* line 142, assets/sass/_partials/_layouts.scss */
-.four-col-block > div {
-  float: left;
 }
 
 /* line 155, assets/sass/_partials/_layouts.scss */
@@ -7582,6 +7570,7 @@ TO DO: review this sqaureheight business:
   position: relative;
   padding-bottom: 16px;
   padding-bottom: 16px;
+  overflow: hidden;
 }
 @media screen and (min-width: 0px) {
   /* line 59, assets/sass/_partials/_block-contact.scss */
