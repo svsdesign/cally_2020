@@ -94,13 +94,17 @@ Author URI: http://svs.design
 
     a,
     a:visited{
-    text-decoration: underline;
+    //text-decoration: underline;
+    text-decoration: none;
+
+    border-bottom: 1px solid nth($scheme, 3);
     color: nth($scheme, 3);
     }
 
     a:hover,
     a:active{
     text-decoration: none;
+    border-bottom: none;
     }
 
     /* START SELECT - inverse colors */   

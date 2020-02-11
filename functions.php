@@ -376,7 +376,20 @@ function my_acf_init() {
             //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
             },
             'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
-            'keywords'          => array('thliner'),
+            'keywords'          => array('thliner'), // review this- its not liner sould be line?
+        ));
+
+ 	    acf_register_block(array(
+            'name'              => 'thspacer', 
+            'title'             => __('Spacer'),
+            'description'       => __('Spacer'), // review this
+            'render_callback'   => 'my_acf_block_render_callback',
+            'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
+            'enqueue_assets'    => function(){
+            //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
+            },
+            'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
+            'keywords'          => array('thspace'),
         ));
 
 		 acf_register_block(array(

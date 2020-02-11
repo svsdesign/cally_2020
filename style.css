@@ -2117,29 +2117,31 @@ body.white-scheme a,
 body.white-scheme a:visited,
 body.white-scheme.wp-admin .wp-block a,
 body.white-scheme.wp-admin .wp-block a:visited {
-  text-decoration: underline;
+  text-decoration: none;
+  border-bottom: 1px solid black;
   color: black;
 }
-/* line 101, assets/sass/_partials/_typography.scss */
+/* line 104, assets/sass/_partials/_typography.scss */
 body.white-scheme a:hover,
 body.white-scheme a:active,
 body.white-scheme.wp-admin .wp-block a:hover,
 body.white-scheme.wp-admin .wp-block a:active {
   text-decoration: none;
+  border-bottom: none;
 }
-/* line 108, assets/sass/_partials/_typography.scss */
+/* line 112, assets/sass/_partials/_typography.scss */
 body.white-scheme ::-moz-selection,
 body.white-scheme.wp-admin .wp-block ::-moz-selection {
   color: white;
   background: black;
 }
-/* line 113, assets/sass/_partials/_typography.scss */
+/* line 117, assets/sass/_partials/_typography.scss */
 body.white-scheme ::selection,
 body.white-scheme.wp-admin .wp-block ::selection {
   color: white;
   background: black;
 }
-/* line 120, assets/sass/_partials/_typography.scss */
+/* line 124, assets/sass/_partials/_typography.scss */
 body.white-scheme body:not(.user-is-tabbing) button:focus,
 body.white-scheme body:not(.user-is-tabbing) input:focus,
 body.white-scheme body:not(.user-is-tabbing) select:focus,
@@ -2428,29 +2430,31 @@ body.black-scheme a,
 body.black-scheme a:visited,
 body.black-scheme.wp-admin .wp-block a,
 body.black-scheme.wp-admin .wp-block a:visited {
-  text-decoration: underline;
+  text-decoration: none;
+  border-bottom: 1px solid white;
   color: white;
 }
-/* line 101, assets/sass/_partials/_typography.scss */
+/* line 104, assets/sass/_partials/_typography.scss */
 body.black-scheme a:hover,
 body.black-scheme a:active,
 body.black-scheme.wp-admin .wp-block a:hover,
 body.black-scheme.wp-admin .wp-block a:active {
   text-decoration: none;
+  border-bottom: none;
 }
-/* line 108, assets/sass/_partials/_typography.scss */
+/* line 112, assets/sass/_partials/_typography.scss */
 body.black-scheme ::-moz-selection,
 body.black-scheme.wp-admin .wp-block ::-moz-selection {
   color: black;
   background: white;
 }
-/* line 113, assets/sass/_partials/_typography.scss */
+/* line 117, assets/sass/_partials/_typography.scss */
 body.black-scheme ::selection,
 body.black-scheme.wp-admin .wp-block ::selection {
   color: black;
   background: white;
 }
-/* line 120, assets/sass/_partials/_typography.scss */
+/* line 124, assets/sass/_partials/_typography.scss */
 body.black-scheme body:not(.user-is-tabbing) button:focus,
 body.black-scheme body:not(.user-is-tabbing) input:focus,
 body.black-scheme body:not(.user-is-tabbing) select:focus,
@@ -7112,6 +7116,86 @@ Theme URI:  theseus.agency
 Author: Simon van Stipriaan 
 Author URI: http://svs.design
 */
+/* line 15, assets/sass/_partials/_block-spacer.scss */
+body.white-scheme .spacer-block {
+  width: 100%;
+  display: block;
+  height: 16px;
+  height: 16px;
+  /*  @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing 
+    @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
+    @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing 
+    @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing 
+    */
+}
+@media screen and (min-width: 0px) {
+  /* line 15, assets/sass/_partials/_block-spacer.scss */
+  body.white-scheme .spacer-block {
+    height: calc(16px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 15, assets/sass/_partials/_block-spacer.scss */
+  body.white-scheme .spacer-block {
+    height: 16px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 15, assets/sass/_partials/_block-spacer.scss */
+  body.white-scheme .spacer-block {
+    height: calc(16px + 48 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 15, assets/sass/_partials/_block-spacer.scss */
+  body.white-scheme .spacer-block {
+    height: 64px;
+  }
+}
+
+/* line 15, assets/sass/_partials/_block-spacer.scss */
+body.black-scheme .spacer-block {
+  width: 100%;
+  display: block;
+  height: 16px;
+  height: 16px;
+  /*  @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing 
+    @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
+    @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing 
+    @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing 
+    */
+}
+@media screen and (min-width: 0px) {
+  /* line 15, assets/sass/_partials/_block-spacer.scss */
+  body.black-scheme .spacer-block {
+    height: calc(16px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 15, assets/sass/_partials/_block-spacer.scss */
+  body.black-scheme .spacer-block {
+    height: 16px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 15, assets/sass/_partials/_block-spacer.scss */
+  body.black-scheme .spacer-block {
+    height: calc(16px + 48 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 15, assets/sass/_partials/_block-spacer.scss */
+  body.black-scheme .spacer-block {
+    height: 64px;
+  }
+}
+
+/*
+Theme Name: theseus
+Theme URI:  theseus.agency
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
 /* line 14, assets/sass/_partials/_block-client-logos.scss */
 .client-logos-block .client-logo-image {
   width: 100%;
@@ -7810,7 +7894,7 @@ body.site-loading #main {
 
 /*I'd say the following needs to dissapear into the appropriat eblocks????
 */
-/* line 66, assets/sass/style.scss */
+/* line 67, assets/sass/style.scss */
 body.white-scheme {
   width: 100%;
   /* SVG */
@@ -7830,12 +7914,12 @@ body.white-scheme {
   /* end contact */
   /* END Sections styling */
 }
-/* line 72, assets/sass/style.scss */
+/* line 73, assets/sass/style.scss */
 body.white-scheme .svg-icon svg {
   width: 100%;
   height: 100%;
 }
-/* line 84, assets/sass/style.scss */
+/* line 85, assets/sass/style.scss */
 body.white-scheme .wrapper {
   position: relative;
   overflow: hidden;
@@ -7844,12 +7928,12 @@ body.white-scheme .wrapper {
   min-height: 100vh;
   display: block;
 }
-/* line 93, assets/sass/style.scss */
+/* line 94, assets/sass/style.scss */
 body.white-scheme section.content-item {
   margin-bottom: -10vh;
   padding-top: 10vh;
 }
-/* line 98, assets/sass/style.scss */
+/* line 99, assets/sass/style.scss */
 body.white-scheme section.content-item {
   clear: both;
   display: block;
@@ -7859,40 +7943,40 @@ body.white-scheme section.content-item {
   padding-bottom: 32px;
 }
 @media screen and (min-width: 0px) {
-  /* line 98, assets/sass/style.scss */
+  /* line 99, assets/sass/style.scss */
   body.white-scheme section.content-item {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 98, assets/sass/style.scss */
+  /* line 99, assets/sass/style.scss */
   body.white-scheme section.content-item {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 98, assets/sass/style.scss */
+  /* line 99, assets/sass/style.scss */
   body.white-scheme section.content-item {
     padding-bottom: calc(32px + 96 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 98, assets/sass/style.scss */
+  /* line 99, assets/sass/style.scss */
   body.white-scheme section.content-item {
     padding-bottom: 128px;
   }
 }
-/* line 113, assets/sass/style.scss */
+/* line 114, assets/sass/style.scss */
 body.white-scheme #item-1 {
   margin-top: -1px;
   padding-top: 10vh;
 }
-/* line 118, assets/sass/style.scss */
+/* line 119, assets/sass/style.scss */
 body.white-scheme .content-item:last-child {
   min-height: calc(110vh + 1px);
   overflow: visible;
 }
-/* line 129, assets/sass/style.scss */
+/* line 130, assets/sass/style.scss */
 body.white-scheme #intro-area {
   min-height: 100vh;
   display: block;
@@ -7900,7 +7984,7 @@ body.white-scheme #intro-area {
   position: relative;
   background: white;
 }
-/* line 136, assets/sass/style.scss */
+/* line 137, assets/sass/style.scss */
 body.white-scheme #intro-area #animation-large,
 body.white-scheme #intro-area #animation-small {
   width: 100%;
@@ -7912,39 +7996,39 @@ body.white-scheme #intro-area #animation-small {
   opacity: 1;
 }
 @media (min-width: 0px) {
-  /* line 148, assets/sass/style.scss */
+  /* line 149, assets/sass/style.scss */
   body.white-scheme #intro-area #animation-small {
     display: block;
   }
-  /* line 151, assets/sass/style.scss */
+  /* line 152, assets/sass/style.scss */
   body.white-scheme #intro-area #animation-large {
     display: none;
   }
 }
 @media (min-width: 480px) {
-  /* line 158, assets/sass/style.scss */
+  /* line 159, assets/sass/style.scss */
   body.white-scheme #intro-area #animation-small {
     display: none;
   }
-  /* line 161, assets/sass/style.scss */
+  /* line 162, assets/sass/style.scss */
   body.white-scheme #intro-area #animation-large {
     display: block;
   }
 }
-/* line 170, assets/sass/style.scss */
+/* line 171, assets/sass/style.scss */
 body.white-scheme.animation-fix {
   overflow: hidden;
   position: fixed;
   bottom: 0px;
   top: 0px;
 }
-/* line 182, assets/sass/style.scss */
+/* line 183, assets/sass/style.scss */
 body.white-scheme.hide-intro #intro-area {
   min-height: 0vh;
   display: none;
   height: 0;
 }
-/* line 188, assets/sass/style.scss */
+/* line 189, assets/sass/style.scss */
 body.white-scheme.hide-intro .nav-toggle-wrapper {
   opacity: 1;
   /* show nav toggle */
@@ -7952,75 +8036,75 @@ body.white-scheme.hide-intro .nav-toggle-wrapper {
   /* allow it be clicked */
 }
 @media (min-width: 800px) {
-  /* line 195, assets/sass/style.scss */
+  /* line 196, assets/sass/style.scss */
   body.white-scheme.hide-intro .nav-wrapper {
     opacity: 1;
     /* show nav wrapper - because we hit full size */
   }
 }
-/* line 204, assets/sass/style.scss */
+/* line 205, assets/sass/style.scss */
 body.white-scheme h3.approach-item {
   padding-bottom: 16px;
   padding-bottom: 16px;
 }
 @media screen and (min-width: 0px) {
-  /* line 204, assets/sass/style.scss */
+  /* line 205, assets/sass/style.scss */
   body.white-scheme h3.approach-item {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 204, assets/sass/style.scss */
+  /* line 205, assets/sass/style.scss */
   body.white-scheme h3.approach-item {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 204, assets/sass/style.scss */
+  /* line 205, assets/sass/style.scss */
   body.white-scheme h3.approach-item {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 204, assets/sass/style.scss */
+  /* line 205, assets/sass/style.scss */
   body.white-scheme h3.approach-item {
     padding-bottom: 64px;
   }
 }
-/* line 209, assets/sass/style.scss */
+/* line 210, assets/sass/style.scss */
 body.white-scheme .description {
   padding-bottom: 16px;
   padding-bottom: 16px;
 }
 @media screen and (min-width: 0px) {
-  /* line 209, assets/sass/style.scss */
+  /* line 210, assets/sass/style.scss */
   body.white-scheme .description {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 209, assets/sass/style.scss */
+  /* line 210, assets/sass/style.scss */
   body.white-scheme .description {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 209, assets/sass/style.scss */
+  /* line 210, assets/sass/style.scss */
   body.white-scheme .description {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 209, assets/sass/style.scss */
+  /* line 210, assets/sass/style.scss */
   body.white-scheme .description {
     padding-bottom: 64px;
   }
 }
-/* line 214, assets/sass/style.scss */
+/* line 215, assets/sass/style.scss */
 body.white-scheme .description:last-child {
   padding-bottom: 0;
 }
-/* line 224, assets/sass/style.scss */
+/* line 225, assets/sass/style.scss */
 body.white-scheme .logo-item {
   float: left;
   display: block;
@@ -8029,36 +8113,36 @@ body.white-scheme .logo-item {
   padding: 4px;
 }
 @media screen and (min-width: 0px) {
-  /* line 224, assets/sass/style.scss */
+  /* line 225, assets/sass/style.scss */
   body.white-scheme .logo-item {
     padding: calc(4px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 224, assets/sass/style.scss */
+  /* line 225, assets/sass/style.scss */
   body.white-scheme .logo-item {
     padding: 4px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 224, assets/sass/style.scss */
+  /* line 225, assets/sass/style.scss */
   body.white-scheme .logo-item {
     padding: calc(4px + 12 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 224, assets/sass/style.scss */
+  /* line 225, assets/sass/style.scss */
   body.white-scheme .logo-item {
     padding: 16px;
   }
 }
-/* line 236, assets/sass/style.scss */
+/* line 237, assets/sass/style.scss */
 body.white-scheme .contact-item {
   float: left;
   clear: both;
 }
 
-/* line 66, assets/sass/style.scss */
+/* line 67, assets/sass/style.scss */
 body.black-scheme {
   width: 100%;
   /* SVG */
@@ -8078,12 +8162,12 @@ body.black-scheme {
   /* end contact */
   /* END Sections styling */
 }
-/* line 72, assets/sass/style.scss */
+/* line 73, assets/sass/style.scss */
 body.black-scheme .svg-icon svg {
   width: 100%;
   height: 100%;
 }
-/* line 84, assets/sass/style.scss */
+/* line 85, assets/sass/style.scss */
 body.black-scheme .wrapper {
   position: relative;
   overflow: hidden;
@@ -8092,12 +8176,12 @@ body.black-scheme .wrapper {
   min-height: 100vh;
   display: block;
 }
-/* line 93, assets/sass/style.scss */
+/* line 94, assets/sass/style.scss */
 body.black-scheme section.content-item {
   margin-bottom: -10vh;
   padding-top: 10vh;
 }
-/* line 98, assets/sass/style.scss */
+/* line 99, assets/sass/style.scss */
 body.black-scheme section.content-item {
   clear: both;
   display: block;
@@ -8107,40 +8191,40 @@ body.black-scheme section.content-item {
   padding-bottom: 32px;
 }
 @media screen and (min-width: 0px) {
-  /* line 98, assets/sass/style.scss */
+  /* line 99, assets/sass/style.scss */
   body.black-scheme section.content-item {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 98, assets/sass/style.scss */
+  /* line 99, assets/sass/style.scss */
   body.black-scheme section.content-item {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 98, assets/sass/style.scss */
+  /* line 99, assets/sass/style.scss */
   body.black-scheme section.content-item {
     padding-bottom: calc(32px + 96 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 98, assets/sass/style.scss */
+  /* line 99, assets/sass/style.scss */
   body.black-scheme section.content-item {
     padding-bottom: 128px;
   }
 }
-/* line 113, assets/sass/style.scss */
+/* line 114, assets/sass/style.scss */
 body.black-scheme #item-1 {
   margin-top: -1px;
   padding-top: 10vh;
 }
-/* line 118, assets/sass/style.scss */
+/* line 119, assets/sass/style.scss */
 body.black-scheme .content-item:last-child {
   min-height: calc(110vh + 1px);
   overflow: visible;
 }
-/* line 129, assets/sass/style.scss */
+/* line 130, assets/sass/style.scss */
 body.black-scheme #intro-area {
   min-height: 100vh;
   display: block;
@@ -8148,7 +8232,7 @@ body.black-scheme #intro-area {
   position: relative;
   background: black;
 }
-/* line 136, assets/sass/style.scss */
+/* line 137, assets/sass/style.scss */
 body.black-scheme #intro-area #animation-large,
 body.black-scheme #intro-area #animation-small {
   width: 100%;
@@ -8160,39 +8244,39 @@ body.black-scheme #intro-area #animation-small {
   opacity: 1;
 }
 @media (min-width: 0px) {
-  /* line 148, assets/sass/style.scss */
+  /* line 149, assets/sass/style.scss */
   body.black-scheme #intro-area #animation-small {
     display: block;
   }
-  /* line 151, assets/sass/style.scss */
+  /* line 152, assets/sass/style.scss */
   body.black-scheme #intro-area #animation-large {
     display: none;
   }
 }
 @media (min-width: 480px) {
-  /* line 158, assets/sass/style.scss */
+  /* line 159, assets/sass/style.scss */
   body.black-scheme #intro-area #animation-small {
     display: none;
   }
-  /* line 161, assets/sass/style.scss */
+  /* line 162, assets/sass/style.scss */
   body.black-scheme #intro-area #animation-large {
     display: block;
   }
 }
-/* line 170, assets/sass/style.scss */
+/* line 171, assets/sass/style.scss */
 body.black-scheme.animation-fix {
   overflow: hidden;
   position: fixed;
   bottom: 0px;
   top: 0px;
 }
-/* line 182, assets/sass/style.scss */
+/* line 183, assets/sass/style.scss */
 body.black-scheme.hide-intro #intro-area {
   min-height: 0vh;
   display: none;
   height: 0;
 }
-/* line 188, assets/sass/style.scss */
+/* line 189, assets/sass/style.scss */
 body.black-scheme.hide-intro .nav-toggle-wrapper {
   opacity: 1;
   /* show nav toggle */
@@ -8200,75 +8284,75 @@ body.black-scheme.hide-intro .nav-toggle-wrapper {
   /* allow it be clicked */
 }
 @media (min-width: 800px) {
-  /* line 195, assets/sass/style.scss */
+  /* line 196, assets/sass/style.scss */
   body.black-scheme.hide-intro .nav-wrapper {
     opacity: 1;
     /* show nav wrapper - because we hit full size */
   }
 }
-/* line 204, assets/sass/style.scss */
+/* line 205, assets/sass/style.scss */
 body.black-scheme h3.approach-item {
   padding-bottom: 16px;
   padding-bottom: 16px;
 }
 @media screen and (min-width: 0px) {
-  /* line 204, assets/sass/style.scss */
+  /* line 205, assets/sass/style.scss */
   body.black-scheme h3.approach-item {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 204, assets/sass/style.scss */
+  /* line 205, assets/sass/style.scss */
   body.black-scheme h3.approach-item {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 204, assets/sass/style.scss */
+  /* line 205, assets/sass/style.scss */
   body.black-scheme h3.approach-item {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 204, assets/sass/style.scss */
+  /* line 205, assets/sass/style.scss */
   body.black-scheme h3.approach-item {
     padding-bottom: 64px;
   }
 }
-/* line 209, assets/sass/style.scss */
+/* line 210, assets/sass/style.scss */
 body.black-scheme .description {
   padding-bottom: 16px;
   padding-bottom: 16px;
 }
 @media screen and (min-width: 0px) {
-  /* line 209, assets/sass/style.scss */
+  /* line 210, assets/sass/style.scss */
   body.black-scheme .description {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 209, assets/sass/style.scss */
+  /* line 210, assets/sass/style.scss */
   body.black-scheme .description {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 209, assets/sass/style.scss */
+  /* line 210, assets/sass/style.scss */
   body.black-scheme .description {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 209, assets/sass/style.scss */
+  /* line 210, assets/sass/style.scss */
   body.black-scheme .description {
     padding-bottom: 64px;
   }
 }
-/* line 214, assets/sass/style.scss */
+/* line 215, assets/sass/style.scss */
 body.black-scheme .description:last-child {
   padding-bottom: 0;
 }
-/* line 224, assets/sass/style.scss */
+/* line 225, assets/sass/style.scss */
 body.black-scheme .logo-item {
   float: left;
   display: block;
@@ -8277,41 +8361,41 @@ body.black-scheme .logo-item {
   padding: 4px;
 }
 @media screen and (min-width: 0px) {
-  /* line 224, assets/sass/style.scss */
+  /* line 225, assets/sass/style.scss */
   body.black-scheme .logo-item {
     padding: calc(4px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 224, assets/sass/style.scss */
+  /* line 225, assets/sass/style.scss */
   body.black-scheme .logo-item {
     padding: 4px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 224, assets/sass/style.scss */
+  /* line 225, assets/sass/style.scss */
   body.black-scheme .logo-item {
     padding: calc(4px + 12 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 224, assets/sass/style.scss */
+  /* line 225, assets/sass/style.scss */
   body.black-scheme .logo-item {
     padding: 16px;
   }
 }
-/* line 236, assets/sass/style.scss */
+/* line 237, assets/sass/style.scss */
 body.black-scheme .contact-item {
   float: left;
   clear: both;
 }
 
-/* line 256, assets/sass/style.scss */
+/* line 257, assets/sass/style.scss */
 body.white-scheme {
   /* clients */
   /* clients */
 }
-/* line 261, assets/sass/style.scss */
+/* line 262, assets/sass/style.scss */
 body.white-scheme svg.client-logo,
 body.white-scheme img.client-logo {
   -webkit-filter: invert(100%);

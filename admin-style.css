@@ -2053,29 +2053,31 @@ body.white-scheme a,
 body.white-scheme a:visited,
 body.white-scheme.wp-admin .wp-block a,
 body.white-scheme.wp-admin .wp-block a:visited {
-  text-decoration: underline;
+  text-decoration: none;
+  border-bottom: 1px solid black;
   color: black;
 }
-/* line 101, assets/sass/_partials/_typography.scss */
+/* line 104, assets/sass/_partials/_typography.scss */
 body.white-scheme a:hover,
 body.white-scheme a:active,
 body.white-scheme.wp-admin .wp-block a:hover,
 body.white-scheme.wp-admin .wp-block a:active {
   text-decoration: none;
+  border-bottom: none;
 }
-/* line 108, assets/sass/_partials/_typography.scss */
+/* line 112, assets/sass/_partials/_typography.scss */
 body.white-scheme ::-moz-selection,
 body.white-scheme.wp-admin .wp-block ::-moz-selection {
   color: white;
   background: black;
 }
-/* line 113, assets/sass/_partials/_typography.scss */
+/* line 117, assets/sass/_partials/_typography.scss */
 body.white-scheme ::selection,
 body.white-scheme.wp-admin .wp-block ::selection {
   color: white;
   background: black;
 }
-/* line 120, assets/sass/_partials/_typography.scss */
+/* line 124, assets/sass/_partials/_typography.scss */
 body.white-scheme body:not(.user-is-tabbing) button:focus,
 body.white-scheme body:not(.user-is-tabbing) input:focus,
 body.white-scheme body:not(.user-is-tabbing) select:focus,
@@ -2364,29 +2366,31 @@ body.black-scheme a,
 body.black-scheme a:visited,
 body.black-scheme.wp-admin .wp-block a,
 body.black-scheme.wp-admin .wp-block a:visited {
-  text-decoration: underline;
+  text-decoration: none;
+  border-bottom: 1px solid white;
   color: white;
 }
-/* line 101, assets/sass/_partials/_typography.scss */
+/* line 104, assets/sass/_partials/_typography.scss */
 body.black-scheme a:hover,
 body.black-scheme a:active,
 body.black-scheme.wp-admin .wp-block a:hover,
 body.black-scheme.wp-admin .wp-block a:active {
   text-decoration: none;
+  border-bottom: none;
 }
-/* line 108, assets/sass/_partials/_typography.scss */
+/* line 112, assets/sass/_partials/_typography.scss */
 body.black-scheme ::-moz-selection,
 body.black-scheme.wp-admin .wp-block ::-moz-selection {
   color: black;
   background: white;
 }
-/* line 113, assets/sass/_partials/_typography.scss */
+/* line 117, assets/sass/_partials/_typography.scss */
 body.black-scheme ::selection,
 body.black-scheme.wp-admin .wp-block ::selection {
   color: black;
   background: white;
 }
-/* line 120, assets/sass/_partials/_typography.scss */
+/* line 124, assets/sass/_partials/_typography.scss */
 body.black-scheme body:not(.user-is-tabbing) button:focus,
 body.black-scheme body:not(.user-is-tabbing) input:focus,
 body.black-scheme body:not(.user-is-tabbing) select:focus,
@@ -7601,18 +7605,18 @@ TO DO: review this sqaureheight business:
     padding-bottom: 0px;
   }
 }
-/* line 74, assets/sass/_partials/_block-contact.scss */
+/* line 73, assets/sass/_partials/_block-contact.scss */
 .contact-block .left-area .logos .logo {
   width: 25%;
   float: left;
 }
-/* line 79, assets/sass/_partials/_block-contact.scss */
+/* line 78, assets/sass/_partials/_block-contact.scss */
 .contact-block .left-area .logos img {
   display: block;
   width: 100%;
   height: auto;
 }
-/* line 91, assets/sass/_partials/_block-contact.scss */
+/* line 90, assets/sass/_partials/_block-contact.scss */
 .contact-block .right-area {
   height: calc(80vw - 16px);
   pointer-events: none;
@@ -7620,7 +7624,7 @@ TO DO: review this sqaureheight business:
   width: 100%;
 }
 @media (min-width: 480px) {
-  /* line 91, assets/sass/_partials/_block-contact.scss */
+  /* line 90, assets/sass/_partials/_block-contact.scss */
   .contact-block .right-area {
     width: 50%;
     height: calc(40vw - 16px);
@@ -7629,31 +7633,31 @@ TO DO: review this sqaureheight business:
   }
 }
 @media screen and (min-width: 480px) and (min-width: 0px) {
-  /* line 91, assets/sass/_partials/_block-contact.scss */
+  /* line 90, assets/sass/_partials/_block-contact.scss */
   .contact-block .right-area {
     padding-left: calc(8px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 480px) and (min-width: 800px) {
-  /* line 91, assets/sass/_partials/_block-contact.scss */
+  /* line 90, assets/sass/_partials/_block-contact.scss */
   .contact-block .right-area {
     padding-left: 8px;
   }
 }
 @media screen and (min-width: 480px) and (min-width: 800px) {
-  /* line 91, assets/sass/_partials/_block-contact.scss */
+  /* line 90, assets/sass/_partials/_block-contact.scss */
   .contact-block .right-area {
     padding-left: calc(8px + 24 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 480px) and (min-width: 3200px) {
-  /* line 91, assets/sass/_partials/_block-contact.scss */
+  /* line 90, assets/sass/_partials/_block-contact.scss */
   .contact-block .right-area {
     padding-left: 32px;
   }
 }
 
-/* line 110, assets/sass/_partials/_block-contact.scss */
+/* line 109, assets/sass/_partials/_block-contact.scss */
 .contact-block .right-area .map-wrap {
   position: relative;
   width: 100%;
@@ -7662,7 +7666,7 @@ TO DO: review this sqaureheight business:
   float: left;
   /*google maps */
 }
-/* line 119, assets/sass/_partials/_block-contact.scss */
+/* line 118, assets/sass/_partials/_block-contact.scss */
 .contact-block .right-area .map-wrap #g-map-mask {
   position: relative;
   display: block;
@@ -7672,7 +7676,7 @@ TO DO: review this sqaureheight business:
   height: 100%;
   top: 0px;
 }
-/* line 129, assets/sass/_partials/_block-contact.scss */
+/* line 128, assets/sass/_partials/_block-contact.scss */
 .contact-block .right-area .map-wrap #g-map-holder {
   pointer-events: initial;
   width: 100%;
@@ -7687,23 +7691,23 @@ TO DO: review this sqaureheight business:
   top: 0px;
 }
 @media (min-width: 480px) {
-  /* line 129, assets/sass/_partials/_block-contact.scss */
+  /* line 128, assets/sass/_partials/_block-contact.scss */
   .contact-block .right-area .map-wrap #g-map-holder {
     max-height: calc(40vw - 16px);
   }
 }
-/* line 154, assets/sass/_partials/_block-contact.scss */
+/* line 153, assets/sass/_partials/_block-contact.scss */
 .contact-block .right-area .map-wrap #g-map {
   width: 100%;
   height: calc(80vw - 16px);
 }
 @media (min-width: 480px) {
-  /* line 154, assets/sass/_partials/_block-contact.scss */
+  /* line 153, assets/sass/_partials/_block-contact.scss */
   .contact-block .right-area .map-wrap #g-map {
     height: calc(40vw - 16px);
   }
 }
-/* line 170, assets/sass/_partials/_block-contact.scss */
+/* line 169, assets/sass/_partials/_block-contact.scss */
 .contact-block .right-area .map-wrap #g-map img {
   opacity: 1;
 }
