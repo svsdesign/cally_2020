@@ -111,25 +111,30 @@
   introanimationdone = false;
 // determine if gmap scrip loaded or not
  var gMapsLoaded = false; // maybe I need to put this variable else where?
-console.log("Header gMapsLoaded = " +gMapsLoaded+"");
+ //console.log("Header gMapsLoaded = " +gMapsLoaded+"");
 </script>
+
+<?php if( get_field('keep_intro_logo', 'option') == 'no' ):  
+  $keep_intro_logo_class = ' hide-intro-logo'; // don't keep the intro if this option is set to no
+endif; ?>
+
 
 <?php if( get_field('colour_scheme', 'option') == 'black' ): ?>
 
- <body <?php body_class('animation-fix site-loading black-scheme dev-grid-on'); ?>>
+ <body <?php body_class('animation-fix site-loading black-scheme dev-grid-on'.$keep_intro_logo_class.''); ?>>
 
 <?php else: ?>
 
- <body <?php body_class('animation-fix site-loading white-scheme dev-grid-on'); ?>>
+ <body <?php body_class('animation-fix site-loading white-scheme dev-grid-on'.$keep_intro_logo_class.''); ?>>
 
 <?php endif; ?>
-
 
 <?php /*
   <-- this moved from theseus-page 
   it was also wrapped in  <div id='site-wrap'> - so might need to review my overarching div struture
-  to includ the navigation as well
+  to includ the navigation as well - delete this comment
 */?>
+
 <div id="intro-area" class="visible"> 
 
   <?php get_template_part( 'theseus_animation' );?>
@@ -142,6 +147,6 @@ console.log("Header gMapsLoaded = " +gMapsLoaded+"");
 
 
   <?php /*
-  <-- END this moved from theseus-page 
+  <-- END this moved from theseus-page  - delete this comment
 */?>
   

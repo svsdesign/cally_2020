@@ -270,4 +270,16 @@ body.white-scheme{
 } //body.white-scheme
 
 
+body.main-reached.hide-intro-logo{
+// if hide intor logo options is turned on & as soon as we reach the main; don't show the intor area ever again
+// review if this makes things buggy? - delete comment if not
+  #intro-area{
+  display: none!important;
+  height: 0px;
+  overflow: hidden;
+  }
+
+}//body.main-reached.hide-intro-logo
+
+
 

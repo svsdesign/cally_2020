@@ -56,7 +56,7 @@ $video_caption = get_field('video_caption') ?: 'Your Caption here...';
             
             <div class="grid-row-holder">
             
-               <div class="video-caption grid-item grid-xs-12 grid-md-6">
+               <div class="video-caption caption grid-item grid-xs-12 grid-md-6">
 
                     <?php echo $video_caption; ?>
             

@@ -61,7 +61,7 @@ if( $images ): ?>
 
         <?php if( $imagecaption): ?>
             
-            <div class="image-caption">
+            <div class="image-caption caption">
             
                 <?php echo $imagecaption; ?>
             

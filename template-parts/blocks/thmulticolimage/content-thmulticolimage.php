@@ -80,7 +80,7 @@ if( !empty($block['align']) ) {
  
                         <?php if( $image_caption): ?>
                             
-                            <div class="image-caption">
+                            <div class="image-caption caption">
                             
                                 <?php echo $image_caption; ?>
                             

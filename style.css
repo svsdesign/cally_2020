@@ -2107,12 +2107,77 @@ body.white-scheme.wp-admin .wp-block h4,
 body.white-scheme.wp-admin .wp-block .h4 {
   font-family: "Helv-Light", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-/* line 90, assets/sass/_partials/_typography.scss */
+/* line 91, assets/sass/_partials/_typography.scss */
 body.white-scheme b,
 body.white-scheme.wp-admin .wp-block b {
   font-family: "Helv-Norm", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 /* line 95, assets/sass/_partials/_typography.scss */
+body.white-scheme .caption,
+body.white-scheme.wp-admin .wp-block .caption {
+  font-family: "Helv-Light", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  font-size: 9px;
+  line-height: 12px;
+  line-height: 12px;
+}
+@media screen and (min-width: 0px) {
+  /* line 95, assets/sass/_partials/_typography.scss */
+  body.white-scheme .caption,
+  body.white-scheme.wp-admin .wp-block .caption {
+    font-size: calc(9px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 95, assets/sass/_partials/_typography.scss */
+  body.white-scheme .caption,
+  body.white-scheme.wp-admin .wp-block .caption {
+    font-size: 9px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 95, assets/sass/_partials/_typography.scss */
+  body.white-scheme .caption,
+  body.white-scheme.wp-admin .wp-block .caption {
+    font-size: calc(9px + 27 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 95, assets/sass/_partials/_typography.scss */
+  body.white-scheme .caption,
+  body.white-scheme.wp-admin .wp-block .caption {
+    font-size: 36px;
+  }
+}
+@media screen and (min-width: 0px) {
+  /* line 95, assets/sass/_partials/_typography.scss */
+  body.white-scheme .caption,
+  body.white-scheme.wp-admin .wp-block .caption {
+    line-height: calc(12px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 95, assets/sass/_partials/_typography.scss */
+  body.white-scheme .caption,
+  body.white-scheme.wp-admin .wp-block .caption {
+    line-height: 12px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 95, assets/sass/_partials/_typography.scss */
+  body.white-scheme .caption,
+  body.white-scheme.wp-admin .wp-block .caption {
+    line-height: calc(12px + 36 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 95, assets/sass/_partials/_typography.scss */
+  body.white-scheme .caption,
+  body.white-scheme.wp-admin .wp-block .caption {
+    line-height: 48px;
+  }
+}
+/* line 101, assets/sass/_partials/_typography.scss */
 body.white-scheme a,
 body.white-scheme a:visited,
 body.white-scheme.wp-admin .wp-block a,
@@ -2121,7 +2186,7 @@ body.white-scheme.wp-admin .wp-block a:visited {
   border-bottom: 1px solid black;
   color: black;
 }
-/* line 104, assets/sass/_partials/_typography.scss */
+/* line 110, assets/sass/_partials/_typography.scss */
 body.white-scheme a:hover,
 body.white-scheme a:active,
 body.white-scheme.wp-admin .wp-block a:hover,
@@ -2129,19 +2194,19 @@ body.white-scheme.wp-admin .wp-block a:active {
   text-decoration: none;
   border-bottom: none;
 }
-/* line 112, assets/sass/_partials/_typography.scss */
+/* line 118, assets/sass/_partials/_typography.scss */
 body.white-scheme ::-moz-selection,
 body.white-scheme.wp-admin .wp-block ::-moz-selection {
   color: white;
   background: black;
 }
-/* line 117, assets/sass/_partials/_typography.scss */
+/* line 123, assets/sass/_partials/_typography.scss */
 body.white-scheme ::selection,
 body.white-scheme.wp-admin .wp-block ::selection {
   color: white;
   background: black;
 }
-/* line 124, assets/sass/_partials/_typography.scss */
+/* line 130, assets/sass/_partials/_typography.scss */
 body.white-scheme body:not(.user-is-tabbing) button:focus,
 body.white-scheme body:not(.user-is-tabbing) input:focus,
 body.white-scheme body:not(.user-is-tabbing) select:focus,
@@ -2420,12 +2485,77 @@ body.black-scheme.wp-admin .wp-block h4,
 body.black-scheme.wp-admin .wp-block .h4 {
   font-family: "Helv-Light", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-/* line 90, assets/sass/_partials/_typography.scss */
+/* line 91, assets/sass/_partials/_typography.scss */
 body.black-scheme b,
 body.black-scheme.wp-admin .wp-block b {
   font-family: "Helv-Norm", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 /* line 95, assets/sass/_partials/_typography.scss */
+body.black-scheme .caption,
+body.black-scheme.wp-admin .wp-block .caption {
+  font-family: "Helv-Light", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  font-size: 9px;
+  line-height: 12px;
+  line-height: 12px;
+}
+@media screen and (min-width: 0px) {
+  /* line 95, assets/sass/_partials/_typography.scss */
+  body.black-scheme .caption,
+  body.black-scheme.wp-admin .wp-block .caption {
+    font-size: calc(9px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 95, assets/sass/_partials/_typography.scss */
+  body.black-scheme .caption,
+  body.black-scheme.wp-admin .wp-block .caption {
+    font-size: 9px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 95, assets/sass/_partials/_typography.scss */
+  body.black-scheme .caption,
+  body.black-scheme.wp-admin .wp-block .caption {
+    font-size: calc(9px + 27 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 95, assets/sass/_partials/_typography.scss */
+  body.black-scheme .caption,
+  body.black-scheme.wp-admin .wp-block .caption {
+    font-size: 36px;
+  }
+}
+@media screen and (min-width: 0px) {
+  /* line 95, assets/sass/_partials/_typography.scss */
+  body.black-scheme .caption,
+  body.black-scheme.wp-admin .wp-block .caption {
+    line-height: calc(12px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 95, assets/sass/_partials/_typography.scss */
+  body.black-scheme .caption,
+  body.black-scheme.wp-admin .wp-block .caption {
+    line-height: 12px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 95, assets/sass/_partials/_typography.scss */
+  body.black-scheme .caption,
+  body.black-scheme.wp-admin .wp-block .caption {
+    line-height: calc(12px + 36 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 95, assets/sass/_partials/_typography.scss */
+  body.black-scheme .caption,
+  body.black-scheme.wp-admin .wp-block .caption {
+    line-height: 48px;
+  }
+}
+/* line 101, assets/sass/_partials/_typography.scss */
 body.black-scheme a,
 body.black-scheme a:visited,
 body.black-scheme.wp-admin .wp-block a,
@@ -2434,7 +2564,7 @@ body.black-scheme.wp-admin .wp-block a:visited {
   border-bottom: 1px solid white;
   color: white;
 }
-/* line 104, assets/sass/_partials/_typography.scss */
+/* line 110, assets/sass/_partials/_typography.scss */
 body.black-scheme a:hover,
 body.black-scheme a:active,
 body.black-scheme.wp-admin .wp-block a:hover,
@@ -2442,19 +2572,19 @@ body.black-scheme.wp-admin .wp-block a:active {
   text-decoration: none;
   border-bottom: none;
 }
-/* line 112, assets/sass/_partials/_typography.scss */
+/* line 118, assets/sass/_partials/_typography.scss */
 body.black-scheme ::-moz-selection,
 body.black-scheme.wp-admin .wp-block ::-moz-selection {
   color: black;
   background: white;
 }
-/* line 117, assets/sass/_partials/_typography.scss */
+/* line 123, assets/sass/_partials/_typography.scss */
 body.black-scheme ::selection,
 body.black-scheme.wp-admin .wp-block ::selection {
   color: black;
   background: white;
 }
-/* line 124, assets/sass/_partials/_typography.scss */
+/* line 130, assets/sass/_partials/_typography.scss */
 body.black-scheme body:not(.user-is-tabbing) button:focus,
 body.black-scheme body:not(.user-is-tabbing) input:focus,
 body.black-scheme body:not(.user-is-tabbing) select:focus,
@@ -8399,4 +8529,11 @@ body.white-scheme svg.client-logo,
 body.white-scheme img.client-logo {
   -webkit-filter: invert(100%);
   filter: invert(100%);
+}
+
+/* line 276, assets/sass/style.scss */
+body.main-reached.hide-intro-logo #intro-area {
+  display: none !important;
+  height: 0px;
+  overflow: hidden;
 }

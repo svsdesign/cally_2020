@@ -63,7 +63,7 @@ center - this just left alligned?
  
                         <?php if( $image_caption): ?>
                             
-                            <div class="image-caption">
+                            <div class="image-caption caption">
                             
                                 <?php echo $image_caption; ?>
                             

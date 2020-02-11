@@ -83,6 +83,7 @@ Author URI: http://svs.design
 
 
 
+
     /* END HEADERS */
 
     /* type formating start */
@@ -90,6 +91,11 @@ Author URI: http://svs.design
     b{
     font-family: $medium-font-family;// so bold again
     }
+
+    .caption{
+    @include type-small;
+    }
+
     /* START LINKS */
 
     a,
