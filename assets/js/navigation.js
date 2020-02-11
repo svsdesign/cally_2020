@@ -202,7 +202,7 @@ $(window).scroll(function() {
 
      // console.log("not reached" + reached +"");
 
-       $('body').removeClass('main-reached');
+     // $('body').removeClass('main-reached');
 
      // if ($("#header-nav-area").is('.unpinned, .pinned')){ // ensure to only destroy if we have the item
       //if ($("#header-nav-area").hasClass(", pinned")){ 

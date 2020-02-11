@@ -350,7 +350,19 @@ function my_acf_init() {
             'keywords'          => array('thtwocolleftheader'),
         ));
 
-       
+  		acf_register_block(array(
+            'name'              => 'thtwocolleftheaderimage', 
+            'title'             => __('Text - Two Column - Left Header + Image'),
+            'description'       => __('Text - Two Column - Left Header + Image'), // review this
+            'render_callback'   => 'my_acf_block_render_callback',
+            'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
+            'enqueue_assets'    => function(){
+            //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
+            },
+            'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
+            'keywords'          => array('thtwocolleftheaderimage'),
+        ));
+	 
 		 acf_register_block(array(
             'name'              => 'thtwocolheader', 
             'title'             => __('Text - Two Column - Header'),
