@@ -774,7 +774,8 @@ var app = (function() {
                     /*https://stackoverflow.com/questions/22047466/how-to-add-css-class-to-a-googlemaps-marker */
 
                     map = new google.maps.Map(document.getElementById('g-map'),mapOptions);
-                    var image = ""+themeurl+'/assets/svg/t_logo_svg.svg?i='+(index++);
+                   // var image = ""+themeurl+'/assets/svg/t_logo_svg.svg?i='+(index++);
+                    var image = ""+themeurl+'/assets/svg/map_marker_svg_40px.svg?i='+(index++);
                 
                  //   var image = 'https://theseus.agency/wp-content/themes/theseus/assets/svg/t_logo_svg.svg?i='+(index++);
                     var imageMarker = new google.maps.Marker({
