@@ -31,3 +31,30 @@ Author URI: http://svs.design
 
 
 }//.animation-hide
+
+
+// between ajax site loading:
+
+body.site-loading{
+//background-color: red;
+
+  #main{
+  //opacity: 0;
+  /*n svs to do:
+- This needs some work; incoorporating all the different site wide/sturuct animations that I'm using
+- nav + main  sliding
+- opacity in + out
+- etc
+*/
+
+
+// @mixin animation ($delay, $duration, $animation, $direction: forward, $fillmode: forwards) 
+//  @include animation (0, 1s, opacity, alternate, forwards); //Error: Mixin animation is missing argument $fillmode.
+   //   @include animation(0, 0.5s, toggle-animation-slide-in-left, ease);
+
+
+ //THIS the one - but overridesd the sliding thing on mobile: @include animation (0s , 1s, ajax-site-loading, alternate, forwards)
+
+  }
+
+}//body.loading{

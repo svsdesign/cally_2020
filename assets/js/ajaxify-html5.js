@@ -190,7 +190,7 @@
        $main = $('#site-wrap'), // content selector
 
       //$content.animate({opacity:100},800);
-       $body.addClass('site-loading'); // this class is remove in the site.js
+      $body.addClass('site-loading'); // this class is remove in the site.js
     
 
  

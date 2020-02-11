@@ -32,8 +32,8 @@ $columnsizing = get_field('column_sizing');
 
 if( $columnsizing == '25-75' ) {
 
-    $leftcolclass = 'grid-xs-12 grid-sm-6 grid-md-3';
-    $rightcolclass = 'grid-xs-12 grid-sm-6 grid-md-9';
+    $leftcolclass = 'grid-xs-12 grid-sm-12 grid-md-3';
+    $rightcolclass = 'grid-xs-12 grid-sm-12 grid-md-9';
 
 } elseif( $columnsizing == '50-50') {
 
@@ -42,8 +42,8 @@ if( $columnsizing == '25-75' ) {
 
 } elseif( $columnsizing == '75-25') {
 
-    $leftcolclass = 'grid-xs-12 grid-sm-6 grid-md-9';
-    $rightcolclass = 'grid-xs-12 grid-sm-6 grid-md-3';
+    $leftcolclass = 'grid-xs-12 grid-sm-12 grid-md-9';
+    $rightcolclass = 'grid-xs-12 grid-sm-12 grid-md-3';
 
 }
 

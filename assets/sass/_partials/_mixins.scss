@@ -175,7 +175,12 @@ font-family: $light-font-family;
     }
 }
 
-@mixin animation ($delay, $duration, $animation, $direction: forward, $fillmode: forwards) {
+// og: @mixin animation ($delay, $duration, $animation, $direction: forward, $fillmode: forwards) {
+// should this not be:? i.e forward and forwards are values?
+//@mixin animation ($delay, $duration, $animation, $direction, $fillmode) {
+ @mixin animation ($delay, $duration, $animation, $direction: forward, $fillmode: forwards) {
+
+
     -webkit-animation-delay: $delay;
     -webkit-animation-duration: $duration;
     -webkit-animation-name: $animation;
@@ -349,4 +354,14 @@ $schemes: $scheme1 $scheme2;
       100% {
       opacity: 0.5;
       }
+  }
+
+  // between page loading
+  @include keyframe(ajax-site-loading) {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
   }

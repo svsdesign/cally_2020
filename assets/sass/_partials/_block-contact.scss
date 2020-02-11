@@ -3,6 +3,12 @@ Theme Name: theseus
 Theme URI:  theseus.agency
 Author: Simon van Stipriaan 
 Author URI: http://svs.design
+
+
+TO DO: review this sqaureheight business:
+
+-Its not quite sqaure
+- there's noo many declarion of variables; its a mess basically
 */
 
 
@@ -23,11 +29,23 @@ position: relative;
 	}
 */
 	.left-area{
-	 width: 100%;
-	 float: left;
+	position: relative;
+	width: 100%;
+	float: left;
+	//$squareheight: 80vw;
+	//$margingutters: 16px; // this not the dynamic respsone height: 32px at large - svs to review
+	height:auto;
+
+
 	//display:block;
 	@media (min-width: map-get($breakpoints,md)) {
-	width: 50%;//
+	width: 50%;//	
+	$squareheight: 40vw;
+	$margingutters: 16px; // this not the dynamic respsone height: 32px at large - svs to review
+	height: calc(#{$squareheight} - #{$margingutters});
+
+
+
 	@include fluid-type(padding-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
 	@include fluid-type(padding-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
     }
@@ -41,6 +59,16 @@ position: relative;
 		.logos{
 		width: 100%;
 		clear: both;
+		position: relative;
+		@include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+  		@include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing
+
+	
+		@media (min-width: map-get($breakpoints,md)) {
+		bottom: 0;
+		position: absolute;
+		padding-bottom: 0px;
+		}
 
 			.logo{
 			width: 25%;
@@ -60,16 +88,19 @@ position: relative;
 	}//.left-area
 
 	.right-area{
-	//width: 100%;
-	//display:block;
-	height: 40vh;// added becaise not working - this height thing maybe needs reviewing?
-	//height: inherit;
+	$squareheight: 80vw;
+	$margingutters: 16px; // this not the dynamic respsone height: 32px at large - svs to review
+	height: calc(#{$squareheight} - #{$margingutters});
 	pointer-events:none;
 	overflow: hidden;
 	width: 100%;
 
 		@media (min-width: map-get($breakpoints,md)) {
-		width: 50%;//
+		width: 50%;//	
+		$squareheight: 40vw;
+		$margingutters: 16px; // this not the dynamic respsone height: 32px at large - svs to review
+		height: calc(#{$squareheight} - #{$margingutters});
+
 		@include fluid-type(padding-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
 		@include fluid-type(padding-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
 	    }
@@ -99,7 +130,18 @@ position: relative;
 		    width: 100%;
 		    height: inherit; //w wasauto;
 		    /* min-height: 100vh; */
-		    max-height: 40vh;
+		 	$squareheight: 80vw;
+			$margingutters: 16px; 
+		    max-height: calc(#{$squareheight} - #{$margingutters}); // 80vw
+
+	    		@media (min-width: map-get($breakpoints,md)) {
+	    	
+	    		$squareheight: 40vw;
+				$margingutters: 16px; // this not the dynamic respsone height: 32px at large - svs to review
+	   			max-height: calc(#{$squareheight} - #{$margingutters}); // 40vw
+	    	
+	    		}
+
 		    overflow: hidden;
 		    position: absolute;
 		    left: 0px;
@@ -107,14 +149,22 @@ position: relative;
 		    bottom: 0px;
 		    top: 0px
 		    }
-			 $a: 40vh;
-			 $b: 40px;
-
-   //height: calc(#{$a} - #{$b});
- 		    #g-map{
+	  		 
+	  		#g-map{
 		    width: 100%;
-		    height: calc(#{$a} + #{$b});// 40vh!important; 
-		    }
+ 			$squareheight: 80vw;
+			$margingutters: 16px; 
+		    height: calc(#{$squareheight} - #{$margingutters}); // 80vw
+
+	    		@media (min-width: map-get($breakpoints,md)) {
+	    	
+	    		$squareheight: 40vw;
+				$margingutters: 16px; // this not the dynamic respsone height: 32px at large - svs to review
+	   			height: calc(#{$squareheight} - #{$margingutters}); // 40vw
+	    	
+	    		}
+		  
+		    }//#g-map
 
 		    #g-map img{
 		    opacity: 1;

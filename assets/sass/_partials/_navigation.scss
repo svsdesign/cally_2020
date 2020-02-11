@@ -178,6 +178,10 @@ Author URI: http://svs.design
       &.current_page_item{ // active itme; assign the appropriat colou:
       font-family: $medium-font-family;
 
+        @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
+        font-family: $light-font-family;;
+        }
+
             a{
                 @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
                 border-color: nth($scheme, 3);     
