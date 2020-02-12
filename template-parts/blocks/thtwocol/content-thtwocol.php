@@ -26,8 +26,8 @@ if( !empty($block['align']) ) {
 
 // Load values and assing defaults.
 
-$title = get_field('title') ?: 'Your title here...';
-$text_area = get_field('text_area') ?: 'Your text here...';
+//$title = get_field('title') ?: 'Your title here...';
+//$text_area = get_field('text_area') ?: 'Your text here...';
 //$author = get_field('author') ?: 'Author name';
 //$role = get_field('role') ?: 'Author role';
 //$image = get_field('image') ?:'insert image';
@@ -44,9 +44,22 @@ $text_area = get_field('text_area') ?: 'Your text here...';
         // vars
         $title = get_sub_field('title');
         $text_area = get_sub_field('text_area');
-        ?>
+        $break_column_options = get_sub_field('break_column_options');
+        if( $break_column_options == 'before' ) {
 
-            <div class="repeater-row">
+            $breakclass = "clear-col-item clear-column-after";
+
+        } elseif( $break_column_options == 'after') {
+
+            $breakclass = "clear-col-item clear-column-after";
+
+        } elseif( $break_column_options == 'none') {
+            
+            $breakclass = ""; //don't anything
+
+        }; ?>
+
+            <div class="repeater-row <?php echo $breakclass;?>">
                  
                 <?php if( $title ): ?>
 

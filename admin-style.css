@@ -6724,163 +6724,171 @@ Author URI: http://svs.design
   break-after: column;
   display: block;
 }
+/* line 33, assets/sass/_partials/_layouts.scss */
+.clear-col-item.clear-column-after {
+  break-after: column;
+}
+/* line 37, assets/sass/_partials/_layouts.scss */
+.clear-col-item.clear-column-before {
+  break-before: column;
+}
 
-/* line 46, assets/sass/_partials/_layouts.scss */
+/* line 58, assets/sass/_partials/_layouts.scss */
 .two-col-block {
   column-gap: 16px;
   column-gap: 16px;
 }
 @media screen and (min-width: 0px) {
-  /* line 46, assets/sass/_partials/_layouts.scss */
+  /* line 58, assets/sass/_partials/_layouts.scss */
   .two-col-block {
     column-gap: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 46, assets/sass/_partials/_layouts.scss */
+  /* line 58, assets/sass/_partials/_layouts.scss */
   .two-col-block {
     column-gap: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 46, assets/sass/_partials/_layouts.scss */
+  /* line 58, assets/sass/_partials/_layouts.scss */
   .two-col-block {
     column-gap: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 46, assets/sass/_partials/_layouts.scss */
+  /* line 58, assets/sass/_partials/_layouts.scss */
   .two-col-block {
     column-gap: 64px;
   }
 }
 @media (min-width: 480px) {
-  /* line 46, assets/sass/_partials/_layouts.scss */
+  /* line 58, assets/sass/_partials/_layouts.scss */
   .two-col-block {
     column-count: 2;
   }
 }
 
-/* line 67, assets/sass/_partials/_layouts.scss */
+/* line 79, assets/sass/_partials/_layouts.scss */
 .two-col-block.clear-right-col {
   column-gap: 16px;
   column-gap: 16px;
 }
 @media screen and (min-width: 0px) {
-  /* line 67, assets/sass/_partials/_layouts.scss */
+  /* line 79, assets/sass/_partials/_layouts.scss */
   .two-col-block.clear-right-col {
     column-gap: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 67, assets/sass/_partials/_layouts.scss */
+  /* line 79, assets/sass/_partials/_layouts.scss */
   .two-col-block.clear-right-col {
     column-gap: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 67, assets/sass/_partials/_layouts.scss */
+  /* line 79, assets/sass/_partials/_layouts.scss */
   .two-col-block.clear-right-col {
     column-gap: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 67, assets/sass/_partials/_layouts.scss */
+  /* line 79, assets/sass/_partials/_layouts.scss */
   .two-col-block.clear-right-col {
     column-gap: 64px;
   }
 }
 @media (min-width: 480px) {
-  /* line 67, assets/sass/_partials/_layouts.scss */
+  /* line 79, assets/sass/_partials/_layouts.scss */
   .two-col-block.clear-right-col {
     column-count: 1;
     width: 50%;
   }
 }
 
-/* line 98, assets/sass/_partials/_layouts.scss */
+/* line 110, assets/sass/_partials/_layouts.scss */
 .three-col-block {
   column-gap: 16px;
   column-gap: 16px;
 }
 @media screen and (min-width: 0px) {
-  /* line 98, assets/sass/_partials/_layouts.scss */
+  /* line 110, assets/sass/_partials/_layouts.scss */
   .three-col-block {
     column-gap: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 98, assets/sass/_partials/_layouts.scss */
+  /* line 110, assets/sass/_partials/_layouts.scss */
   .three-col-block {
     column-gap: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 98, assets/sass/_partials/_layouts.scss */
+  /* line 110, assets/sass/_partials/_layouts.scss */
   .three-col-block {
     column-gap: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 98, assets/sass/_partials/_layouts.scss */
+  /* line 110, assets/sass/_partials/_layouts.scss */
   .three-col-block {
     column-gap: 64px;
   }
 }
 @media (min-width: 800px) {
-  /* line 98, assets/sass/_partials/_layouts.scss */
+  /* line 110, assets/sass/_partials/_layouts.scss */
   .three-col-block {
     column-count: 3;
   }
 }
 
-/* line 125, assets/sass/_partials/_layouts.scss */
+/* line 137, assets/sass/_partials/_layouts.scss */
 .four-col-block {
   column-gap: 16px;
   column-gap: 16px;
 }
 @media screen and (min-width: 0px) {
-  /* line 125, assets/sass/_partials/_layouts.scss */
+  /* line 137, assets/sass/_partials/_layouts.scss */
   .four-col-block {
     column-gap: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 125, assets/sass/_partials/_layouts.scss */
+  /* line 137, assets/sass/_partials/_layouts.scss */
   .four-col-block {
     column-gap: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 125, assets/sass/_partials/_layouts.scss */
+  /* line 137, assets/sass/_partials/_layouts.scss */
   .four-col-block {
     column-gap: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 125, assets/sass/_partials/_layouts.scss */
+  /* line 137, assets/sass/_partials/_layouts.scss */
   .four-col-block {
     column-gap: 64px;
   }
 }
 @media (min-width: 480px) {
-  /* line 125, assets/sass/_partials/_layouts.scss */
+  /* line 137, assets/sass/_partials/_layouts.scss */
   .four-col-block {
     column-count: 2;
   }
 }
 @media (min-width: 800px) {
-  /* line 125, assets/sass/_partials/_layouts.scss */
+  /* line 137, assets/sass/_partials/_layouts.scss */
   .four-col-block {
     column-count: 4;
   }
 }
 
-/* line 155, assets/sass/_partials/_layouts.scss */
+/* line 167, assets/sass/_partials/_layouts.scss */
 .image-wrap {
   width: 100%;
 }
-/* line 158, assets/sass/_partials/_layouts.scss */
+/* line 170, assets/sass/_partials/_layouts.scss */
 .image-wrap img {
   width: 100%;
   height: auto;

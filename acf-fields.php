@@ -633,7 +633,7 @@ acf_add_local_field_group(array(
 			'collapsed' => '',
 			'min' => 0,
 			'max' => 0,
-			'layout' => 'row',
+			'layout' => 'table',
 			'button_label' => '',
 			'sub_fields' => array(
 				array(
@@ -674,6 +674,31 @@ acf_add_local_field_group(array(
 					'rows' => '',
 					'new_lines' => '',
 				),
+				array(
+					'key' => 'field_5e44124bb87c4',
+					'label' => 'Break Column Options',
+					'name' => 'break_column_options',
+					'type' => 'radio',
+					'instructions' => 'These options provide the ability for a column break, before or after the current Repeater Field. Leave blank, or select none, if no break required.',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'choices' => array(
+						'none' => 'None',
+						'before' => 'Before',
+						'after' => 'After',
+					),
+					'allow_null' => 0,
+					'other_choice' => 0,
+					'default_value' => 'none',
+					'layout' => 'vertical',
+					'return_format' => 'value',
+					'save_other_choice' => 0,
+				),
 			),
 		),
 	),
@@ -695,6 +720,8 @@ acf_add_local_field_group(array(
 	'active' => true,
 	'description' => '',
 ));
+
+
 
 acf_add_local_field_group(array(
 	'key' => 'group_5e3ec57e98b4a',

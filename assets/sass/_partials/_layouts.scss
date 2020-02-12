@@ -28,7 +28,19 @@ overflow: hidden;
 //https://stackoverflow.com/questions/23800485/force-div-to-next-column
 break-after:column;
 display:block;
+
+
+	&.clear-column-after{
+	break-after:column;
+	}
+
+	&.clear-column-before{
+	break-before:column;
+	}
+
 }
+
+
 
 
 // 1 column:
@@ -139,7 +151,7 @@ display:block;
   column-count: 4;
   }
 
-  > div{ // ensure items float in grid?
+  > div{ // ensure items float in grid? - no breaks the multicolumn in safar & firefox
 	//float: left;
   }
 
@@ -160,6 +172,7 @@ width: 100%;
 		height: auto;
 		display: block;
 	}
+
 }//.image-wrap
 
 // END image blocks; general
