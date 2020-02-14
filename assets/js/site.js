@@ -358,9 +358,8 @@ var app = (function() {
 
 
 
-
-
       
+/* - delete this
 
       function nav_clicks() {
         // not used - so remove function
@@ -397,14 +396,14 @@ var app = (function() {
                          var upcominghref = $(this).data('nav-item');
                         $('body').attr('data-move-to',upcominghref); 
 
-                  }; /*  else if  body.home       */
+                  }; //  else if  body.home     
 
             e.preventDefault();
 
          });           
 
       }// function nav_clicks()
-
+*/
 
      function fade() {
 
@@ -414,13 +413,13 @@ var app = (function() {
            // $('.fade-item').each(function() {
            $('.th-block').each(function() { // might need to review this
    
-    console.log(".th-block each");// each
+            // console.log(".th-block each");// each
                 var objectTop = $(this).offset().top;
                 var windowBottom = $(window).scrollTop() + ($(window).innerHeight() *0.8);
                 
                 if ( objectTop < windowBottom ) {
 
-                                          console.log("if ( objectTop < windowBottom");
+                                        //  console.log("if ( objectTop < windowBottom");
 
                     if ( objectTop < windowBottom - animation_height ) {
                        // $(this).html( 'fully visible' );
@@ -430,7 +429,7 @@ var app = (function() {
                             transition: 'opacity 0.1s linear',
                             opacity: 1
                         } );
-                        console.log("hello fade into 1");
+                       // console.log("hello fade into 1");
 
                     } else {
                     //    $(this).html( 'fading in/out' );
@@ -439,8 +438,9 @@ var app = (function() {
                             opacity: (windowBottom - objectTop) * ratio
                         } );
                     }
+
                 } else {
-                                          console.log("else so not fading into 1");
+                      // console.log("else so not fading into 1");
 
                    // $(this).html( 'not visible' );
                     $(this).css( 'opacity', 0.1 );

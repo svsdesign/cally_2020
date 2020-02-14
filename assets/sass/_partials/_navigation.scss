@@ -246,7 +246,8 @@ Author URI: http://svs.design
     overflow: hidden;
  
       @media (max-width: map-get($breakpoints, lg)) {
-      @include animation(0, 0.5s, toggle-animation-slide-in-left, ease);
+   //review this - just have same value; no animation:
+   //         @include animation(0, 0.5s, toggle-animation-slide-in-left, ease);
       }
    
       @media (min-width: map-get($breakpoints, lg)) {
@@ -276,7 +277,7 @@ Author URI: http://svs.design
 
         @media (max-width: map-get($breakpoints, lg)) { 
         background: nth($scheme, 3);
-        @include animation(0, 0.5s,toggle-animation-slide-in-left, ease); // i need to ensure this doesn't run initially?
+      //  @include animation(0, 0.5s,toggle-animation-slide-in-left, ease); // i need to ensure this doesn't run initially?
         //was 0.5 s
         // maybe hided during intial load of site -
         }
@@ -304,7 +305,8 @@ Author URI: http://svs.design
   
         @media (min-width: map-get($breakpoints, lg)) {
 
-        @include animation(0, 0.5s, animation-slide-in-left, ease);
+   //review this - just have same value; no animation:
+   //     @include animation(0, 0.5s, animation-slide-in-left, ease);
         // or reflect teh height of the full navigation
         @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*8, map-get($lineheight, lg)*8); // fixed sizing // offset grid 
         @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*8, map-get($lineheight, xxl)*8); // viewport sizing
@@ -554,6 +556,97 @@ Author URI: http://svs.design
       }
 
     }// body.nav-on
+
+  &.nav-off {
+  
+      @media (min-width: map-get($breakpoints, lg)) { 
+       }
+
+      #intro-area{
+        
+        @media (max-width: map-get($breakpoints, lg)) { 
+       // display: none; // don't show intro area when w'ere on toglle +sid nav
+          // this fuck everything up a bit - would have to use js to scroll to ceratin points
+        } 
+      
+      }//#intro-area
+
+       #header-nav-area{
+       //background-color: purple;// delet or review colours based on shemems
+   
+
+        @media (max-width: map-get($breakpoints, lg)) { 
+         }
+
+      }
+
+
+      .nav-fixer{
+    
+            @media (min-width: map-get($breakpoints, lg)) { 
+                  }
+            @media (max-width: map-get($breakpoints, lg)) { 
+           // background: transparent; 
+            @include animation(0, 0.5s,animation-slide-in-left, ease);
+            //was 0.5s
+            }
+       
+             
+          .menu{
+             
+                li.menu-item{
+
+                  a{// invert colour
+
+                        @media (min-width: map-get($breakpoints, lg)) { 
+                    
+                        }
+
+                  }
+
+                }//li.menu-item
+
+            }// .menu
+
+      }//.nav-fixer
+
+      .nav-toggle-wrapper{
+   
+        @media (max-width: map-get($breakpoints, lg)) {
+         
+        @include animation(0, 0.5s, toggle-animation-slide-in-left, ease);
+
+// remove or rivew this animatin        @include animation(0, 0.5s, toggle-animation-slide-out-left, ease);
+        }
+
+        .nav-toggle .svg-icon{
+        fill: nth($scheme, 2);
+        }
+      
+      }
+
+      .main-fixer{ /* move content*/
+ 
+
+        @media (min-width: map-get($breakpoints, sm)) { /* past toggle breakpoint - override styles*/
+        }
+
+        @media (max-width: map-get($breakpoints, lg)) {
+        @include animation(0, 0.5s, animation-slide-in-left, ease);
+           }
+
+        @media (min-width: map-get($breakpoints, lg)) { /* past toggle breakpoint - override styles*/
+            }
+
+      } // #main
+
+      .nav-wrapper{
+         @media (max-width: map-get($breakpoints, lg)) {
+           }
+      }
+
+    }// body.nav-off
+
 
     //body
     &.show-nav-logo{

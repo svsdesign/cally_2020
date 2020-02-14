@@ -68,11 +68,17 @@ var navapp = (function() {
 
             });
 
+
+              // but only do this if the nav is off
             $('#header-nav-area').hover(function(){
                  
                //console.log("sc-player hover")
                // ensure headroom pinned
-                forceheadroompin();
+                   if ($('body').hasClass('nav-on')){
+                    // if the nav is already on, lets not change the classes further
+                   } else{
+                    forceheadroompin(); // fore headroom other wise
+                    };
 
             }); // hover 
 
@@ -174,21 +180,36 @@ $(window).scroll(function() {
         // console.log("this?" + (mainoffset-windowHeight) , windowScrolltop +"");
 
 //        console.log("windowScrolltop" + windowScrolltop +"");
- //       console.log("reached" + (windowScrolltop - introheight) +"");
+     //  console.log("reached" + (windowScrolltop - introheight) +"");
+
+// Tjhis is buggy as fuck - on Safari - review
 
 
     if (reached > 0){
 
-    // console.log("if reached" + reached +"");
-    
+     console.log("if reached" + reached +">0");
+      
+      if($('body').hasClass('main-reached')){
+     
+          if  ($('body').hasClass('nav-on')){
+            // if nav on, don't do anything
+            console.log("nav on atm?")
 
-     $('body').addClass('main-reached');
+          } else{
+            unfreezeheadroom();
 
-     // if ($("#header-nav-area").not('.unpinned, .pinned')){ // meaning headroom no longer eixist?
-      unfreezeheadroom();
-      //}
+          }// nav on
 
-    } else if(reached == 0){
+      } else {
+
+      // unfreeze it, but won't happen more than once
+
+      $('body').addClass('main-reached');
+
+      }
+
+   // } 
+   /*else if(reached == 0){
       
       $('body').addClass('main-reached');
    // we want to force the pin, but only once, when we hit 0?
@@ -198,16 +219,26 @@ $(window).scroll(function() {
 
   
 
-    } else {
+    */
+      } else if (reached < 0){
+      // meaning we havnen't reached anything yet
+      console.log("else if " + reached +"< 0");
 
-     // console.log("not reached" + reached +"");
-
-     // $('body').removeClass('main-reached');
+    // $('body').removeClass('main-reached');
 
      // if ($("#header-nav-area").is('.unpinned, .pinned')){ // ensure to only destroy if we have the item
       //if ($("#header-nav-area").hasClass(", pinned")){ 
        //  console.log("freeze headroom");
-         freezeheadroom();// if we destroy it; does that mean we need to re-start it
+
+          if  ($('body').hasClass('nav-on')){
+            // if nav on, don't do anything
+            console.log("nav on atm?")
+
+          } else{
+             freezeheadroom();// if we destroy it; does that mean we need to re-start it
+
+          }// nav on
+
        //}
 
 
@@ -296,7 +327,7 @@ $(window).scroll(function() {
   
     function freezeheadroom(){
       // to freeze
-      //console.log("freezeheadroom")
+       console.log("freezeheadroom")
 
       $("#header-nav-area").headroom("freeze");
 
@@ -315,6 +346,9 @@ $(window).scroll(function() {
 
    function forceheadroompin(){
 
+      console.log('forceheadroompin();');
+
+
        if ($("#header-nav-area").hasClass("unpinned")){
         
           $("#header-nav-area").removeClass("unpinned");
@@ -326,8 +360,91 @@ $(window).scroll(function() {
 
     }//forceheadroom
 
+ function unforceheadroompin(){
 
+      console.log('unforceheadroompin();');
+
+       if ($("#header-nav-area").hasClass("pinned")){
+        
+          $("#header-nav-area").removeClass("pinned");
+          $("#header-nav-area").addClass("unpinned");
+
+          //console.log("unpinned - now pinned");
+
+       }
+
+    }//forceheadroom
   /* end headroom */
+
+/* nav toggling function */
+
+        function navtogglingfunction(){
+
+            console.log("click");
+            // what we want to do is dissacosiate the closing of the nave with the normal body sate
+            // so probably have a nav on and nav off class; each hs didderent animatin
+            // then our normal body no longer assiging hte "nav-off" stagte
+            if ( (!$('body').not('nav-off')) || (!$('body').not('nav-on')) ) {// chekc if we have "started the nav yet; i.e assiging a nav off"
+            // "start the nav toggle" - for first time
+               
+               // unforceheadroompin(); // ensure headroom now turned off + freeze that position
+               // freezeheadroom();
+
+                destroyheadroom();
+
+                $('body').addClass('nav-on');
+                console.log("not either")
+
+            } else if ($('body').hasClass('nav-on')) {
+
+                // turn nav off:
+                console.log("turn nav off")
+                initheadroom()
+
+
+                $('body').addClass('nav-off');
+                $('body').removeClass('nav-on');
+
+            } else { // if body hasClass nav-off - + others?
+
+                // turn nav on:
+                console.log("turn nav on")
+                //    unforceheadroompin(); // ensure headroom now turned off + freeze that position
+                //    freezeheadroom();
+                // r- initheadroom          
+                      destroyheadroom();
+
+                $('body').addClass('nav-on');
+                $('body').removeClass('nav-off');
+
+                //if click statment to add here; if they click a menu item that tkes them away from current page
+              
+
+                 var $mainmenuitmes = $('li.menu-item a');
+
+                      $mainmenuitmes.click(function(){
+                          
+                          console.log("$mainmenuitmes.click(function()")
+
+                          // close nave
+                          $('body').addClass('nav-off');
+                          $('body').removeClass('nav-on');
+                          //re init headroom
+
+                          initheadroom()
+
+
+                       }); // click
+                      
+         
+       
+
+            }// ifnav on
+
+        }//navtogglingfunction()
+
+//   END navtogglingfunction()
+
 
       // END GLOBAL FUNCTIONS
 
@@ -343,17 +460,11 @@ $(window).scroll(function() {
                   var $this = $('#toggle-item');
 
                       $this.click(function(){
+                            
 
-                         if ($('body').hasClass('nav-on')) {
-                          // turn nav off:
+                            
+                           navtogglingfunction();
 
-                          $('body').removeClass('nav-on');
-
-                        } else {
-                          // turn nav on:
-                          $('body').addClass('nav-on');
-
-                        }// ifnav on
 
                      }); // click
                     

@@ -1,6 +1,47 @@
 // Ajaxify
 // v1.0.1 - 30 September, 2012
 // https://github.com/browserstate/ajaxify
+
+/* nav toggling function */
+// this exist twice :( - once in the navigation js file and once in here; really not ideal?
+  /* -- dlete this function!!!
+        function navtogglingfunction(){
+
+            console.log("click");
+            // what we want to do is dissacosiate the closing of the nave with the normal body sate
+            // so probably have a nav on and nav off class; each hs didderent animatin
+            // then our normal body no longer assiging hte "nav-off" stagte
+            if ( (!$('body').not('nav-off')) || (!$('body').not('nav-on')) ) {// chekc if we have "started the nav yet; i.e assiging a nav off"
+            // "start the nav toggle"
+            unforceheadroompin(); // ensure headroom now turned off + freeze that position
+            freezeheadroom();
+
+            $('body').addClass('nav-on');
+            console.log("not either")
+            } else if ($('body').hasClass('nav-on')) {
+            // turn nav off:
+            console.log("turn nav off")
+            unfreezeheadroom(); // enure to unfreeze headroom
+
+            $('body').addClass('nav-off');
+            $('body').removeClass('nav-on');
+
+            } else { // chkeck 
+            // turn nav on:
+            console.log("turn nav on")
+            unforceheadroompin(); // ensure headroom now turned off + freeze that position
+            freezeheadroom();
+            $('body').addClass('nav-on');
+            $('body').removeClass('nav-off');
+
+            }// ifnav on
+
+        }//navtogglingfunction()
+
+//   END navtogglingfunction()
+*/
+
+
 (function(window,undefined){
   
   // Prepare our Variables
@@ -112,28 +153,10 @@
           hashPos = url.indexOf('#'), hash;
   
 
-      /*    if ($body.is('[class*="item"]')){
-     
-               var scroll = 'fromleft';
-              console.log('hello item');
+          // basically if I click on a link in the menu, I want to close the menu,
+          // so a
 
-
-              
-            } // if has item class */
-
-
-
-     /* if(!$body.is('[class*="item"]')) {
-            n++;
-            $(this).addClass('item' + n );
-                          console.log('hello item' + n +'');
-
-           // $(this).clone().appendTo('#answerbox').addClass('answerbox_letter' + n); 
-        } else {
-            //none
-                                      console.log('no item' + n +'');
-
-         }; */
+ 
 
         // Continue as normal for cmd clicks etc
         if ( event.which == 2 || event.metaKey ) { return true; }
@@ -148,7 +171,8 @@
                 //    url = url.substring(0, hashPos);
                 // end remove
 
-           }
+           };
+           
 
         // Ajaxify this link
         History.pushState(null,title,url);
