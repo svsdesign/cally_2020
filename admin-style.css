@@ -36,6 +36,14 @@ font-family: $medium-font-family;
 @include fluid-type(line-height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*2, map-get($lineheight, xxl)*2); // viewport sizing
 
 }*/
+@keyframes loadergradient {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
 @-webkit-keyframes animation-slide-out-left {
   0% {
     transform: translate(0%, 0%);
@@ -322,6 +330,53 @@ font-family: $medium-font-family;
   }
   100% {
     opacity: 0;
+  }
+}
+@keyframes fadeincookieconsent {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tograyscale {
+  0% {
+    -webkit-filter: grayscale(0%);
+    /* Ch 23+, Saf 6.0+, BB 10.0+ */
+    filter: grayscale(0%);
+    /* FF 35+ */
+  }
+  100% {
+    -webkit-filter: grayscale(100%);
+    /* Ch 23+, Saf 6.0+, BB 10.0+ */
+    filter: grayscale(100%);
+    /* FF 35+ */
+  }
+}
+@keyframes tocolour {
+  0% {
+    -webkit-filter: grayscale(100%);
+    /* Ch 23+, Saf 6.0+, BB 10.0+ */
+    filter: grayscale(100%);
+    /* FF 35+ */
+  }
+  100% {
+    -webkit-filter: grayscale(0%);
+    /* Ch 23+, Saf 6.0+, BB 10.0+ */
+    filter: grayscale(0%);
+    /* FF 35+ */
+  }
+}
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 /*
@@ -7447,77 +7502,123 @@ Author URI: http://svs.design
 /* ---- previous/next buttons ---- */
 /* line 82, assets/sass/_partials/_block-slideshow.scss */
 .flickity-prev-next-button {
-  width: 16px;
-  width: 16px;
-  height: 16px;
-  height: 16px;
+  width: 32px;
+  width: 32px;
+  height: 32px;
+  height: 32px;
   border-radius: 50%;
   /* vertically center */
   transform: translateY(-50%);
   background: transparent;
   z-index: 5;
+  top: 50%;
 }
 @media screen and (min-width: 0px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    width: calc(16px + 0 * (100vw - 0px) / 800);
+    width: calc(32px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    width: 16px;
+    width: 32px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    width: calc(16px + 48 * (100vw - 800px) / 2400);
+    width: calc(32px + 96 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    width: 64px;
+    width: 128px;
   }
 }
 @media screen and (min-width: 0px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    height: calc(16px + 0 * (100vw - 0px) / 800);
+    height: calc(32px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    height: 16px;
+    height: 32px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    height: calc(16px + 48 * (100vw - 800px) / 2400);
+    height: calc(32px + 96 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    height: 64px;
-  }
-}
-@media (min-width: 0px) {
-  /* line 82, assets/sass/_partials/_block-slideshow.scss */
-  .flickity-prev-next-button {
-    top: 50%;
-    height: 100%;
+    height: 128px;
   }
 }
 @media (min-width: 800px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    top: 100%;
+    width: 16px;
+    width: 16px;
+    height: 16px;
+    height: 16px;
   }
 }
+@media screen and (min-width: 800px) and (min-width: 0px) {
+  /* line 82, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-prev-next-button {
+    width: calc(16px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) and (min-width: 800px) {
+  /* line 82, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-prev-next-button {
+    width: 16px;
+  }
+}
+@media screen and (min-width: 800px) and (min-width: 800px) {
+  /* line 82, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-prev-next-button {
+    width: calc(16px + 48 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 800px) and (min-width: 3200px) {
+  /* line 82, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-prev-next-button {
+    width: 64px;
+  }
+}
+@media screen and (min-width: 800px) and (min-width: 0px) {
+  /* line 82, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-prev-next-button {
+    height: calc(16px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) and (min-width: 800px) {
+  /* line 82, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-prev-next-button {
+    height: 16px;
+  }
+}
+@media screen and (min-width: 800px) and (min-width: 800px) {
+  /* line 82, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-prev-next-button {
+    height: calc(16px + 48 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 800px) and (min-width: 3200px) {
+  /* line 82, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-prev-next-button {
+    height: 64px;
+  }
+}
+
 /* line 114, assets/sass/_partials/_block-slideshow.scss */
 .flickity-prev-next-button svg {
   fill: white;
@@ -7525,28 +7626,20 @@ Author URI: http://svs.design
 
 /* line 120, assets/sass/_partials/_block-slideshow.scss */
 .flickity-prev-next-button.previous {
-  left: 12.5%;
+  left: 0;
+  width: 12.5%;
+  height: 100%;
 }
 
-/* line 123, assets/sass/_partials/_block-slideshow.scss */
+/* line 125, assets/sass/_partials/_block-slideshow.scss */
 .flickity-prev-next-button.next {
-  right: 12.5%;
+  right: 0;
+  width: 12.5%;
+  height: 100%;
 }
 
 /* right to left */
-/* line 127, assets/sass/_partials/_block-slideshow.scss */
-.flickity-rtl .flickity-prev-next-button.previous {
-  left: auto;
-  right: 12.5%;
-}
-
-/* line 131, assets/sass/_partials/_block-slideshow.scss */
-.flickity-rtl .flickity-prev-next-button.next {
-  right: auto;
-  left: 12.5%;
-}
-
-/* line 136, assets/sass/_partials/_block-slideshow.scss */
+/* line 140, assets/sass/_partials/_block-slideshow.scss */
 .flickity-prev-next-button .flickity-button-icon {
   position: absolute;
   left: 0;
@@ -7557,41 +7650,52 @@ Author URI: http://svs.design
 }
 
 /* ---- page dots ---- */
-/* line 147, assets/sass/_partials/_block-slideshow.scss */
+/* line 151, assets/sass/_partials/_block-slideshow.scss */
 .flickity-page-dots {
-  position: absolute;
+  position: relative;
   width: 100%;
-  margin: 0;
+  display: none;
+  clear: both;
+  height: 32px;
+  height: 32px;
+  margin: auto;
   list-style: none;
   text-align: center;
-  line-height: 1;
   display: none;
 }
-@media (min-width: 800px) {
-  /* line 147, assets/sass/_partials/_block-slideshow.scss */
+@media screen and (min-width: 0px) {
+  /* line 151, assets/sass/_partials/_block-slideshow.scss */
   .flickity-page-dots {
-    display: block;
-    /*	@include cssvaluegutter(bottom,-3); 
-    	@include cssvaluegutter(height,3); 
-    	@include cssvaluegutter(padding-top, 1); 
-    	@include cssvaluegutter(padding-bottom, 1); 
-    */
+    height: calc(32px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 151, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-page-dots {
+    height: 32px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 151, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-page-dots {
+    height: calc(32px + 96 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 151, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-page-dots {
+    height: 128px;
   }
 }
 
-/* line 175, assets/sass/_partials/_block-slideshow.scss */
+/* line 171, assets/sass/_partials/_block-slideshow.scss */
 .flickity-rtl .flickity-page-dots {
   direction: rtl;
 }
 
-/* line 179, assets/sass/_partials/_block-slideshow.scss */
+/* line 175, assets/sass/_partials/_block-slideshow.scss */
 .flickity-page-dots .dot {
   display: inline-block;
-  /*@include cssvaluegutter(width,1); 
-  @include cssvaluegutter(height,1); 
-  @include cssvaluegutter(margin-left, 0.25); 
-  @include cssvaluegutter(margin-right, 0.25);
-  */
   background: white;
   border-radius: 50%;
   cursor: pointer;
@@ -7600,7 +7704,7 @@ Author URI: http://svs.design
   -webkit-box-sizing: border-box;
 }
 @media (min-width: 480px) {
-  /* line 179, assets/sass/_partials/_block-slideshow.scss */
+  /* line 175, assets/sass/_partials/_block-slideshow.scss */
   .flickity-page-dots .dot {
     /*
     		@include cssvaluegutter(width,0.75); 
@@ -7610,7 +7714,7 @@ Author URI: http://svs.design
   }
 }
 @media (min-width: 800px) {
-  /* line 179, assets/sass/_partials/_block-slideshow.scss */
+  /* line 175, assets/sass/_partials/_block-slideshow.scss */
   .flickity-page-dots .dot {
     			/*
 		@include cssvaluegutter(width,0.5); 
@@ -7624,26 +7728,26 @@ Author URI: http://svs.design
 }
 
 /* additional styles */
-/* line 230, assets/sass/_partials/_block-slideshow.scss */
+/* line 219, assets/sass/_partials/_block-slideshow.scss */
 .slideshow-block {
   width: 100%;
   	/*
   @include cssvaluegutter(margin-bottom, 5);  // for the dots area
   */
 }
-/* line 245, assets/sass/_partials/_block-slideshow.scss */
+/* line 235, assets/sass/_partials/_block-slideshow.scss */
 .slideshow-block .slideshow-carousel {
   width: 100%;
   height: inherit;
   max-height: inherit;
 }
-/* line 250, assets/sass/_partials/_block-slideshow.scss */
+/* line 240, assets/sass/_partials/_block-slideshow.scss */
 .slideshow-block .slideshow-carousel .flickity-viewport {
   width: 100%;
   height: inherit;
   max-height: inherit;
 }
-/* line 255, assets/sass/_partials/_block-slideshow.scss */
+/* line 245, assets/sass/_partials/_block-slideshow.scss */
 .slideshow-block .slideshow-carousel .flickity-viewport .slideshow-image {
   height: inherit;
   max-height: inherit;
@@ -7651,51 +7755,69 @@ Author URI: http://svs.design
   margin-right: 16px;
 }
 @media screen and (min-width: 0px) {
-  /* line 255, assets/sass/_partials/_block-slideshow.scss */
+  /* line 245, assets/sass/_partials/_block-slideshow.scss */
   .slideshow-block .slideshow-carousel .flickity-viewport .slideshow-image {
     margin-right: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 255, assets/sass/_partials/_block-slideshow.scss */
+  /* line 245, assets/sass/_partials/_block-slideshow.scss */
   .slideshow-block .slideshow-carousel .flickity-viewport .slideshow-image {
     margin-right: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 255, assets/sass/_partials/_block-slideshow.scss */
+  /* line 245, assets/sass/_partials/_block-slideshow.scss */
   .slideshow-block .slideshow-carousel .flickity-viewport .slideshow-image {
     margin-right: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 255, assets/sass/_partials/_block-slideshow.scss */
+  /* line 245, assets/sass/_partials/_block-slideshow.scss */
   .slideshow-block .slideshow-carousel .flickity-viewport .slideshow-image {
     margin-right: 64px;
   }
 }
-/* line 261, assets/sass/_partials/_block-slideshow.scss */
+/* line 251, assets/sass/_partials/_block-slideshow.scss */
 .slideshow-block .slideshow-carousel .flickity-viewport .slideshow-image img {
   opacity: 1;
   display: block;
   height: 100%;
   width: auto;
 }
+/* line 264, assets/sass/_partials/_block-slideshow.scss */
+.slideshow-block .image-caption {
+  width: 100%;
+}
+@media (min-width: 480px) {
+  /* line 264, assets/sass/_partials/_block-slideshow.scss */
+  .slideshow-block .image-caption {
+    width: 50%;
+  }
+}
 
-/* line 280, assets/sass/_partials/_block-slideshow.scss */
+/* line 278, assets/sass/_partials/_block-slideshow.scss */
 body.horizontal .slideshow-block {
+  height: inherit;
+}
+/* line 281, assets/sass/_partials/_block-slideshow.scss */
+body.horizontal .slideshow-block .slideshow-carousel {
   height: 80vh;
   max-height: 60vh;
 }
 @media (min-width: 800px) {
-  /* line 280, assets/sass/_partials/_block-slideshow.scss */
-  body.horizontal .slideshow-block {
+  /* line 281, assets/sass/_partials/_block-slideshow.scss */
+  body.horizontal .slideshow-block .slideshow-carousel {
     max-height: 75vh;
   }
 }
 
-/* line 297, assets/sass/_partials/_block-slideshow.scss */
+/* line 298, assets/sass/_partials/_block-slideshow.scss */
 body.vertical .slideshow-block {
+  height: inherit;
+}
+/* line 301, assets/sass/_partials/_block-slideshow.scss */
+body.vertical .slideshow-block .slideshow-carousel {
   height: 60vw;
 }
 
@@ -7981,6 +8103,110 @@ Author URI: http://svs.design
   left: 0;
   width: 100%;
   height: 100%;
+}
+/* line 44, assets/sass/_partials/_block-video.scss */
+.video-block .video-area .video-wrap .gradient-loader-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 20%;
+  top: 0%;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  pointer-events: none;
+}
+/* line 55, assets/sass/_partials/_block-video.scss */
+.video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+  border-radius: 8px;
+  border-radius: 8px;
+  margin-top: -8px;
+  margin-top: -8px;
+  height: 16px;
+  height: 16px;
+  top: 50%;
+  position: relative;
+  background: repeating-linear-gradient(to right, white 0%, black 50%, white 100%);
+  width: inherit;
+  background-size: 200% auto;
+  background-position: 0 100%;
+  animation: loadergradient 2s infinite;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  animation-timing-function: step-middle;
+  z-index: -1;
+}
+@media screen and (min-width: 0px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    border-radius: calc(8px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    border-radius: 8px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    border-radius: calc(8px + 24 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    border-radius: 32px;
+  }
+}
+@media screen and (min-width: 0px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    margin-top: calc(-8px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    margin-top: -8px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    margin-top: calc(-8px + -24 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    margin-top: -32px;
+  }
+}
+@media screen and (min-width: 0px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    height: calc(16px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    height: 16px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    height: calc(16px + 48 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    height: 64px;
+  }
 }
 
 /* further reading:

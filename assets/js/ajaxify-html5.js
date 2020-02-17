@@ -92,7 +92,7 @@
         easing:'swing'
       };
 
-      console.log("rootUrl" + rootUrl +"");// but  Locally this is http://localhost:8888 & not http://localhost:8888/theseus-wp-2/ 
+    // console.log("rootUrl" + rootUrl +"");// but  Locally this is http://localhost:8888 & not http://localhost:8888/theseus-wp-2/ 
     
     // Ensure Content
     if ( $content.length === 0 ) {
@@ -377,8 +377,11 @@
           // Update the content
           $content.stop(true,true);
           $('html, body').animate({scrollTop: '0px'}, 0); // scroll to top of page
-
-          $content.html(contentHtml).ajaxify().css('opacity',100).show(); /* you could fade in here if you'd like */
+          /// review this - not sure what js is seeting the opacity atm?
+            $content.html(contentHtml).ajaxify().css('opacity',0.5).show(); /* you could fade in here if you'd like */
+        
+        //  $content.html(contentHtml).ajaxify().css('opacity',100).show(); /* you could fade in here if you'd like */
+         // $content.html(contentHtml).ajaxify();//.show(); /* you could fade in here if you'd like */
 
 
           // Update the title
@@ -390,6 +393,7 @@
           
           // Add the scripts
           $scripts.each(function(){
+            console.log("script each");
             var $script = $(this), scriptText = $script.text(), scriptNode = document.createElement('script');
             if ( $script.attr('src') ) {
               if ( !$script[0].async ) { scriptNode.async = false; }
@@ -415,6 +419,7 @@
           
             if(window.location.hash) {
               
+              console.log("window.location.hash");
             //  var hash = $(location).attr('hash');
              // $('html,body').animate({scrollTop: $(hash).offset().top},'slow');
               
@@ -423,7 +428,10 @@
               // Fragment exists
             } else {
               // Fragment doesn't exist
-              
+                            console.log("ELSE: window.location.hash");
+
+
+
          //  $('html,body').animate({ scrollTop: 0 }, 'fast'); 
 
               //  console.log('no hashs')
@@ -497,6 +505,12 @@
 
 
               }); // get sscript
+
+          //   $.getScript( ""+themeurl+'/assets/js/site.js', function( data, textStatus, jqxhr ) {
+/*         $.getScript( "http://localhost:8888/theseus-wp-v2/wp-content/plugins/cookie-notice/js/front.min.js", function( data, textStatus, jqxhr ) {
+          console.log("front.min.js loaded");
+              }); // get sscript
+ */  
    
            //   }, 100); //timeout
                  //    
@@ -506,6 +520,9 @@
           
   
           // Inform Google Analytics of the change
+
+          // TO DO: ensure this works, but also inline with cookie consent tool
+
           //if ( typeof window._gaq !== 'undefined' ) {
           //  window._gaq.push(['_trackPageview', relativeUrl]);
           //}
@@ -518,12 +535,15 @@
           // Legacy analytics
           window._gaq.push(['_trackPageview', relativeUrl]);
             }
+                      // END Inform Google Analytics of the change
+
 
           // Inform ReInvigorate of a state change
           if ( typeof window.reinvigorate !== 'undefined' && typeof window.reinvigorate.ajax_track !== 'undefined' ) {
             reinvigorate.ajax_track(url);
             // ^ we use the full url here as that is what reinvigorate supports
           }
+
         },
         error: function(jqXHR, textStatus, errorThrown){
           document.location.href = url;

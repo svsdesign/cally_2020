@@ -13,6 +13,7 @@
 
 </div><!-- id="main" class="wrapper"> ajax wrapper ebmnd - pssoibly review if other items below also  need to move  -->
 
+<?php echo do_shortcode('[cookies_revoke]')?>
 
 <?php wp_footer(); ?>
 	

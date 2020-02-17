@@ -84,10 +84,10 @@
 	//@include cssvaluegutter(width,5); 
 	//@include cssvaluegutter(height,5); 
 
-	@include fluid-type(width, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing
-  	@include fluid-type(width, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
-	@include fluid-type(height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing
-  	@include fluid-type(height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
+	@include fluid-type(width, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*4, map-get($gutter, lg)*4); // fixed sizing
+  	@include fluid-type(width, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*4, map-get($gutter, xxl)*4); // viewport sizing
+	@include fluid-type(height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*4, map-get($gutter, lg)*4); // fixed sizing
+  	@include fluid-type(height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*4, map-get($gutter, xxl)*4); // viewport sizing
 
 	
 	border-radius: 50%;
@@ -96,19 +96,19 @@
 	background: transparent;
 	z-index: 5;// ensure above the dots
 	//@include cssvaluegutter(margin-top,2.5); 
+	top:50%;// mid alligned.
 
 
 	@media (min-width: map-get($breakpoints,xs)) {
-	top:50%;// mid alligned.
-	height: 100%
+	//height: 100%;
 	}
 
 	@media (min-width: map-get($breakpoints,lg)) {
-	top: 100%; // align to bottom of gallery
-	// change values:
-	//@include cssvaluegutter(width,3); 
-	//@include cssvaluegutter(height,3); 
-	//@include cssvaluegutter(margin-top,1.5); 
+	@include fluid-type(width, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing
+  	@include fluid-type(width, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
+	@include fluid-type(height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing
+  	@include fluid-type(height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
+
 	}
 
 	  	svg{
@@ -118,19 +118,23 @@
 	}
 
 	.flickity-prev-next-button.previous { 
-	left: 12.5%; // one column
+	left: 0; // one column
+	width: 12.5%;
+	height: 100%;
 	}
 	.flickity-prev-next-button.next { 
-		right: 12.5%; // one column
+		right: 0; // one column
+		width: 12.5%;
+	height: 100%;
 	}
 	/* right to left */
 	.flickity-rtl .flickity-prev-next-button.previous {
-	  left: auto;
-		right: 12.5%; // one column
+	//  left: auto;
+	//	right: 12.5%; // one column
 	}
 	.flickity-rtl .flickity-prev-next-button.next {
-	  right: auto;
-		left: 12.5%; // one column
+	//  right: auto;
+	//	left: 12.5%; // one column
 	}
 
 	.flickity-prev-next-button .flickity-button-icon {
@@ -145,32 +149,24 @@
 	/* ---- page dots ---- */
 
 	.flickity-page-dots {
-	position: absolute;
+	position: relative;
 	width: 100%;
-		// change values
-//	@include cssvaluegutter(bottom,-5); 
-//	@include cssvaluegutter(height,5); 
-//	@include cssvaluegutter(padding-top, 2); 
-//	@include cssvaluegutter(padding-bottom, 2); 
-	margin: 0;
+	display: none;// not using these at all
+	clear: both;
+ 	@include fluid-type(height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*4, map-get($gutter, lg)*4); // fixed sizing
+  	@include fluid-type(height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*4, map-get($gutter, xxl)*4); // viewport sizing
+	margin: auto;
 	list-style: none;
 	text-align: center;
-	line-height: 1;
 	display: none;
 
 		@media (min-width: map-get($breakpoints,md)) {
 		}
 
 		@media (min-width: map-get($breakpoints,lg)) {
-				display: block;
-	// change values	
-	/*	@include cssvaluegutter(bottom,-3); 
-		@include cssvaluegutter(height,3); 
-		@include cssvaluegutter(padding-top, 1); 
-		@include cssvaluegutter(padding-bottom, 1); 
-	*/	}
+		}
 	
-	}
+	}//.flickity-page-dots
 
 	.flickity-rtl .flickity-page-dots { 
 	direction: rtl; 
@@ -178,13 +174,6 @@
 
 	.flickity-page-dots .dot {
 	display: inline-block;
-	/*@include cssvaluegutter(width,1); 
-	@include cssvaluegutter(height,1); 
-	@include cssvaluegutter(margin-left, 0.25); 
-	@include cssvaluegutter(margin-right, 0.25);
-	*/
-	//height: 10px;
-	// margin: 0 8px;
 	background: $white;
 	border-radius: 50%;
 	// opacity: 0.25;
@@ -228,6 +217,7 @@
 /* additional styles */
 
 .slideshow-block{
+//background: red;
 width: 100%;// this dirty?
  //height: 90vh;
 	// change values
@@ -271,23 +261,34 @@ width: 100%;// this dirty?
 
 	}//.slideshow-carousel
 
+	.image-caption{
+	width: 100%;
+
+		@media (min-width: map-get($breakpoints,md)) {
+		width: 50%;
+		}
+
+	}//.image-caption
+
 } //.slideshow-block
 
 // specic rules based on device orientation
 body.horizontal{
 
+	.slideshow-block{
+	height: inherit;
 
- .slideshow-block{
- height: 80vh;
- max-height: 60vh;
- 
-	@media (min-width: map-get($breakpoints,lg)) {
- 	max-height: 75vh;
-	}
+		.slideshow-carousel{
+		height: 80vh;
+		max-height: 60vh;
 
+			@media (min-width: map-get($breakpoints,lg)) {
+				max-height: 75vh;
+			}
 
- }//.slideshow-block
+		}//.slideshow-carousel
 
+	}//.slideshow-block
 
 }//body.horizontal
 
@@ -295,11 +296,15 @@ body.horizontal{
 body.vertical{
 
 	.slideshow-block{
+	height: inherit;
 
-	// height: 60vh; 
-	height: 60vw;// experimental?
-	//max-height: 60vh//
-	}
+		.slideshow-carousel{
 
+		// height: 60vh; 
+		height: 60vw;// experimental?
+		//max-height: 60vh//
+		}
+
+	}//.slideshow-block
 
 }//body.vertical

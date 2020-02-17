@@ -34,22 +34,20 @@ $text = get_field('text') ?: 'Your text here...';
 //$text_color = get_field('text_color');
 
 /* review this markup - its inp; so change the theseus classes etc */
-
- 
-
+?>
+  
+ <?php 
 $images = get_field('slide_show');
 $imagecaption = get_field('slideshow_caption'); // (thumbnail, medium, large, full or custom size)
 
 $size = 'full'; // (thumbnail, medium, large, full or custom size)
 if( $images ): ?>
-
-    <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> block-z-index-2">  
+     <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> block-z-index-2">  
 
         <div class="slideshow-carousel">
        
             <?php foreach( $images as $image ): ?>
-
-                <div class="slideshow-image">
+                 <div class="slideshow-image">
 
                     <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
 

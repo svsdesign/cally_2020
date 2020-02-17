@@ -41,6 +41,50 @@ Author URI: http://svs.design
 			//height: auto;
 			}
 
+			.gradient-loader-wrapper{
+	        position: absolute;
+	        width: 100%;
+	        height: 100%;
+	        padding: 20%;
+	        top: 0%;
+	        bottom: 0px;
+	        right: 0px;
+	        left: 0px;
+	        pointer-events:none;
+
+				.gradient-loader{
+				//@include cssvalue(margin-top, -0.125);
+				//@include cssvalue(height, 1);
+				@include fluid-type(border-radius, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*0.5, map-get($lineheight, lg)*0.5); // fixed sizing 
+			  	@include fluid-type(border-radius, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*0.5, map-get($lineheight, xxl)*0.5); // viewport sizing
+
+				@include fluid-type(margin-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*-0.5, map-get($lineheight, lg)*-0.5); // fixed sizing 
+			  	@include fluid-type(margin-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*-0.5, map-get($lineheight, xxl)*-0.5); // viewport sizing
+
+				@include fluid-type(height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+			  	@include fluid-type(height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing
+
+		          top: 50%; // this crossbrowser - review?
+		          position: relative;
+//		          background: repeating-linear-gradient(to right, $black_zero_p 0%, $white_0-1 50%, $black_zero_p 100%);
+		          background: repeating-linear-gradient(to right, $white 00%, $black 50%, $white 100% );
+
+		          width: inherit;
+		          background-size: 200% auto;
+		          background-position: 0 100%;
+		          animation: loadergradient 2s infinite;
+		          animation-fill-mode: forwards;
+
+				animation-direction:normal;
+		          animation-timing-function: step-middle; // this step-middle might not work? linear;
+		     //    @include cssvalue(height,0.25);
+		          z-index: -1;
+		         // border-radius: 50%;//review - cross browser
+		          }
+
+		      }///gradient-loader-wrap
+
+
 
 		}//.video-wrap
 

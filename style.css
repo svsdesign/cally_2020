@@ -100,6 +100,14 @@ font-family: $medium-font-family;
 @include fluid-type(line-height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*2, map-get($lineheight, xxl)*2); // viewport sizing
 
 }*/
+@keyframes loadergradient {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
 @-webkit-keyframes animation-slide-out-left {
   0% {
     transform: translate(0%, 0%);
@@ -386,6 +394,53 @@ font-family: $medium-font-family;
   }
   100% {
     opacity: 0;
+  }
+}
+@keyframes fadeincookieconsent {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tograyscale {
+  0% {
+    -webkit-filter: grayscale(0%);
+    /* Ch 23+, Saf 6.0+, BB 10.0+ */
+    filter: grayscale(0%);
+    /* FF 35+ */
+  }
+  100% {
+    -webkit-filter: grayscale(100%);
+    /* Ch 23+, Saf 6.0+, BB 10.0+ */
+    filter: grayscale(100%);
+    /* FF 35+ */
+  }
+}
+@keyframes tocolour {
+  0% {
+    -webkit-filter: grayscale(100%);
+    /* Ch 23+, Saf 6.0+, BB 10.0+ */
+    filter: grayscale(100%);
+    /* FF 35+ */
+  }
+  100% {
+    -webkit-filter: grayscale(0%);
+    /* Ch 23+, Saf 6.0+, BB 10.0+ */
+    filter: grayscale(0%);
+    /* FF 35+ */
+  }
+}
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 /*
@@ -1539,7 +1594,7 @@ body.black-scheme *::after {
 }
 
 /* line 46, assets/sass/_partials/_grid.scss */
-.grid-container {
+.grid-container, body.white-scheme #cookie-notice .cookie-notice-container, body.black-scheme #cookie-notice .cookie-notice-container {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
@@ -1550,61 +1605,61 @@ body.black-scheme *::after {
 }
 @media screen and (min-width: 0px) {
   /* line 46, assets/sass/_partials/_grid.scss */
-  .grid-container {
+  .grid-container, body.white-scheme #cookie-notice .cookie-notice-container, body.black-scheme #cookie-notice .cookie-notice-container {
     padding-left: calc(8px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 46, assets/sass/_partials/_grid.scss */
-  .grid-container {
+  .grid-container, body.white-scheme #cookie-notice .cookie-notice-container, body.black-scheme #cookie-notice .cookie-notice-container {
     padding-left: 8px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 46, assets/sass/_partials/_grid.scss */
-  .grid-container {
+  .grid-container, body.white-scheme #cookie-notice .cookie-notice-container, body.black-scheme #cookie-notice .cookie-notice-container {
     padding-left: calc(8px + 24 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 46, assets/sass/_partials/_grid.scss */
-  .grid-container {
+  .grid-container, body.white-scheme #cookie-notice .cookie-notice-container, body.black-scheme #cookie-notice .cookie-notice-container {
     padding-left: 32px;
   }
 }
 @media screen and (min-width: 0px) {
   /* line 46, assets/sass/_partials/_grid.scss */
-  .grid-container {
+  .grid-container, body.white-scheme #cookie-notice .cookie-notice-container, body.black-scheme #cookie-notice .cookie-notice-container {
     padding-right: calc(8px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 46, assets/sass/_partials/_grid.scss */
-  .grid-container {
+  .grid-container, body.white-scheme #cookie-notice .cookie-notice-container, body.black-scheme #cookie-notice .cookie-notice-container {
     padding-right: 8px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 46, assets/sass/_partials/_grid.scss */
-  .grid-container {
+  .grid-container, body.white-scheme #cookie-notice .cookie-notice-container, body.black-scheme #cookie-notice .cookie-notice-container {
     padding-right: calc(8px + 24 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 46, assets/sass/_partials/_grid.scss */
-  .grid-container {
+  .grid-container, body.white-scheme #cookie-notice .cookie-notice-container, body.black-scheme #cookie-notice .cookie-notice-container {
     padding-right: 32px;
   }
 }
 @media (min-width: 320px) {
   /* line 46, assets/sass/_partials/_grid.scss */
-  .grid-container {
+  .grid-container, body.white-scheme #cookie-notice .cookie-notice-container, body.black-scheme #cookie-notice .cookie-notice-container {
     width: 80vw;
   }
 }
 @media (min-width: 800px) {
   /* line 46, assets/sass/_partials/_grid.scss */
-  .grid-container {
+  .grid-container, body.white-scheme #cookie-notice .cookie-notice-container, body.black-scheme #cookie-notice .cookie-notice-container {
     max-width: 2560px;
   }
 }
@@ -2970,7 +3025,7 @@ body.white-scheme .nav-fixer {
   }
 }
 /* line 97, assets/sass/_partials/_navigation.scss */
-body.white-scheme .grid-container.navigation {
+body.white-scheme .grid-container.navigation, body.white-scheme #cookie-notice .navigation.cookie-notice-container, body.black-scheme #cookie-notice body.white-scheme .navigation.cookie-notice-container {
   padding-top: 16px;
   padding-bottom: 16px;
   padding-top: 16px;
@@ -2978,55 +3033,55 @@ body.white-scheme .grid-container.navigation {
 }
 @media screen and (min-width: 0px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.white-scheme .grid-container.navigation {
+  body.white-scheme .grid-container.navigation, body.white-scheme #cookie-notice .navigation.cookie-notice-container, body.black-scheme #cookie-notice body.white-scheme .navigation.cookie-notice-container {
     padding-top: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.white-scheme .grid-container.navigation {
+  body.white-scheme .grid-container.navigation, body.white-scheme #cookie-notice .navigation.cookie-notice-container, body.black-scheme #cookie-notice body.white-scheme .navigation.cookie-notice-container {
     padding-top: 16px;
   }
 }
 @media screen and (min-width: 0px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.white-scheme .grid-container.navigation {
+  body.white-scheme .grid-container.navigation, body.white-scheme #cookie-notice .navigation.cookie-notice-container, body.black-scheme #cookie-notice body.white-scheme .navigation.cookie-notice-container {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.white-scheme .grid-container.navigation {
+  body.white-scheme .grid-container.navigation, body.white-scheme #cookie-notice .navigation.cookie-notice-container, body.black-scheme #cookie-notice body.white-scheme .navigation.cookie-notice-container {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.white-scheme .grid-container.navigation {
+  body.white-scheme .grid-container.navigation, body.white-scheme #cookie-notice .navigation.cookie-notice-container, body.black-scheme #cookie-notice body.white-scheme .navigation.cookie-notice-container {
     padding-top: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.white-scheme .grid-container.navigation {
+  body.white-scheme .grid-container.navigation, body.white-scheme #cookie-notice .navigation.cookie-notice-container, body.black-scheme #cookie-notice body.white-scheme .navigation.cookie-notice-container {
     padding-top: 64px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.white-scheme .grid-container.navigation {
+  body.white-scheme .grid-container.navigation, body.white-scheme #cookie-notice .navigation.cookie-notice-container, body.black-scheme #cookie-notice body.white-scheme .navigation.cookie-notice-container {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.white-scheme .grid-container.navigation {
+  body.white-scheme .grid-container.navigation, body.white-scheme #cookie-notice .navigation.cookie-notice-container, body.black-scheme #cookie-notice body.white-scheme .navigation.cookie-notice-container {
     padding-bottom: 64px;
   }
 }
 @media (min-width: 800px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.white-scheme .grid-container.navigation {
+  body.white-scheme .grid-container.navigation, body.white-scheme #cookie-notice .navigation.cookie-notice-container, body.black-scheme #cookie-notice body.white-scheme .navigation.cookie-notice-container {
     padding-left: 0px;
     padding-right: 0px;
     padding-top: 0px;
@@ -3036,25 +3091,25 @@ body.white-scheme .grid-container.navigation {
 }
 @media screen and (min-width: 800px) and (min-width: 0px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.white-scheme .grid-container.navigation {
+  body.white-scheme .grid-container.navigation, body.white-scheme #cookie-notice .navigation.cookie-notice-container, body.black-scheme #cookie-notice body.white-scheme .navigation.cookie-notice-container {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) and (min-width: 800px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.white-scheme .grid-container.navigation {
+  body.white-scheme .grid-container.navigation, body.white-scheme #cookie-notice .navigation.cookie-notice-container, body.black-scheme #cookie-notice body.white-scheme .navigation.cookie-notice-container {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) and (min-width: 800px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.white-scheme .grid-container.navigation {
+  body.white-scheme .grid-container.navigation, body.white-scheme #cookie-notice .navigation.cookie-notice-container, body.black-scheme #cookie-notice body.white-scheme .navigation.cookie-notice-container {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 800px) and (min-width: 3200px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.white-scheme .grid-container.navigation {
+  body.white-scheme .grid-container.navigation, body.white-scheme #cookie-notice .navigation.cookie-notice-container, body.black-scheme #cookie-notice body.white-scheme .navigation.cookie-notice-container {
     padding-bottom: 64px;
   }
 }
@@ -4983,7 +5038,7 @@ body.black-scheme .nav-fixer {
   }
 }
 /* line 97, assets/sass/_partials/_navigation.scss */
-body.black-scheme .grid-container.navigation {
+body.black-scheme .grid-container.navigation, body.white-scheme #cookie-notice body.black-scheme .navigation.cookie-notice-container, body.black-scheme #cookie-notice .navigation.cookie-notice-container {
   padding-top: 16px;
   padding-bottom: 16px;
   padding-top: 16px;
@@ -4991,55 +5046,55 @@ body.black-scheme .grid-container.navigation {
 }
 @media screen and (min-width: 0px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.black-scheme .grid-container.navigation {
+  body.black-scheme .grid-container.navigation, body.white-scheme #cookie-notice body.black-scheme .navigation.cookie-notice-container, body.black-scheme #cookie-notice .navigation.cookie-notice-container {
     padding-top: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.black-scheme .grid-container.navigation {
+  body.black-scheme .grid-container.navigation, body.white-scheme #cookie-notice body.black-scheme .navigation.cookie-notice-container, body.black-scheme #cookie-notice .navigation.cookie-notice-container {
     padding-top: 16px;
   }
 }
 @media screen and (min-width: 0px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.black-scheme .grid-container.navigation {
+  body.black-scheme .grid-container.navigation, body.white-scheme #cookie-notice body.black-scheme .navigation.cookie-notice-container, body.black-scheme #cookie-notice .navigation.cookie-notice-container {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.black-scheme .grid-container.navigation {
+  body.black-scheme .grid-container.navigation, body.white-scheme #cookie-notice body.black-scheme .navigation.cookie-notice-container, body.black-scheme #cookie-notice .navigation.cookie-notice-container {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.black-scheme .grid-container.navigation {
+  body.black-scheme .grid-container.navigation, body.white-scheme #cookie-notice body.black-scheme .navigation.cookie-notice-container, body.black-scheme #cookie-notice .navigation.cookie-notice-container {
     padding-top: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.black-scheme .grid-container.navigation {
+  body.black-scheme .grid-container.navigation, body.white-scheme #cookie-notice body.black-scheme .navigation.cookie-notice-container, body.black-scheme #cookie-notice .navigation.cookie-notice-container {
     padding-top: 64px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.black-scheme .grid-container.navigation {
+  body.black-scheme .grid-container.navigation, body.white-scheme #cookie-notice body.black-scheme .navigation.cookie-notice-container, body.black-scheme #cookie-notice .navigation.cookie-notice-container {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.black-scheme .grid-container.navigation {
+  body.black-scheme .grid-container.navigation, body.white-scheme #cookie-notice body.black-scheme .navigation.cookie-notice-container, body.black-scheme #cookie-notice .navigation.cookie-notice-container {
     padding-bottom: 64px;
   }
 }
 @media (min-width: 800px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.black-scheme .grid-container.navigation {
+  body.black-scheme .grid-container.navigation, body.white-scheme #cookie-notice body.black-scheme .navigation.cookie-notice-container, body.black-scheme #cookie-notice .navigation.cookie-notice-container {
     padding-left: 0px;
     padding-right: 0px;
     padding-top: 0px;
@@ -5049,25 +5104,25 @@ body.black-scheme .grid-container.navigation {
 }
 @media screen and (min-width: 800px) and (min-width: 0px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.black-scheme .grid-container.navigation {
+  body.black-scheme .grid-container.navigation, body.white-scheme #cookie-notice body.black-scheme .navigation.cookie-notice-container, body.black-scheme #cookie-notice .navigation.cookie-notice-container {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) and (min-width: 800px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.black-scheme .grid-container.navigation {
+  body.black-scheme .grid-container.navigation, body.white-scheme #cookie-notice body.black-scheme .navigation.cookie-notice-container, body.black-scheme #cookie-notice .navigation.cookie-notice-container {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) and (min-width: 800px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.black-scheme .grid-container.navigation {
+  body.black-scheme .grid-container.navigation, body.white-scheme #cookie-notice body.black-scheme .navigation.cookie-notice-container, body.black-scheme #cookie-notice .navigation.cookie-notice-container {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 800px) and (min-width: 3200px) {
   /* line 97, assets/sass/_partials/_navigation.scss */
-  body.black-scheme .grid-container.navigation {
+  body.black-scheme .grid-container.navigation, body.white-scheme #cookie-notice body.black-scheme .navigation.cookie-notice-container, body.black-scheme #cookie-notice .navigation.cookie-notice-container {
     padding-bottom: 64px;
   }
 }
@@ -7018,6 +7073,2502 @@ if link has following class, don't allow clicking (for footer theseus thing)
 
 /*END if link has following class */
 /* END new navigation */
+/* _cookie-banner.scss 
+
+TO DO - this stylesheet is a mess + review inline with the inp css tht arent not required
+
+
+*/
+/* line 10, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme {
+  /* 
+
+   @media all and (max-width:900px) {
+        .cookie-notice-container #cn-notice-text {
+            display: block;
+         //   margin-bottom: 5px
+        }
+        #cookie-notice .cn-button {
+      //      margin-left: 5px;
+       //     margin-right: 5px
+        }
+    }*/
+  /*
+  
+  body.cookies-not-set // if no preferences set yet
+  {
+  
+       &.post-type-archive-releases,
+       &.preview-site.g-scale.post-type-archive-releases{
+  
+         .scene-fixer{
+          @include grayscale-in; 
+          }
+  
+      }// &.post-type-archive-releases
+  
+      &:not(.post-type-archive-releases),
+      &.preview-site.g-scale:not(.post-type-archive-releases){
+  
+          .ajax-container{
+          @include grayscale-in;
+          }
+  
+      }//&:not(.post-type-archive-releases)
+     
+      // Colour preview on hover:
+  
+      &.preview-site.post-type-archive-releases{
+  
+          .scene-fixer{ // this for the releases
+          @include grayscale-out;
+          } 
+  
+      }// &.preview-site.post-type-archive-releases
+  
+      &.preview-site:not(.post-type-archive-releases){
+  
+          .ajax-container{
+          @include grayscale-out;
+          }
+  
+      }// &.preview-site:not(.post-type-archive-releases)
+  
+          
+       &.preview-site{ // this all the other markiup 
+          //colour
+  
+          .cookie-notice-container{
+          --borderWidth: 3px;
+          position: relative;
+          border-radius: var(--borderWidth);
+          }
+  
+          .cookie-notice-container:after {
+          content: '';
+          position: absolute;
+          left:0;
+          height: 3px;
+          top: -3px;
+          width: 100%;
+       //   background: linear-gradient(60deg, $black, $red, $black);
+          z-index: -1;
+        //  animation: animatedgradient 3s ease alternate infinite;
+         // background-size: 300% 300%;
+          }
+  
+      }//&.preview-site
+  
+      &.preview-site.g-scale{ // this all the other markiup - grey out
+          //grey
+  
+          .cookie-notice-container:after {
+         // background: linear-gradient(60deg, $black, $white, $black);
+         // animation: animatedgradient 3s ease alternate infinite;
+          //background-size: 300% 300%;
+          }
+  
+      }//&.preview-site.g-scale
+  
+  
+  }//body.cookies-not-set
+  
+  body.cookies-refused // if refused - make the site sligtly less usable aswell?
+  {
+  
+       &.post-type-archive-releases,
+       &.preview-site.g-scale.post-type-archive-releases
+       {
+  
+        .scene-fixer{
+          @include grayscale-in;
+   
+          }
+  
+      }// &.post-type-archive-releases
+  
+      &:not(.post-type-archive-releases),
+      &.preview-site.g-scale:not(.post-type-archive-releases)
+      {
+  
+          .ajax-container{
+            @include grayscale-in;
+  
+          }
+  
+      }//&:not(.post-type-archive-releases)
+    
+      // preview on hover:
+      &.preview-site.post-type-archive-releases{
+   
+          .scene-fixer{ // this for the releases
+          @include grayscale-out;
+          } 
+  
+      }// &.preview-site.post-type-archive-releases
+  
+      &.preview-site:not(.post-type-archive-releases){
+  
+          .ajax-container{
+          @include grayscale-out;
+          }
+  
+      }// &.preview-site:not(.post-type-archive-releases)
+  
+    
+         
+      &.preview-site{ // this all the other markiup
+  
+          .cookie-notice-container{
+          --borderWidth: 3px;
+          position: relative;
+          border-radius: var(--borderWidth);
+          }
+  
+          .cookie-notice-container:after {
+          content: '';
+          position: absolute;
+          left:0;
+          height: 3px;
+          top: -3px;
+          width: 100%;
+         // background: linear-gradient(60deg, $black, $red, $black);
+          z-index: -1;
+         // animation: animatedgradient 3s ease alternate infinite;
+          //background-size: 300% 300%;
+          }
+  
+      }//&.preview-site
+  
+      &.preview-site.g-scale{
+  
+          .cookie-notice-container:after {
+        //  background: linear-gradient(60deg, $black, $white, $black);
+        //  animation: animatedgradient 3s ease alternate infinite;
+        //  background-size: 300% 300%;
+          }
+  
+      }//&.preview-site.g-scale
+  
+  
+  }//body.cookies-refused
+  
+  body.cookies-accepted
+  {
+  
+      #cookie-notice{
+       display: none; 
+      }//#cookie-notice
+  
+  
+      .cookie-notice-revoke-container {
+       display: none!important;
+       visibility: hidden;
+      }
+    
+  
+      &.post-type-archive-releases{
+  
+          .scene-fixer{
+          @include grayscale-out;
+          }
+  
+      }// &.post-type-archive-releases
+  
+      &:not(.post-type-archive-releases){
+  
+          .ajax-container{
+          @include grayscale-out;
+          }
+  
+      }//&:not(.post-type-archive-releases
+  
+  
+      &.preview-site.g-scale.post-type-archive-releases{
+  
+          .scene-fixer{ // this for the releases
+          @include grayscale-in;
+  
+          } 
+  
+      }// &.preview-site.post-type-archive-releases &.preview-site{
+  
+      &.preview-site.g-scale:not(.post-type-archive-releases){
+  
+          .ajax-container{
+           @include grayscale-in;
+          }
+  
+      }// &.preview-site:not(.post-type-archive-releases)
+   
+      &.preview-site{ // all the other markup:
+  
+          .cookie-notice-container{
+            --borderWidth: 3px;
+            position: relative;
+            border-radius: var(--borderWidth);
+           }
+  
+           .cookie-notice-container:after {
+            content: '';
+            position: absolute;
+            left:0;
+            height: 3px;
+            top: -3px;
+            width: 100%;
+          //  background: linear-gradient(60deg, $black, $red, $black);
+            z-index: -1;
+           // animation: animatedgradient 3s ease alternate infinite;
+           // background-size: 300% 300%;
+          }
+  
+      }//&.preview-site
+  
+      &.preview-site.g-scale{ // this all the other markiup - grey out
+          //grey
+          
+          .cookie-notice-container:after {
+          // background: linear-gradient(60deg, $black, $white, $black);
+         // animation: animatedgradient 3s ease alternate infinite;
+          //background-size: 300% 300%;
+          }
+  
+      }//&.preview-site.g-scale
+  
+  }//body.cookies-accepted
+  
+  
+  
+  
+  
+  
+  // opnce the cookie has been agreen on - lest not bother showing "the option button" unless on the privacy page?
+  
+   body.cookies-accepted{ // if they agree and set yes - no point providng the options?
+  
+  
+    #cn-accept-cookie{
+      opacity: 0.2;
+      //pointer-events:none;
+      }
+  
+      #cookie-notice{
+      // display: none;
+       //position:fixed;// sticky;//fixed;
+       }//#cookie-notice
+  
+      .cookie-notice-revoke-container {
+       //display: none!important;
+      //visibility: hidden;
+      }
+  
+  }// body.cookies-set.cookies-accepted
+  
+  
+  body.cookies-refused{
+  
+      #cookie-cont{
+      width: 6.25vw;
+      height: 6.25vw;
+      background: transparent;// this se twith js at the mo ;( so have to veridre- find better solution
+  
+          @media (min-width: map-get($breakpoints,sm)) { 
+          width: 12.5vw;
+          height: 12.5vw;
+          }  
+  
+      }
+  
+      #cookie-notice{
+      height: 100%;
+    //  padding: 30%; // this too much padding
+      }
+  
+      .cookie-notice-container{
+      display: none;
+      //position:fixed;// sticky;//fixed;
+      }//#cookie-notice
+  
+      #cn-refuse-cookie{
+      opacity: 0.2;
+      //pointer-events:none;
+      }
+      #cn-revoke-cookie{
+      height: inherit;
+      }
+  
+      .cookie-notice-revoke-container {
+       height: inherit;
+    //  --borderWidth: 3px;
+      position: relative;
+      border-radius: 50%;
+      overflow: hidden;
+  
+     // border-radius: var(--borderWidth);
+      
+          a{
+          height: inherit;
+          padding:0px;
+          border:0px;
+          line-height: 10.5vw!important;// reviw + the copy used
+          text-align: center;
+       //   @include smaller;// evne smaller?
+          width: 100%;
+          display: block;
+         // @include fluid-type(font-size, 0.4);
+          color: transparent;
+         // @include fluid-type(line-height, 0.6);
+          }
+  
+          a:after{               
+          content: '';
+          position: absolute;
+          left:0;
+          height: 100%;
+          //    top: -3px;
+          width: 100%; // this should probably pulsate slightly instead? but on hover only? - image of cookie
+         // background:radial-gradient( $red, $red_0, $red);
+  
+        //  background: linear-gradient(60deg, $black, $red, $black);
+          z-index: -1;
+         // animation: animatedgradient 30s ease alternate infinite;
+         // background-size: 800% 800%;
+          }
+  
+      }
+      
+  
+  }// body.cookies-refused
+  
+  body.cookies-set.cookies-revoke{
+  
+      #cookie-cont{
+      width: 100%;
+      height: inherit;
+      background: $black;
+      }
+  
+      #cookie-notice{
+      display: flex;
+     //  @extend .grid-item;// for padding
+      }
+  
+      .cookie-notice-container{
+      display: flex;
+      }
+      
+      .footer-wrap{
+      // add sufficient padding - also ensure applied on "non-set cookieie3s"
+      padding-bottom: 200px;// don't use px
+  
+      // set via js - probably better
+      }
+  
+  }//body.cookies-set.cookies-revoke
+  
+   
+  
+  body.page-id-3.cookies-revoke{
+  
+      #cookie-notice{
+    //  position: fixed;//sticky;
+      }//#cookie-notice
+  
+  
+      .cookie-notice-revoke-container {
+  
+      }
+  
+  }//body.cookies-revoke
+  
+  
+   
+  #cookie-cont{
+      display: block;
+      position: fixed;
+      background: $black;
+      width: 100%;
+      height: inherit;
+      top: initial;
+      bottom: 0;
+      pointer-events:none;
+      z-index: 99999;// review
+  }
+  
+  #cookie-notice {
+     // border-top:1px solid $white;
+      display: block;
+    //  visibility: hidden;
+      pointer-events:initial;
+      position: sticky;//fixed;//sticky; //was:fixed;
+      min-width: 100%;
+      height: auto;
+      bottom: 0;
+      // z-index: 100000; // this a bit OTT - review maybe?
+      //font-size: 13px;
+      // line-height: 20px;
+      left: 0;
+      //text-align: left;
+     // @include h1;
+     // @extend .grid-item;// for padding
+  
+  }
+  
+  .cn-top {
+      top: 0
+  }
+  
+  .cn-bottom {
+      bottom: 0
+  }
+  
+  .cookie-notice-container {
+      //padding: 10px;
+  	//@include cssvaluegutter(padding-left,0.5); 
+  	//@include cssvaluegutter(padding-right,0.5); 
+    //	@include fluid-type(padding-left,1); 
+  	//@include fluid-type(padding-right,1); 
+    //  @extend .outer-grid;
+    //  @extend .grid;
+     // @extend .inner;
+      text-align: left;
+      width: 100%;
+     // font-weight: $mediumweight;
+  
+  
+  
+  }
+  
+  .cookie-notice-revoke-container {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      z-index: 1;
+      visibility: hidden;// - review + delete if okay? or needed?
+  }
+  
+  .cn-top .cookie-notice-revoke-container {
+      top: 0;
+      bottom: auto
+  }
+  
+  #cookie-notice .cn-revoke-cookie {
+      margin: 0
+  }
+  
+  .cn-button.wp-default,
+  .cn-button.wp-default:hover,
+  .cn-button.bootstrap,
+  .cn-button.bootstrap:hover {
+      box-shadow: none;
+      text-decoration: none
+  }
+  
+  #cookie-notice .cn-button {
+  //   margin-left: 10px
+  
+  }
+  
+  
+  .cn-button.wp-default,// no really used
+  .cn-button.bootstrap, // not really used
+  .cn-button {
+      text-align: center;
+      line-height: inherit;
+      font-size: inherit;
+      //@include fluid-type(line-height,1); 
+      background: $white;
+      color: $black;
+      border:1px solid $white;
+     // font-family: sans-serif;
+     // line-height: 18px;
+     // padding: 2px 12px;
+     // background: linear-gradient(to bottom, #FEFEFE, #F4F4F4) repeat scroll 0 0 #F3F3F3;
+     // border-color: #BBB;
+     // color: #333;
+      //text-shadow: 0 1px 0 #FFF;
+     // -moz-box-sizing: border-box;
+    //  @include fluid-type(border-radius,1); 
+     // @include fluid-type(padding,0.3); 
+      //@include fluid-type(margin-bottom,0.3); 
+  
+    @include fluid-type(padding, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+    @include fluid-type(padding, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+  
+   @include fluid-type(margin-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+    @include fluid-type(margin-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+  
+  
+     // @extend .grid-item-xs-8;
+    //  border-style: solid;
+     // border-width: 1px;
+      cursor: pointer;
+    //  display: inline-block;
+   //   font-size: 12px;
+     // font-style: normal;
+      text-decoration: none;
+      white-space: nowrap;
+  //    outline: none;
+      display:block;
+  }
+  
+  .cn-button.wp-default:hover,
+  .cn-button.bootstrap:hover,
+  .cn-button:hover
+  {
+      background: $black;
+      color: $white;
+      border:1px solid $white;
+  }
+  
+  .cn-button.bootstrap { 
+  }
+  
+  .cn-button.bootstrap:hover {
+   
+  }
+  
+   
+   #cn-notice-text{
+   
+  
+       @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+    @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+  
+     @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+    @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+  
+  
+  
+     @media (min-width: map-get($breakpoints,md)) {   
+    //review this  @include fluid-type(padding-bottom,0.5); 
+    //rivew this  @include fluid-type(padding-top,0.5); 
+      }   
+  
+   }// #cn-notice-text
+  
+   
+  .cn-revoke-cookie.cn-button{
+      width: 100%;
+      background: transparent;
+      color: white;
+  
+  }
+  
+  #cn-accept-cookie{
+  
+     // @extend .grid-item-xs-6;
+      display: block;
+      float: left;
+      background: $white;
+      color: $black;
+      border:1px solid $white;
+  
+      @media (min-width: map-get($breakpoints,sm)) { 
+      flex:auto;
+      }     
+  
+      &:hover{
+      background: $white;
+      color: $black;
+      border:1px solid $white;
+      }
+  
+  }
+  
+  #cn-more-info{
+    //  @extend .grid-item-xs-6;
+  
+      background: transparent;
+      color: white;
+      border:1px solid transparent;
+  
+      float: left;
+      clear: both;
+  
+       @media (min-width: map-get($breakpoints,sm)) { 
+      flex:auto; 
+      }     
+  
+   }
+  
+  #cn-refuse-cookie{
+     // @include cssguttervalue(margin-right,1); 
+     // @include cssguttervalue(margin-left,1); 
+     // @extend .grid-item-xs-6;
+     // @extend .grid-item-xs-6;
+  
+     // @include cssvaluegutter(margin-left,2); 
+      float: right;
+      display: block;
+      background: transparent;
+      color: white;
+  
+      @media (min-width: map-get($breakpoints,sm)) {   
+      flex: auto;
+    
+  
+      }     
+  
+  }
+  */
+  /* end styling */
+}
+/* line 13, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice {
+  position: fixed;
+  min-width: 100%;
+  height: auto;
+  z-index: 100000;
+  opacity: 0;
+  top: 0px;
+  bottom: initial;
+  pointer-events: none;
+  left: 0;
+  right: 0;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 34, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme.main-reached #cookie-notice {
+  -webkit-animation-delay: 0s;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-name: fadeincookieconsent;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-direction: normal;
+  -moz-animation-delay: 0s;
+  -moz-animation-duration: 1s;
+  -moz-animation-name: fadeincookieconsent;
+  -moz-animation-fill-mode: forwards;
+  -moz-animation-direction: normal;
+  animation-delay: 0s;
+  animation-duration: 1s;
+  animation-name: fadeincookieconsent;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  pointer-events: initial;
+}
+/* line 42, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice.cn-animated {
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+/* line 49, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice.cn-animated.cn-effect-none {
+  -webkit-animation-duration: 0s;
+  animation-duration: 0s;
+}
+/* line 54, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice .cookie-notice-container {
+  display: block;
+  padding-bottom: 16px;
+  padding-bottom: 16px;
+  padding-top: 16px;
+  padding-top: 16px;
+}
+@media screen and (min-width: 0px) {
+  /* line 54, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cookie-notice-container {
+    padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 54, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cookie-notice-container {
+    padding-bottom: 16px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 54, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cookie-notice-container {
+    padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 54, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cookie-notice-container {
+    padding-bottom: 64px;
+  }
+}
+@media screen and (min-width: 0px) {
+  /* line 54, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cookie-notice-container {
+    padding-top: calc(16px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 54, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cookie-notice-container {
+    padding-top: 16px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 54, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cookie-notice-container {
+    padding-top: calc(16px + 48 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 54, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cookie-notice-container {
+    padding-top: 64px;
+  }
+}
+/* line 69, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice.cookie-notice-hidden .cookie-notice-container {
+  display: none;
+}
+/* line 74, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice .cookie-revoke-container {
+  display: block;
+}
+/* line 78, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice.cookie-revoke-hidden .cookie-revoke-container {
+  display: none;
+}
+/* line 82, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme a.cn-revoke-inline {
+  display: none;
+}
+/* line 86, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme .cn-position-top {
+  top: 0;
+}
+/* line 90, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme .cn-position-bottom {
+  bottom: 0;
+}
+/* line 95, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme .cookie-notice-container .cn-text-container {
+  display: block;
+  clear: both;
+  position: relative;
+  margin-bottom: 8px;
+  margin-bottom: 8px;
+}
+@media screen and (min-width: 0px) {
+  /* line 95, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme .cookie-notice-container .cn-text-container {
+    margin-bottom: calc(8px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 95, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme .cookie-notice-container .cn-text-container {
+    margin-bottom: 8px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 95, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme .cookie-notice-container .cn-text-container {
+    margin-bottom: calc(8px + 24 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 95, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme .cookie-notice-container .cn-text-container {
+    margin-bottom: 32px;
+  }
+}
+/* line 106, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme .cookie-notice-container .cn-buttons-container {
+  display: flex;
+  clear: both;
+  position: relative;
+  overflow: hidden;
+}
+/* line 114, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme .cookie-notice-container {
+  text-align: left;
+  width: 100%;
+  z-index: 2;
+}
+/* line 121, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme .cookie-revoke-container {
+  width: 100%;
+  z-index: 1;
+}
+/* line 127, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme .cn-close-icon {
+  position: absolute;
+  top: 50%;
+  opacity: 0.5;
+}
+/* line 137, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme .cn-close-icon:hover {
+  opacity: 1;
+}
+/* line 141, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme .cn-close-icon:after,
+body.white-scheme .cn-close-icon:before {
+  position: absolute;
+  content: ' ';
+  color: black;
+  background-color: white;
+}
+/* line 154, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme .cn-close-icon:before {
+  transform: rotate(45deg);
+}
+/* line 158, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme .cn-close-icon:after {
+  transform: rotate(-45deg);
+}
+/* line 162, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice .cn-revoke-cookie {
+  margin: 0;
+}
+/* line 166, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme .cn-button.bootstrap,
+body.white-scheme .cn-button.bootstrap:hover,
+body.white-scheme .cn-button.wp-default,
+body.white-scheme .cn-button.wp-default:hover {
+  box-shadow: none;
+  text-decoration: none;
+}
+/* line 174, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice .cn-button {
+  flex-grow: 1;
+  cursor: pointer;
+  text-align: center;
+  float: left;
+  position: relative;
+  color: black;
+  background-color: white;
+  border-color: white;
+  padding-bottom: 8px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  padding-top: 8px;
+  margin-right: 8px;
+  margin-right: 8px;
+  border-radius: 1.6px;
+  border-radius: 1.6px;
+  border-style: solid;
+  border-width: 1.6px;
+  border-width: 1.6px;
+}
+@media screen and (min-width: 0px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    padding-bottom: calc(8px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    padding-bottom: 8px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    padding-bottom: calc(8px + 24 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    padding-bottom: 32px;
+  }
+}
+@media screen and (min-width: 0px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    padding-top: calc(8px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    padding-top: 8px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    padding-top: calc(8px + 24 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    padding-top: 32px;
+  }
+}
+@media screen and (min-width: 0px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    margin-right: calc(8px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    margin-right: 8px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    margin-right: calc(8px + 24 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    margin-right: 32px;
+  }
+}
+@media screen and (min-width: 0px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    border-radius: calc(1.6px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    border-radius: 1.6px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    border-radius: calc(1.6px + 4.8 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    border-radius: 6.4px;
+  }
+}
+@media screen and (min-width: 0px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    border-width: calc(1.6px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    border-width: 1.6px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    border-width: calc(1.6px + 4.8 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.white-scheme #cookie-notice .cn-button {
+    border-width: 6.4px;
+  }
+}
+/* line 202, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice .cn-button:hover {
+  color: white;
+  background-color: black;
+  border-color: white;
+}
+/* line 208, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice .cn-button:last-of-type {
+  margin-right: 0px;
+}
+/* line 214, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme .cn-button.wp-default {
+      /* @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+       @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing
+
+       @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+       @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing
+   
+        color: nth($scheme, 3);
+        background-color: nth($scheme, 2);
+
+       // text-shadow: 0 1px 0 #fff;
+       // border-radius: 3px 3px 3px 3px;
+       // border-style: solid;
+       // border-width: 1px;
+        cursor: pointer;
+        display: inline-block;
+        //font-size: 12px;
+        //font-style: normal;
+        text-decoration: none;
+        white-space: nowrap;
+        outline: 0;
+      
+       &.cn-button.wp-default:hover {
+      
+          color: nth($scheme, 2);
+          background-color: nth($scheme, 3);
+        }
+     */
+}
+/* line 250, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme .cn-button.bootstrap {
+  /*   font-family: sans-serif;
+     display: inline-block;
+    // padding: 4px 12px;
+    // margin-right: .3em;
+     margin-bottom: 0;
+     //line-height: 20px;
+     color: #333;
+     text-align: center;
+     //text-shadow: 0 1px 1px rgba(255, 255, 255, .75);
+     font-style: normal;
+     vertical-align: middle;
+     cursor: pointer;
+     color: #fff;
+     //text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+     background-color: #006dcc;
+     background-image: -moz-linear-gradient(top, #08c, #04c);
+     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#08c), to(#04c));
+     background-image: -webkit-linear-gradient(top, #08c, #04c);
+     background-image: -o-linear-gradient(top, #08c, #04c);
+     background-image: linear-gradient(to bottom, #08c, #04c);
+     background-repeat: repeat-x;
+     border-style: solid;
+     border-width: 1px;
+     border-color: #04c #04c #002a80;
+     border-color: rgba(0, 0, 0, .1) rgba(0, 0, 0, .1) rgba(0, 0, 0, .25);
+     box-shadow: 0 1px 0 rgba(255, 255, 255, .2) inset, 0 1px 2px rgba(0, 0, 0, .05);
+     padding: 2px 10px;
+     font-size: 12px;
+     text-decoration: none;
+     -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+     border-radius: 3px;
+     outline: 0
+     */
+}
+/* line 287, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme .cn-button.bootstrap:hover {
+    /* color: #fff;
+     background-color: #04c;
+   //  background-position: 0 -15px;
+     -webkit-transition: background-position .1s linear;
+     -moz-transition: background-position .1s linear;
+     -o-transition: background-position .1s linear;
+     transition: background-position .1s linear
+*/
+}
+/* line 298, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice.cookie-notice-visible.cn-effect-none,
+body.white-scheme #cookie-notice.cookie-revoke-visible.cn-effect-none {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+/* line 304, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice.cn-effect-none {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+/* line 309, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice.cookie-notice-visible.cn-effect-fade,
+body.white-scheme #cookie-notice.cookie-revoke-visible.cn-effect-fade {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+/* line 315, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice.cn-effect-fade {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+/* line 320, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice.cookie-notice-visible.cn-effect-slide,
+body.white-scheme #cookie-notice.cookie-revoke-visible.cn-effect-slide {
+  -webkit-animation-name: slideInUp;
+  animation-name: slideInUp;
+}
+/* line 326, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice.cn-effect-slide {
+  -webkit-animation-name: slideOutDown;
+  animation-name: slideOutDown;
+}
+/* line 331, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice.cookie-notice-visible.cn-position-top.cn-effect-slide,
+body.white-scheme #cookie-notice.cookie-revoke-visible.cn-position-top.cn-effect-slide {
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown;
+}
+/* line 337, assets/sass/_partials/_cookie-notice.scss */
+body.white-scheme #cookie-notice.cn-position-top.cn-effect-slide {
+  -webkit-animation-name: slideOutUp;
+  animation-name: slideOutUp;
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@-webkit-keyframes slideOutDown {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}
+@keyframes slideOutDown {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}
+@-webkit-keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@-webkit-keyframes slideOutUp {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+}
+@keyframes slideOutUp {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+}
+/* line 10, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme {
+  /* 
+
+   @media all and (max-width:900px) {
+        .cookie-notice-container #cn-notice-text {
+            display: block;
+         //   margin-bottom: 5px
+        }
+        #cookie-notice .cn-button {
+      //      margin-left: 5px;
+       //     margin-right: 5px
+        }
+    }*/
+  /*
+  
+  body.cookies-not-set // if no preferences set yet
+  {
+  
+       &.post-type-archive-releases,
+       &.preview-site.g-scale.post-type-archive-releases{
+  
+         .scene-fixer{
+          @include grayscale-in; 
+          }
+  
+      }// &.post-type-archive-releases
+  
+      &:not(.post-type-archive-releases),
+      &.preview-site.g-scale:not(.post-type-archive-releases){
+  
+          .ajax-container{
+          @include grayscale-in;
+          }
+  
+      }//&:not(.post-type-archive-releases)
+     
+      // Colour preview on hover:
+  
+      &.preview-site.post-type-archive-releases{
+  
+          .scene-fixer{ // this for the releases
+          @include grayscale-out;
+          } 
+  
+      }// &.preview-site.post-type-archive-releases
+  
+      &.preview-site:not(.post-type-archive-releases){
+  
+          .ajax-container{
+          @include grayscale-out;
+          }
+  
+      }// &.preview-site:not(.post-type-archive-releases)
+  
+          
+       &.preview-site{ // this all the other markiup 
+          //colour
+  
+          .cookie-notice-container{
+          --borderWidth: 3px;
+          position: relative;
+          border-radius: var(--borderWidth);
+          }
+  
+          .cookie-notice-container:after {
+          content: '';
+          position: absolute;
+          left:0;
+          height: 3px;
+          top: -3px;
+          width: 100%;
+       //   background: linear-gradient(60deg, $black, $red, $black);
+          z-index: -1;
+        //  animation: animatedgradient 3s ease alternate infinite;
+         // background-size: 300% 300%;
+          }
+  
+      }//&.preview-site
+  
+      &.preview-site.g-scale{ // this all the other markiup - grey out
+          //grey
+  
+          .cookie-notice-container:after {
+         // background: linear-gradient(60deg, $black, $white, $black);
+         // animation: animatedgradient 3s ease alternate infinite;
+          //background-size: 300% 300%;
+          }
+  
+      }//&.preview-site.g-scale
+  
+  
+  }//body.cookies-not-set
+  
+  body.cookies-refused // if refused - make the site sligtly less usable aswell?
+  {
+  
+       &.post-type-archive-releases,
+       &.preview-site.g-scale.post-type-archive-releases
+       {
+  
+        .scene-fixer{
+          @include grayscale-in;
+   
+          }
+  
+      }// &.post-type-archive-releases
+  
+      &:not(.post-type-archive-releases),
+      &.preview-site.g-scale:not(.post-type-archive-releases)
+      {
+  
+          .ajax-container{
+            @include grayscale-in;
+  
+          }
+  
+      }//&:not(.post-type-archive-releases)
+    
+      // preview on hover:
+      &.preview-site.post-type-archive-releases{
+   
+          .scene-fixer{ // this for the releases
+          @include grayscale-out;
+          } 
+  
+      }// &.preview-site.post-type-archive-releases
+  
+      &.preview-site:not(.post-type-archive-releases){
+  
+          .ajax-container{
+          @include grayscale-out;
+          }
+  
+      }// &.preview-site:not(.post-type-archive-releases)
+  
+    
+         
+      &.preview-site{ // this all the other markiup
+  
+          .cookie-notice-container{
+          --borderWidth: 3px;
+          position: relative;
+          border-radius: var(--borderWidth);
+          }
+  
+          .cookie-notice-container:after {
+          content: '';
+          position: absolute;
+          left:0;
+          height: 3px;
+          top: -3px;
+          width: 100%;
+         // background: linear-gradient(60deg, $black, $red, $black);
+          z-index: -1;
+         // animation: animatedgradient 3s ease alternate infinite;
+          //background-size: 300% 300%;
+          }
+  
+      }//&.preview-site
+  
+      &.preview-site.g-scale{
+  
+          .cookie-notice-container:after {
+        //  background: linear-gradient(60deg, $black, $white, $black);
+        //  animation: animatedgradient 3s ease alternate infinite;
+        //  background-size: 300% 300%;
+          }
+  
+      }//&.preview-site.g-scale
+  
+  
+  }//body.cookies-refused
+  
+  body.cookies-accepted
+  {
+  
+      #cookie-notice{
+       display: none; 
+      }//#cookie-notice
+  
+  
+      .cookie-notice-revoke-container {
+       display: none!important;
+       visibility: hidden;
+      }
+    
+  
+      &.post-type-archive-releases{
+  
+          .scene-fixer{
+          @include grayscale-out;
+          }
+  
+      }// &.post-type-archive-releases
+  
+      &:not(.post-type-archive-releases){
+  
+          .ajax-container{
+          @include grayscale-out;
+          }
+  
+      }//&:not(.post-type-archive-releases
+  
+  
+      &.preview-site.g-scale.post-type-archive-releases{
+  
+          .scene-fixer{ // this for the releases
+          @include grayscale-in;
+  
+          } 
+  
+      }// &.preview-site.post-type-archive-releases &.preview-site{
+  
+      &.preview-site.g-scale:not(.post-type-archive-releases){
+  
+          .ajax-container{
+           @include grayscale-in;
+          }
+  
+      }// &.preview-site:not(.post-type-archive-releases)
+   
+      &.preview-site{ // all the other markup:
+  
+          .cookie-notice-container{
+            --borderWidth: 3px;
+            position: relative;
+            border-radius: var(--borderWidth);
+           }
+  
+           .cookie-notice-container:after {
+            content: '';
+            position: absolute;
+            left:0;
+            height: 3px;
+            top: -3px;
+            width: 100%;
+          //  background: linear-gradient(60deg, $black, $red, $black);
+            z-index: -1;
+           // animation: animatedgradient 3s ease alternate infinite;
+           // background-size: 300% 300%;
+          }
+  
+      }//&.preview-site
+  
+      &.preview-site.g-scale{ // this all the other markiup - grey out
+          //grey
+          
+          .cookie-notice-container:after {
+          // background: linear-gradient(60deg, $black, $white, $black);
+         // animation: animatedgradient 3s ease alternate infinite;
+          //background-size: 300% 300%;
+          }
+  
+      }//&.preview-site.g-scale
+  
+  }//body.cookies-accepted
+  
+  
+  
+  
+  
+  
+  // opnce the cookie has been agreen on - lest not bother showing "the option button" unless on the privacy page?
+  
+   body.cookies-accepted{ // if they agree and set yes - no point providng the options?
+  
+  
+    #cn-accept-cookie{
+      opacity: 0.2;
+      //pointer-events:none;
+      }
+  
+      #cookie-notice{
+      // display: none;
+       //position:fixed;// sticky;//fixed;
+       }//#cookie-notice
+  
+      .cookie-notice-revoke-container {
+       //display: none!important;
+      //visibility: hidden;
+      }
+  
+  }// body.cookies-set.cookies-accepted
+  
+  
+  body.cookies-refused{
+  
+      #cookie-cont{
+      width: 6.25vw;
+      height: 6.25vw;
+      background: transparent;// this se twith js at the mo ;( so have to veridre- find better solution
+  
+          @media (min-width: map-get($breakpoints,sm)) { 
+          width: 12.5vw;
+          height: 12.5vw;
+          }  
+  
+      }
+  
+      #cookie-notice{
+      height: 100%;
+    //  padding: 30%; // this too much padding
+      }
+  
+      .cookie-notice-container{
+      display: none;
+      //position:fixed;// sticky;//fixed;
+      }//#cookie-notice
+  
+      #cn-refuse-cookie{
+      opacity: 0.2;
+      //pointer-events:none;
+      }
+      #cn-revoke-cookie{
+      height: inherit;
+      }
+  
+      .cookie-notice-revoke-container {
+       height: inherit;
+    //  --borderWidth: 3px;
+      position: relative;
+      border-radius: 50%;
+      overflow: hidden;
+  
+     // border-radius: var(--borderWidth);
+      
+          a{
+          height: inherit;
+          padding:0px;
+          border:0px;
+          line-height: 10.5vw!important;// reviw + the copy used
+          text-align: center;
+       //   @include smaller;// evne smaller?
+          width: 100%;
+          display: block;
+         // @include fluid-type(font-size, 0.4);
+          color: transparent;
+         // @include fluid-type(line-height, 0.6);
+          }
+  
+          a:after{               
+          content: '';
+          position: absolute;
+          left:0;
+          height: 100%;
+          //    top: -3px;
+          width: 100%; // this should probably pulsate slightly instead? but on hover only? - image of cookie
+         // background:radial-gradient( $red, $red_0, $red);
+  
+        //  background: linear-gradient(60deg, $black, $red, $black);
+          z-index: -1;
+         // animation: animatedgradient 30s ease alternate infinite;
+         // background-size: 800% 800%;
+          }
+  
+      }
+      
+  
+  }// body.cookies-refused
+  
+  body.cookies-set.cookies-revoke{
+  
+      #cookie-cont{
+      width: 100%;
+      height: inherit;
+      background: $black;
+      }
+  
+      #cookie-notice{
+      display: flex;
+     //  @extend .grid-item;// for padding
+      }
+  
+      .cookie-notice-container{
+      display: flex;
+      }
+      
+      .footer-wrap{
+      // add sufficient padding - also ensure applied on "non-set cookieie3s"
+      padding-bottom: 200px;// don't use px
+  
+      // set via js - probably better
+      }
+  
+  }//body.cookies-set.cookies-revoke
+  
+   
+  
+  body.page-id-3.cookies-revoke{
+  
+      #cookie-notice{
+    //  position: fixed;//sticky;
+      }//#cookie-notice
+  
+  
+      .cookie-notice-revoke-container {
+  
+      }
+  
+  }//body.cookies-revoke
+  
+  
+   
+  #cookie-cont{
+      display: block;
+      position: fixed;
+      background: $black;
+      width: 100%;
+      height: inherit;
+      top: initial;
+      bottom: 0;
+      pointer-events:none;
+      z-index: 99999;// review
+  }
+  
+  #cookie-notice {
+     // border-top:1px solid $white;
+      display: block;
+    //  visibility: hidden;
+      pointer-events:initial;
+      position: sticky;//fixed;//sticky; //was:fixed;
+      min-width: 100%;
+      height: auto;
+      bottom: 0;
+      // z-index: 100000; // this a bit OTT - review maybe?
+      //font-size: 13px;
+      // line-height: 20px;
+      left: 0;
+      //text-align: left;
+     // @include h1;
+     // @extend .grid-item;// for padding
+  
+  }
+  
+  .cn-top {
+      top: 0
+  }
+  
+  .cn-bottom {
+      bottom: 0
+  }
+  
+  .cookie-notice-container {
+      //padding: 10px;
+  	//@include cssvaluegutter(padding-left,0.5); 
+  	//@include cssvaluegutter(padding-right,0.5); 
+    //	@include fluid-type(padding-left,1); 
+  	//@include fluid-type(padding-right,1); 
+    //  @extend .outer-grid;
+    //  @extend .grid;
+     // @extend .inner;
+      text-align: left;
+      width: 100%;
+     // font-weight: $mediumweight;
+  
+  
+  
+  }
+  
+  .cookie-notice-revoke-container {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      z-index: 1;
+      visibility: hidden;// - review + delete if okay? or needed?
+  }
+  
+  .cn-top .cookie-notice-revoke-container {
+      top: 0;
+      bottom: auto
+  }
+  
+  #cookie-notice .cn-revoke-cookie {
+      margin: 0
+  }
+  
+  .cn-button.wp-default,
+  .cn-button.wp-default:hover,
+  .cn-button.bootstrap,
+  .cn-button.bootstrap:hover {
+      box-shadow: none;
+      text-decoration: none
+  }
+  
+  #cookie-notice .cn-button {
+  //   margin-left: 10px
+  
+  }
+  
+  
+  .cn-button.wp-default,// no really used
+  .cn-button.bootstrap, // not really used
+  .cn-button {
+      text-align: center;
+      line-height: inherit;
+      font-size: inherit;
+      //@include fluid-type(line-height,1); 
+      background: $white;
+      color: $black;
+      border:1px solid $white;
+     // font-family: sans-serif;
+     // line-height: 18px;
+     // padding: 2px 12px;
+     // background: linear-gradient(to bottom, #FEFEFE, #F4F4F4) repeat scroll 0 0 #F3F3F3;
+     // border-color: #BBB;
+     // color: #333;
+      //text-shadow: 0 1px 0 #FFF;
+     // -moz-box-sizing: border-box;
+    //  @include fluid-type(border-radius,1); 
+     // @include fluid-type(padding,0.3); 
+      //@include fluid-type(margin-bottom,0.3); 
+  
+    @include fluid-type(padding, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+    @include fluid-type(padding, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+  
+   @include fluid-type(margin-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+    @include fluid-type(margin-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+  
+  
+     // @extend .grid-item-xs-8;
+    //  border-style: solid;
+     // border-width: 1px;
+      cursor: pointer;
+    //  display: inline-block;
+   //   font-size: 12px;
+     // font-style: normal;
+      text-decoration: none;
+      white-space: nowrap;
+  //    outline: none;
+      display:block;
+  }
+  
+  .cn-button.wp-default:hover,
+  .cn-button.bootstrap:hover,
+  .cn-button:hover
+  {
+      background: $black;
+      color: $white;
+      border:1px solid $white;
+  }
+  
+  .cn-button.bootstrap { 
+  }
+  
+  .cn-button.bootstrap:hover {
+   
+  }
+  
+   
+   #cn-notice-text{
+   
+  
+       @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+    @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+  
+     @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+    @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+  
+  
+  
+     @media (min-width: map-get($breakpoints,md)) {   
+    //review this  @include fluid-type(padding-bottom,0.5); 
+    //rivew this  @include fluid-type(padding-top,0.5); 
+      }   
+  
+   }// #cn-notice-text
+  
+   
+  .cn-revoke-cookie.cn-button{
+      width: 100%;
+      background: transparent;
+      color: white;
+  
+  }
+  
+  #cn-accept-cookie{
+  
+     // @extend .grid-item-xs-6;
+      display: block;
+      float: left;
+      background: $white;
+      color: $black;
+      border:1px solid $white;
+  
+      @media (min-width: map-get($breakpoints,sm)) { 
+      flex:auto;
+      }     
+  
+      &:hover{
+      background: $white;
+      color: $black;
+      border:1px solid $white;
+      }
+  
+  }
+  
+  #cn-more-info{
+    //  @extend .grid-item-xs-6;
+  
+      background: transparent;
+      color: white;
+      border:1px solid transparent;
+  
+      float: left;
+      clear: both;
+  
+       @media (min-width: map-get($breakpoints,sm)) { 
+      flex:auto; 
+      }     
+  
+   }
+  
+  #cn-refuse-cookie{
+     // @include cssguttervalue(margin-right,1); 
+     // @include cssguttervalue(margin-left,1); 
+     // @extend .grid-item-xs-6;
+     // @extend .grid-item-xs-6;
+  
+     // @include cssvaluegutter(margin-left,2); 
+      float: right;
+      display: block;
+      background: transparent;
+      color: white;
+  
+      @media (min-width: map-get($breakpoints,sm)) {   
+      flex: auto;
+    
+  
+      }     
+  
+  }
+  */
+  /* end styling */
+}
+/* line 13, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice {
+  position: fixed;
+  min-width: 100%;
+  height: auto;
+  z-index: 100000;
+  opacity: 0;
+  top: 0px;
+  bottom: initial;
+  pointer-events: none;
+  left: 0;
+  right: 0;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 34, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme.main-reached #cookie-notice {
+  -webkit-animation-delay: 0s;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-name: fadeincookieconsent;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-direction: normal;
+  -moz-animation-delay: 0s;
+  -moz-animation-duration: 1s;
+  -moz-animation-name: fadeincookieconsent;
+  -moz-animation-fill-mode: forwards;
+  -moz-animation-direction: normal;
+  animation-delay: 0s;
+  animation-duration: 1s;
+  animation-name: fadeincookieconsent;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  pointer-events: initial;
+}
+/* line 42, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice.cn-animated {
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+/* line 49, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice.cn-animated.cn-effect-none {
+  -webkit-animation-duration: 0s;
+  animation-duration: 0s;
+}
+/* line 54, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice .cookie-notice-container {
+  display: block;
+  padding-bottom: 16px;
+  padding-bottom: 16px;
+  padding-top: 16px;
+  padding-top: 16px;
+}
+@media screen and (min-width: 0px) {
+  /* line 54, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cookie-notice-container {
+    padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 54, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cookie-notice-container {
+    padding-bottom: 16px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 54, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cookie-notice-container {
+    padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 54, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cookie-notice-container {
+    padding-bottom: 64px;
+  }
+}
+@media screen and (min-width: 0px) {
+  /* line 54, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cookie-notice-container {
+    padding-top: calc(16px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 54, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cookie-notice-container {
+    padding-top: 16px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 54, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cookie-notice-container {
+    padding-top: calc(16px + 48 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 54, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cookie-notice-container {
+    padding-top: 64px;
+  }
+}
+/* line 69, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice.cookie-notice-hidden .cookie-notice-container {
+  display: none;
+}
+/* line 74, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice .cookie-revoke-container {
+  display: block;
+}
+/* line 78, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice.cookie-revoke-hidden .cookie-revoke-container {
+  display: none;
+}
+/* line 82, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme a.cn-revoke-inline {
+  display: none;
+}
+/* line 86, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme .cn-position-top {
+  top: 0;
+}
+/* line 90, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme .cn-position-bottom {
+  bottom: 0;
+}
+/* line 95, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme .cookie-notice-container .cn-text-container {
+  display: block;
+  clear: both;
+  position: relative;
+  margin-bottom: 8px;
+  margin-bottom: 8px;
+}
+@media screen and (min-width: 0px) {
+  /* line 95, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme .cookie-notice-container .cn-text-container {
+    margin-bottom: calc(8px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 95, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme .cookie-notice-container .cn-text-container {
+    margin-bottom: 8px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 95, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme .cookie-notice-container .cn-text-container {
+    margin-bottom: calc(8px + 24 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 95, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme .cookie-notice-container .cn-text-container {
+    margin-bottom: 32px;
+  }
+}
+/* line 106, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme .cookie-notice-container .cn-buttons-container {
+  display: flex;
+  clear: both;
+  position: relative;
+  overflow: hidden;
+}
+/* line 114, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme .cookie-notice-container {
+  text-align: left;
+  width: 100%;
+  z-index: 2;
+}
+/* line 121, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme .cookie-revoke-container {
+  width: 100%;
+  z-index: 1;
+}
+/* line 127, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme .cn-close-icon {
+  position: absolute;
+  top: 50%;
+  opacity: 0.5;
+}
+/* line 137, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme .cn-close-icon:hover {
+  opacity: 1;
+}
+/* line 141, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme .cn-close-icon:after,
+body.black-scheme .cn-close-icon:before {
+  position: absolute;
+  content: ' ';
+  color: white;
+  background-color: black;
+}
+/* line 154, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme .cn-close-icon:before {
+  transform: rotate(45deg);
+}
+/* line 158, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme .cn-close-icon:after {
+  transform: rotate(-45deg);
+}
+/* line 162, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice .cn-revoke-cookie {
+  margin: 0;
+}
+/* line 166, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme .cn-button.bootstrap,
+body.black-scheme .cn-button.bootstrap:hover,
+body.black-scheme .cn-button.wp-default,
+body.black-scheme .cn-button.wp-default:hover {
+  box-shadow: none;
+  text-decoration: none;
+}
+/* line 174, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice .cn-button {
+  flex-grow: 1;
+  cursor: pointer;
+  text-align: center;
+  float: left;
+  position: relative;
+  color: white;
+  background-color: black;
+  border-color: black;
+  padding-bottom: 8px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  padding-top: 8px;
+  margin-right: 8px;
+  margin-right: 8px;
+  border-radius: 1.6px;
+  border-radius: 1.6px;
+  border-style: solid;
+  border-width: 1.6px;
+  border-width: 1.6px;
+}
+@media screen and (min-width: 0px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    padding-bottom: calc(8px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    padding-bottom: 8px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    padding-bottom: calc(8px + 24 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    padding-bottom: 32px;
+  }
+}
+@media screen and (min-width: 0px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    padding-top: calc(8px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    padding-top: 8px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    padding-top: calc(8px + 24 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    padding-top: 32px;
+  }
+}
+@media screen and (min-width: 0px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    margin-right: calc(8px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    margin-right: 8px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    margin-right: calc(8px + 24 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    margin-right: 32px;
+  }
+}
+@media screen and (min-width: 0px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    border-radius: calc(1.6px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    border-radius: 1.6px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    border-radius: calc(1.6px + 4.8 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    border-radius: 6.4px;
+  }
+}
+@media screen and (min-width: 0px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    border-width: calc(1.6px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    border-width: 1.6px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    border-width: calc(1.6px + 4.8 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 174, assets/sass/_partials/_cookie-notice.scss */
+  body.black-scheme #cookie-notice .cn-button {
+    border-width: 6.4px;
+  }
+}
+/* line 202, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice .cn-button:hover {
+  color: black;
+  background-color: white;
+  border-color: black;
+}
+/* line 208, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice .cn-button:last-of-type {
+  margin-right: 0px;
+}
+/* line 214, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme .cn-button.wp-default {
+      /* @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+       @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing
+
+       @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+       @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing
+   
+        color: nth($scheme, 3);
+        background-color: nth($scheme, 2);
+
+       // text-shadow: 0 1px 0 #fff;
+       // border-radius: 3px 3px 3px 3px;
+       // border-style: solid;
+       // border-width: 1px;
+        cursor: pointer;
+        display: inline-block;
+        //font-size: 12px;
+        //font-style: normal;
+        text-decoration: none;
+        white-space: nowrap;
+        outline: 0;
+      
+       &.cn-button.wp-default:hover {
+      
+          color: nth($scheme, 2);
+          background-color: nth($scheme, 3);
+        }
+     */
+}
+/* line 250, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme .cn-button.bootstrap {
+  /*   font-family: sans-serif;
+     display: inline-block;
+    // padding: 4px 12px;
+    // margin-right: .3em;
+     margin-bottom: 0;
+     //line-height: 20px;
+     color: #333;
+     text-align: center;
+     //text-shadow: 0 1px 1px rgba(255, 255, 255, .75);
+     font-style: normal;
+     vertical-align: middle;
+     cursor: pointer;
+     color: #fff;
+     //text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+     background-color: #006dcc;
+     background-image: -moz-linear-gradient(top, #08c, #04c);
+     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#08c), to(#04c));
+     background-image: -webkit-linear-gradient(top, #08c, #04c);
+     background-image: -o-linear-gradient(top, #08c, #04c);
+     background-image: linear-gradient(to bottom, #08c, #04c);
+     background-repeat: repeat-x;
+     border-style: solid;
+     border-width: 1px;
+     border-color: #04c #04c #002a80;
+     border-color: rgba(0, 0, 0, .1) rgba(0, 0, 0, .1) rgba(0, 0, 0, .25);
+     box-shadow: 0 1px 0 rgba(255, 255, 255, .2) inset, 0 1px 2px rgba(0, 0, 0, .05);
+     padding: 2px 10px;
+     font-size: 12px;
+     text-decoration: none;
+     -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+     border-radius: 3px;
+     outline: 0
+     */
+}
+/* line 287, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme .cn-button.bootstrap:hover {
+    /* color: #fff;
+     background-color: #04c;
+   //  background-position: 0 -15px;
+     -webkit-transition: background-position .1s linear;
+     -moz-transition: background-position .1s linear;
+     -o-transition: background-position .1s linear;
+     transition: background-position .1s linear
+*/
+}
+/* line 298, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice.cookie-notice-visible.cn-effect-none,
+body.black-scheme #cookie-notice.cookie-revoke-visible.cn-effect-none {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+/* line 304, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice.cn-effect-none {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+/* line 309, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice.cookie-notice-visible.cn-effect-fade,
+body.black-scheme #cookie-notice.cookie-revoke-visible.cn-effect-fade {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+/* line 315, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice.cn-effect-fade {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+/* line 320, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice.cookie-notice-visible.cn-effect-slide,
+body.black-scheme #cookie-notice.cookie-revoke-visible.cn-effect-slide {
+  -webkit-animation-name: slideInUp;
+  animation-name: slideInUp;
+}
+/* line 326, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice.cn-effect-slide {
+  -webkit-animation-name: slideOutDown;
+  animation-name: slideOutDown;
+}
+/* line 331, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice.cookie-notice-visible.cn-position-top.cn-effect-slide,
+body.black-scheme #cookie-notice.cookie-revoke-visible.cn-position-top.cn-effect-slide {
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown;
+}
+/* line 337, assets/sass/_partials/_cookie-notice.scss */
+body.black-scheme #cookie-notice.cn-position-top.cn-effect-slide {
+  -webkit-animation-name: slideOutUp;
+  animation-name: slideOutUp;
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@-webkit-keyframes slideOutDown {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}
+@keyframes slideOutDown {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}
+@-webkit-keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@-webkit-keyframes slideOutUp {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+}
+@keyframes slideOutUp {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+}
 /*
 Theme Name: theseus
 Theme URI:  theseus.agency
@@ -7551,77 +10102,123 @@ Author URI: http://svs.design
 /* ---- previous/next buttons ---- */
 /* line 82, assets/sass/_partials/_block-slideshow.scss */
 .flickity-prev-next-button {
-  width: 16px;
-  width: 16px;
-  height: 16px;
-  height: 16px;
+  width: 32px;
+  width: 32px;
+  height: 32px;
+  height: 32px;
   border-radius: 50%;
   /* vertically center */
   transform: translateY(-50%);
   background: transparent;
   z-index: 5;
+  top: 50%;
 }
 @media screen and (min-width: 0px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    width: calc(16px + 0 * (100vw - 0px) / 800);
+    width: calc(32px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    width: 16px;
+    width: 32px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    width: calc(16px + 48 * (100vw - 800px) / 2400);
+    width: calc(32px + 96 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    width: 64px;
+    width: 128px;
   }
 }
 @media screen and (min-width: 0px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    height: calc(16px + 0 * (100vw - 0px) / 800);
+    height: calc(32px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    height: 16px;
+    height: 32px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    height: calc(16px + 48 * (100vw - 800px) / 2400);
+    height: calc(32px + 96 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    height: 64px;
-  }
-}
-@media (min-width: 0px) {
-  /* line 82, assets/sass/_partials/_block-slideshow.scss */
-  .flickity-prev-next-button {
-    top: 50%;
-    height: 100%;
+    height: 128px;
   }
 }
 @media (min-width: 800px) {
   /* line 82, assets/sass/_partials/_block-slideshow.scss */
   .flickity-prev-next-button {
-    top: 100%;
+    width: 16px;
+    width: 16px;
+    height: 16px;
+    height: 16px;
   }
 }
+@media screen and (min-width: 800px) and (min-width: 0px) {
+  /* line 82, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-prev-next-button {
+    width: calc(16px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) and (min-width: 800px) {
+  /* line 82, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-prev-next-button {
+    width: 16px;
+  }
+}
+@media screen and (min-width: 800px) and (min-width: 800px) {
+  /* line 82, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-prev-next-button {
+    width: calc(16px + 48 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 800px) and (min-width: 3200px) {
+  /* line 82, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-prev-next-button {
+    width: 64px;
+  }
+}
+@media screen and (min-width: 800px) and (min-width: 0px) {
+  /* line 82, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-prev-next-button {
+    height: calc(16px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) and (min-width: 800px) {
+  /* line 82, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-prev-next-button {
+    height: 16px;
+  }
+}
+@media screen and (min-width: 800px) and (min-width: 800px) {
+  /* line 82, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-prev-next-button {
+    height: calc(16px + 48 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 800px) and (min-width: 3200px) {
+  /* line 82, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-prev-next-button {
+    height: 64px;
+  }
+}
+
 /* line 114, assets/sass/_partials/_block-slideshow.scss */
 .flickity-prev-next-button svg {
   fill: white;
@@ -7629,28 +10226,20 @@ Author URI: http://svs.design
 
 /* line 120, assets/sass/_partials/_block-slideshow.scss */
 .flickity-prev-next-button.previous {
-  left: 12.5%;
+  left: 0;
+  width: 12.5%;
+  height: 100%;
 }
 
-/* line 123, assets/sass/_partials/_block-slideshow.scss */
+/* line 125, assets/sass/_partials/_block-slideshow.scss */
 .flickity-prev-next-button.next {
-  right: 12.5%;
+  right: 0;
+  width: 12.5%;
+  height: 100%;
 }
 
 /* right to left */
-/* line 127, assets/sass/_partials/_block-slideshow.scss */
-.flickity-rtl .flickity-prev-next-button.previous {
-  left: auto;
-  right: 12.5%;
-}
-
-/* line 131, assets/sass/_partials/_block-slideshow.scss */
-.flickity-rtl .flickity-prev-next-button.next {
-  right: auto;
-  left: 12.5%;
-}
-
-/* line 136, assets/sass/_partials/_block-slideshow.scss */
+/* line 140, assets/sass/_partials/_block-slideshow.scss */
 .flickity-prev-next-button .flickity-button-icon {
   position: absolute;
   left: 0;
@@ -7661,41 +10250,52 @@ Author URI: http://svs.design
 }
 
 /* ---- page dots ---- */
-/* line 147, assets/sass/_partials/_block-slideshow.scss */
+/* line 151, assets/sass/_partials/_block-slideshow.scss */
 .flickity-page-dots {
-  position: absolute;
+  position: relative;
   width: 100%;
-  margin: 0;
+  display: none;
+  clear: both;
+  height: 32px;
+  height: 32px;
+  margin: auto;
   list-style: none;
   text-align: center;
-  line-height: 1;
   display: none;
 }
-@media (min-width: 800px) {
-  /* line 147, assets/sass/_partials/_block-slideshow.scss */
+@media screen and (min-width: 0px) {
+  /* line 151, assets/sass/_partials/_block-slideshow.scss */
   .flickity-page-dots {
-    display: block;
-    /*	@include cssvaluegutter(bottom,-3); 
-    	@include cssvaluegutter(height,3); 
-    	@include cssvaluegutter(padding-top, 1); 
-    	@include cssvaluegutter(padding-bottom, 1); 
-    */
+    height: calc(32px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 151, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-page-dots {
+    height: 32px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 151, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-page-dots {
+    height: calc(32px + 96 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 151, assets/sass/_partials/_block-slideshow.scss */
+  .flickity-page-dots {
+    height: 128px;
   }
 }
 
-/* line 175, assets/sass/_partials/_block-slideshow.scss */
+/* line 171, assets/sass/_partials/_block-slideshow.scss */
 .flickity-rtl .flickity-page-dots {
   direction: rtl;
 }
 
-/* line 179, assets/sass/_partials/_block-slideshow.scss */
+/* line 175, assets/sass/_partials/_block-slideshow.scss */
 .flickity-page-dots .dot {
   display: inline-block;
-  /*@include cssvaluegutter(width,1); 
-  @include cssvaluegutter(height,1); 
-  @include cssvaluegutter(margin-left, 0.25); 
-  @include cssvaluegutter(margin-right, 0.25);
-  */
   background: white;
   border-radius: 50%;
   cursor: pointer;
@@ -7704,7 +10304,7 @@ Author URI: http://svs.design
   -webkit-box-sizing: border-box;
 }
 @media (min-width: 480px) {
-  /* line 179, assets/sass/_partials/_block-slideshow.scss */
+  /* line 175, assets/sass/_partials/_block-slideshow.scss */
   .flickity-page-dots .dot {
     /*
     		@include cssvaluegutter(width,0.75); 
@@ -7714,7 +10314,7 @@ Author URI: http://svs.design
   }
 }
 @media (min-width: 800px) {
-  /* line 179, assets/sass/_partials/_block-slideshow.scss */
+  /* line 175, assets/sass/_partials/_block-slideshow.scss */
   .flickity-page-dots .dot {
     			/*
 		@include cssvaluegutter(width,0.5); 
@@ -7728,26 +10328,26 @@ Author URI: http://svs.design
 }
 
 /* additional styles */
-/* line 230, assets/sass/_partials/_block-slideshow.scss */
+/* line 219, assets/sass/_partials/_block-slideshow.scss */
 .slideshow-block {
   width: 100%;
   	/*
   @include cssvaluegutter(margin-bottom, 5);  // for the dots area
   */
 }
-/* line 245, assets/sass/_partials/_block-slideshow.scss */
+/* line 235, assets/sass/_partials/_block-slideshow.scss */
 .slideshow-block .slideshow-carousel {
   width: 100%;
   height: inherit;
   max-height: inherit;
 }
-/* line 250, assets/sass/_partials/_block-slideshow.scss */
+/* line 240, assets/sass/_partials/_block-slideshow.scss */
 .slideshow-block .slideshow-carousel .flickity-viewport {
   width: 100%;
   height: inherit;
   max-height: inherit;
 }
-/* line 255, assets/sass/_partials/_block-slideshow.scss */
+/* line 245, assets/sass/_partials/_block-slideshow.scss */
 .slideshow-block .slideshow-carousel .flickity-viewport .slideshow-image {
   height: inherit;
   max-height: inherit;
@@ -7755,51 +10355,69 @@ Author URI: http://svs.design
   margin-right: 16px;
 }
 @media screen and (min-width: 0px) {
-  /* line 255, assets/sass/_partials/_block-slideshow.scss */
+  /* line 245, assets/sass/_partials/_block-slideshow.scss */
   .slideshow-block .slideshow-carousel .flickity-viewport .slideshow-image {
     margin-right: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 255, assets/sass/_partials/_block-slideshow.scss */
+  /* line 245, assets/sass/_partials/_block-slideshow.scss */
   .slideshow-block .slideshow-carousel .flickity-viewport .slideshow-image {
     margin-right: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 255, assets/sass/_partials/_block-slideshow.scss */
+  /* line 245, assets/sass/_partials/_block-slideshow.scss */
   .slideshow-block .slideshow-carousel .flickity-viewport .slideshow-image {
     margin-right: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 255, assets/sass/_partials/_block-slideshow.scss */
+  /* line 245, assets/sass/_partials/_block-slideshow.scss */
   .slideshow-block .slideshow-carousel .flickity-viewport .slideshow-image {
     margin-right: 64px;
   }
 }
-/* line 261, assets/sass/_partials/_block-slideshow.scss */
+/* line 251, assets/sass/_partials/_block-slideshow.scss */
 .slideshow-block .slideshow-carousel .flickity-viewport .slideshow-image img {
   opacity: 1;
   display: block;
   height: 100%;
   width: auto;
 }
+/* line 264, assets/sass/_partials/_block-slideshow.scss */
+.slideshow-block .image-caption {
+  width: 100%;
+}
+@media (min-width: 480px) {
+  /* line 264, assets/sass/_partials/_block-slideshow.scss */
+  .slideshow-block .image-caption {
+    width: 50%;
+  }
+}
 
-/* line 280, assets/sass/_partials/_block-slideshow.scss */
+/* line 278, assets/sass/_partials/_block-slideshow.scss */
 body.horizontal .slideshow-block {
+  height: inherit;
+}
+/* line 281, assets/sass/_partials/_block-slideshow.scss */
+body.horizontal .slideshow-block .slideshow-carousel {
   height: 80vh;
   max-height: 60vh;
 }
 @media (min-width: 800px) {
-  /* line 280, assets/sass/_partials/_block-slideshow.scss */
-  body.horizontal .slideshow-block {
+  /* line 281, assets/sass/_partials/_block-slideshow.scss */
+  body.horizontal .slideshow-block .slideshow-carousel {
     max-height: 75vh;
   }
 }
 
-/* line 297, assets/sass/_partials/_block-slideshow.scss */
+/* line 298, assets/sass/_partials/_block-slideshow.scss */
 body.vertical .slideshow-block {
+  height: inherit;
+}
+/* line 301, assets/sass/_partials/_block-slideshow.scss */
+body.vertical .slideshow-block .slideshow-carousel {
   height: 60vw;
 }
 
@@ -8086,6 +10704,110 @@ Author URI: http://svs.design
   width: 100%;
   height: 100%;
 }
+/* line 44, assets/sass/_partials/_block-video.scss */
+.video-block .video-area .video-wrap .gradient-loader-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 20%;
+  top: 0%;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  pointer-events: none;
+}
+/* line 55, assets/sass/_partials/_block-video.scss */
+.video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+  border-radius: 8px;
+  border-radius: 8px;
+  margin-top: -8px;
+  margin-top: -8px;
+  height: 16px;
+  height: 16px;
+  top: 50%;
+  position: relative;
+  background: repeating-linear-gradient(to right, white 0%, black 50%, white 100%);
+  width: inherit;
+  background-size: 200% auto;
+  background-position: 0 100%;
+  animation: loadergradient 2s infinite;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  animation-timing-function: step-middle;
+  z-index: -1;
+}
+@media screen and (min-width: 0px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    border-radius: calc(8px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    border-radius: 8px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    border-radius: calc(8px + 24 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    border-radius: 32px;
+  }
+}
+@media screen and (min-width: 0px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    margin-top: calc(-8px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    margin-top: -8px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    margin-top: calc(-8px + -24 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    margin-top: -32px;
+  }
+}
+@media screen and (min-width: 0px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    height: calc(16px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    height: 16px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    height: calc(16px + 48 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 55, assets/sass/_partials/_block-video.scss */
+  .video-block .video-area .video-wrap .gradient-loader-wrapper .gradient-loader {
+    height: 64px;
+  }
+}
 
 /*@import "_partials/block-two-col-header";  // 2 column text block -w/ header
 @import "_partials/block-two-col-left-header";  // 
@@ -8127,7 +10849,7 @@ body.site-loading #main {
 
 /*I'd say the following needs to dissapear into the appropriat eblocks????
 */
-/* line 69, assets/sass/style.scss */
+/* line 71, assets/sass/style.scss */
 body.white-scheme {
   width: 100%;
   /* SVG */
@@ -8147,12 +10869,12 @@ body.white-scheme {
   /* end contact */
   /* END Sections styling */
 }
-/* line 75, assets/sass/style.scss */
+/* line 77, assets/sass/style.scss */
 body.white-scheme .svg-icon svg {
   width: 100%;
   height: 100%;
 }
-/* line 87, assets/sass/style.scss */
+/* line 89, assets/sass/style.scss */
 body.white-scheme .wrapper {
   position: relative;
   overflow: hidden;
@@ -8161,12 +10883,12 @@ body.white-scheme .wrapper {
   min-height: 100vh;
   display: block;
 }
-/* line 96, assets/sass/style.scss */
+/* line 98, assets/sass/style.scss */
 body.white-scheme section.content-item {
   margin-bottom: -10vh;
   padding-top: 10vh;
 }
-/* line 101, assets/sass/style.scss */
+/* line 103, assets/sass/style.scss */
 body.white-scheme section.content-item {
   clear: both;
   display: block;
@@ -8176,40 +10898,40 @@ body.white-scheme section.content-item {
   padding-bottom: 32px;
 }
 @media screen and (min-width: 0px) {
-  /* line 101, assets/sass/style.scss */
+  /* line 103, assets/sass/style.scss */
   body.white-scheme section.content-item {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 101, assets/sass/style.scss */
+  /* line 103, assets/sass/style.scss */
   body.white-scheme section.content-item {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 101, assets/sass/style.scss */
+  /* line 103, assets/sass/style.scss */
   body.white-scheme section.content-item {
     padding-bottom: calc(32px + 96 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 101, assets/sass/style.scss */
+  /* line 103, assets/sass/style.scss */
   body.white-scheme section.content-item {
     padding-bottom: 128px;
   }
 }
-/* line 116, assets/sass/style.scss */
+/* line 118, assets/sass/style.scss */
 body.white-scheme #item-1 {
   margin-top: -1px;
   padding-top: 10vh;
 }
-/* line 121, assets/sass/style.scss */
+/* line 123, assets/sass/style.scss */
 body.white-scheme .content-item:last-child {
   min-height: calc(110vh + 1px);
   overflow: visible;
 }
-/* line 132, assets/sass/style.scss */
+/* line 134, assets/sass/style.scss */
 body.white-scheme #intro-area {
   min-height: 100vh;
   display: block;
@@ -8217,7 +10939,7 @@ body.white-scheme #intro-area {
   position: relative;
   background: white;
 }
-/* line 139, assets/sass/style.scss */
+/* line 141, assets/sass/style.scss */
 body.white-scheme #intro-area #animation-large,
 body.white-scheme #intro-area #animation-small {
   width: 100%;
@@ -8229,39 +10951,39 @@ body.white-scheme #intro-area #animation-small {
   opacity: 1;
 }
 @media (min-width: 0px) {
-  /* line 151, assets/sass/style.scss */
+  /* line 153, assets/sass/style.scss */
   body.white-scheme #intro-area #animation-small {
     display: block;
   }
-  /* line 154, assets/sass/style.scss */
+  /* line 156, assets/sass/style.scss */
   body.white-scheme #intro-area #animation-large {
     display: none;
   }
 }
 @media (min-width: 480px) {
-  /* line 161, assets/sass/style.scss */
+  /* line 163, assets/sass/style.scss */
   body.white-scheme #intro-area #animation-small {
     display: none;
   }
-  /* line 164, assets/sass/style.scss */
+  /* line 166, assets/sass/style.scss */
   body.white-scheme #intro-area #animation-large {
     display: block;
   }
 }
-/* line 173, assets/sass/style.scss */
+/* line 175, assets/sass/style.scss */
 body.white-scheme.animation-fix {
   overflow: hidden;
   position: fixed;
   bottom: 0px;
   top: 0px;
 }
-/* line 185, assets/sass/style.scss */
+/* line 187, assets/sass/style.scss */
 body.white-scheme.hide-intro #intro-area {
   min-height: 0vh;
   display: none;
   height: 0;
 }
-/* line 191, assets/sass/style.scss */
+/* line 193, assets/sass/style.scss */
 body.white-scheme.hide-intro .nav-toggle-wrapper {
   opacity: 1;
   /* show nav toggle */
@@ -8269,75 +10991,75 @@ body.white-scheme.hide-intro .nav-toggle-wrapper {
   /* allow it be clicked */
 }
 @media (min-width: 800px) {
-  /* line 198, assets/sass/style.scss */
+  /* line 200, assets/sass/style.scss */
   body.white-scheme.hide-intro .nav-wrapper {
     opacity: 1;
     /* show nav wrapper - because we hit full size */
   }
 }
-/* line 207, assets/sass/style.scss */
+/* line 209, assets/sass/style.scss */
 body.white-scheme h3.approach-item {
   padding-bottom: 16px;
   padding-bottom: 16px;
 }
 @media screen and (min-width: 0px) {
-  /* line 207, assets/sass/style.scss */
+  /* line 209, assets/sass/style.scss */
   body.white-scheme h3.approach-item {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 207, assets/sass/style.scss */
+  /* line 209, assets/sass/style.scss */
   body.white-scheme h3.approach-item {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 207, assets/sass/style.scss */
+  /* line 209, assets/sass/style.scss */
   body.white-scheme h3.approach-item {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 207, assets/sass/style.scss */
+  /* line 209, assets/sass/style.scss */
   body.white-scheme h3.approach-item {
     padding-bottom: 64px;
   }
 }
-/* line 212, assets/sass/style.scss */
+/* line 214, assets/sass/style.scss */
 body.white-scheme .description {
   padding-bottom: 16px;
   padding-bottom: 16px;
 }
 @media screen and (min-width: 0px) {
-  /* line 212, assets/sass/style.scss */
+  /* line 214, assets/sass/style.scss */
   body.white-scheme .description {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 212, assets/sass/style.scss */
+  /* line 214, assets/sass/style.scss */
   body.white-scheme .description {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 212, assets/sass/style.scss */
+  /* line 214, assets/sass/style.scss */
   body.white-scheme .description {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 212, assets/sass/style.scss */
+  /* line 214, assets/sass/style.scss */
   body.white-scheme .description {
     padding-bottom: 64px;
   }
 }
-/* line 217, assets/sass/style.scss */
+/* line 219, assets/sass/style.scss */
 body.white-scheme .description:last-child {
   padding-bottom: 0;
 }
-/* line 227, assets/sass/style.scss */
+/* line 229, assets/sass/style.scss */
 body.white-scheme .logo-item {
   float: left;
   display: block;
@@ -8346,36 +11068,36 @@ body.white-scheme .logo-item {
   padding: 4px;
 }
 @media screen and (min-width: 0px) {
-  /* line 227, assets/sass/style.scss */
+  /* line 229, assets/sass/style.scss */
   body.white-scheme .logo-item {
     padding: calc(4px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 227, assets/sass/style.scss */
+  /* line 229, assets/sass/style.scss */
   body.white-scheme .logo-item {
     padding: 4px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 227, assets/sass/style.scss */
+  /* line 229, assets/sass/style.scss */
   body.white-scheme .logo-item {
     padding: calc(4px + 12 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 227, assets/sass/style.scss */
+  /* line 229, assets/sass/style.scss */
   body.white-scheme .logo-item {
     padding: 16px;
   }
 }
-/* line 239, assets/sass/style.scss */
+/* line 241, assets/sass/style.scss */
 body.white-scheme .contact-item {
   float: left;
   clear: both;
 }
 
-/* line 69, assets/sass/style.scss */
+/* line 71, assets/sass/style.scss */
 body.black-scheme {
   width: 100%;
   /* SVG */
@@ -8395,12 +11117,12 @@ body.black-scheme {
   /* end contact */
   /* END Sections styling */
 }
-/* line 75, assets/sass/style.scss */
+/* line 77, assets/sass/style.scss */
 body.black-scheme .svg-icon svg {
   width: 100%;
   height: 100%;
 }
-/* line 87, assets/sass/style.scss */
+/* line 89, assets/sass/style.scss */
 body.black-scheme .wrapper {
   position: relative;
   overflow: hidden;
@@ -8409,12 +11131,12 @@ body.black-scheme .wrapper {
   min-height: 100vh;
   display: block;
 }
-/* line 96, assets/sass/style.scss */
+/* line 98, assets/sass/style.scss */
 body.black-scheme section.content-item {
   margin-bottom: -10vh;
   padding-top: 10vh;
 }
-/* line 101, assets/sass/style.scss */
+/* line 103, assets/sass/style.scss */
 body.black-scheme section.content-item {
   clear: both;
   display: block;
@@ -8424,40 +11146,40 @@ body.black-scheme section.content-item {
   padding-bottom: 32px;
 }
 @media screen and (min-width: 0px) {
-  /* line 101, assets/sass/style.scss */
+  /* line 103, assets/sass/style.scss */
   body.black-scheme section.content-item {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 101, assets/sass/style.scss */
+  /* line 103, assets/sass/style.scss */
   body.black-scheme section.content-item {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 101, assets/sass/style.scss */
+  /* line 103, assets/sass/style.scss */
   body.black-scheme section.content-item {
     padding-bottom: calc(32px + 96 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 101, assets/sass/style.scss */
+  /* line 103, assets/sass/style.scss */
   body.black-scheme section.content-item {
     padding-bottom: 128px;
   }
 }
-/* line 116, assets/sass/style.scss */
+/* line 118, assets/sass/style.scss */
 body.black-scheme #item-1 {
   margin-top: -1px;
   padding-top: 10vh;
 }
-/* line 121, assets/sass/style.scss */
+/* line 123, assets/sass/style.scss */
 body.black-scheme .content-item:last-child {
   min-height: calc(110vh + 1px);
   overflow: visible;
 }
-/* line 132, assets/sass/style.scss */
+/* line 134, assets/sass/style.scss */
 body.black-scheme #intro-area {
   min-height: 100vh;
   display: block;
@@ -8465,7 +11187,7 @@ body.black-scheme #intro-area {
   position: relative;
   background: black;
 }
-/* line 139, assets/sass/style.scss */
+/* line 141, assets/sass/style.scss */
 body.black-scheme #intro-area #animation-large,
 body.black-scheme #intro-area #animation-small {
   width: 100%;
@@ -8477,39 +11199,39 @@ body.black-scheme #intro-area #animation-small {
   opacity: 1;
 }
 @media (min-width: 0px) {
-  /* line 151, assets/sass/style.scss */
+  /* line 153, assets/sass/style.scss */
   body.black-scheme #intro-area #animation-small {
     display: block;
   }
-  /* line 154, assets/sass/style.scss */
+  /* line 156, assets/sass/style.scss */
   body.black-scheme #intro-area #animation-large {
     display: none;
   }
 }
 @media (min-width: 480px) {
-  /* line 161, assets/sass/style.scss */
+  /* line 163, assets/sass/style.scss */
   body.black-scheme #intro-area #animation-small {
     display: none;
   }
-  /* line 164, assets/sass/style.scss */
+  /* line 166, assets/sass/style.scss */
   body.black-scheme #intro-area #animation-large {
     display: block;
   }
 }
-/* line 173, assets/sass/style.scss */
+/* line 175, assets/sass/style.scss */
 body.black-scheme.animation-fix {
   overflow: hidden;
   position: fixed;
   bottom: 0px;
   top: 0px;
 }
-/* line 185, assets/sass/style.scss */
+/* line 187, assets/sass/style.scss */
 body.black-scheme.hide-intro #intro-area {
   min-height: 0vh;
   display: none;
   height: 0;
 }
-/* line 191, assets/sass/style.scss */
+/* line 193, assets/sass/style.scss */
 body.black-scheme.hide-intro .nav-toggle-wrapper {
   opacity: 1;
   /* show nav toggle */
@@ -8517,75 +11239,75 @@ body.black-scheme.hide-intro .nav-toggle-wrapper {
   /* allow it be clicked */
 }
 @media (min-width: 800px) {
-  /* line 198, assets/sass/style.scss */
+  /* line 200, assets/sass/style.scss */
   body.black-scheme.hide-intro .nav-wrapper {
     opacity: 1;
     /* show nav wrapper - because we hit full size */
   }
 }
-/* line 207, assets/sass/style.scss */
+/* line 209, assets/sass/style.scss */
 body.black-scheme h3.approach-item {
   padding-bottom: 16px;
   padding-bottom: 16px;
 }
 @media screen and (min-width: 0px) {
-  /* line 207, assets/sass/style.scss */
+  /* line 209, assets/sass/style.scss */
   body.black-scheme h3.approach-item {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 207, assets/sass/style.scss */
+  /* line 209, assets/sass/style.scss */
   body.black-scheme h3.approach-item {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 207, assets/sass/style.scss */
+  /* line 209, assets/sass/style.scss */
   body.black-scheme h3.approach-item {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 207, assets/sass/style.scss */
+  /* line 209, assets/sass/style.scss */
   body.black-scheme h3.approach-item {
     padding-bottom: 64px;
   }
 }
-/* line 212, assets/sass/style.scss */
+/* line 214, assets/sass/style.scss */
 body.black-scheme .description {
   padding-bottom: 16px;
   padding-bottom: 16px;
 }
 @media screen and (min-width: 0px) {
-  /* line 212, assets/sass/style.scss */
+  /* line 214, assets/sass/style.scss */
   body.black-scheme .description {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 212, assets/sass/style.scss */
+  /* line 214, assets/sass/style.scss */
   body.black-scheme .description {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 212, assets/sass/style.scss */
+  /* line 214, assets/sass/style.scss */
   body.black-scheme .description {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 212, assets/sass/style.scss */
+  /* line 214, assets/sass/style.scss */
   body.black-scheme .description {
     padding-bottom: 64px;
   }
 }
-/* line 217, assets/sass/style.scss */
+/* line 219, assets/sass/style.scss */
 body.black-scheme .description:last-child {
   padding-bottom: 0;
 }
-/* line 227, assets/sass/style.scss */
+/* line 229, assets/sass/style.scss */
 body.black-scheme .logo-item {
   float: left;
   display: block;
@@ -8594,48 +11316,48 @@ body.black-scheme .logo-item {
   padding: 4px;
 }
 @media screen and (min-width: 0px) {
-  /* line 227, assets/sass/style.scss */
+  /* line 229, assets/sass/style.scss */
   body.black-scheme .logo-item {
     padding: calc(4px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 227, assets/sass/style.scss */
+  /* line 229, assets/sass/style.scss */
   body.black-scheme .logo-item {
     padding: 4px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 227, assets/sass/style.scss */
+  /* line 229, assets/sass/style.scss */
   body.black-scheme .logo-item {
     padding: calc(4px + 12 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 227, assets/sass/style.scss */
+  /* line 229, assets/sass/style.scss */
   body.black-scheme .logo-item {
     padding: 16px;
   }
 }
-/* line 239, assets/sass/style.scss */
+/* line 241, assets/sass/style.scss */
 body.black-scheme .contact-item {
   float: left;
   clear: both;
 }
 
-/* line 259, assets/sass/style.scss */
+/* line 261, assets/sass/style.scss */
 body.white-scheme {
   /* clients */
   /* clients */
 }
-/* line 264, assets/sass/style.scss */
+/* line 266, assets/sass/style.scss */
 body.white-scheme svg.client-logo,
 body.white-scheme img.client-logo {
   -webkit-filter: invert(100%);
   filter: invert(100%);
 }
 
-/* line 279, assets/sass/style.scss */
+/* line 281, assets/sass/style.scss */
 body.main-reached.hide-intro-logo #intro-area {
   display: none !important;
   height: 0px;

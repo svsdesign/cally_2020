@@ -45,6 +45,13 @@ $video_caption = get_field('video_caption') ?: 'Your Caption here...';
                 <div class="video-wrap">
 
                     <?php echo $video; ?>
+
+                    
+                    <div class="gradient-loader-wrapper">
+                        
+                        <div class="gradient-loader"></div>
+
+                    </div><!-- .gradient-loader-wrapper -->
                 
                 </div><!-- .video-wrap -->
 

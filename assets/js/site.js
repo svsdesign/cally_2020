@@ -57,9 +57,9 @@ var app = (function() {
           mQuerySMPLUS = 'screen and (min-width:' + screenSM + 'px)';
 
 
-
      
       // START DEV Functions
+
 
       function devgrid() {
 
@@ -79,7 +79,7 @@ var app = (function() {
 
 //console.log("documentGridHeight " +documentGridHeight+"");
                  // temp turned of - used when we nee dto sort linehiegh
-  $baselines.css("height",documentGridHeight);// set height of the baseline area as documentGridHeight
+                $baselines.css("height",documentGridHeight);// set height of the baseline area as documentGridHeight
 
                   $('.dev-base-lines .base-line').remove(); // remove existing item(s)?
 
@@ -154,63 +154,28 @@ var app = (function() {
  
         } // function indexsiteload();
 
-      /*
-      function indexsiteload(){
-        console.log("indexsiteload()");
-
-        $('.fade-item').css( 'opacity', 0 ); // intial run
-         fade(); // intial run
-         topanimation();// start top animation (large)
-         topanimationSmall();// start top animation (small)
-         index_nav_sections(); // initial trigger
-        $('body').removeClass('site-loading'); //ensure people can now scroll
-
-      } // function indexsiteload();
-
-
-      function pagesiteload(){
-                console.log("pagesiteload()");
-
-        $('.fade-item').css( 'opacity', 0 ); // intial run
-         fade(); // intial run
-         topanimation();// start top animation (large)
-         topanimationSmall();// start top animation (small)
-         index_nav_sections();
-          nav_sections(); // re-adjust nav marker positions
-
-        $('body').removeClass('site-loading'); //ensure people can now scroll
-
-      } // function pagesiteload();
-      */
 
     function orientation(){
     
-    //console.log("hell-orientation")
-        var winwidth = $(window).width();
-        var winheight = $(window).height();
-         var isHorizontal;
+      //console.log("hell-orientation")
+      var winwidth = $(window).width();
+      var winheight = $(window).height();
+      var isHorizontal;
 
+      if (winwidth > winheight ) {
+        /* horizontal orientation */
+        $("body").addClass('horizontal');
+        $("body").removeClass('vertical');
 
+       } else{
+        /* vertical orientation */
+        $("body").removeClass('horizontal');
+        $("body").addClass('vertical');
 
-        if (winwidth > winheight ) {
-            /* horizontal orientation */
-            $("body").addClass('horizontal');
-
-            $("body").removeClass('vertical');
-        //    var isHorizontal = true;
-        } else{
-              /* vertical orientation */
-
-            $("body").removeClass('horizontal');
-            $("body").addClass('vertical');
-         //    var isHorizontal = false;
-
-
-        }//else
+      }//else
 
     } // function orientation
     orientation();
-
 
       function toparea(){
  
@@ -296,27 +261,6 @@ var app = (function() {
 
         }, 2); // temp change from 2000
 
-/*
- anim = lottie.loadAnimation({ 
-      container: document.getElementById('animation-large'), 
-      renderer: 'svg', 
-      loop: 1, 
-      autoplay: true, 
-       animationData: animationData,
-      onComplete: function(){ // code here
-         console.log('on complete?'); 
-
-
-      }
- });
-
-      
-       preLoad.addEventListener('config_ready', function() {
-         console.log('config_ready?'); 
-
-
-        });
-*/
 
         anim.addEventListener('complete', function(){
             //    console.log('complete?'); 
@@ -354,56 +298,6 @@ var app = (function() {
 
       };// topanimation()
 
-
-
-
-
-      
-/* - delete this
-
-      function nav_clicks() {
-        // not used - so remove function
-
-          $topMenu = $(".nav-items"),
-          menuItems = $topMenu.find("a");
-
-         
-          // Bind click handler to menu items (if on home page)
-          // so we can get a fancy scroll animation
-          // scroll to  (top -  10vh) -  but then the items need to activate 10vh from top aswel
-
-           menuItems.click(function(e){
-
-                 if ($('body.home').length > 0) { // if home page - else do other navclicks
-                   
-                    var href = $(this).attr("href"),
-                        offsetTop = href === "#" ? 0 : $(href).offset().top+1; 
-
-                        $('html, body').stop().animate({ 
-                            scrollTop: offsetTop
-                        }, 400, function() {
-                          
-                        // Animation completes - wait and close                             
-                        setTimeout(function() {
-                           $('body').removeClass('nav-on'); // close mobile nav
-                        }, 200);
-
-                       });
-
-
-                  } else { // if body - target the rest of the site
-
-                         var upcominghref = $(this).data('nav-item');
-                        $('body').attr('data-move-to',upcominghref); 
-
-                  }; //  else if  body.home     
-
-            e.preventDefault();
-
-         });           
-
-      }// function nav_clicks()
-*/
 
      function fade() {
 
@@ -449,57 +343,9 @@ var app = (function() {
 
       } // function fade()
      
-     /*
-      function nav_sections() {
-              
-           var $topMenu = $(".nav-items"),
-              browserHeight = $(window).height(),  // returns height of browser viewport
-              documentHeight = $(document).height(),// returns height of document viewport
-              $navWrapper = $('.nav-wrapper');
+  
+  /* not needed, don't think
 
-              // Bind to scroll
-              $(window).scroll(function(){
-                 // Get container scroll position
-
-                if ($('body.privacy-policy').length > 0){ // privacy policy
-
-                         // Get container scroll position
-                         var fromTop = $(this).scrollTop(),//+topMenuHeight,
-                             scrollHeight = documentHeight - browserHeight,
-                             windowPos = $(window).scrollTop(),
-                               // Get id of current scroll item
-                            cur = $('.content-item').map(function(){
-                           if ($(this).offset().top < fromTop)
-                             return this;
-                         });
-                         // Get the id of the current element
-                         cur = cur[cur.length-1];
-                         var id = cur && cur.length ? cur[0].id : "";
-
-                            if (id == '') { // if the top section active
-                              //console.log(" windowPos" + (windowPos / browserHeight) + "");
-                              var opacity = (windowPos / browserHeight);
-                              $navWrapper.css("opacity",opacity);   
-                              $navWrapper.addClass("no-logo");
-
-                              if (opacity >= 1){
-                          
-                              $navWrapper.css("opacity","1");   
-                              $navWrapper.removeClass("no-logo");
-                  
-                              };
-
-                            }
-
-                        fade(); // run fade funcion on scroll
-                    
-                    };// endif
-                
-              });// scroll function
-
-      }//nav_sections()
-  //
-*/
       function index_nav_sections() {
 
                 if ($('body.home .nav-wrapper').length > 0) 
@@ -671,27 +517,27 @@ var app = (function() {
               
                 });// each
       
-                /*
-              _body
-              */
+           // body
 
               } // if navwrapper
 
        } //  function index_nav_sections()
+  //  END not needed, don't think
+   */
 
        //BLCOKS JS - for ajax purposes
     function slideshow($block){
 
       //https://flickity.metafizzy.co/options.html
-   //  console.log("slideshow function");
-   console.log("function slideshow($block)" + $block + " = slideshow-block");
+
+  //   console.log("function slideshow($block)" + $block + " = slideshow-block");
 
         //     wp_enqueue_script('flickity-pgkd', 'https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array( 'jquery' ), '', true ); // 
 //             $.getScript( ""+themeurl+'/assets/js/site.js', function( data, textStatus, jqxhr ) {
              $.getScript( "https://npmcdn.com/flickity@2/dist/flickity.pkgd.js", function( data, textStatus, jqxhr ) {
 
 
-   console.log(" hello function slideshow($block)")
+        //console.log(" hello function slideshow($block)")
       var $thisgallery = $block.find(".slideshow-carousel");  
 
        // $thisgallery.css("background","green");
@@ -721,8 +567,6 @@ var app = (function() {
     } // function gallery($block)
 
  
-
-
 
 // map function
     function map($block){
@@ -800,6 +644,20 @@ var app = (function() {
 
 
 
+     function clickcookierevoke() {
+      // trigger a click on the default revoke button
+      //no-ajaxy cn-revoke-cookie cn-button cn-revoke-inline button
+      //console.log( 'clickcookierevoke fucntion' );
+
+        $('a.th-cookie-revoke').click(function() {
+         //console.log('a.th-cookie-revoke');
+          //$('.cn-revoke-cookie').trigger('click'); // this doesn't work :(
+           // https://stackoverflow.com/questions/17105015/a-triggerclick-not-working/17105042
+
+            $('.cn-revoke-cookie')[0].click(); // this does
+         });
+
+      }//clickcookierevoke
 
       // END GLOBAL FUNCTIONS
 
@@ -814,7 +672,19 @@ var app = (function() {
                 {
                   // should target every page
                     siteload(); // run straight away 
+   
+                     if ($('.cn-revoke-inline').length > 0) 
+                     {
+                      
+                    console.log(  'if  .cn-revoke-inline ' );
+                    // allow cookie revoke clicking:
+                    clickcookierevoke();// shoul dthis be in body.privacy page instead?
 
+                     }; //   if ($('.cn-revoke-inline').length > 0) 
+
+
+
+                    // end allow cookie revoke clicking 
                     // if blocks exist: Slideshow
                     if ($('.slideshow-block').length > 0) 
                     {

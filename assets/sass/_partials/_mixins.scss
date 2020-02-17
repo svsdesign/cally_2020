@@ -83,7 +83,7 @@ SVS to do - add aditonal font sizes / syltes - ie smaller one
 
 // small
 @mixin type-small{
-  font-family: $light-font-family; 
+font-family: $light-font-family; 
 
 @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*0.75, map-get($fontsize, lg)*0.75); // fixed sizing 
 @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*0.75, map-get($fontsize, xxl)*0.75); // fixed sizing 
@@ -219,6 +219,18 @@ $schemes: $scheme1 $scheme2;
  
  
 //CONTENT
+
+
+
+    //loader keyframes
+
+
+    @keyframes loadergradient { 
+    0%   { background-position: 0 0; }
+    100% { background-position: -200% 0; }
+    } 
+
+  //endloader keyframes
 
 
   // Slide out Right from Center
@@ -365,3 +377,74 @@ $schemes: $scheme1 $scheme2;
       opacity: 0;
     }
   }
+
+@keyframes fadeincookieconsent {
+   0% {
+   
+         opacity: 0;
+
+   }
+   100%{
+         opacity: 1;
+
+   }
+
+}//@keyframes fadecookieconsentin 
+ 
+// to do  this copied from inp + used for cookie consent - review
+// strart grayscale animations
+
+@keyframes tograyscale {
+   0% {
+   
+   -webkit-filter: grayscale(0%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+          filter: grayscale(0%); /* FF 35+ */
+   }
+   100%{
+   -webkit-filter: grayscale(100%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+         filter: grayscale(100%); /* FF 35+ */
+   }
+
+}
+
+@keyframes tocolour {
+   0% {
+   
+   -webkit-filter: grayscale(100%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+          filter: grayscale(100%); /* FF 35+ */
+   }
+   100%{
+   -webkit-filter: grayscale(0%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+         filter: grayscale(0%); /* FF 35+ */
+   }
+
+}
+
+
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+@mixin grayscale-in{
+ animation: tograyscale 2s ease-in-out forwards;
+}
+
+@mixin grayscale-out{
+ animation: tocolour 1s ease-in-out forwards;
+}
+
+
+// END to do  this copied from inp + used for cookie consent - review
+
+

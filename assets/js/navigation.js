@@ -8,7 +8,7 @@ Author URI: http://svs.design
 navigation.js - handles the serving up of scripts for the entire website
 */
 
-
+console.log("navigation.js")
 
 jQuery(document).ready(function($) {
 
@@ -42,7 +42,11 @@ var navapp = (function() {
      
     /* headroom */
 
+     
+
+
     function initheadroom(){
+      console.log("inithreadroom - shoul be once, intuyll we destroy it")
 
         if ($("#header-nav-area").length){
       
@@ -69,18 +73,6 @@ var navapp = (function() {
             });
 
 
-              // but only do this if the nav is off
-            $('#header-nav-area').hover(function(){
-                 
-               //console.log("sc-player hover")
-               // ensure headroom pinned
-                   if ($('body').hasClass('nav-on')){
-                    // if the nav is already on, lets not change the classes further
-                   } else{
-                    forceheadroompin(); // fore headroom other wise
-                    };
-
-            }); // hover 
 
 
              /*
@@ -144,6 +136,7 @@ var headroom = new Headroom(element, options);
         console.log("#header-nav-area doesn't exist");
         }
 
+        return;
     } // function initheadroom()
 
 
@@ -165,89 +158,79 @@ var headroom = new Headroom(element, options);
 
 
 
-$(window).scroll(function() {
+      $(window).scroll(function() {
 
-    var 
-      //mainoffset = $('#main').offset().top,
-      //  mainHeight = $('#main').outerHeight(),
-      //  windowHeight = $(window).height(),
-        windowScrolltop = $(this).scrollTop();
+          var 
+            //mainoffset = $('#main').offset().top,
+            //  mainHeight = $('#main').outerHeight(),
+            //  windowHeight = $(window).height(),
+              windowScrolltop = $(this).scrollTop();
 
-        $intro = $('#intro-area'),
-        introheight = $intro.height(),
-        reached = windowScrolltop - introheight;
-        //  console.log((mainoffset-windowHeight) , windowScrolltop);
-        // console.log("this?" + (mainoffset-windowHeight) , windowScrolltop +"");
+              $intro = $('#intro-area'),
+              introheight = $intro.height(),
+              reached = windowScrolltop - introheight;
+              //  console.log((mainoffset-windowHeight) , windowScrolltop);
+              // console.log("this?" + (mainoffset-windowHeight) , windowScrolltop +"");
 
-//        console.log("windowScrolltop" + windowScrolltop +"");
-     //  console.log("reached" + (windowScrolltop - introheight) +"");
+      //        console.log("windowScrolltop" + windowScrolltop +"");
+           //  console.log("reached" + (windowScrolltop - introheight) +"");
 
-// Tjhis is buggy as fuck - on Safari - review
-
-
-    if (reached > 0){
-
-     console.log("if reached" + reached +">0");
-      
-      if($('body').hasClass('main-reached')){
-     
-          if  ($('body').hasClass('nav-on')){
-            // if nav on, don't do anything
-            console.log("nav on atm?")
-
-          } else{
-            unfreezeheadroom();
-
-          }// nav on
-
-      } else {
-
-      // unfreeze it, but won't happen more than once
-
-      $('body').addClass('main-reached');
-
-      }
-
-   // } 
-   /*else if(reached == 0){
-      
-      $('body').addClass('main-reached');
-   // we want to force the pin, but only once, when we hit 0?
-     //  console.log("reeach + forcing headpin" + reached +"");
- 
-      forceheadroompin();// don't run continuasly - only when we're at zero
-
-  
-
-    */
-      } else if (reached < 0){
-      // meaning we havnen't reached anything yet
-      console.log("else if " + reached +"< 0");
-
-    // $('body').removeClass('main-reached');
-
-     // if ($("#header-nav-area").is('.unpinned, .pinned')){ // ensure to only destroy if we have the item
-      //if ($("#header-nav-area").hasClass(", pinned")){ 
-       //  console.log("freeze headroom");
-
-          if  ($('body').hasClass('nav-on')){
-            // if nav on, don't do anything
-            console.log("nav on atm?")
-
-          } else{
-             freezeheadroom();// if we destroy it; does that mean we need to re-start it
-
-          }// nav on
-
-       //}
+      // Tjhis is buggy as fuck - on Safari - review
 
 
-    }
-    // $('#main').fadeIn(3500);
+            if (reached >= 0){
+
+            // console.log("if reached" + reached +">0");
+              
+                  if($('body').hasClass('main-reached')){
+                 
+                        if  ($('body').hasClass('nav-on')){
+                          // if nav on, don't do anything
+                         // console.log("nav on atm?")
+
+                        } else{
+                          unfreezeheadroom();
+                          return;
+
+                        }// nav on
+
+                  } else {
+
+                  // unfreeze it, but won't happen more than once
+
+                  $('body').addClass('main-reached');
+                  return;
+
+                  }
+
+              } else if (reached < 0){
+              // meaning we havnen't reached anything yet
+              //console.log("else if " + reached +"< 0");
+
+            // $('body').removeClass('main-reached');
+
+             // if ($("#header-nav-area").is('.unpinned, .pinned')){ // ensure to only destroy if we have the item
+              //if ($("#header-nav-area").hasClass(", pinned")){ 
+               //  console.log("freeze headroom");
+
+                  if  ($('body').hasClass('nav-on')){
+                    // if nav on, don't do anything
+                   // console.log("nav on atm?")
+
+                  } else{
+                     freezeheadroom();// if we destroy it; does that mean we need to re-start it
+                     return;
+                  }// nav on
+
+               //}
 
 
+            } //} else if (reached < 0){
 
-});
+
+        return;
+
+        });
 
 // the problem is that the when we are at the top = 0 so I need to add / rmnove the height of the intro area
 
@@ -321,15 +304,17 @@ $(window).scroll(function() {
      // console.log("destroyheadroom")
 
       $("#header-nav-area").headroom("destroy");
+       return;
 
     }// destroyheadroom()
  
   
     function freezeheadroom(){
       // to freeze
-       console.log("freezeheadroom")
+       console.log("freezeheadroom");
 
       $("#header-nav-area").headroom("freeze");
+       return;
 
     }// freezeheadroom();
 
@@ -340,6 +325,7 @@ $(window).scroll(function() {
      // console.log("freezeheadroom");
 
       $("#header-nav-area").headroom("unfreeze");
+       return;
 
     }// unfreezeheadroom();
 
@@ -357,6 +343,7 @@ $(window).scroll(function() {
           //console.log("unpinned - now pinned");
 
        }
+       return;
 
     }//forceheadroom
 
@@ -372,6 +359,7 @@ $(window).scroll(function() {
           //console.log("unpinned - now pinned");
 
        }
+       return;
 
     }//forceheadroom
   /* end headroom */
@@ -393,17 +381,19 @@ $(window).scroll(function() {
                 destroyheadroom();
 
                 $('body').addClass('nav-on');
-                console.log("not either")
+                console.log("not either");
+                return;
 
             } else if ($('body').hasClass('nav-on')) {
 
                 // turn nav off:
                 console.log("turn nav off")
-                initheadroom()
+                initheadroom();
 
 
                 $('body').addClass('nav-off');
                 $('body').removeClass('nav-on');
+                return;
 
             } else { // if body hasClass nav-off - + others?
 
@@ -419,6 +409,7 @@ $(window).scroll(function() {
 
                 //if click statment to add here; if they click a menu item that tkes them away from current page
               
+                //nav now on, but this function will run muiltiple times: apparently; so move it out of here?
 
                  var $mainmenuitmes = $('li.menu-item a');
 
@@ -432,14 +423,16 @@ $(window).scroll(function() {
                           //re init headroom
 
                           initheadroom()
-
+                          return;
 
                        }); // click
-                      
+               return;
+    
          
        
 
             }// ifnav on
+         return;
 
         }//navtogglingfunction()
 
@@ -457,6 +450,31 @@ $(window).scroll(function() {
                 if ($('#toggle-item').length > 0) 
                 {
 
+
+                   if ($("#header-nav-area").length > 0) 
+                   {
+                              // but only do this if the nav is off 
+                          // hover  triggers on + of
+                          // mopusenter ontry trigglers it once
+                        $('#header-nav-area').mouseenter(function(){
+                             
+                           //console.log("sc-player hover")
+                           // ensure headroom pinned
+                               if ($('body').hasClass('nav-on')){
+                                // if the nav is already on, lets not change the classes further
+                               } else{
+                                console.log("nav not on mouseenter")
+                                forceheadroompin(); // fore headroom other wise
+                                return;
+
+                                };
+
+                              return;
+                        }); // hover 
+
+                   };// if ($("#header-nav-area").length > 0) 
+
+
                   var $this = $('#toggle-item');
 
                       $this.click(function(){
@@ -464,13 +482,14 @@ $(window).scroll(function() {
 
                             
                            navtogglingfunction();
-
+                           return;
 
                      }); // click
                     
 
                     initheadroom();// also start headroom
                     detectopofmainfixer();// run detetcing top of main fixer
+                    return;
                 /*
                 #toggle-itme
                 */
