@@ -199,7 +199,8 @@ var headroom = new Headroom(element, options);
                   // unfreeze it, but won't happen more than once
 
                   $('body').addClass('main-reached');
-                  $('body').scrollTop( 0 );// aim is to ensure its at the top again
+                  $('body').scrollTop(0);// aim is to ensure its at the top again
+                  console.log("should be at top of page");
                   return;
 
                   }
