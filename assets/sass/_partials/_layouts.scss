@@ -26,16 +26,19 @@ overflow: hidden;
 
 .clear-col-item{
 //https://stackoverflow.com/questions/23800485/force-div-to-next-column
-break-after:column;
+//break-after: column;
 display:block;
-
 
 	&.clear-column-after{
 	break-after:column;
+  -moz-column-break-after:column;
+
 	}
 
 	&.clear-column-before{
 	break-before:column;
+    -moz-column-break-before:column;
+
 	}
 
 }

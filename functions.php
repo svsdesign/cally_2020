@@ -388,7 +388,7 @@ function my_acf_init() {
             //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
             },
             'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
-            'keywords'          => array('thliner'), // review this- its not liner sould be line?
+            'keywords'          => array('thline'), // review this- its not liner sould be line?
         ));
 
  	    acf_register_block(array(
