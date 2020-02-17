@@ -77,7 +77,7 @@ var app = (function() {
                   vwlineheight = '1vw',//vw
                   baselinecount =  documentGridHeight / pxlineheight;
 
-//console.log("documentGridHeight " +documentGridHeight+"");
+                  //console.log("documentGridHeight " +documentGridHeight+"");
                  // temp turned of - used when we nee dto sort linehiegh
                 $baselines.css("height",documentGridHeight);// set height of the baseline area as documentGridHeight
 

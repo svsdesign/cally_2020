@@ -369,7 +369,7 @@ $schemes: $scheme1 $scheme2;
   }
 
   // between page loading
-  @include keyframe(ajax-site-loading) {
+  @include keyframe(ajax-site-loading-on) {
     0% {
       opacity: 1;
     }
@@ -377,16 +377,35 @@ $schemes: $scheme1 $scheme2;
       opacity: 0;
     }
   }
+    @include keyframe(ajax-site-loading-off) {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+// END between page loading
 
 @keyframes fadeincookieconsent {
    0% {
-   
          opacity: 0;
 
    }
    100%{
          opacity: 1;
+  //       background: red;
+   }
 
+}//@keyframes fadecookieconsentin 
+@keyframes fadeoutcookieconsent {
+   0% {
+         opacity: 1;
+
+   }
+   100%{
+         opacity: 0;
+  //       background: red;
    }
 
 }//@keyframes fadecookieconsentin 

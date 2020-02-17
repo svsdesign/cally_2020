@@ -201,6 +201,7 @@
       // Set Loading
     //  $(".home-icon").addClass('loading');
  
+           $('#loader').addClass('on');
 
   
   
@@ -378,7 +379,7 @@
           $content.stop(true,true);
           $('html, body').animate({scrollTop: '0px'}, 0); // scroll to top of page
           /// review this - not sure what js is seeting the opacity atm?
-            $content.html(contentHtml).ajaxify().css('opacity',0.5).show(); /* you could fade in here if you'd like */
+            $content.html(contentHtml).ajaxify().css('opacity',100).show(); /* you could fade in here if you'd like */
         
         //  $content.html(contentHtml).ajaxify().css('opacity',100).show(); /* you could fade in here if you'd like */
          // $content.html(contentHtml).ajaxify();//.show(); /* you could fade in here if you'd like */
@@ -393,7 +394,7 @@
           
           // Add the scripts
           $scripts.each(function(){
-            console.log("script each");
+          //  console.log("script each");
             var $script = $(this), scriptText = $script.text(), scriptNode = document.createElement('script');
             if ( $script.attr('src') ) {
               if ( !$script[0].async ) { scriptNode.async = false; }
@@ -419,7 +420,7 @@
           
             if(window.location.hash) {
               
-              console.log("window.location.hash");
+             // console.log("window.location.hash");
             //  var hash = $(location).attr('hash');
              // $('html,body').animate({scrollTop: $(hash).offset().top},'slow');
               
@@ -428,11 +429,9 @@
               // Fragment exists
             } else {
               // Fragment doesn't exist
-                            console.log("ELSE: window.location.hash");
+              // console.log("ELSE: window.location.hash");
 
-
-
-         //  $('html,body').animate({ scrollTop: 0 }, 'fast'); 
+             //  $('html,body').animate({ scrollTop: 0 }, 'fast'); 
 
               //  console.log('no hashs')
 
@@ -443,7 +442,7 @@
 
 
 
-      //  $('#loader').removeClass('on');
+           $('#loader').removeClass('on');
       //  $('.logo-mask').addClass('off');
   
           // Add further scripts

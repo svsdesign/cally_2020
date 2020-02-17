@@ -12,21 +12,20 @@ Author URI: http://svs.design
 
 
   #intro-area{
+    z-index:10;// one above nav
 
   }
 
 }//.animation-done
 
 .animation-hide{ 
-  // this possibly abit gltichy? because class not assigned on time - ie not during the ajax loading - but maybe we want to keep the image during load?
-  // maybe remove with js - or look at others ways to hide; i.e regardless of body class? come back to this
-  // also probably review with mark?
 
   #intro-area{
     display: none!important;// never show the intro area
     min-height: 0vh!important;
     height: 0px!important;
     opacity: 0; // this could maybe have transition?
+    z-index:8;// one below nav
   }
 
 
@@ -35,26 +34,42 @@ Author URI: http://svs.design
 
 // between ajax site loading:
 
-body.site-loading{
-//background-color: red;
+@each $scheme in $schemes { // start colour scheme
+ 
+  body.#{nth($scheme, 1)} {
+   
+      #loader{
+      //background: transparent;
+      pointer-events:none;
+      position: fixed;
+      top:0px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      z-index: 0;
+      background: nth($scheme, 2);
+    //  opacity: 0;
+      @include animation(0s, 4s, ajax-site-loading-off, normal, forwards);
 
-  #main{
-  //opacity: 0;
-  /*n svs to do:
-- This needs some work; incoorporating all the different site wide/sturuct animations that I'm using
-- nav + main  sliding
-- opacity in + out
-- etc
-*/
+        &.on{
+        z-index:7;// two lower than nav
+        @include animation(0s, 2s, ajax-site-loading-on, normal, forwards);
+       // background: nth($scheme, 2);
+        }
 
+      }//#loader
 
-// @mixin animation ($delay, $duration, $animation, $direction: forward, $fillmode: forwards) 
-//  @include animation (0, 1s, opacity, alternate, forwards); //Error: Mixin animation is missing argument $fillmode.
-   //   @include animation(0, 0.5s, toggle-animation-slide-in-left, ease);
+      &.site-loading{
+      z-index: -1;
 
+        #loader{
+        z-index:7;// two lower than nav
+        //background: nth($scheme, 2);
 
- //THIS the one - but overridesd the sliding thing on mobile: @include animation (0s , 1s, ajax-site-loading, alternate, forwards)
+        }// &.site-loading
 
-  }
+      }//&.site-loading
 
-}//body.loading{
+    }//body
+
+}//@each $scheme in $schemes { // start colour scheme

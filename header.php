@@ -143,6 +143,9 @@ endif; ?>
 
 <?php include( 'navigation.php' );?>
 
+<div id="loader">
+</div> <!-- loader -->
+
 <div id="main" class="wrapper main-fixer"> <!-- ajax wrapper start -->
 
 

@@ -31,24 +31,32 @@ TO DO - this stylesheet is a mess + review inline with the inp css tht arent not
     
    &.main-reached{
    
-      #cookie-notice{
+      #cookie-notice,
+      #cookie-notice.cookie-revoke-hidden.cookie-notice-visible
+      {
       @include animation(0s, 1s, fadeincookieconsent, normal, forwards);
       pointer-events:initial;
+      }
+
+      #cookie-notice.cookie-revoke-hidden{
+      @include animation(0s, 1s, fadeoutcookieconsent, normal, forwards);
+      pointer-events:none;
+
       }
 
    }//&.main-reached{
   
 
     #cookie-notice.cn-animated {
-        -webkit-animation-duration: .5s;
-        animation-duration: .5s;
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both
+     //   -webkit-animation-duration: .5s;
+      //  animation-duration: .5s;
+      //  -webkit-animation-fill-mode: both;
+      //  animation-fill-mode: both
     }
 
     #cookie-notice.cn-animated.cn-effect-none {
-        -webkit-animation-duration: 0s;
-        animation-duration: 0s
+       // -webkit-animation-duration: 0s;
+       // animation-duration: 0s
     }
 
     #cookie-notice .cookie-notice-container {
@@ -297,46 +305,46 @@ TO DO - this stylesheet is a mess + review inline with the inp css tht arent not
 
     #cookie-notice.cookie-notice-visible.cn-effect-none,
     #cookie-notice.cookie-revoke-visible.cn-effect-none {
-     -webkit-animation-name: fadeIn;
-      animation-name: fadeIn
+   //  -webkit-animation-name: fadeIn;
+   //   animation-name: fadeIn
     }
 
     #cookie-notice.cn-effect-none {
-      -webkit-animation-name: fadeOut;
-      animation-name: fadeOut
+    //  -webkit-animation-name: fadeOut;
+   //   animation-name: fadeOut
     }
 
     #cookie-notice.cookie-notice-visible.cn-effect-fade,
     #cookie-notice.cookie-revoke-visible.cn-effect-fade {
-     -webkit-animation-name: fadeIn;
-     animation-name: fadeIn
+     //-webkit-animation-name: fadeIn;
+     //animation-name: fadeIn
     }
 
     #cookie-notice.cn-effect-fade {
-     -webkit-animation-name: fadeOut;
-      animation-name: fadeOut
+   //  -webkit-animation-name: fadeOut;
+   //   animation-name: fadeOut
     }
 
     #cookie-notice.cookie-notice-visible.cn-effect-slide,
     #cookie-notice.cookie-revoke-visible.cn-effect-slide {
-     -webkit-animation-name: slideInUp;
-      animation-name: slideInUp
+     //-webkit-animation-name: slideInUp;
+     // animation-name: slideInUp
     }
 
     #cookie-notice.cn-effect-slide {
-     -webkit-animation-name: slideOutDown;
-        animation-name: slideOutDown
+   //  -webkit-animation-name: slideOutDown;
+   //    animation-name: slideOutDown
     }
 
     #cookie-notice.cookie-notice-visible.cn-position-top.cn-effect-slide,
     #cookie-notice.cookie-revoke-visible.cn-position-top.cn-effect-slide {
-      -webkit-animation-name: slideInDown;
-      animation-name: slideInDown
+    //  -webkit-animation-name: slideInDown;
+     // animation-name: slideInDown
     }
 
     #cookie-notice.cn-position-top.cn-effect-slide {
-    -webkit-animation-name: slideOutUp;
-      animation-name: slideOutUp
+   // -webkit-animation-name: slideOutUp;
+   //   animation-name: slideOutUp
     }
 
   /* 
@@ -351,7 +359,7 @@ TO DO - this stylesheet is a mess + review inline with the inp css tht arent not
        //     margin-right: 5px
         }
     }*/
-
+/*
     @-webkit-keyframes fadeIn {
         from {
             opacity: 0
@@ -484,7 +492,7 @@ TO DO - this stylesheet is a mess + review inline with the inp css tht arent not
         }
     }
 
-
+*/
 
 
 

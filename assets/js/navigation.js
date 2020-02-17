@@ -172,11 +172,10 @@ var headroom = new Headroom(element, options);
               //  console.log((mainoffset-windowHeight) , windowScrolltop);
               // console.log("this?" + (mainoffset-windowHeight) , windowScrolltop +"");
 
-      //        console.log("windowScrolltop" + windowScrolltop +"");
+           //  console.log("windowScrolltop" + windowScrolltop +"");
            //  console.log("reached" + (windowScrolltop - introheight) +"");
 
-      // Tjhis is buggy as fuck - on Safari - review
-
+ 
 
             if (reached >= 0){
 
@@ -199,8 +198,14 @@ var headroom = new Headroom(element, options);
                   // unfreeze it, but won't happen more than once
 
                   $('body').addClass('main-reached');
-                  $('body').scrollTop(0);// aim is to ensure its at the top again
-                  console.log("should be at top of page");
+                  //console.log("should be at top of page");
+                  // annoying bug in safari - so apply  10ms second time out?
+                  // maybe if I tie in the opacity of the itme with the scroll function - I won't have to add timeout function?
+
+                  setTimeout(function(){ 
+                   $('body, html').scrollTop(0);// aim is to ensure its at the top again
+                  }, 10);
+
                   return;
 
                   }
@@ -313,7 +318,7 @@ var headroom = new Headroom(element, options);
   
     function freezeheadroom(){
       // to freeze
-       console.log("freezeheadroom");
+       //console.log("freezeheadroom");
 
       $("#header-nav-area").headroom("freeze");
        return;
@@ -334,7 +339,7 @@ var headroom = new Headroom(element, options);
 
    function forceheadroompin(){
 
-      console.log('forceheadroompin();');
+     // console.log('forceheadroompin();');
 
 
        if ($("#header-nav-area").hasClass("unpinned")){

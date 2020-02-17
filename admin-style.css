@@ -300,7 +300,7 @@ font-family: $medium-font-family;
     opacity: 0.5;
   }
 }
-@-webkit-keyframes ajax-site-loading {
+@-webkit-keyframes ajax-site-loading-on {
   0% {
     opacity: 1;
   }
@@ -308,7 +308,7 @@ font-family: $medium-font-family;
     opacity: 0;
   }
 }
-@-moz-keyframes ajax-site-loading {
+@-moz-keyframes ajax-site-loading-on {
   0% {
     opacity: 1;
   }
@@ -316,7 +316,7 @@ font-family: $medium-font-family;
     opacity: 0;
   }
 }
-@-o-keyframes ajax-site-loading {
+@-o-keyframes ajax-site-loading-on {
   0% {
     opacity: 1;
   }
@@ -324,12 +324,44 @@ font-family: $medium-font-family;
     opacity: 0;
   }
 }
-@keyframes ajax-site-loading {
+@keyframes ajax-site-loading-on {
   0% {
     opacity: 1;
   }
   100% {
     opacity: 0;
+  }
+}
+@-webkit-keyframes ajax-site-loading-off {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes ajax-site-loading-off {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes ajax-site-loading-off {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes ajax-site-loading-off {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 @keyframes fadeincookieconsent {
@@ -338,6 +370,14 @@ font-family: $medium-font-family;
   }
   100% {
     opacity: 1;
+  }
+}
+@keyframes fadeoutcookieconsent {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 @keyframes tograyscale {
