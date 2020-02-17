@@ -263,6 +263,8 @@ width: 100%;// this dirty?
 
 	.image-caption{
 	width: 100%;
+	@include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*1, map-get($gutter, lg)*1); // fixed sizing
+  	@include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
 
 		@media (min-width: map-get($breakpoints,md)) {
 		width: 50%;

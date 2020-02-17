@@ -10388,6 +10388,32 @@ Author URI: http://svs.design
 /* line 264, assets/sass/_partials/_block-slideshow.scss */
 .slideshow-block .image-caption {
   width: 100%;
+  padding-top: 8px;
+  padding-top: 8px;
+}
+@media screen and (min-width: 0px) {
+  /* line 264, assets/sass/_partials/_block-slideshow.scss */
+  .slideshow-block .image-caption {
+    padding-top: calc(8px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 264, assets/sass/_partials/_block-slideshow.scss */
+  .slideshow-block .image-caption {
+    padding-top: 8px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 264, assets/sass/_partials/_block-slideshow.scss */
+  .slideshow-block .image-caption {
+    padding-top: calc(8px + 24 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 264, assets/sass/_partials/_block-slideshow.scss */
+  .slideshow-block .image-caption {
+    padding-top: 32px;
+  }
 }
 @media (min-width: 480px) {
   /* line 264, assets/sass/_partials/_block-slideshow.scss */
@@ -10396,27 +10422,27 @@ Author URI: http://svs.design
   }
 }
 
-/* line 278, assets/sass/_partials/_block-slideshow.scss */
+/* line 280, assets/sass/_partials/_block-slideshow.scss */
 body.horizontal .slideshow-block {
   height: inherit;
 }
-/* line 281, assets/sass/_partials/_block-slideshow.scss */
+/* line 283, assets/sass/_partials/_block-slideshow.scss */
 body.horizontal .slideshow-block .slideshow-carousel {
   height: 80vh;
   max-height: 60vh;
 }
 @media (min-width: 800px) {
-  /* line 281, assets/sass/_partials/_block-slideshow.scss */
+  /* line 283, assets/sass/_partials/_block-slideshow.scss */
   body.horizontal .slideshow-block .slideshow-carousel {
     max-height: 75vh;
   }
 }
 
-/* line 298, assets/sass/_partials/_block-slideshow.scss */
+/* line 300, assets/sass/_partials/_block-slideshow.scss */
 body.vertical .slideshow-block {
   height: inherit;
 }
-/* line 301, assets/sass/_partials/_block-slideshow.scss */
+/* line 303, assets/sass/_partials/_block-slideshow.scss */
 body.vertical .slideshow-block .slideshow-carousel {
   height: 60vw;
 }
