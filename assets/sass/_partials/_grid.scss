@@ -11,19 +11,31 @@ Author URI: http://svs.design
 @each $key, $value in $breakpoints {
   @for $i from 1 through $items {
     .grid-#{$key}-#{$i} {
-     // flex: 0 0 100%; // removed this rule - not sure why it existed?
-      @include break($key) {
+       @include break($key) {
         flex: 0 0 #{$i / $items * 100%};
         width: #{$i / $items * 100%};
 
       }
     }//.grid-
  	.push-left-#{$key}-#{$i} {
-     // flex: 0 0 100%; // removed this rule - not sure why it existed?
-      @include break($key) {
+       @include break($key) {
          margin-left: #{$i / $items * 100%};
       }
     }//.grid-
+
+ 	.hide-#{$key} {
+       @include break($key) {
+         display: none;
+      }
+
+    }//.hide-
+
+    .show-#{$key} {
+       @include break($key) {
+         display: block;
+      }
+
+    }//.show-
 
   }//for
 } //each
@@ -53,8 +65,8 @@ margin-left: auto;
 @include fluid-type(padding-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
 @include fluid-type(padding-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
 
-  @include fluid-type(padding-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
-  @include fluid-type(padding-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+@include fluid-type(padding-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+@include fluid-type(padding-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
 
 	@media (min-width: map-get($breakpoints, sm)) {
 	width: 80vw;  

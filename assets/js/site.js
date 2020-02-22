@@ -330,7 +330,6 @@ var app = (function() {
         var animation_height = $(window).innerHeight() * 0.25; // was 0.25
         var ratio = Math.round( (1 / animation_height) * 10000 ) / 10000; //ratio
 
-           // $('.fade-item').each(function() {
            $('.th-block').each(function() { // might need to review this
    
             // console.log(".th-block each");// each
@@ -365,7 +364,19 @@ var app = (function() {
                    // $(this).html( 'not visible' );
                     $(this).css( 'opacity', 0.1 );
                 }
-            });
+            });//  $('.th-block').each(function()
+
+
+            if($(window).scrollTop() + $(window).height() == $(document).height()) {
+              // if at the bottom of th page: ensure everything visbile
+              console.log("bottom of page")
+              $('.th-block').css( {
+                  transition: 'opacity 0.1s linear',
+                  opacity: 1
+              } );
+
+            }///
+ 
 
       } // function fade()
      
