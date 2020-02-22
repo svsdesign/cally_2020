@@ -2,44 +2,55 @@
 // v1.0.1 - 30 September, 2012
 // https://github.com/browserstate/ajaxify
 
-/* nav toggling function */
-// this exist twice :( - once in the navigation js file and once in here; really not ideal?
-  /* -- dlete this function!!!
-        function navtogglingfunction(){
 
-            console.log("click");
-            // what we want to do is dissacosiate the closing of the nave with the normal body sate
-            // so probably have a nav on and nav off class; each hs didderent animatin
-            // then our normal body no longer assiging hte "nav-off" stagte
-            if ( (!$('body').not('nav-off')) || (!$('body').not('nav-on')) ) {// chekc if we have "started the nav yet; i.e assiging a nav off"
-            // "start the nav toggle"
-            unforceheadroompin(); // ensure headroom now turned off + freeze that position
-            freezeheadroom();
+  function menupositioner(){
+        console.log(" menupositioner");
 
-            $('body').addClass('nav-on');
-            console.log("not either")
-            } else if ($('body').hasClass('nav-on')) {
-            // turn nav off:
-            console.log("turn nav off")
-            unfreezeheadroom(); // enure to unfreeze headroom
+    var $positioner = $("#positioner")
+        $menu = $("#menu-header-navigation"),
+        $menuitems = $menu.children(),
+        numberofmenuitems = $menuitems.length,
+        $activemenuitem = $menu.children().filter(".current-menu-item"),
+        //console.log("menuitems" +numberofmenuitems+"");
+        positionerwidth = (100/numberofmenuitems);
+        //$activemenuitem.css("background","red");
+        console.log("positionerwidth" + positionerwidth +"");
 
-            $('body').addClass('nav-off');
-            $('body').removeClass('nav-on');
 
-            } else { // chkeck 
-            // turn nav on:
-            console.log("turn nav on")
-            unforceheadroompin(); // ensure headroom now turned off + freeze that position
-            freezeheadroom();
-            $('body').addClass('nav-on');
-            $('body').removeClass('nav-off');
+        $menuitems.each(function() {
+          var number = $(this).index() +1;
+        // $(this).prepend("<span>" +  + "</span>");
+          $(this).attr( "menu-number", number);
 
-            }// ifnav on
+        });
+       
+        activemenuitemnumber = $activemenuitem.attr( "menu-number");
+        applymarginleft = ((activemenuitemnumber * positionerwidth) - positionerwidth)+"%";
+       // applicationspeed =
+  
+        console.log("activemenuitemnumber" +activemenuitemnumber+"");
+        $positioner.css("width",positionerwidth+"%");
+        $positioner.css("margin-left", applymarginleft+"%");
+  
 
-        }//navtogglingfunction()
+       $positioner.animate({
+            marginLeft: applymarginleft
+        }, 500);
 
-//   END navtogglingfunction()
-*/
+
+//var count = $("#menu-header-navigation").children().length;
+
+//        console.log("count" +count+"");
+
+// chekc how many links there are
+// calculate the width of the moving block
+
+// chekc initial position (i.e active link)
+
+
+
+}//menupositioner()
+
 
 
 (function(window,undefined){
@@ -55,8 +66,15 @@
     return false;
   }
 
+
+
+
   // Wait for Document
   $(function(){
+
+
+            menupositioner();
+
     // Prepare Variables
     var
       /* Application Specific Variables */
@@ -97,6 +115,7 @@
     // Ensure Content
     if ( $content.length === 0 ) {
       $content = $body;
+
     }
     
     // Internal Helper
@@ -129,9 +148,6 @@
       return $.trim(result);
     };
     
-
-//https://github.com/metafizzy/isotope/issues/594
-
 
     // Ajaxify Helper
     $.fn.ajaxify = function(){
@@ -198,14 +214,9 @@
         url = State.url,
         relativeUrl = url.replace(rootUrl,'');
 
-      // Set Loading
-    //  $(".home-icon").addClass('loading');
- 
+        // Set Loading
+
            $('#loader').addClass('on');
-
-  
-  
-
  
       
       // Start Fade Out
@@ -254,44 +265,31 @@
 
 
             }
-            //}
-           // add
-          //Add classes to body
-          
-
-
-
-          //  $("body").addClass('timer'); // timer anim
-          //  $("#home-fill").attr("class", "on");
-        //    $("#site-wrap").addClass('fromtransition'); // switchup the direction from which it loads
-
-          //var trigger_fill = document.getElementById("trigger_fill");
-
-          //trigger_fill.beginElement();
           
           // Fetch the scripts
-          $scripts = $dataContent.find('.document-script');
-          if ( $scripts.length ) {
-            $scripts.detach();
-          }
+            $scripts = $dataContent.find('.document-script');
+            if ( $scripts.length ) {
+              $scripts.detach();
+            }
 
-          // Fetch the content
-          contentHtml = $dataContent.html()||$data.html();
-          if ( !contentHtml ) {
-            document.location.href = url;
-            return false;
-          }
-          
-         // console.log("$menu" + $menu + " how many");
-          // Update the menu
-          $menuChildren = $menu.find(menuChildrenSelector);
+            // Fetch the content
+            contentHtml = $dataContent.html()||$data.html();
+            if ( !contentHtml ) {
+              document.location.href = url;
+              return false;
+            }
+            
+           // console.log("$menu" + $menu + " how many");
+            // Update the menu
+            $menuChildren = $menu.find(menuChildrenSelector);
           /* targeting both the top and bottom menu
 
           */
 
-          $menuChildren.filter(activeSelector).removeClass(activeClass); // page class
-          $menuChildren.filter(activeMenuSelector).removeClass(activeMenuClass); // menu class
-          
+            $menuChildren.filter(activeSelector).removeClass(activeClass); // page class
+            $menuChildren.filter(activeMenuSelector).removeClass(activeMenuClass); // menu class
+            
+
  
          // console.log("relativeUrl = "+ relativeUrl +"");
          // console.log("url = "+ url +"");
@@ -345,45 +343,32 @@
 
           }// if (rootUrl == 'http://localhost:8888/') 
 
-               // was this: -
-                    //  $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
-
-          /* END TO DO - tidy this mess up */
-
-
+      
 
           if ( $menuChildren.length === 1 ) {
-           $menuChildren.addClass(activeClass); 
-           $menuChildren.addClass(activeMenuClass); 
+          $menuChildren.addClass(activeClass); 
+          $menuChildren.addClass(activeMenuClass); 
 
-           console.log("if ( $menuChildren.length === 1 )");
+          //console.log("if ( $menuChildren.length === 1 )");
           } else {
 
-            $menuChildren.addClass(activeClass); 
-           $menuChildren.addClass(activeMenuClass); 
+          $menuChildren.addClass(activeClass); 
+          $menuChildren.addClass(activeMenuClass); 
 
-           console.log("if ( $menuChildren.length" + $menuChildren.length +")" );
-     
-            // so if not 1, still update the links? probaly not good idea for wahtever reason this was code liek this in the first plac 
-            // atm moment it is this lknk that I need to target only; given the error that's occuring       
-            //$(".menu-item-home").addClass(activeClass); 
-            //$(".menu-item-home").addClass(activeMenuClass); 
-
-                 //    $menuChildren.addClass(activeClass); 
-                //   $menuChildren.addClass(activeMenuClass); 
-
+          //console.log("if ( $menuChildren.length" + $menuChildren.length +")" );
           }
-         // console.log("menuChildren =" + $menuChildren +"");
-
+ 
           // Update the content
           $content.stop(true,true);
           $('html, body').animate({scrollTop: '0px'}, 0); // scroll to top of page
           /// review this - not sure what js is seeting the opacity atm?
             $content.html(contentHtml).ajaxify().css('opacity',100).show(); /* you could fade in here if you'd like */
         
-        //  $content.html(contentHtml).ajaxify().css('opacity',100).show(); /* you could fade in here if you'd like */
+         //  $content.html(contentHtml).ajaxify().css('opacity',100).show(); /* you could fade in here if you'd like */
          // $content.html(contentHtml).ajaxify();//.show(); /* you could fade in here if you'd like */
 
+         // move the active link positioner:
+          menupositioner();
 
           // Update the title
           document.title = $data.find('.document-title:first').text();

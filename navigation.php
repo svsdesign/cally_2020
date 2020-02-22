@@ -12,6 +12,15 @@
 
 	<div class="navigation grid-container nav-fixer"><!-- this the navare item that moves-->
  
+ 			<div id="menu-positioner-wrap">	 
+ 				
+ 				<div id="positioner">
+	 				<div id="inner-positioner">
+	 				</div>
+	 			</div>
+
+ 			</div><!--#menu-positioner-wrap-->
+
 			<div class="menu-wrap">	 
 
 				<?php wp_nav_menu( array(
@@ -20,7 +29,7 @@
 				    ) );
 				?> 
 		 		
-		 	</div>
+		 	</div><!--.menu-wrap-->
  
 	</div><!-- grid-container -->
 

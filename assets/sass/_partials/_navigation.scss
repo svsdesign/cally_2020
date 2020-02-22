@@ -14,46 +14,39 @@ Author URI: http://svs.design
  
   body.#{nth($scheme, 1)} {
 
-//    .nav-title{
-//    @include h1;
-  //  }
-     
-    /* not need anyymore? 
-    a.nav-logo{
-    opacity: 0;
-    width: 50%;
-    display: block;
-    float: left;
-    clear: both;
-    pointer-events:initial;
+    // positioner
 
-    @include fluid-type(margin-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
-    @include fluid-type(margin-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing
+    #menu-positioner-wrap{
+    display: none;
+    position: absolute; 
+    width: 100%;
+    height: inherit;
+    z-index: 1;
 
-    @include fluid-type(margin-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing 
-    @include fluid-type(margin-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
-
-      @media (max-width: map-get($breakpoints, lg)) {
-      max-width:50px;
-      }
-
-      @media (min-width: map-get($breakpoints, lg)) {
-      width: 40%;
-      }
-
-      svg{
-        fill: nth($scheme, 2);
-        
         @media (min-width: map-get($breakpoints, lg)) {
-        fill: nth($scheme, 3);
+        display: block;
         }
 
-      }
+        #positioner{
+        display: block;
+        position: relative;
+      //          
+       // background-color: red;
+        @include fluid-type(height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*0.5, map-get($lineheight, lg)*0.5); // fixed sizing // offset grid 
+        @include fluid-type(height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*0.5, map-get($lineheight, xxl)*0.5); // viewport sizing
 
-    } 
-     .nav-logo */
+          #inner-positioner{
+          background-color: nth($scheme, 3); 
+          height:100%;
+          display: block;       
+          }
 
-  
+        }//.positioner
+
+    }//.menu-positioner-wrap
+ 
+
+    //nav
 
     #header-nav-area{ // standar rules regarldess of body classes
     overflow: visible;//hidden; // was hidden + review this ?
@@ -63,14 +56,12 @@ Author URI: http://svs.design
     z-index: 9; // reivew 
     @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing // offset grid 
     @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing // offset grid 
-
     @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
     @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
    
       @media (min-width: map-get($breakpoints, lg)) {
       @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*0, map-get($lineheight, lg)*0); // fixed sizing // offset grid 
       @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*0, map-get($lineheight, lg)*0); // fixed sizing // offset grid 
-
       @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*0, map-get($lineheight, xxl)*0); // viewport sizing
       @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*0, map-get($lineheight, xxl)*0); // viewport sizing
       }
@@ -112,7 +103,6 @@ Author URI: http://svs.design
 
     .nav-wrapper {
     opacity: 0;/* hide wrapper */
-    //width: auto; /* was 20vw */
     float: left;
     display: block;
     overflow: visible;
@@ -122,10 +112,13 @@ Author URI: http://svs.design
     @include fluid-type(margin-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*-2, map-get($gutter, xxl)*-2); // viewport sizing
 
         @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
-
         }
 
     }//.nav-wrapper
+
+
+
+
    
     .menu {
     float: left;
@@ -136,8 +129,7 @@ Author URI: http://svs.design
     overflow: hidden;
     pointer-events: initial;
     }
-
-   
+  
     .menu-item{
     display: block;
     float: left;
@@ -158,19 +150,17 @@ Author URI: http://svs.design
         @include fluid-type(padding-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
         }
 
-
         a{
         border-bottom: none;
         text-align: left;
         width: 100%;
         height: inherit;
-      
-           @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
-           @include fluid-type(border-top-width, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
-           @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
 
-           border-color:transparent;//  
-           border-top-style: solid;
+            @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
+            @include fluid-type(border-top-width, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
+            @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
+            border-color:transparent;//  
+            border-top-style: solid;
             }
       
         }
@@ -186,7 +176,9 @@ Author URI: http://svs.design
             border-bottom: none;
 
                 @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
-                border-color: nth($scheme, 3);     
+               // border-color: nth($scheme, 3);     
+                // no longerneeded so keep transparent
+                border-color: transparent;
                 }
 
             }

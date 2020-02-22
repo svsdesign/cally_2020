@@ -35,6 +35,7 @@ Text Domain: theseus
 
 //@import "_partials/adminstyle-pages-legal";
 
+//@import "_partials/cookie-notice"; // this probably not needed?
 
 /* blocks - styles applied to front and back end */
  
@@ -52,7 +53,10 @@ Text Domain: theseus
 @import "_partials/block-logos"; // 
 */
 /* end blocks */
+
+
  
+
 @import "_partials/block-one-col";  // 1 column text block
 @import "_partials/block-two-col";  // 2 column text block
 @import "_partials/block-two-col-left-header";  // 2 column text block: left header
