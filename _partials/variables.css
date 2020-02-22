@@ -8,44 +8,6 @@ Author URI: http://svs.design
 xs - px based small
 lg - vw values start to determine sizing of items / scaling the entire design?
 */
-/* These should maybe be ratios?
-$fontsize: (
-  xs: 16px,
-  sm: 16px,
-  md: 16px,
-  lg: 16px,
-  xl: 32px,
-  xxl: 64px
-);*/
-/*
-$lineheight: (
-  xs: 20px,
-  sm: 20px,
-  md: 20px,
-  lg: 20px,
-  xl: 40px,
-  xxl:80px
-);
-
-$lineheight: (
-  xs: 15px,
-  sm: 15px,
-  md: 15px,
-  lg: 15px,
-  xl: 30px,
-  xxl:60px
-);
-*/
-/*
-$baselineheight: (
-  xs: 5px,
-  sm: 5px,
-  md: 5px,
-  lg: 5px,
-  xl: 10px,
-  xxl:20px
-);
-*/
 /* review this sizse */
 /* Grid Items */
 /* Body Text Styles */

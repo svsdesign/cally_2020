@@ -39,6 +39,10 @@ Author URI: http://svs.design
           background-color: nth($scheme, 3); 
           height:100%;
           display: block;       
+          @include fluid-type(margin-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*1, map-get($gutter, lg)*1); // fixed sizing
+          @include fluid-type(margin-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
+          @include fluid-type(margin-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*1, map-get($gutter, lg)*1); // fixed sizing
+          @include fluid-type(margin-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
           }
 
         }//.positioner

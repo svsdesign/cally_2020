@@ -65,12 +65,6 @@ Author URI: http://svs.design
 
 ////////////////////////////////////////////////////////////////////////////
 
-/*
-
-SVS to do - add aditonal font sizes / syltes - ie smaller one
-
-
-*/
 
 // media query mixin
 @mixin break($size) {  
@@ -78,8 +72,6 @@ SVS to do - add aditonal font sizes / syltes - ie smaller one
     @content;
   }
 }
-
-
 
 // small
 @mixin type-small{
@@ -229,6 +221,8 @@ $schemes: $scheme1 $scheme2;
     0%   { background-position: 0 0; }
     100% { background-position: -200% 0; }
     } 
+
+
 
   //endloader keyframes
 
@@ -452,6 +446,7 @@ $schemes: $scheme1 $scheme2;
     background-position: 0% 50%;
   }
 }
+
 
 
 

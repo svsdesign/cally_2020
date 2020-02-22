@@ -19,8 +19,6 @@ $breakpoints: (
   xl: 1600px, 
   xxl: 3200px 
 );
-//xxl was 5120px  
-// md was 600
 
 $gutter: (
   xs: 8px,
@@ -40,15 +38,6 @@ $offsetgutter: (
   xxl:-32px
 );
 
-/* These should maybe be ratios?
-$fontsize: (
-  xs: 16px,
-  sm: 16px,
-  md: 16px,
-  lg: 16px,
-  xl: 32px,
-  xxl: 64px
-);*/
  $fontsize: (
   xs: 12px,
   sm: 12px,
@@ -57,25 +46,6 @@ $fontsize: (
   xl: 24px,
   xxl: 48px
 );
-/*
-$lineheight: (
-  xs: 20px,
-  sm: 20px,
-  md: 20px,
-  lg: 20px,
-  xl: 40px,
-  xxl:80px
-);
-
-$lineheight: (
-  xs: 15px,
-  sm: 15px,
-  md: 15px,
-  lg: 15px,
-  xl: 30px,
-  xxl:60px
-);
-*/
 
 $lineheight: (
   xs: 16px,
@@ -85,6 +55,7 @@ $lineheight: (
   xl: 32px,
   xxl: 64px
 );
+
 $baselineheight: (
   xs: 4px,
   sm: 4px,
@@ -93,16 +64,6 @@ $baselineheight: (
   xl: 8px,
   xxl:16px
 );
-/*
-$baselineheight: (
-  xs: 5px,
-  sm: 5px,
-  md: 5px,
-  lg: 5px,
-  xl: 10px,
-  xxl:20px
-);
-*/
 
 $letterspacing: (
   xs: 0.5px,

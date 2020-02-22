@@ -47,9 +47,11 @@ body.black-scheme
 width: 100%;
 margin-right: auto;
 margin-left: auto;
+//@include fluid-type(min-height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($containerminimumheight, xs), map-get($containerminimumheight, lg)); // fixed sizing 
+//@include fluid-type(min-height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($containerminimumheight, lg), map-get($containerminimumheight, xxl)); // viewport sizing
 
-  @include fluid-type(padding-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
-  @include fluid-type(padding-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+@include fluid-type(padding-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+@include fluid-type(padding-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
 
   @include fluid-type(padding-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
   @include fluid-type(padding-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing

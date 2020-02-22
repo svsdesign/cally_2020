@@ -155,6 +155,32 @@ var app = (function() {
         } // function indexsiteload();
 
 
+    function contentheight() {
+
+    var  
+    $maincontent = $("#main"),
+    $containercontent = $(".grid-container.main"),
+    $footercontent = $("#footer-nav-area");
+
+    $containercontent.css("min-height","initial");// this to reset previous value
+  
+    var
+    maincontentheight = $maincontent.height(),
+    containercontentheight = $containercontent.height(),
+    footercontentheight = $footercontent.outerHeight(),
+    viewportheight = $(window).height(),
+    minimumcontainerheight = (maincontentheight - footercontentheight);
+     
+    //  console.log("containercontentheight" +containercontentheight +"");
+     // console.log("footercontentheight" +footercontentheight+"");
+     // console.log("maincontentheight" +maincontentheight+"");
+
+    //console.log("minimumcontainerheight:" + minimumcontainerheight+"");
+ 
+      $containercontent.css("min-height", minimumcontainerheight );
+
+    }//contentheight()
+  
     function orientation(){
     
       //console.log("hell-orientation")
@@ -672,7 +698,8 @@ var app = (function() {
                 {
                   // should target every page
                     siteload(); // run straight away 
-   
+                    contentheight(); // minimum size
+
                      if ($('.cn-revoke-inline').length > 0) 
                      {
                       
@@ -737,6 +764,7 @@ var app = (function() {
 
                         timeout = false; 
                         orientation(); // check for orientation changes
+                        contentheight(); // resize minimum area
 
 
                         } //else 

@@ -1,11 +1,11 @@
 <?php
-/**
+/*
  *  Theseus
  *  
  *  Developed by Simon van Stipriaan 
  * 	http://svs.design
  *
- *  
+ *  index.php - not using this template atm - pull in page instead
  */
 
 ?>
@@ -14,7 +14,6 @@
 <?php get_header(); ?>
 
 	
-	index.php
 
 
 <?php get_footer(); ?>
