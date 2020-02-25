@@ -3,6 +3,13 @@ Theme Name: theseus
 Theme URI:  theseus-agency.com
 Author: Simon van Stipriaan 
 Author URI: http://svs.design
+
+TO DO: ensure browser prefixes specified
+  - think some of the cookie consent opacity keyframes are not?
+  - might be others aswell
+
+  Consolidated some fo the animations into one: i.e opacity
+
 */
 
 
@@ -146,9 +153,6 @@ font-family: $light-font-family;
 }
  
 
-
-
-
 @mixin keyframe ($animation-name) {
     @-webkit-keyframes #{$animation-name} {
         @content;
@@ -212,6 +216,12 @@ $schemes: $scheme1 $scheme2;
  
 //CONTENT
 
+  // opacity
+
+    @include keyframe (opacity) {
+    0%   { opacity: 0; }
+    100%   { opacity: 1; }
+    }//    @include keyframe (opacity) 
 
 
     //loader keyframes
@@ -363,7 +373,7 @@ $schemes: $scheme1 $scheme2;
   }
 
   // between page loading
-  @include keyframe(ajax-site-loading-on) {
+  @include keyframe(ajax-site-loading-off) {
     0% {
       opacity: 1;
     }
@@ -371,7 +381,7 @@ $schemes: $scheme1 $scheme2;
       opacity: 0;
     }
   }
-    @include keyframe(ajax-site-loading-off) {
+    @include keyframe(ajax-site-loading-on) {
     0% {
       opacity: 0;
     }
@@ -381,7 +391,8 @@ $schemes: $scheme1 $scheme2;
   }
 // END between page loading
 
-@keyframes fadeincookieconsent {
+ @keyframes fadeincookieconsent
+ {
    0% {
          opacity: 0;
 

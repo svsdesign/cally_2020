@@ -97,11 +97,11 @@ var adminapp = (function() {
       detecttouch(); // run functions straigh away
 
  
-      function opacity(){
-
+   /*  function opacity(){
+// dleete this
         //  $("body").addClass('pre-loaded');
 
-
+        // not surew we need this ata ll
           $("body").imagesLoaded(function(){ // consider a lazloadng options?
   
 
@@ -118,7 +118,7 @@ var adminapp = (function() {
 
       }; //opacity
      
-  
+  */
 
     function orientation(){
     
@@ -213,29 +213,51 @@ var adminapp = (function() {
       $(function () // on document.ready()
             {
 
-                 opacity(); // turn on visibility
+    /* all of this not used I don't think - delete it :*/
+
+                // opacity(); // turn on visibility
 
                   	console.log('on document ready');
                  // 	console.log("find a selector for the block")
              		 // recordcircle();
 
-            	// RECORD BLOCK - 
 
-                   if ($("div[data-type='acf/inprelease']").length > 0) 
+
+
+              // SLIDER BLOCK - 
+
+  //            if ($(".wp-block").data('timer')) {
+
+//if ($("#dataTable[data-timer]").length)
+  //  if (typeof $("#dataTable").data('timer') !== 'undefined')
+//                   if ($(".wp-block[data-type='acf/thslideshow']").length > 0) 
+//                   if ($(".wp-block[data-type]").length > 0) 
+
+                   if ($(".wp-block").length > 0) 
                   {
-                  	console.log('[data-type="acf/inprelease]')
-          
-             		  recordcircle();
+                        console.log('.wp-block');
 
+//                        console.log('[data-type]');
+//                    console.log('[data-type="acf/thslideshow')
+          
+                 // recordcircle();
+
+                   //    var $thisblock = $(this);  
+ 
+                   //       slideshow($thisblock);// run js if slideshow item exist
 
 
                  /*
-                 div[data-type='acf/inprelease']
+                 div[data-type='acf/thslideshow']
                  */
 
                 };  
 
-     	      	// END RECORD BLOCK - 
+              // END RECORD BLOCK - 
+
+
+
+
 
 
             	// BODY  
@@ -256,7 +278,7 @@ var adminapp = (function() {
 
             	// BODY  
 
-	               if ($('.wp-block').length > 0) 
+	               if ($('.th-block').length > 0) 
 	              {
           				console.log("wp-block")
            				//recordcircle()

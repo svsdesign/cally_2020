@@ -12,7 +12,10 @@ Author URI: http://svs.design
 
 @each $scheme in $schemes { // start colour scheme
  
-  body.#{nth($scheme, 1)} {
+ 
+  body.#{nth($scheme, 1)}:not(.wp-admin), // ensure we're not applying to admin 
+  body.#{nth($scheme, 1)}.wp-admin .th-block
+  {
 
     // positioner
 

@@ -25,62 +25,72 @@ console.log("hello - slider script");
      * @return  void
      */
 
+
+
+
     var initializeBlock = function( $block ) {
             
         //$block.find('img').doSomething();
-      //  console.log('initializeBlock = function( $block ) - slideshow block');
+         console.log('initializeBlock = function( $block ) - slideshow block');
  
-        var $thiscontainer = $block.find(".slideshow-carousel");   // review this   class name 
+        var $thisgallery = $block.find(".slideshow-carousel");   // review this   class name 
         // console.log('initializeBlock = function( $block ) - slideshow block from its own script.js file');
 
-        $thiscontainer.css("background","red");
-        /*
-        $thiscontainer.flickity({
-            imagesLoaded: true, 
-            percentPosition: false, 
-            freeScroll: true, 
-            wrapAround: true 
-         });
-        */
+ var $thisimageblock = $thisgallery.find("img");  // just target img?
 
-         $thiscontainer.flickity({
-            imagesLoaded: true, 
-            // setGallerySize: true, // I currently set the height in js - 40vh; review this - i.e ensure the css I use targets admin aswll
-            setGallerySize: false, //if you prefer to size the carousel with CSS, rather than using the size of cells.
-       // default cellAlign: 'center'
-            percentPosition: false, 
-            freeScroll: false, 
-            wrapAround: true, 
-            arrowShape: { 
-                x0: 20,
-                x1: 50, y1: 50,
-                x2: 60, y2: 50,
-                x3: 30
-            }
-//            arrowShape: '82.9312793 24.4501626 86.9653917 27.5504528 49.7576146 75.9653917 12.5498374 27.5504528 16.5839498 24.4501626 49.7576146 67.615895',
+      $thisimageblock.each(function() {  
 
-         });
+         // console.log("each image?);
+         
+          var $thisimage = $(this);
+
+               $thisimage.imagesLoaded( {
+                // options...
+                },
+                function() {
+                 // console.log("images have loaded");
+                  var oldSrc = $thisimage.attr('src'),
+                      newSrc = $thisimage.attr('data-src');
+                     $thisimage.attr('src', newSrc);
+                     $thisimage.addClass("loaded"); // possibly not need
+
+                }
+
+              ); // 
+
+        });//  $thisimageblock.each(function()
+
+          $thisgallery.flickity({
+                imagesLoaded: true, 
+                setGallerySize: false, //if you prefer to size the carousel with CSS, rather than using the size of cells.
+           // default cellAlign: 'center'
+                percentPosition: false, 
+                freeScroll: false, 
+                wrapAround: true, 
+                arrowShape: { 
+                    x0: 20,
+                    x1: 50, y1: 50,
+                    x2: 60, y2: 50,
+                    x3: 30
+                  }
+    //            arrowShape: '82.9312793 24.4501626 86.9653917 27.5504528 49.7576146 75.9653917 12.5498374 27.5504528 16.5839498 24.4501626 49.7576146 67.615895',
+
+             });
 
     }//var initializeBlock = function( $block ) 
 
     // Initialize each block on page load (front end).
     $(document).ready(function(){
 
-     console.log("documentready - // Initialize each block on page load (front end). ")
         // if I only want to run the scripts on the admins side:
         if ($("body").hasClass("wp-admin")) {
             //console.log("is admin")
+             console.log("documentready - // Initialize each block on page load (front end). ")
 
-         /* add code here 
-           $(".record-circle-container").each(function() {
-
-                initializeBlock( $(this) );
-            });
-*/
+               initializeBlock( $(this) );
 
          }//end if I only want to run the scripts on the admins side:
 
-               initializeBlock( $(this) );
 
     });
 
@@ -88,8 +98,7 @@ console.log("hello - slider script");
     if( window.acf ) {
         console.log("window.acf");
 
-//        window.acf.addAction( 'render_block_preview/type=th_slide_show', initializeBlock );
-          window.acf.addAction( 'render_block_preview/type=thslideshow', initializeBlock );
+           window.acf.addAction( 'render_block_preview/type=thslideshow', initializeBlock );
 
     }
 

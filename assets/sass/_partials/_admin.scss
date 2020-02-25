@@ -1,0 +1,44 @@
+/*
+Theme Name: theseus
+Theme URI:  theseus.agency
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+
+/* Various admin additions */
+
+@each $scheme in $schemes { // start colour scheme
+ 
+  body.#{nth($scheme, 1)}:not(.wp-admin), // ensure we're not applying to admin 
+  body.#{nth($scheme, 1)}.wp-admin .th-block
+  {
+   
+    // this improve the visual repersentaiton of the designs
+
+    @media (min-width: map-get($breakpoints, md)) {
+    zoom:80%; // probabbly only need this when all the additional admins panel are around it. Review in future work
+    }
+
+    @media (min-width: map-get($breakpoints, lg)) {
+   // zoom:50%;
+    }
+
+    //ensure images are always visible, we don't really need to worry about smoothness
+
+    .image-wrap{
+
+      img{
+      opacity: 1
+      }
+
+    }//.image-wrap  
+
+  }//body
+
+}//@each $scheme in $schemes { // start colour scheme
+
+//https://wordpress.stackexchange.com/questions/359092/are-there-ways-to-make-the-gutenberg-editor-wider-and-the-html-block-higher?noredirect=1&lq=1
+.wp-block {
+max-width:  100%;
+}

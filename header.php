@@ -64,20 +64,21 @@
   
 <!-- END STYLE -->
 
-<!-- SCRIPTS  - move into funcstion - apart from cookie consent ones?-->
+<!-- SCRIPTS  - move into functions - apart from cookie consent ones?
+  REview the "defer" vs "async" - + also suggested to move this into the footer -->
 
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.min.js" type="text/javascript"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.easing-1.3.js" type="text/javascript"></script>
 <!-- <script src="<?php//echo get_template_directory_uri(); ?>/assets/js/jquery-ui.min.js" type="text/javascript"></script> -->
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/enquire.js" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.4and5history.js" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/ajaxify-html5.js" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/enquire.js" type="text/javascript" defer></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.4and5history.js" type="text/javascript" defer></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/ajaxify-html5.js" type="text/javascript" defer></script>
 
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/imagesloaded.pkgd.min.js" type="text/javascript" defer></script>
 <!-- <script src="https://labs.nearpod.com/bodymovin/demo/events/bodymovin.js" type="text/javascript"></script>-->
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/lottie.js" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/lottie.min-5.6.4.js" type="text/javascript"></script>
 
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+<!--<script src="<?php //echo get_template_directory_uri(); ?>/assets/js/imagesloaded.pkgd.min.js" type="text/javascript"></script> -->
 <script type="text/ecmascript" xlink:href="<?php echo get_template_directory_uri(); ?>/assets/js/smil.user.js"></script>
  
 

@@ -7,23 +7,14 @@ Author URI: http://svs.design
  
 TO DO 
 
-- ensure PNG LINKS ARE correctly http:/localhost:8888/theseus/wp-content/themes/theseus/assets/img/ urls for 
-
 - If I use js media queires: mmake sure my breakpionts are correct -- Don't think theay AR?E
-
-
 
 site.js - handles the serving up of scripts for the entire website
 */
-//if host = theme_directory {
 
 
 
 var themeurl = theme_directory;
-//introanimationdone = introanimationdone;
-//}
-
-//console.log("introanimationdone = " + introanimationdone +"");
 //console.log("themeurl = " + themeurl +"");
 
 window.onbeforeunload = function(){ 
@@ -56,10 +47,7 @@ var app = (function() {
           mQuerySM = 'screen and (min-width:' + screenSM + 'px) and (max-width:' + screenoutSM + 'px)',
           mQuerySMPLUS = 'screen and (min-width:' + screenSM + 'px)';
 
-
-     
       // START DEV Functions
-
 
       function devgrid() {
 
@@ -78,8 +66,8 @@ var app = (function() {
                   baselinecount =  documentGridHeight / pxlineheight;
 
                   //console.log("documentGridHeight " +documentGridHeight+"");
-                 // temp turned of - used when we nee dto sort linehiegh
-                $baselines.css("height",documentGridHeight);// set height of the baseline area as documentGridHeight
+                  //temp turned of - used when we nee dto sort linehiegh
+                  $baselines.css("height",documentGridHeight);// set height of the baseline area as documentGridHeight
 
                   $('.dev-base-lines .base-line').remove(); // remove existing item(s)?
 
@@ -89,20 +77,20 @@ var app = (function() {
                   };
                   
 
-            $('.dev-grid-toggle').click(function(){
-             //console.log("click") ;       
-              if ($('body').hasClass('dev-grid-on')) {
-                // turn grid off:
+                $('.dev-grid-toggle').click(function(){
+                 //console.log("click") ;       
+                  if ($('body').hasClass('dev-grid-on')) {
+                    // turn grid off:
 
-                $('body').removeClass('dev-grid-on');
+                    $('body').removeClass('dev-grid-on');
 
-              } else {
-                // turn grid on:
-                $('body').addClass('dev-grid-on');
+                  } else {
+                    // turn grid on:
+                    $('body').addClass('dev-grid-on');
 
-              }// if grid on
+                  }// if grid on
 
-            }); // click
+                }); // click
 
           /*
         .dev-grid
@@ -156,30 +144,30 @@ var app = (function() {
 
 
     function contentheight() {
+      console.log("contentheight()");
+      var  
+      $maincontent = $("#main"),
+      $containercontent = $(".grid-container.main"),
+      $footercontent = $("#footer-nav-area");
 
-    var  
-    $maincontent = $("#main"),
-    $containercontent = $(".grid-container.main"),
-    $footercontent = $("#footer-nav-area");
+      $containercontent.css("min-height","initial");// this to reset previous value
+    
+      var
+      maincontentheight = $maincontent.height(),
+      containercontentheight = $containercontent.height(),
+      footercontentheight = $footercontent.outerHeight(),
+      viewportheight = $(window).height(),
+      minimumcontainerheight = (maincontentheight - footercontentheight);
+       
+      //  console.log("containercontentheight" +containercontentheight +"");
+       // console.log("footercontentheight" +footercontentheight+"");
+       // console.log("maincontentheight" +maincontentheight+"");
 
-    $containercontent.css("min-height","initial");// this to reset previous value
-  
-    var
-    maincontentheight = $maincontent.height(),
-    containercontentheight = $containercontent.height(),
-    footercontentheight = $footercontent.outerHeight(),
-    viewportheight = $(window).height(),
-    minimumcontainerheight = (maincontentheight - footercontentheight);
-     
-    //  console.log("containercontentheight" +containercontentheight +"");
-     // console.log("footercontentheight" +footercontentheight+"");
-     // console.log("maincontentheight" +maincontentheight+"");
-
-    //console.log("minimumcontainerheight:" + minimumcontainerheight+"");
- 
+      //console.log("minimumcontainerheight:" + minimumcontainerheight+"");
+   
       $containercontent.css("min-height", minimumcontainerheight );
 
-    }//contentheight()
+    }//contentheight();
   
     function orientation(){
     
@@ -369,7 +357,7 @@ var app = (function() {
 
             if($(window).scrollTop() + $(window).height() == $(document).height()) {
               // if at the bottom of th page: ensure everything visbile
-              console.log("bottom of page")
+              //console.log("bottom of page")
               $('.th-block').css( {
                   transition: 'opacity 0.1s linear',
                   opacity: 1
@@ -380,205 +368,44 @@ var app = (function() {
 
       } // function fade()
      
-  
-  /* not needed, don't think
-
-      function index_nav_sections() {
-
-                if ($('body.home .nav-wrapper').length > 0) 
-                {
-                      
- 
-            // Cache selectors
-            var lastId,
-                s = $("#counter"),
-                pos = s.position(),   
-                $navDots = $(".linear-dots"),
-                $nonlinearDots = $(".non-linear-dots"),
-                $topMenu = $(".nav-items"),
-                $contentWrapper = $(".main"),
-                $navWrapper = $('.nav-wrapper'),
-                $nonlinearDot = $(".non-linear-dot"),
-                browserHeight = $(window).height(),  // returns height of browser viewport
-                documentHeight = $(document).height(),// returns height of document viewport
-                numOfNavItems = $topMenu.children().length,
-                topMenuHeight = $topMenu.outerHeight(),
-                topMenuHeightitem = topMenuHeight / $topMenu.children().length, // height of a nav item
-                contentWrapperHeight = $contentWrapper.outerHeight(),
-                menuItems = $topMenu.find("a"),
-                dotItems = $navDots.find(".dot"),
-                nonlindeardotItems = $nonlinearDots.find(".non-linear-dot");
-
-                 //each
-                $nonlinearDot.each(function(){ // set move ratio
-             
-                var $item = $(this);
-                    sectionNumber = $(this).data('dot-item-non-linear');
-                    $section = $('#'+sectionNumber+''),
-                    sectionHeight = $section.outerHeight(), // height of indivdual item
-                    nonlinearMenuMove = topMenuHeightitem / sectionHeight, // linearMenuMove = height of the menu item divide by height of the section
-                   
-                    $section.attr('data-move-ratio',nonlinearMenuMove); //setter\
-                    $item.attr('data-move-ratio',nonlinearMenuMove); 
-
-                });// each
-
-
-                // Anchors corresponding to menu items
-                scrollItems = menuItems.map(function(){
-                  var item = $($(this).attr("href"));
-                  if (item.length) { return item; }
-                });
-
-                  
-                // Bind to scroll
-                $(window).scroll(function(){
-
-                    if ($('body.home').length > 0){
-
-                         // Get container scroll position
-                         var fromTop = $(this).scrollTop(),//+topMenuHeight,
-                             scrollHeight = documentHeight - browserHeight,
-
-
-                             windowPos = $(window).scrollTop(),
-                             linearMenuPos = (windowPos / scrollHeight) * 100; // % of progress
- 
-                         // Get id of current scroll item
-                         var cur = scrollItems.map(function(){
-                           if ($(this).offset().top < fromTop)
-                             return this;
-                         });
-                         // Get the id of the current element
-                         cur = cur[cur.length-1];
-                         var id = cur && cur.length ? cur[0].id : "";
-
-                            if (id == '') { // if the top section active
-                               var opacity = (windowPos / browserHeight);
-
-                              $navWrapper.css("opacity",opacity);   
-                              $navWrapper.addClass("no-logo");
-
-                            } else {
-                               
-                              $navWrapper.css("opacity","1");   
-                              $navWrapper.removeClass("no-logo");
-                            
-                            }; //if '' - top section active
-                          
-                        
-                            if ($('#g-map').length > 0) { // if google maps
-
-                              if (id == 'item-5') { // if last section - currently only 5
-                              
-                              $navWrapper.addClass("map-logo");
-                              $("#g-map").addClass("map-logo");
-
-                              } else{
-
-                               $navWrapper.removeClass("map-logo");
-                               $("#g-map").removeClass("map-logo");
-
-                              }  // if last section 
-
-
-                            }// if google maps
-
-
-                           if(lastId !== id) {
-                             lastId = id;
-                           
-                            // this logs the id of the active item
-                            //console.log('id ='+id+'');      
-                            
-                            // Remove + Set active class - on menu items
-                            menuItems.removeClass("active").filter("[href='#"+id+"']").addClass("active");
-
-                           // Remove + Set active class - on sections
-
-                            $("section.content-item").removeClass("section-active");
-                            $("#"+id+"").addClass("section-active");
-
-                            // non Linear
-                            nonlindeardotItems.removeClass("active").filter(".non-linear-dot[data-dot-item-non-linear='"+id+"']").addClass("active");
-
-                          }; 
-                       
-                          if (windowPos >= pos.top) {
-                              s.addClass("stick");
-                          } else {
-                              s.removeClass("stick");
-                          }
-
-                          fade(); // run fade funcion on scroll
-                    
-                    }// endif
-
-                  //return;
-
-                });// scroll function
-
-                $nonlinearDot.each(function(){ // move each of the dots with the correct ration
-
-                 var $item = $(this);
-
-                
-                    $(window).scroll(function(){
-
-                      if ($('body.home').length > 0){ // ensure the scroll function 
-
-                          if ($item.hasClass('active')){
-                            
-                              $item.css('margin-top','0'); // reset just incase?
-
-                              sectionNumber = $item.data('dot-item-non-linear'),
-                              sectionHeight = $('#'+sectionNumber+'').height(),
-                              thisratio = $item.data('move-ratio'), // for example, 20something for first one
-                              thisSectionPos =  $('#'+sectionNumber+'').offset().top, // the px value of the item from top of doc.
-                              thisWindowPos = $(window).scrollTop(), // value from top - so keeps increasing, should this not be z
-                              nonlinearMenuPos = null,
-                              nonlinearMenuPos = (thisWindowPos - thisSectionPos) * thisratio,
-                              thisItemPos = $item.offset().top; // value from top of link top
- 
-                              $item.css('margin-top', nonlinearMenuPos); // set position
-                                         
-                            } else { // if has class
-                             
-                             $item.css('margin-top','0px'); // reset ?
-                          
-                            }//end if has active class
-
-                        }//end body.home
-
-                     });// scroll
-              
-                });// each
-      
-           // body
-
-              } // if navwrapper
-
-       } //  function index_nav_sections()
-  //  END not needed, don't think
-   */
 
        //BLCOKS JS - for ajax purposes
+    function images($block){
+     // console.log("images loaded applied here")
+     
+      var $thisimageblock = $block.find("img");  // just target img?
+
+      $thisimageblock.each(function() {  
+
+         // console.log("each image?);
+         
+          var $thisimage = $(this);
+
+               $thisimage.imagesLoaded( {
+                // options...
+                },
+                function() {
+                 // console.log("images have loaded");
+                  var oldSrc = $thisimage.attr('src'),
+                      newSrc = $thisimage.attr('data-src');
+                     $thisimage.attr('src', newSrc);
+                     $thisimage.addClass("loaded"); // possibly not need
+
+                }
+
+              ); // 
+
+        });//  $thisimageblock.each(function()
+
+    };//function images($block)
+
     function slideshow($block){
-
-      //https://flickity.metafizzy.co/options.html
-
-  //   console.log("function slideshow($block)" + $block + " = slideshow-block");
-
-        //     wp_enqueue_script('flickity-pgkd', 'https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array( 'jquery' ), '', true ); // 
-//             $.getScript( ""+themeurl+'/assets/js/site.js', function( data, textStatus, jqxhr ) {
-             $.getScript( "https://npmcdn.com/flickity@2/dist/flickity.pkgd.js", function( data, textStatus, jqxhr ) {
-
+  
+        //$.getScript( ""+themeurl+'/assets/js/site.js', function( data, textStatus, jqxhr ) {
+         $.getScript( "https://npmcdn.com/flickity@2/dist/flickity.pkgd.js", function( data, textStatus, jqxhr ) {
 
         //console.log(" hello function slideshow($block)")
       var $thisgallery = $block.find(".slideshow-carousel");  
-
-       // $thisgallery.css("background","green");
-     
 
            $thisgallery.flickity({
                 imagesLoaded: true, 
@@ -592,26 +419,24 @@ var app = (function() {
                     x1: 50, y1: 50,
                     x2: 60, y2: 50,
                     x3: 30
-                }
+                  }
     //            arrowShape: '82.9312793 24.4501626 86.9653917 27.5504528 49.7576146 75.9653917 12.5498374 27.5504528 16.5839498 24.4501626 49.7576146 67.615895',
 
              });
 
-
           });//get flickity pkg script
 
-
-    } // function gallery($block)
+    }; // function gallery($block)
 
  
 
 // map function
     function map($block){
 
-      console.log("function map($block) - ONE")
+      //console.log("function map($block) - ONE")
 
             if ($('#g-map').length > 0){ //if element exists / map turned on
-           console.log("#g-map.length > 0")
+            // console.log("#g-map.length > 0")
 
                 //var gMapsLoaded = false; // maybe I need to put this variable else where?
                 var index=0;
@@ -622,8 +447,8 @@ var app = (function() {
                 }
 
                 window.loadGoogleMaps = function(){
-                  console.log("this?")
-                  console.log("gMapsLoaded =" + gMapsLoaded + "");
+                 
+                  //console.log("gMapsLoaded =" + gMapsLoaded + "");
                    
                     //I think this is the one I need to load - so find the other one & delete it
                     if(gMapsLoaded) return window.gMapsCallback();
@@ -632,7 +457,7 @@ var app = (function() {
                     script_tag.setAttribute("src","https://maps.googleapis.com/maps/api/js?key=AIzaSyBUXYryE2krCQ7nIvVcXcFzWEPY0cEcXbE&callback=gMapsCallback");
                     (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
                  
-                                  }
+                }
 
                 function initialize(){
 
@@ -679,25 +504,15 @@ var app = (function() {
 
     // end map funtion
 
-
-
      function clickcookierevoke() {
       // trigger a click on the default revoke button
-      //no-ajaxy cn-revoke-cookie cn-button cn-revoke-inline button
-      //console.log( 'clickcookierevoke fucntion' );
-
         $('a.th-cookie-revoke').click(function() {
-         //console.log('a.th-cookie-revoke');
-          //$('.cn-revoke-cookie').trigger('click'); // this doesn't work :(
-           // https://stackoverflow.com/questions/17105015/a-triggerclick-not-working/17105042
-
-            $('.cn-revoke-cookie')[0].click(); // this does
+          $('.cn-revoke-cookie')[0].click(); // this does
          });
 
       }//clickcookierevoke
 
       // END GLOBAL FUNCTIONS
-
 
       // START Media queries based on class
 
@@ -711,27 +526,40 @@ var app = (function() {
                     siteload(); // run straight away 
                     contentheight(); // minimum size
 
+                    console.log("if body - ")
+
                      if ($('.cn-revoke-inline').length > 0) 
                      {
                       
-                    console.log(  'if  .cn-revoke-inline ' );
+                    //console.log(  'if  .cn-revoke-inline ' );
                     // allow cookie revoke clicking:
                     clickcookierevoke();// shoul dthis be in body.privacy page instead?
 
                      }; //   if ($('.cn-revoke-inline').length > 0) 
 
-
-
                     // end allow cookie revoke clicking 
+ 
+                     // if blocks exist: image-one-col-block
+                    if ($('.image-one-col-block, .text-two-col-image-block-left-header, .image-multi-col-block, .text-image-two-col-block, .client-logos-block').length > 0)
+                    {
+
+                       //console.log("if image related block");
+
+                        var $thisblock = $(this);  
+ 
+                            images($thisblock);// run js if slideshow item exist
+
+                    };// .slideshow-block
+
+
                     // if blocks exist: Slideshow
                     if ($('.slideshow-block').length > 0) 
                     {
-                       console.log("if slideshow-block");
+                      // console.log("if slideshow-block");
 
                       var $thisblock = $(this);  
-                  //    console.log($thisblock);
-
-                      slideshow($thisblock);// run js if slideshow item exist
+ 
+                          slideshow($thisblock);// run js if slideshow item exist
 
                     };// .slideshow-block
 
@@ -739,12 +567,10 @@ var app = (function() {
                      // if blocks exist: Contact + Map
                     if ($('.contact-block').length > 0) 
                     {
-                     console.log("if contact block");
+                    // console.log("if contact block");
 
                       var $thisblock = $(this);  
-                   //   console.log($thisblock);
-
-                        map($thisblock);// run js if slideshow item exist
+                           map($thisblock);// run js if slideshow item exist
 
                     };// .slideshow-block
 
@@ -796,9 +622,7 @@ var app = (function() {
               // delete this function
                // if ($('body.home').length > 0) 
                if ($('body.home').length > 0) 
-
                {
-
 
                     var rtime;
                     var timeout = false;
@@ -847,8 +671,6 @@ var app = (function() {
               // remove this function not needed?
                 if ($('body.privacy-policy').length > 0) 
                 {
-
-
 
                 var rtime;
                 var timeout = false;
@@ -901,10 +723,7 @@ var app = (function() {
       enquire.register(mQueryBase, function() {
       // console.log('media query xs matched: viewport width ' + screenBase);
       // console.log('query that acts as starting point: + 1 and goes upto 480');
-      //
-      //
-      //
- 
+
           /*  RUN JS IF IS HOME   -  + 1 and goes upto 480 */
    
 
@@ -913,13 +732,10 @@ var app = (function() {
                 if ($('body.home').length > 0)
                 {
 
-  
 
-
-
-        /*
-        body.home
-        */
+              /*
+              body.home
+              */
 
                 }
             });
@@ -931,11 +747,6 @@ var app = (function() {
 
  
       });  // END screenBase query that acts as starting point: + 1 and goes upto 480
-
-
-       
-
-
 
     
       //
@@ -951,8 +762,6 @@ var app = (function() {
       //
       //
       //
-
-
  
 
             /*  RUN JS IF IS _body  -  goes upto SM: 768 */

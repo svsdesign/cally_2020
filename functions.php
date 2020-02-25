@@ -137,6 +137,14 @@ function add_favicon() {
 
 /* START ADMIN BLOCKS */
 
+/*
+function legit_block_editor_styles() {
+wp_enqueue_style( 'legit-editor-styles', get_theme_file_uri( '/style-editor.css' ), false, '2.3', 'all' );} 
+add_action( 'enqueue_block_editor_assets', 'legit_block_editor_styles' );
+
+}
+*/
+
 function my_admin_block_assets() {
 
 	//https://wp.zacgordon.com/2017/12/26/how-to-add-javascript-and-css-to-gutenberg-blocks-the-right-way-in-plugins-and-themes/
@@ -266,8 +274,8 @@ function my_acf_init() {
             'description'       => __('Image - One Column'), // review this
             'render_callback'   => 'my_acf_block_render_callback',
             'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
-            'enqueue_assets'    => function(){
-            //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
+            'enqueue_assets'    => function(){          
+             wp_enqueue_script('th-one-col-image', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thonecolimage/assets/js/script.js', array( 'jquery' ), '', true );
             },
             'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
             'keywords'          => array('thonecolimage'),
@@ -282,7 +290,8 @@ function my_acf_init() {
             'render_callback'   => 'my_acf_block_render_callback',
             'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
             'enqueue_assets'    => function(){
-            //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
+           
+  //           wp_enqueue_script('th-multi-col-image', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
             },
             'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
             'keywords'          => array('thmulticolimage'),
@@ -452,7 +461,9 @@ function my_acf_init() {
            //    wp_enqueue_style( 'flickity styles', 'https://npmcdn.com/flickity@2.2.1/dist/flickity.css' );
 //  //  wp_enqueue_style( 'flickity-style', 'https://npmcdn.com/flickity@2.2.1/dist/flickity.css'); // Styles moved into "block-gallery.scss"
            //   wp_enqueue_script('flickity-pgkd', 'https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array( 'jquery' ), '', true ); // 
-           //   wp_enqueue_script('th-slide-show-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thslideshow/assets/js/script.js', array( 'jquery' ), '', true );
+            wp_enqueue_script('flickity-pgkd', 'https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array( 'jquery' ), '', true );
+
+             wp_enqueue_script('th-slide-show-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thslideshow/assets/js/script.js', array( 'jquery' ), '', true );
 
             },
 
@@ -539,13 +550,38 @@ function my_acf_block_render_callback( $block ) {
 
 }//function my_acf_block_render_callback( $block ) {
 
-
-
 /* END BLOCKS */
 
 
 
 
+/*
+//wp_print_styles
+function wps_deregister_styles() {
+    wp_dequeue_style( 'wp-block-library' ); // Wordpress core
+  //  wp_dequeue_style( 'wp-block-library-theme' ); // Wordpress core
+}
+//add_action( 'wp_enqueue_scripts', 'wps_deregister_styles', 100 );
+add_action( 'wp_print_styles', 'wps_deregister_styles', 100 );
+*/
+/*
+
+function custom_theme_assets() {
+wp_dequeue_style( 'wp-block-library' );
+}
+add_action( 'wp_enqueue_scripts', 'custom_theme_assets', 100 );
+*/
+
+/*
+function remove_default_stylesheets() {
+// wp_deregister_style( 'wp-block-library' );
+ //wp_deregister_style( 'wp-block-library-theme' );   
+// wp_dequeue_style( 'wp-block-library-theme' );
+// wp_dequeue_style( 'wp-block-library' );
+  //  wp_deregister_style('wp-admin');
+}
+add_action('admin_init','remove_default_stylesheets');
+*/
 /*V2 stuff to review; maybe add:*/
 
  

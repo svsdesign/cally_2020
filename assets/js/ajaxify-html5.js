@@ -4,7 +4,7 @@
 
 
   function menupositioner(){
-        console.log(" menupositioner");
+        //console.log(" menupositioner");
 
     var $positioner = $("#positioner")
         $menu = $("#menu-header-navigation"),
@@ -14,7 +14,7 @@
         //console.log("menuitems" +numberofmenuitems+"");
         positionerwidth = (100/numberofmenuitems);
         //$activemenuitem.css("background","red");
-        console.log("positionerwidth" + positionerwidth +"");
+       // console.log("positionerwidth" + positionerwidth +"");
 
 
         $menuitems.each(function() {
@@ -28,7 +28,7 @@
         applymarginleft = ((activemenuitemnumber * positionerwidth) - positionerwidth)+"%";
        // applicationspeed =
   
-        console.log("activemenuitemnumber" +activemenuitemnumber+"");
+        //console.log("activemenuitemnumber" +activemenuitemnumber+"");
         $positioner.css("width",positionerwidth+"%");
         $positioner.css("margin-left", applymarginleft+"%");
   
@@ -73,32 +73,21 @@
   $(function(){
 
 
-            menupositioner();
+      menupositioner();
 
     // Prepare Variables
     var
+      loaderanimationncss = false,
       /* Application Specific Variables */
-      contentSelector = '#main.main-fixer';///'#site-wrap', /// this was #site-wrap; which is wrong?!
+      contentSelector = '#main.main-fixer',///'#site-wrap', /// this was #site-wrap; which is wrong?!
       $content = $(contentSelector).filter(':first'),
       contentNode = $content.get(0),
-  //    $menu = $('.nav-menu,#site-navigation,#menu-menu-1,#menu,#nav,nav:first,.nav:first').filter(':first'),
       $menu = $('#menu-header-navigation, #menu-footer-navigation');//.filter(':first'), //removed filster first; becuase we're g
-      // issues here:
-      // onngly use one class per "activeClass"
-
       activeClass ='current_page_item', //current_page_item
       activeMenuClass ='current-menu-item', //current_page_item
-
-      //  activeClass ='active, selected, current, youarehere',
       activeSelector = '.current_page_item',
       activeMenuSelector = '.current-menu-item',
-
-       // Other wise create more variables etc if I need to have classes for current page, current menu item etc.
-      //current-menu-item, current_page_item
-
-      // activeSelector = '.current-menu-item, .current-page-item, .active, .selected, .current, .youarehere',
       introanimationdone = false, // check against this - to determine if we need to add that class again
-
       menuChildrenSelector = '> li, > ul > li',
       completedEventName = 'statechangecomplete',
       /* Application Generic Variables */
@@ -216,9 +205,22 @@
 
         // Set Loading
 
-           $('#loader').addClass('on');
- 
-      
+      $('#loader').addClass('on');
+         loaderanimationncss = false;
+         //console.log("loaderanimationncss = " +loaderanimationncss+"" );
+
+      setTimeout(function (){
+      // I want to ensure that the duration of the animation is fully played out before fading in
+      // 2 sec for animation to fade into 0
+
+      loaderanimationncss = true;
+
+      console.log("in timeout loaderanimationncss = " +loaderanimationncss+"" )
+
+
+      }, 1000); 
+
+
       // Start Fade Out
       // Animating to opacity to 0 still keeps the element's height intact
       // Which prevents that annoying pop bang issue when loading in new content
@@ -244,26 +246,18 @@
             $menuChildren, 
             contentHtml, 
             $scripts;
-          
-        //  console.log("url: url," +url+"");
-
-         // console.log("intro animation done? =" +introanimationdone+"");
-
+ 
             if (introanimationdone == true){
               
              // console.log("introanimation not needed anymore");
               $("body").attr("class", data.match(/body class=\"(.*?)\"/)[1]);
               $("body").addClass('animation-done');// add this after all the other classes added?
               $('body').addClass('animation-hide'); //add class so now hidden at all times?
-
-
               $("body").removeClass('animation-fix');// 
 
             } else {
 
               $("body").attr("class", data.match(/body class=\"(.*?)\"/)[1]);
-
-
             }
           
           // Fetch the scripts
@@ -279,46 +273,29 @@
               return false;
             }
             
-           // console.log("$menu" + $menu + " how many");
             // Update the menu
             $menuChildren = $menu.find(menuChildrenSelector);
-          /* targeting both the top and bottom menu
-
-          */
+            // targeting both the top and bottom menu 
 
             $menuChildren.filter(activeSelector).removeClass(activeClass); // page class
             $menuChildren.filter(activeMenuSelector).removeClass(activeMenuClass); // menu class
             
-
- 
-         // console.log("relativeUrl = "+ relativeUrl +"");
-         // console.log("url = "+ url +"");
-         // console.log("rootUrl = "+ rootUrl +"");
-
-          
-
-  
-          /* TO DO - tidy this mess up
-
-                    // issues with the homepage link - so additional js added here
-               */
+            /* TO DO - tidy this mess up */
           if (rootUrl == 'http://localhost:8888/') {
-          // local:
+             // local:
 
            //console.log("relativeUrl" +relativeUrl +"")
             if (relativeUrl == 'theseus-wp-v2/'){
               // if theseus-wp-v2/ blank then this is likely to tbe the home-page link:
               // check if it could be anything else
               // hompage
-            //console.log("local site & should have just clicked on home page link?")
-            $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]').filter('.menu-item-home');
+              //console.log("local site & should have just clicked on home page link?")
+              $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]').filter('.menu-item-home');
 
-
-            } else {
-              //not homepage
-            //console.log("local site & clickedsomething else?")
-            $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
-
+            } else { //not homepage
+              
+              //console.log("local site & clickedsomething else?")
+              $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
 
             }//if (relativeUrl == '')
 
@@ -329,8 +306,8 @@
               // if blank then this is likely to tbe the home-page link:
               // check if it could be anything else
               // hompage
-          //  console.log("live site & should have just clicked on home page link?")
-            $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]').filter('.menu-item-home');
+              // console.log("live site & should have just clicked on home page link?")
+              $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]').filter('.menu-item-home');
 
             } else{
               //not homepage
@@ -362,11 +339,25 @@
           $content.stop(true,true);
           $('html, body').animate({scrollTop: '0px'}, 0); // scroll to top of page
           /// review this - not sure what js is seeting the opacity atm?
-            $content.html(contentHtml).ajaxify().css('opacity',100).show(); /* you could fade in here if you'd like */
-        
-         //  $content.html(contentHtml).ajaxify().css('opacity',100).show(); /* you could fade in here if you'd like */
-         // $content.html(contentHtml).ajaxify();//.show(); /* you could fade in here if you'd like */
+          $content.html(contentHtml).ajaxify().css('opacity',0).show(); /* you could fade in here if you'd like */
 
+          var check = function(){
+              //console.log("check = " +loaderanimationncss+"" )
+
+              if(loaderanimationncss == true){
+                // run when condition is met
+                // console.log("loaderanimationncss = true");
+                $content.css('opacity',100);
+                $('#loader').removeClass('on');
+
+
+              }
+              else {
+              setTimeout(check, 10); // check again in a 10ms
+              }
+          }
+          check();// ensure css animation has finished
+       
          // move the active link positioner:
           menupositioner();
 
@@ -384,124 +375,42 @@
             if ( $script.attr('src') ) {
               if ( !$script[0].async ) { scriptNode.async = false; }
               scriptNode.src = $script.attr('src');
-            }
-              
+            }             
               scriptNode.appendChild(document.createTextNode(scriptText));
               contentNode.appendChild(scriptNode);
           });
-
-          
-          // Complete the change
+  
+          // Complete the change /* http://balupton.com/projects/jquery-scrollto */
           if ( $body.ScrollTo||false ) { 
            // $body.ScrollTo(scrollOptions); 
-
           //  console.log("are we scrolling?")
           } 
-          /* http://balupton.com/projects/jquery-scrollto */
-          
- 
-
-
-          
+                    
             if(window.location.hash) {
               
              // console.log("window.location.hash");
             //  var hash = $(location).attr('hash');
              // $('html,body').animate({scrollTop: $(hash).offset().top},'slow');
               
-               // console.log('hashs')
-                //console.log(hash);
+             //console.log(hash);
               // Fragment exists
             } else {
               // Fragment doesn't exist
               // console.log("ELSE: window.location.hash");
 
-             //  $('html,body').animate({ scrollTop: 0 }, 'fast'); 
+              //$('html,body').animate({ scrollTop: 0 }, 'fast'); 
 
-              //  console.log('no hashs')
-
-            }
-
-                     
  
+            }
+            
+            $.getScript( ""+themeurl+'/assets/js/site.js', function( data, textStatus, jqxhr ) {
 
-
-
-           $('#loader').removeClass('on');
-      //  $('.logo-mask').addClass('off');
-  
+            }); // get sscript        
+             
+          
           // Add further scripts
  
-   
 
-            //  $(document).imagesLoaded( function(){
-                
-         // setTimeout(function(){
-   
-
-
- 
-             $.getScript( ""+themeurl+'/assets/js/site.js', function( data, textStatus, jqxhr ) {
-            //$.getScript( "https://theseus.agency/wp-content/themes/theseus/assets/js/site.js", function( data, textStatus, jqxhr ) {
-//                $.getScript( "../wp-content/themes/theseus/assets/js/site.js", function( data, textStatus, jqxhr ) {
-              //   console.log( data ); // Data returned
-              //  console.log( textStatus ); // Success
-              //  console.log( jqxhr.status ); // 200
-                    // console.log( ""+themeurl +"site - js loaded after ajax" );
-
- 
- 
-/*
-                  function waitloading(){
-                          
-
-                          $("body").removeClass('loading');
-                          console.log('loading removed');
-                         $("#site-wrap").removeClass('fromleft fromright fromtop frombottom fromtransition'); // remove the direction from which it loads
-
-                       }//waitloading
-
-                     
-
-
-                      function start(){
-
-                      //  var from = from;
-                      //  console.log(from)
-
-                   $window.trigger(completedEventName);
-
-                  //$body.addClass(from);
-
-                   $body.removeClass('wait');
-                        console.log('wait removed')
-
-                  setTimeout(waitloading, 2000);  
-
-                      } setTimeout(start, 3000); //added a time outfunction; because of fonts need loading first
-                         
-*/
-                             
-                    
-     
- 
-                          
-
-
-              }); // get sscript
-
-          //   $.getScript( ""+themeurl+'/assets/js/site.js', function( data, textStatus, jqxhr ) {
-/*         $.getScript( "http://localhost:8888/theseus-wp-v2/wp-content/plugins/cookie-notice/js/front.min.js", function( data, textStatus, jqxhr ) {
-          console.log("front.min.js loaded");
-              }); // get sscript
- */  
-   
-           //   }, 100); //timeout
-                 //    
-            //  }); // images loaded
-
-            
-          
   
           // Inform Google Analytics of the change
 

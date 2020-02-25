@@ -36,7 +36,9 @@ Author URI: http://svs.design
 
 @each $scheme in $schemes { // start colour scheme
  
-  body.#{nth($scheme, 1)} {
+  body.#{nth($scheme, 1)}:not(.wp-admin), // ensure we're not applying to admin 
+  body.#{nth($scheme, 1)}.wp-admin .th-block
+   {
    
       #loader{
       //background: transparent;
@@ -46,14 +48,16 @@ Author URI: http://svs.design
       bottom: 0px;
       left: 0px;
       right: 0px;
-      z-index: 0;
+      z-index: 7;
+
       background: nth($scheme, 2);
     //  opacity: 0;
-      @include animation(0s, 4s, ajax-site-loading-off, normal, forwards);
+      @include animation(0s, 1s, ajax-site-loading-off, normal, forwards);
+//@mixin animation ($delay, $duration, $animation, $direction, $fillmode) {
 
         &.on{
         z-index:7;// two lower than nav
-        @include animation(0s, 2s, ajax-site-loading-on, normal, forwards);
+        @include animation(0s, 1s, ajax-site-loading-on, normal, forwards);
        // background: nth($scheme, 2);
         }
 

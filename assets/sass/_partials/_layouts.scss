@@ -9,174 +9,162 @@ Author URI: http://svs.design
 // general styling
 
 
-.th-block-holder{
-//@extend .grid-row-holder
-}
 
-.th-block{
-overflow: hidden;
-//display: block;
- }
 
-// end th-block
+@each $scheme in $schemes { // start colour scheme
+ 
+  body.#{nth($scheme, 1)}:not(.wp-admin), // ensure we're not applying to admin 
+  body.#{nth($scheme, 1)}.wp-admin .acf-block-preview // but we are applying to the block we can't target ".th-block"  because most classes in this doc are targetting rthe s
+  {
 
 
+    .th-block-holder{
+    //@extend .grid-row-holder
+    }
 
+    .th-block{
+    overflow: hidden;
+    }
 
+    .clear-col-item{
+    //https://stackoverflow.com/questions/23800485/force-div-to-next-column
+    //break-after: column;
+    display:block;
 
-.clear-col-item{
-//https://stackoverflow.com/questions/23800485/force-div-to-next-column
-//break-after: column;
-display:block;
+    	&.clear-column-after{
+    	break-after:column;
+      -moz-column-break-after:column;
 
-	&.clear-column-after{
-	break-after:column;
-  -moz-column-break-after:column;
+    	}
 
-	}
+    	&.clear-column-before{
+    	break-before:column;
+        -moz-column-break-before:column;
 
-	&.clear-column-before{
-	break-before:column;
-    -moz-column-break-before:column;
+    	}
 
-	}
+    }//.clear-col-item
 
-}
+    // 1 column:
+    .one-col-block{
+    }
+    // end 1 column
 
+    // 2 columns: 
+    .two-col-block{
 
+      // one col 
+      @include fluid-type(column-gap, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing
+      @include fluid-type(column-gap, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
+      // 2 col
 
+        @media (min-width: map-get($breakpoints, md)) {
+        column-count: 2;
+        }
 
-// 1 column:
-.one-col-block{
+        > div{ // ensure items float in grid?
+      	//float: left;
+        }
 
+    }//.two-col-block
+    // end 2 columns
 
-}
+    .two-col-block.clear-right-col{
+    // for the jobs - 
 
+      // one col 
+      @include fluid-type(column-gap, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing
+      @include fluid-type(column-gap, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
 
-// end 1 column
+      // 2 col
 
+      @media (min-width: map-get($breakpoints, md)) {
+      column-count: 1;
+      	// but width only 50%;
+      width: 50%
+      }
 
-// 2 columns: 
+    }
 
-.two-col-block{
 
+    // 2 columns - left header
+    // what to do here:
 
-  // one col 
-  @include fluid-type(column-gap, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing
-  @include fluid-type(column-gap, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
+    // i.e one column = 25% other is 75% at lg breakpoint
 
-  // 2 col
+    // end 2 columns - left header
 
-  @media (min-width: map-get($breakpoints, md)) {
-  column-count: 2;
-  }
+    // 3 columns: 
 
-  > div{ // ensure items float in grid?
-	//float: left;
-  }
+    .three-col-block{
 
-}//.two-col-block
-// end 2 columns
+      // one col 
+      @include fluid-type(column-gap, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing
+      @include fluid-type(column-gap, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
 
+      // 2 col
 
-.two-col-block.clear-right-col{
-// for the jobs - 
+      @media (min-width: map-get($breakpoints, md)) {
+     // column-count: 2;// hmm what to do?
+      }
 
-  // one col 
-  @include fluid-type(column-gap, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing
-  @include fluid-type(column-gap, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
+      @media (min-width: map-get($breakpoints, lg)) {
+      column-count: 3;
+      }
 
-  // 2 col
+      > div{ // ensure items float in grid?
+    	//float: left;
+      }
 
-  @media (min-width: map-get($breakpoints, md)) {
-  column-count: 1;
-  	// but width only 50%;
-  width: 50%
-  }
+    }//.three-col-block
 
+    // 4 columns: 
 
-}
+    .four-col-block{
 
+      // one col 
+      @include fluid-type(column-gap, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing
+      @include fluid-type(column-gap, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
 
-// 2 columns - left header
-// what to do here:
+      // 2 col
 
-// i.e one column = 25% other is 75% at lg breakpoint
+      @media (min-width: map-get($breakpoints, md)) {
+      column-count: 2;
+      }
 
-// end 2 columns - left header
+      @media (min-width: map-get($breakpoints, lg)) {
+      column-count: 4;
+      }
 
+      > div{ // ensure items float in grid? - no breaks the multicolumn in safar & firefox
+    	//float: left;
+      }
 
+    }//.four-col-block
+    // end 4 columns
 
+    // START image blocks; general
 
-// 3 columns: 
+    .image-wrap{
+    width: 100%;
 
-.three-col-block{
+      	img{
+       // max-width: 100%;
+        opacity: 0;
+    		width: 100%;
+    		height: auto;
 
+          &.loaded{
+          opacity: 1; 
+          @include animation (0s, 1s, opacity, normal, forwards);
+          }//&.loaded
 
-  // one col 
-  @include fluid-type(column-gap, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing
-  @include fluid-type(column-gap, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
+        }// img
 
-  // 2 col
+    }//.image-wrap
 
-  @media (min-width: map-get($breakpoints, md)) {
- // column-count: 2;// hmm what to do?
-  }
+    // END image blocks; general
 
-  @media (min-width: map-get($breakpoints, lg)) {
-  column-count: 3;
-  }
+  }//body
 
-  > div{ // ensure items float in grid?
-	//float: left;
-  }
-
-}//.three-col-block
-
-
-
-// 4 columns: 
-
-.four-col-block{
-
-
-  // one col 
-  @include fluid-type(column-gap, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*2, map-get($gutter, lg)*2); // fixed sizing
-  @include fluid-type(column-gap, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
-
-  // 2 col
-
-  @media (min-width: map-get($breakpoints, md)) {
-  column-count: 2;
-  }
-
-  @media (min-width: map-get($breakpoints, lg)) {
-  column-count: 4;
-  }
-
-  > div{ // ensure items float in grid? - no breaks the multicolumn in safar & firefox
-	//float: left;
-  }
-
-}//.four-col-block
-
-
-// end 4 columns
-
-
-// START image blocks; general
-
-
-.image-wrap{
-width: 100%;
-
-	img{
-		width: 100%;
-		height: auto;
-		display: block;
-	}
-
-}//.image-wrap
-
-// END image blocks; general
-
+}//scheme

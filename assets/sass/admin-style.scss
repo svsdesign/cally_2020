@@ -15,23 +15,24 @@ Text Domain: theseus
 
 /* sitewide styling */
 
-//@import "compass";
-//@import "compass/reset";
+body.wp-admin .acf-block-preview 
+{ 
+@import "compass";
+@import "compass/reset";
+}// this resets all the editor styles that WP are adding, I can't seem to de-register this via php
+
+
 @import "_partials/mixins";
 @import "_partials/variables";
 @import "_partials/grid";
 @import "_partials/typography";
-@import "_partials/navigation"; // review this!!
+@import "_partials/navigation"; 
  /*  end sitewide styling */
 
-
+@import "_partials/admin";  
 
 @import "_partials/layouts"; // general layout; css collumns etc
-
- 
-/* admin only side styling */
- //@import "_partials/adminstyle-news";// 
- @import "_partials/blocks-reset"; 
+@import "_partials/blocks-reset"; 
 
 //@import "_partials/adminstyle-pages-legal";
 
@@ -73,6 +74,8 @@ Text Domain: theseus
 
 /* further reading:
 
+
+
 https://github.com/WordPress/gutenberg
 - Official Guttenberg project
 
@@ -107,4 +110,9 @@ https://jasonyingling.me/working-with-editor-styles-in-gutenberg/
 
 http://jschof.com/gutenberg-blocks/tutorial/beginner-gutenberg-block-an-easy-media-block-with-media-upload-and-richtext/
 - building a guttenberg block - using react - so I guess eventually I will need to learn this :(
+
+// REgarding narrowness of the content
+
+https://wordpress.org/support/topic/new-editor-window-way-too-narrow-not-resolved/
+
 */

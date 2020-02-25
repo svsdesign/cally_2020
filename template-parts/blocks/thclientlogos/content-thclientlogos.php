@@ -33,10 +33,11 @@ if( $images ): ?>
        
         <?php foreach( $images as $image ): ?>
 
-            <div class="client-logo-image">
-
-                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
-
+            <div class="client-logo-image image-wrap">
+    
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+               <!-- <img src="<?php //echo esc_url($image['url']); ?>" alt="<?php// echo esc_attr($image['alt']); ?>" /> -->
+                       
             </div>
 
         <?php endforeach; ?>
