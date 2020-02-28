@@ -15,7 +15,7 @@ Text Domain: theseus
 
 /* sitewide styling */
 
-body.wp-admin .acf-block-preview 
+body.wp-admin .acf-block-preview
 { 
 @import "compass";
 @import "compass/reset";
@@ -55,7 +55,7 @@ body.wp-admin .acf-block-preview
 */
 /* end blocks */
 
-
+@import "_partials/privacy-page";
  
 
 @import "_partials/block-one-col";  // 1 column text block

@@ -51,26 +51,19 @@ var app = (function() {
 
       function devgrid() {
 
-      // console.log('devgrid function - reactiave it')
-    
+     
             if ($('.dev-grid').length > 0) 
             {
                 
               var introHeight = $('#intro-area').height(),
-                  //documentGridHeight = $('#main.wrapper').height() - introHeight,
                   documentGridHeight = $('#main.wrapper').height(),
                   $baselines = $(".dev-base-lines");
-
                   pxlineheight = '10',//px
                   vwlineheight = '1vw',//vw
                   baselinecount =  documentGridHeight / pxlineheight;
-
-                  //console.log("documentGridHeight " +documentGridHeight+"");
-                  //temp turned of - used when we nee dto sort linehiegh
                   $baselines.css("height",documentGridHeight);// set height of the baseline area as documentGridHeight
 
-                  $('.dev-base-lines .base-line').remove(); // remove existing item(s)?
-
+                  $('.dev-base-lines .base-line').remove(); // remove existing item(s);
 
                   for (var i=0; i<baselinecount; i++){
                        $('.dev-base-lines').append('<div class="base-line"></div>');
@@ -92,64 +85,49 @@ var app = (function() {
 
                 }); // click
 
-          /*
-        .dev-grid
-        */
+              /*
+            .dev-grid
+            */
           }
   
       // END DEV Functions
  
     } // function devgrid()
-     devgrid();       
+    // devgrid();       
 
+      function siteload(){
 
+        if (introanimationdone == false){
 
-        function siteload(){
+         $('.fade-item').css( 'opacity', 0 ); // intial run
+           fade(); // intial run
+           topanimation();// start top animation (large)
+           topanimationSmall();// start top animation (small)
           
-        //  console.log("siteload)");
+          $('body').removeClass('site-loading'); //ensure people can now scroll
+
    
-          // if $('body').hasClass(''){
-        // if ($("body:not(.animation-done)")){
-          if (introanimationdone == false){
-              //console.log('animation has not been been loaded yet - so lets load it?')
-
-
-           $('.fade-item').css( 'opacity', 0 ); // intial run
-             fade(); // intial run
-             topanimation();// start top animation (large)
-             topanimationSmall();// start top animation (small)
-             //index_nav_sections();
-             //nav_sections(); // re-adjust nav marker positions
-
-            $('body').removeClass('site-loading'); //ensure people can now scroll
-
-     
-            $('body').addClass('animation-done'); //add class so not added ever again
+          $('body').addClass('animation-done'); //add class so not added ever again
+            
             introanimationdone = true;
 
-            } else {
+          } else {
 
+           $('.fade-item').css( 'opacity', 0 ); // intial run
+           fade(); // intial run
+          
+           $('body').removeClass('site-loading'); //ensure people can now scroll
 
-           //   console.log('animation has been loaded - so only add fading stuff in?')
-             $('.fade-item').css( 'opacity', 0 ); // intial run
-            // moved this in to the AJAx js: $('body').addClass('animation-hide'); //add class so now hidden at all times?
+          }//       if $("body:not(.animation-done)"){
 
-             fade(); // intial run
-            
-             $('body').removeClass('site-loading'); //ensure people can now scroll
-
-            }//       if $("body:not(.animation-done)"){
- 
-        } // function indexsiteload();
-
+      } // function indexsiteload();
 
     function contentheight() {
-      console.log("contentheight()");
+
       var  
       $maincontent = $("#main"),
       $containercontent = $(".grid-container.main"),
       $footercontent = $("#footer-nav-area");
-
       $containercontent.css("min-height","initial");// this to reset previous value
     
       var
@@ -157,14 +135,7 @@ var app = (function() {
       containercontentheight = $containercontent.height(),
       footercontentheight = $footercontent.outerHeight(),
       viewportheight = $(window).height(),
-      minimumcontainerheight = (maincontentheight - footercontentheight);
-       
-      //  console.log("containercontentheight" +containercontentheight +"");
-       // console.log("footercontentheight" +footercontentheight+"");
-       // console.log("maincontentheight" +maincontentheight+"");
-
-      //console.log("minimumcontainerheight:" + minimumcontainerheight+"");
-   
+      minimumcontainerheight = (maincontentheight - footercontentheight);  
       $containercontent.css("min-height", minimumcontainerheight );
 
     }//contentheight();
@@ -244,7 +215,6 @@ var app = (function() {
 
       }; //function topanimationsmall()
 
-
       function topanimation(){
        
         if ($('body').hasClass('black-scheme')){
@@ -267,14 +237,11 @@ var app = (function() {
         var anim;
         anim = lottie.loadAnimation(params);
  
-   
+        setTimeout(function(){ 
 
-         setTimeout(function(){ 
+        anim.play();    
 
-            anim.play();    
-
-        }, 2); // temp change from 2000
-
+        }, 200);
 
         anim.addEventListener('complete', function(){
             //    console.log('complete?'); 
@@ -312,7 +279,6 @@ var app = (function() {
 
       };// topanimation()
 
-
      function fade() {
 
         var animation_height = $(window).innerHeight() * 0.25; // was 0.25
@@ -320,17 +286,13 @@ var app = (function() {
 
            $('.th-block').each(function() { // might need to review this
    
-            // console.log(".th-block each");// each
                 var objectTop = $(this).offset().top;
                 var windowBottom = $(window).scrollTop() + ($(window).innerHeight() *0.8);
                 
                 if ( objectTop < windowBottom ) {
 
-                                        //  console.log("if ( objectTop < windowBottom");
-
                     if ( objectTop < windowBottom - animation_height ) {
                        // $(this).html( 'fully visible' );
-               
 
                         $(this).css( {
                             transition: 'opacity 0.1s linear',
@@ -352,6 +314,7 @@ var app = (function() {
                    // $(this).html( 'not visible' );
                     $(this).css( 'opacity', 0.1 );
                 }
+
             });//  $('.th-block').each(function()
 
 
@@ -363,13 +326,12 @@ var app = (function() {
                   opacity: 1
               } );
 
-            }///
- 
+            }//
 
       } // function fade()
      
 
-       //BLCOKS JS - for ajax purposes
+    //BLCOKS JS - for ajax purposes
     function images($block){
      // console.log("images loaded applied here")
      
@@ -420,7 +382,7 @@ var app = (function() {
                     x2: 60, y2: 50,
                     x3: 30
                   }
-    //            arrowShape: '82.9312793 24.4501626 86.9653917 27.5504528 49.7576146 75.9653917 12.5498374 27.5504528 16.5839498 24.4501626 49.7576146 67.615895',
+               // arrowShape: '82.9312793 24.4501626 86.9653917 27.5504528 49.7576146 75.9653917 12.5498374 27.5504528 16.5839498 24.4501626 49.7576146 67.615895',
 
              });
 
@@ -428,9 +390,6 @@ var app = (function() {
 
     }; // function gallery($block)
 
- 
-
-// map function
     function map($block){
 
       //console.log("function map($block) - ONE")
@@ -473,25 +432,21 @@ var app = (function() {
                           streetViewControl: false,
                           overviewMapControl: true,
                           styles: [{ "stylers": [
-                      { "saturation": "-90" }
+                                   { "saturation": "-90" }
                             ] } ],
                     }
 
                     /*https://stackoverflow.com/questions/22047466/how-to-add-css-class-to-a-googlemaps-marker */
 
                     map = new google.maps.Map(document.getElementById('g-map'),mapOptions);
-                   // var image = ""+themeurl+'/assets/svg/t_logo_svg.svg?i='+(index++);
+            // var image = ""+themeurl+'/assets/svg/t_logo_svg.svg?i='+(index++);
                     var image = ""+themeurl+'/assets/svg/map_marker_svg_40px.svg?i='+(index++);
-                
-                 //   var image = 'https://theseus.agency/wp-content/themes/theseus/assets/svg/t_logo_svg.svg?i='+(index++);
                     var imageMarker = new google.maps.Marker({
                     position: {lat: 51.5198038, lng: -0.1228228999999601},
                     map: map,
                     optimized:false,
                     icon: image
                   });
-
-                 //console.log("image" + image +"");
                 }
 
                 $(window).bind('gMapsLoaded', initialize);
@@ -500,7 +455,6 @@ var app = (function() {
             } // if #g-map
 
     } // function gallery($block)
-
 
     // end map funtion
 
@@ -517,8 +471,7 @@ var app = (function() {
       // START Media queries based on class
 
 
-
-            $(function () // on document.ready()
+         $(function () // on document.ready()
             {
                 if ($('body').length > 0) 
                 {
@@ -531,9 +484,7 @@ var app = (function() {
                      if ($('.cn-revoke-inline').length > 0) 
                      {
                       
-                    //console.log(  'if  .cn-revoke-inline ' );
-                    // allow cookie revoke clicking:
-                    clickcookierevoke();// shoul dthis be in body.privacy page instead?
+                     clickcookierevoke();// shoul dthis be in body.privacy page instead?
 
                      }; //   if ($('.cn-revoke-inline').length > 0) 
 
@@ -543,14 +494,10 @@ var app = (function() {
                     if ($('.image-one-col-block, .text-two-col-image-block-left-header, .image-multi-col-block, .text-image-two-col-block, .client-logos-block').length > 0)
                     {
 
-                       //console.log("if image related block");
-
-                        var $thisblock = $(this);  
- 
+                       var $thisblock = $(this);
                             images($thisblock);// run js if slideshow item exist
 
                     };// .slideshow-block
-
 
                     // if blocks exist: Slideshow
                     if ($('.slideshow-block').length > 0) 
@@ -558,7 +505,6 @@ var app = (function() {
                       // console.log("if slideshow-block");
 
                       var $thisblock = $(this);  
- 
                           slideshow($thisblock);// run js if slideshow item exist
 
                     };// .slideshow-block
@@ -591,18 +537,16 @@ var app = (function() {
                         }
                     });
 
-
                     function resizeend() {
                       
                         if (new Date() - rtime < delta) {
                             setTimeout(resizeend, delta);
                         } else {
-                        fade();
 
+                        fade();
                         timeout = false; 
                         orientation(); // check for orientation changes
                         contentheight(); // resize minimum area
-
 
                         } //else 
 
@@ -614,8 +558,6 @@ var app = (function() {
 
                 }
             });
-
-
 
             $(function () // on document.ready()
             {
@@ -635,7 +577,6 @@ var app = (function() {
                         }
                     });
 
-
                     function resizeend() {
                       
                         if (new Date() - rtime < delta) {
@@ -651,20 +592,12 @@ var app = (function() {
 
                      };//resizeend fucntion
 
-                      
-
-                     //indexsiteload();
-                     // siteload(); // run straight away - delete this i tihnk
- 
-
                 /*
                 .home
                 */
 
                 }
             });
-
-
 
             $(function () // on document.ready()
             {
@@ -691,8 +624,6 @@ var app = (function() {
                     } else {
 
                     timeout = false;
-                  //  nav_sections(); // rnot needed i don't thi k
-                    //fade(); // this required?
 
                     } //else 
 
@@ -708,9 +639,6 @@ var app = (function() {
                 }
             });
 
-
-  
-
       // END  Media queries based on class
  
 
@@ -724,116 +652,24 @@ var app = (function() {
       // console.log('media query xs matched: viewport width ' + screenBase);
       // console.log('query that acts as starting point: + 1 and goes upto 480');
 
-          /*  RUN JS IF IS HOME   -  + 1 and goes upto 480 */
-   
+          /*  RUN JS IF IS HOME   -  + 1 and goes upto 480 
 
             $(function () // on document.ready()
             {
                 if ($('body.home').length > 0)
                 {
 
-
-              /*
-              body.home
-              */
+               
 
                 }
             });
 
-        /*  END OF:  RUN JS IF IS HOME  */
+           END OF:  RUN JS IF IS HOME  */
      
-
 
 
  
       });  // END screenBase query that acts as starting point: + 1 and goes upto 480
-
-    
-      //
-      //
-      //
-      // screenXS media query - query that acts going into XS: 480 and goes upto SM: 768
-     
-      
-      enquire.register(mQueryUptoSM, function() {
-          //    console.log('query that acts as upto 768');
-
-
-      //
-      //
-      //
- 
-
-            /*  RUN JS IF IS _body  -  goes upto SM: 768 */
-   
-
-             $(function () // on document.ready()
-            {
-                if ($('_body').length > 0) 
-                {
-                
-
-                }
-            });
-
-            /*  END RUN JS IF IS _body  -  goes upto SM: 768 */
-
-
-      });  // END query that acts going into upto SM: 768 
-
-
-      //
-      //
-      //
-      // screenSMPLUS media query - 768 +
-     
-      
-        enquire.register(mQuerySMPLUS, function() {
-      //     console.log('query that acts as - SM: 768  +');
-      
-
-      //
-      //
-      //
-
- 
-
- 
-
-             /*  RUN JS IF IS _body  -  query that acts going into SM: 768 + */
-   
-
-             $(function () // on document.ready()
-            {
-                if ($('_body').length > 0) 
-                {
-          
- 
-      
-
-                }
-            });
-             
-            /*  END RUN JS IF IS _body  -  query that acts going into SM: 768 + */
-
-
-    
-
-
-      }); // END   query that acts going into SM: 768 +
-
-      //
-      //
-      //
-      // screenUptoSMPLUS media query  
-      //
-      //
-      //
-
-
-//// END specific media queries >> 
-
-
 
     },
 
@@ -842,10 +678,9 @@ var app = (function() {
     }
   };
 
-  return app;
+return app;
 
 }());
-
 
 app.init();
 

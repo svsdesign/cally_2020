@@ -3,7 +3,7 @@
 
 (function($){
       //  console.log("(function($)");
-   // console.log("hello multicolumnimage block script");
+   // console.log("hello twocolumn + image block script");
 
     /**
      * initializeBlock
@@ -20,13 +20,13 @@
 
  var initializeBlock = function images($block){
      // console.log("images loaded applied here")
-    // console.log("each multicolumnimage block?");
+      //  console.log("each twocolumn + image block?");
   
     var $thisimageblock = $block.find("img");  // just target img?
 
         $thisimageblock.each(function() {  
 
-          //console.log("each multicolumnimage?");
+        //  console.log("each twocolumn + image image?");
          
           var $thisimage = $(this);
 
@@ -66,9 +66,9 @@
 
     // Initialize dynamic block preview (editor).
     if( window.acf ) {
-        console.log("window.acf");
-    
-        window.acf.addAction( 'render_block_preview/type=thmulticolimage', initializeBlock );
+        //console.log("window.acf");
+
+        window.acf.addAction( 'render_block_preview/type=thtwocoltextimage', initializeBlock );
 
     }
 

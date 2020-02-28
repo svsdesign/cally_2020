@@ -266,7 +266,7 @@ width: 100%;// this dirty?
  			@include fluid-type(margin-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*2, map-get($gutter, xxl)*2); // viewport sizing
 			
 				&.image-wrap{
-				width: auto;
+				width: 100%;// to improve back end
 				}
 
 				img {
@@ -304,8 +304,8 @@ body.horizontal{
 	height: inherit;
 
 		.slideshow-carousel{
-		height: 80vh;
-		max-height: 60vh;
+		height: 100vh;
+		max-height: 30vh;
 
 			@media (min-width: map-get($breakpoints,lg)) {
 				max-height: 75vh;
@@ -315,6 +315,25 @@ body.horizontal{
 
 	}//.slideshow-block
 
+	&.wp-admin{
+
+		.slideshow-block{
+		height: inherit;
+
+			.slideshow-carousel{
+			
+			height: 80vh;
+			max-height: 60vh;
+				@media (min-width: map-get($breakpoints,lg)) {
+					max-height: 75vh;
+				}
+
+			}//.slideshow-carousel
+
+		}//.slideshow-block
+
+	}//&.wp-admin
+	
 }//body.horizontal
 
 
@@ -331,5 +350,24 @@ body.vertical{
 		}
 
 	}//.slideshow-block
+
+	&.wp-admin{
+
+		.slideshow-block{
+		height: inherit;
+
+			.slideshow-carousel{
+			//height: 40vh;
+			//max-height: 30vh;
+
+				//@media (min-width: map-get($breakpoints,lg)) {
+					height: 30vh;
+				//}
+
+			}//.slideshow-carousel
+
+		}//.slideshow-block
+
+	}//&.wp-admin
 
 }//body.vertical

@@ -1,53 +1,34 @@
 // Ajaxify
-// v1.0.1 - 30 September, 2012
+// v1.0.1 - 30 September, 2012 - svs.design edit or Thesues 2020
 // https://github.com/browserstate/ajaxify
 
 
-  function menupositioner(){
-        //console.log(" menupositioner");
+function menupositioner(){
+    //console.log(" menupositioner");
 
-    var $positioner = $("#positioner")
-        $menu = $("#menu-header-navigation"),
-        $menuitems = $menu.children(),
-        numberofmenuitems = $menuitems.length,
-        $activemenuitem = $menu.children().filter(".current-menu-item"),
-        //console.log("menuitems" +numberofmenuitems+"");
-        positionerwidth = (100/numberofmenuitems);
-        //$activemenuitem.css("background","red");
-       // console.log("positionerwidth" + positionerwidth +"");
+  var $positioner = $("#positioner")
+      $menu = $("#menu-header-navigation"),
+      $menuitems = $menu.children(),
+      numberofmenuitems = $menuitems.length,
+      $activemenuitem = $menu.children().filter(".current-menu-item"),
+      positionerwidth = (100/numberofmenuitems);
 
+      $menuitems.each(function() {
+        var number = $(this).index() +1;
+      // $(this).prepend("<span>" +  + "</span>");
+        $(this).attr( "menu-number", number);
 
-        $menuitems.each(function() {
-          var number = $(this).index() +1;
-        // $(this).prepend("<span>" +  + "</span>");
-          $(this).attr( "menu-number", number);
+      });
+   
+      activemenuitemnumber = $activemenuitem.attr( "menu-number");
+      applymarginleft = ((activemenuitemnumber * positionerwidth) - positionerwidth)+"%";
 
-        });
-       
-        activemenuitemnumber = $activemenuitem.attr( "menu-number");
-        applymarginleft = ((activemenuitemnumber * positionerwidth) - positionerwidth)+"%";
-       // applicationspeed =
-  
-        //console.log("activemenuitemnumber" +activemenuitemnumber+"");
-        $positioner.css("width",positionerwidth+"%");
-        $positioner.css("margin-left", applymarginleft+"%");
-  
-
-       $positioner.animate({
-            marginLeft: applymarginleft
-        }, 500);
-
-
-//var count = $("#menu-header-navigation").children().length;
-
-//        console.log("count" +count+"");
-
-// chekc how many links there are
-// calculate the width of the moving block
-
-// chekc initial position (i.e active link)
-
-
+      //console.log("activemenuitemnumber" +activemenuitemnumber+"");
+      $positioner.css("width",positionerwidth+"%");
+      $positioner.css("margin-left", applymarginleft+"%");
+      $positioner.animate({
+          marginLeft: applymarginleft
+      }, 500);
 
 }//menupositioner()
 
@@ -66,12 +47,8 @@
     return false;
   }
 
-
-
-
   // Wait for Document
   $(function(){
-
 
       menupositioner();
 
@@ -99,7 +76,8 @@
         easing:'swing'
       };
 
-    // console.log("rootUrl" + rootUrl +"");// but  Locally this is http://localhost:8888 & not http://localhost:8888/theseus-wp-2/ 
+    // console.log("rootUrl" + rootUrl +"");
+    // Locally this is http://localhost:8888 & not http://localhost:8888/theseus-wp-2/ 
     
     // Ensure Content
     if ( $content.length === 0 ) {
@@ -117,9 +95,6 @@
       
       // Check link
       isInternalLink = url.substring(0,rootUrl.length) === rootUrl || url.indexOf(':') === -1;
-      //maybe I should check if link is actually "home" - this probaly why retruning 4?
-
-
       // Ignore or Keep
       return isInternalLink;
     };
@@ -137,14 +112,13 @@
       return $.trim(result);
     };
     
-
     // Ajaxify Helper
     $.fn.ajaxify = function(){
       // Prepare
       var $this = $(this);
       var n = 0;
 
-              // Ajaxify
+    /// Ajaxify
     //  $this.find('a:internal:not(.no-ajaxy,[href^="#"],[href*="wp-login"],[href*="wp-admin"])').click(function(event){
       $this.find('a:internal:not(.no-ajaxy)').click(function(event){
 
@@ -152,33 +126,23 @@
         var
           $this = $(this),
           $main = $('#site-wrap'), // content selector
-
           url = $this.attr('href'),
           title = $this.attr('title')||null,
           hashPos = url.indexOf('#'), hash;
-  
+   
+          // Continue as normal for cmd clicks etc
+          if ( event.which == 2 || event.metaKey ) { return true; }
+          
+            //edit to ensure we can still use /#  - https://github.com/browserstate/history.js/issues/57
 
-          // basically if I click on a link in the menu, I want to close the menu,
-          // so a
-
+          if (hashPos > -1) {
+            
+             // console.log("hash click")
+             hash = url.substr(hashPos);
+             url = url.substring(0, hashPos);
  
-
-        // Continue as normal for cmd clicks etc
-        if ( event.which == 2 || event.metaKey ) { return true; }
-        
-          //edit to ensure we can still use /#  - https://github.com/browserstate/history.js/issues/57
-
-        if (hashPos > -1) {
-          //console.log("hash click maybe?")
-
-               // I've remoed this becuase its destroying my existing animation - look at add a class instead from other pages and assign #position accordingly?
-               //     hash = url.substr(hashPos);
-                //    url = url.substring(0, hashPos);
-                // end remove
-
-           };
-           
-
+            };
+             
         // Ajaxify this link
         History.pushState(null,title,url);
                 if (hash) window.location.hash = hash;
@@ -212,14 +176,10 @@
       setTimeout(function (){
       // I want to ensure that the duration of the animation is fully played out before fading in
       // 2 sec for animation to fade into 0
-
       loaderanimationncss = true;
-
-      console.log("in timeout loaderanimationncss = " +loaderanimationncss+"" )
-
+      //console.log("in timeout loaderanimationncss = " +loaderanimationncss+"" )
 
       }, 1000); 
-
 
       // Start Fade Out
       // Animating to opacity to 0 still keeps the element's height intact
@@ -228,7 +188,7 @@
        $main = $('#site-wrap'), // content selector
 
       //$content.animate({opacity:100},800);
-      $body.addClass('site-loading'); // this class is remove in the site.js
+       $body.addClass('site-loading'); // this class is remove in the site.js
     
 
  
@@ -280,47 +240,28 @@
             $menuChildren.filter(activeSelector).removeClass(activeClass); // page class
             $menuChildren.filter(activeMenuSelector).removeClass(activeMenuClass); // menu class
             
-            /* TO DO - tidy this mess up */
-          if (rootUrl == 'http://localhost:8888/') {
-             // local:
+           if (rootUrl == 'http://localhost:8888/') {  // local:
 
-           //console.log("relativeUrl" +relativeUrl +"")
-            if (relativeUrl == 'theseus-wp-v2/'){
-              // if theseus-wp-v2/ blank then this is likely to tbe the home-page link:
-              // check if it could be anything else
-              // hompage
-              //console.log("local site & should have just clicked on home page link?")
-              $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]').filter('.menu-item-home');
+               if (relativeUrl == 'theseus-wp-v2/'){// if theseus-wp-v2/ then this is likely to tbe the home-page link:
+                
+                $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]').filter('.menu-item-home');
 
-            } else { //not homepage
-              
-              //console.log("local site & clickedsomething else?")
-              $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
+              } else { //not homepage
+                
+                $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
 
-            }//if (relativeUrl == '')
+              }
 
-          }else{ //if (rootUrl == 'http://localhost:8888/') 
-          // not local:
+          }else{ // not local:
 
             if (relativeUrl == ''){ 
               // if blank then this is likely to tbe the home-page link:
-              // check if it could be anything else
-              // hompage
-              // console.log("live site & should have just clicked on home page link?")
               $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]').filter('.menu-item-home');
-
             } else{
-              //not homepage
-            //console.log("live site & clickedsomething else?")
-            $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
-
-
+              $menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"], a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
             }//if (relativeUrl == '')
 
-
-          }// if (rootUrl == 'http://localhost:8888/') 
-
-      
+          }// if (rootUrl == 'http://localhost:8888/')  
 
           if ( $menuChildren.length === 1 ) {
           $menuChildren.addClass(activeClass); 
@@ -331,7 +272,6 @@
 
           $menuChildren.addClass(activeClass); 
           $menuChildren.addClass(activeMenuClass); 
-
           //console.log("if ( $menuChildren.length" + $menuChildren.length +")" );
           }
  
@@ -349,7 +289,6 @@
                 // console.log("loaderanimationncss = true");
                 $content.css('opacity',100);
                 $('#loader').removeClass('on');
-
 
               }
               else {
@@ -389,47 +328,38 @@
             if(window.location.hash) {
               
              // console.log("window.location.hash");
-            //  var hash = $(location).attr('hash');
-             // $('html,body').animate({scrollTop: $(hash).offset().top},'slow');
+              var hash = $(location).attr('hash');
+              $('html,body').animate({scrollTop: $(hash).offset().top},'slow');
               
-             //console.log(hash);
+              //console.log(hash);
               // Fragment exists
             } else {
               // Fragment doesn't exist
               // console.log("ELSE: window.location.hash");
-
               //$('html,body').animate({ scrollTop: 0 }, 'fast'); 
 
- 
             }
             
             $.getScript( ""+themeurl+'/assets/js/site.js', function( data, textStatus, jqxhr ) {
-
             }); // get sscript        
              
-          
-          // Add further scripts
- 
-
-  
           // Inform Google Analytics of the change
 
           // TO DO: ensure this works, but also inline with cookie consent tool
 
-          //if ( typeof window._gaq !== 'undefined' ) {
-          //  window._gaq.push(['_trackPageview', relativeUrl]);
-          //}
+            //if ( typeof window._gaq !== 'undefined' ) {
+            //  window._gaq.push(['_trackPageview', relativeUrl]);
+            //}
 
           // Inform Google Analytics of the change
             if ( typeof window.ga !== 'undefined' ) {
           // Universal Analytics
               window.ga('send', 'pageview', relativeUrl);
-          } else if ( typeof window._gaq !== 'undefined' ) {
-          // Legacy analytics
-          window._gaq.push(['_trackPageview', relativeUrl]);
+            } else if ( typeof window._gaq !== 'undefined' ) {
+            // Legacy analytics
+            window._gaq.push(['_trackPageview', relativeUrl]);
             }
-                      // END Inform Google Analytics of the change
-
+          // END Inform Google Analytics of the change
 
           // Inform ReInvigorate of a state change
           if ( typeof window.reinvigorate !== 'undefined' && typeof window.reinvigorate.ajax_track !== 'undefined' ) {
@@ -444,16 +374,8 @@
         }
       }); // end ajax
 
-
-    
-
     }); // end onStateChange
     
   }); // end onDomLoad
   
-
-
-
-})(window); // end closure
-
-  
+})(window); // end closure 

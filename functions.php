@@ -289,9 +289,8 @@ function my_acf_init() {
             'description'       => __('Image - Multi Column'), // review this
             'render_callback'   => 'my_acf_block_render_callback',
             'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
-            'enqueue_assets'    => function(){
-           
-  //           wp_enqueue_script('th-multi-col-image', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
+            'enqueue_assets'    => function(){    
+              wp_enqueue_script('th-multi-col-image', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thmulticolimage/assets/js/script.js', array( 'jquery' ), '', true );
             },
             'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
             'keywords'          => array('thmulticolimage'),
@@ -323,7 +322,7 @@ function my_acf_init() {
             'render_callback'   => 'my_acf_block_render_callback',
             'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
             'enqueue_assets'    => function(){
-            //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
+              wp_enqueue_script('th-two-col-text-image', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thtwocoltextimage/assets/js/script.js', array( 'jquery' ), '', true );
             },
             'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
             'keywords'          => array('thtwocoltextimage'),
@@ -428,41 +427,22 @@ function my_acf_init() {
 
 
 
-  /*      acf_register_block(array(
-            'name'              => 'inpimage',
-            'title'             => __('Inp Image'),
-            'description'       => __('A custom image block.'),
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',
-            'enqueue_assets'    => function(){
-                //  wp_enqueue_script('inp-quote-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inpquote/assets/js/script.js', array( 'jquery' ), '', true );
-            },
-            'icon'              => 'format-image',
-          //'mode'              => 'preview',//"auto" or "preview" This lets you control how the block is presented the Gutenberg block editor. The default is “auto” which renders the block to match the frontend until you select it, then it becomes an editor. If set to “preview” it will always look like the frontend and you can edit content in the sidebar.
-            'supports'          => array( 'mode' => false ),
-            'keywords'          => array( 'inpimage'),
-        ));
-        */
-
-
-  // register slideshow block:
-
-       //https://www.advancedcustomfields.com/resources/acf_register_block_type/#examples
+        // register slideshow block:
+        // https://www.advancedcustomfields.com/resources/acf_register_block_type/#examples
         acf_register_block(array(
             'name'              => 'thslideshow',
             'title'             => __('Slide Show'),
             'description'       => __('Slide Show'),// review this
             'render_callback'   => 'my_acf_block_render_callback',
             'category'          => 'common',
-          //  'enqueue_script'    => '',
+            // 'enqueue_script'    => '',
 
             'enqueue_assets'    => function(){
             //  wp_enqueue_script('flickity-pgkd','https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array('jquery'), false, true);
-           //    wp_enqueue_style( 'flickity styles', 'https://npmcdn.com/flickity@2.2.1/dist/flickity.css' );
-//  //  wp_enqueue_style( 'flickity-style', 'https://npmcdn.com/flickity@2.2.1/dist/flickity.css'); // Styles moved into "block-gallery.scss"
-           //   wp_enqueue_script('flickity-pgkd', 'https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array( 'jquery' ), '', true ); // 
-            wp_enqueue_script('flickity-pgkd', 'https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array( 'jquery' ), '', true );
-
+            //  wp_enqueue_style( 'flickity styles', 'https://npmcdn.com/flickity@2.2.1/dist/flickity.css' );
+            //  wp_enqueue_style( 'flickity-style', 'https://npmcdn.com/flickity@2.2.1/dist/flickity.css'); // Styles moved into "block-gallery.scss"
+            //  wp_enqueue_script('flickity-pgkd', 'https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array( 'jquery' ), '', true ); // 
+             wp_enqueue_script('flickity-pgkd', 'https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array( 'jquery' ), '', true );
              wp_enqueue_script('th-slide-show-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thslideshow/assets/js/script.js', array( 'jquery' ), '', true );
 
             },
@@ -474,10 +454,8 @@ function my_acf_init() {
         ));
 
 
+        // register contact block:
 
- // register contact block:
-
-       //https://www.advancedcustomfields.com/resources/acf_register_block_type/#examples
         acf_register_block(array(
             'name'              => 'thcontact',
             'title'             => __('Contact'),
@@ -485,14 +463,8 @@ function my_acf_init() {
             'render_callback'   => 'my_acf_block_render_callback',
             'category'          => 'common',
           //  'enqueue_script'    => '',
-
             'enqueue_assets'    => function(){
-            //  wp_enqueue_script('flickity-pgkd','https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array('jquery'), false, true);
-           //    wp_enqueue_style( 'flickity styles', 'https://npmcdn.com/flickity@2.2.1/dist/flickity.css' );
-//  //  wp_enqueue_style( 'flickity-style', 'https://npmcdn.com/flickity@2.2.1/dist/flickity.css'); // Styles moved into "block-gallery.scss"
-//              wp_enqueue_script('flickity-pgkd', 'https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array( 'jquery' ), '', true ); // 
-     //         wp_enqueue_script('th-slide-show-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thslideshow/assets/js/script.js', array( 'jquery' ), '', true );
-
+            wp_enqueue_script('th-contact-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thcontact/assets/js/script.js', array( 'jquery' ), '', true );
             },
 
             'icon'              => 'admin-comments',
@@ -501,11 +473,8 @@ function my_acf_init() {
             'keywords'          => array( 'thcontact'),
         ));
 
+        // register video block:
 
-
-  // register video block:
-
-       //https://www.advancedcustomfields.com/resources/acf_register_block_type/#examples
         acf_register_block(array(
             'name'              => 'thvideo',
             'title'             => __('Video'),
@@ -515,12 +484,6 @@ function my_acf_init() {
           //  'enqueue_script'    => '',
 
             'enqueue_assets'    => function(){
-            //  wp_enqueue_script('flickity-pgkd','https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array('jquery'), false, true);
-           //    wp_enqueue_style( 'flickity styles', 'https://npmcdn.com/flickity@2.2.1/dist/flickity.css' );
-//  //  wp_enqueue_style( 'flickity-style', 'https://npmcdn.com/flickity@2.2.1/dist/flickity.css'); // Styles moved into "block-gallery.scss"
-          //    wp_enqueue_script('flickity-pgkd', 'https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array( 'jquery' ), '', true ); // 
-         //     wp_enqueue_script('th-slide-show-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thslideshow/assets/js/script.js', array( 'jquery' ), '', true );
-
             },
 
             'icon'              => 'format-gallery',

@@ -1,6 +1,6 @@
 (function($){
       //  console.log("(function($)");
-    console.log("hello - one column image block script");
+   // console.log("hello - one column image block script");
 
     /**
      * initializeBlock
@@ -17,14 +17,13 @@
 
     var initializeBlock = function images($block){
   
-
         if ($("body").hasClass("wp-admin")) { // If I only want to call this on the admin side
 
         var $thisimageblock = $block.find("img");  // just target img?
 
             $thisimageblock.each(function() {  
 
-            console.log("each 'one column image block'");
+            //console.log("each 'one column image block'");
              
                 var $thisimage = $(this);
 

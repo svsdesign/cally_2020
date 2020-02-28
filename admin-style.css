@@ -2934,7 +2934,8 @@ Author URI: http://svs.design
 }
 /* line 44, assets/sass/_partials/_typography.scss */
 body.white-scheme:not(.wp-admin),
-body.white-scheme.wp-admin .th-block {
+body.white-scheme.wp-admin .th-block,
+body.white-scheme.wp-admin .wp-block-freeform {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: black;
@@ -2954,62 +2955,71 @@ body.white-scheme.wp-admin .th-block {
 @media screen and (min-width: 0px) {
   /* line 44, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin),
-  body.white-scheme.wp-admin .th-block {
+  body.white-scheme.wp-admin .th-block,
+  body.white-scheme.wp-admin .wp-block-freeform {
     font-size: calc(12px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 44, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin),
-  body.white-scheme.wp-admin .th-block {
+  body.white-scheme.wp-admin .th-block,
+  body.white-scheme.wp-admin .wp-block-freeform {
     font-size: 12px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 44, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin),
-  body.white-scheme.wp-admin .th-block {
+  body.white-scheme.wp-admin .th-block,
+  body.white-scheme.wp-admin .wp-block-freeform {
     font-size: calc(12px + 36 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 44, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin),
-  body.white-scheme.wp-admin .th-block {
+  body.white-scheme.wp-admin .th-block,
+  body.white-scheme.wp-admin .wp-block-freeform {
     font-size: 48px;
   }
 }
 @media screen and (min-width: 0px) {
   /* line 44, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin),
-  body.white-scheme.wp-admin .th-block {
+  body.white-scheme.wp-admin .th-block,
+  body.white-scheme.wp-admin .wp-block-freeform {
     line-height: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 44, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin),
-  body.white-scheme.wp-admin .th-block {
+  body.white-scheme.wp-admin .th-block,
+  body.white-scheme.wp-admin .wp-block-freeform {
     line-height: 16px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 44, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin),
-  body.white-scheme.wp-admin .th-block {
+  body.white-scheme.wp-admin .th-block,
+  body.white-scheme.wp-admin .wp-block-freeform {
     line-height: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 44, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin),
-  body.white-scheme.wp-admin .th-block {
+  body.white-scheme.wp-admin .th-block,
+  body.white-scheme.wp-admin .wp-block-freeform {
     line-height: 64px;
   }
 }
-/* line 59, assets/sass/_partials/_typography.scss */
+/* line 60, assets/sass/_partials/_typography.scss */
 body.white-scheme:not(.wp-admin) h1.intro,
-body.white-scheme.wp-admin .th-block h1.intro {
+body.white-scheme.wp-admin .th-block h1.intro,
+body.white-scheme.wp-admin .wp-block-freeform h1.intro {
   font-family: "Helv-Norm", Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 36px;
   font-size: 36px;
@@ -3019,94 +3029,108 @@ body.white-scheme.wp-admin .th-block h1.intro {
   padding-bottom: 16px;
 }
 @media screen and (min-width: 0px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h1.intro,
-  body.white-scheme.wp-admin .th-block h1.intro {
+  body.white-scheme.wp-admin .th-block h1.intro,
+  body.white-scheme.wp-admin .wp-block-freeform h1.intro {
     font-size: calc(36px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h1.intro,
-  body.white-scheme.wp-admin .th-block h1.intro {
+  body.white-scheme.wp-admin .th-block h1.intro,
+  body.white-scheme.wp-admin .wp-block-freeform h1.intro {
     font-size: 36px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h1.intro,
-  body.white-scheme.wp-admin .th-block h1.intro {
+  body.white-scheme.wp-admin .th-block h1.intro,
+  body.white-scheme.wp-admin .wp-block-freeform h1.intro {
     font-size: calc(36px + 108 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h1.intro,
-  body.white-scheme.wp-admin .th-block h1.intro {
+  body.white-scheme.wp-admin .th-block h1.intro,
+  body.white-scheme.wp-admin .wp-block-freeform h1.intro {
     font-size: 144px;
   }
 }
 @media screen and (min-width: 0px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h1.intro,
-  body.white-scheme.wp-admin .th-block h1.intro {
+  body.white-scheme.wp-admin .th-block h1.intro,
+  body.white-scheme.wp-admin .wp-block-freeform h1.intro {
     line-height: calc(32px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h1.intro,
-  body.white-scheme.wp-admin .th-block h1.intro {
+  body.white-scheme.wp-admin .th-block h1.intro,
+  body.white-scheme.wp-admin .wp-block-freeform h1.intro {
     line-height: 32px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h1.intro,
-  body.white-scheme.wp-admin .th-block h1.intro {
+  body.white-scheme.wp-admin .th-block h1.intro,
+  body.white-scheme.wp-admin .wp-block-freeform h1.intro {
     line-height: calc(32px + 96 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h1.intro,
-  body.white-scheme.wp-admin .th-block h1.intro {
+  body.white-scheme.wp-admin .th-block h1.intro,
+  body.white-scheme.wp-admin .wp-block-freeform h1.intro {
     line-height: 128px;
   }
 }
 @media screen and (min-width: 0px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h1.intro,
-  body.white-scheme.wp-admin .th-block h1.intro {
+  body.white-scheme.wp-admin .th-block h1.intro,
+  body.white-scheme.wp-admin .wp-block-freeform h1.intro {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h1.intro,
-  body.white-scheme.wp-admin .th-block h1.intro {
+  body.white-scheme.wp-admin .th-block h1.intro,
+  body.white-scheme.wp-admin .wp-block-freeform h1.intro {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h1.intro,
-  body.white-scheme.wp-admin .th-block h1.intro {
+  body.white-scheme.wp-admin .th-block h1.intro,
+  body.white-scheme.wp-admin .wp-block-freeform h1.intro {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h1.intro,
-  body.white-scheme.wp-admin .th-block h1.intro {
+  body.white-scheme.wp-admin .th-block h1.intro,
+  body.white-scheme.wp-admin .wp-block-freeform h1.intro {
     padding-bottom: 64px;
   }
 }
-/* line 67, assets/sass/_partials/_typography.scss */
+/* line 68, assets/sass/_partials/_typography.scss */
 body.white-scheme:not(.wp-admin) h2,
 body.white-scheme:not(.wp-admin) .h2,
 body.white-scheme.wp-admin .th-block h2,
-body.white-scheme.wp-admin .th-block .h2 {
+body.white-scheme.wp-admin .th-block .h2,
+body.white-scheme.wp-admin .wp-block-freeform h2,
+body.white-scheme.wp-admin .wp-block-freeform .h2 {
   font-family: "Helv-Norm", Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-size: 12px;
@@ -3114,99 +3138,121 @@ body.white-scheme.wp-admin .th-block .h2 {
   line-height: 14px;
 }
 @media screen and (min-width: 0px) {
-  /* line 67, assets/sass/_partials/_typography.scss */
+  /* line 68, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h2,
   body.white-scheme:not(.wp-admin) .h2,
   body.white-scheme.wp-admin .th-block h2,
-  body.white-scheme.wp-admin .th-block .h2 {
+  body.white-scheme.wp-admin .th-block .h2,
+  body.white-scheme.wp-admin .wp-block-freeform h2,
+  body.white-scheme.wp-admin .wp-block-freeform .h2 {
     font-size: calc(12px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 67, assets/sass/_partials/_typography.scss */
+  /* line 68, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h2,
   body.white-scheme:not(.wp-admin) .h2,
   body.white-scheme.wp-admin .th-block h2,
-  body.white-scheme.wp-admin .th-block .h2 {
+  body.white-scheme.wp-admin .th-block .h2,
+  body.white-scheme.wp-admin .wp-block-freeform h2,
+  body.white-scheme.wp-admin .wp-block-freeform .h2 {
     font-size: 12px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 67, assets/sass/_partials/_typography.scss */
+  /* line 68, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h2,
   body.white-scheme:not(.wp-admin) .h2,
   body.white-scheme.wp-admin .th-block h2,
-  body.white-scheme.wp-admin .th-block .h2 {
+  body.white-scheme.wp-admin .th-block .h2,
+  body.white-scheme.wp-admin .wp-block-freeform h2,
+  body.white-scheme.wp-admin .wp-block-freeform .h2 {
     font-size: calc(12px + 36 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 67, assets/sass/_partials/_typography.scss */
+  /* line 68, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h2,
   body.white-scheme:not(.wp-admin) .h2,
   body.white-scheme.wp-admin .th-block h2,
-  body.white-scheme.wp-admin .th-block .h2 {
+  body.white-scheme.wp-admin .th-block .h2,
+  body.white-scheme.wp-admin .wp-block-freeform h2,
+  body.white-scheme.wp-admin .wp-block-freeform .h2 {
     font-size: 48px;
   }
 }
 @media screen and (min-width: 0px) {
-  /* line 67, assets/sass/_partials/_typography.scss */
+  /* line 68, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h2,
   body.white-scheme:not(.wp-admin) .h2,
   body.white-scheme.wp-admin .th-block h2,
-  body.white-scheme.wp-admin .th-block .h2 {
+  body.white-scheme.wp-admin .th-block .h2,
+  body.white-scheme.wp-admin .wp-block-freeform h2,
+  body.white-scheme.wp-admin .wp-block-freeform .h2 {
     line-height: calc(14px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 67, assets/sass/_partials/_typography.scss */
+  /* line 68, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h2,
   body.white-scheme:not(.wp-admin) .h2,
   body.white-scheme.wp-admin .th-block h2,
-  body.white-scheme.wp-admin .th-block .h2 {
+  body.white-scheme.wp-admin .th-block .h2,
+  body.white-scheme.wp-admin .wp-block-freeform h2,
+  body.white-scheme.wp-admin .wp-block-freeform .h2 {
     line-height: 14px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 67, assets/sass/_partials/_typography.scss */
+  /* line 68, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h2,
   body.white-scheme:not(.wp-admin) .h2,
   body.white-scheme.wp-admin .th-block h2,
-  body.white-scheme.wp-admin .th-block .h2 {
+  body.white-scheme.wp-admin .th-block .h2,
+  body.white-scheme.wp-admin .wp-block-freeform h2,
+  body.white-scheme.wp-admin .wp-block-freeform .h2 {
     line-height: calc(14px + 42 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 67, assets/sass/_partials/_typography.scss */
+  /* line 68, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) h2,
   body.white-scheme:not(.wp-admin) .h2,
   body.white-scheme.wp-admin .th-block h2,
-  body.white-scheme.wp-admin .th-block .h2 {
+  body.white-scheme.wp-admin .th-block .h2,
+  body.white-scheme.wp-admin .wp-block-freeform h2,
+  body.white-scheme.wp-admin .wp-block-freeform .h2 {
     line-height: 56px;
   }
 }
-/* line 74, assets/sass/_partials/_typography.scss */
+/* line 75, assets/sass/_partials/_typography.scss */
 body.white-scheme:not(.wp-admin) h3,
 body.white-scheme:not(.wp-admin) .h3,
 body.white-scheme.wp-admin .th-block h3,
-body.white-scheme.wp-admin .th-block .h3 {
+body.white-scheme.wp-admin .th-block .h3,
+body.white-scheme.wp-admin .wp-block-freeform h3,
+body.white-scheme.wp-admin .wp-block-freeform .h3 {
   font-family: "Helv-Norm", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-/* line 79, assets/sass/_partials/_typography.scss */
+/* line 80, assets/sass/_partials/_typography.scss */
 body.white-scheme:not(.wp-admin) h4,
 body.white-scheme:not(.wp-admin) .h4,
 body.white-scheme.wp-admin .th-block h4,
-body.white-scheme.wp-admin .th-block .h4 {
+body.white-scheme.wp-admin .th-block .h4,
+body.white-scheme.wp-admin .wp-block-freeform h4,
+body.white-scheme.wp-admin .wp-block-freeform .h4 {
   font-family: "Helv-Light", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-/* line 91, assets/sass/_partials/_typography.scss */
+/* line 92, assets/sass/_partials/_typography.scss */
 body.white-scheme:not(.wp-admin) b,
-body.white-scheme.wp-admin .th-block b {
+body.white-scheme.wp-admin .th-block b,
+body.white-scheme.wp-admin .wp-block-freeform b {
   font-family: "Helv-Norm", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-/* line 95, assets/sass/_partials/_typography.scss */
+/* line 96, assets/sass/_partials/_typography.scss */
 body.white-scheme:not(.wp-admin) .caption,
-body.white-scheme.wp-admin .th-block .caption {
+body.white-scheme.wp-admin .th-block .caption,
+body.white-scheme.wp-admin .wp-block-freeform .caption {
   font-family: "Helv-Light", Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 9px;
   font-size: 9px;
@@ -3214,91 +3260,105 @@ body.white-scheme.wp-admin .th-block .caption {
   line-height: 12px;
 }
 @media screen and (min-width: 0px) {
-  /* line 95, assets/sass/_partials/_typography.scss */
+  /* line 96, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) .caption,
-  body.white-scheme.wp-admin .th-block .caption {
+  body.white-scheme.wp-admin .th-block .caption,
+  body.white-scheme.wp-admin .wp-block-freeform .caption {
     font-size: calc(9px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 95, assets/sass/_partials/_typography.scss */
+  /* line 96, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) .caption,
-  body.white-scheme.wp-admin .th-block .caption {
+  body.white-scheme.wp-admin .th-block .caption,
+  body.white-scheme.wp-admin .wp-block-freeform .caption {
     font-size: 9px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 95, assets/sass/_partials/_typography.scss */
+  /* line 96, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) .caption,
-  body.white-scheme.wp-admin .th-block .caption {
+  body.white-scheme.wp-admin .th-block .caption,
+  body.white-scheme.wp-admin .wp-block-freeform .caption {
     font-size: calc(9px + 27 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 95, assets/sass/_partials/_typography.scss */
+  /* line 96, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) .caption,
-  body.white-scheme.wp-admin .th-block .caption {
+  body.white-scheme.wp-admin .th-block .caption,
+  body.white-scheme.wp-admin .wp-block-freeform .caption {
     font-size: 36px;
   }
 }
 @media screen and (min-width: 0px) {
-  /* line 95, assets/sass/_partials/_typography.scss */
+  /* line 96, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) .caption,
-  body.white-scheme.wp-admin .th-block .caption {
+  body.white-scheme.wp-admin .th-block .caption,
+  body.white-scheme.wp-admin .wp-block-freeform .caption {
     line-height: calc(12px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 95, assets/sass/_partials/_typography.scss */
+  /* line 96, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) .caption,
-  body.white-scheme.wp-admin .th-block .caption {
+  body.white-scheme.wp-admin .th-block .caption,
+  body.white-scheme.wp-admin .wp-block-freeform .caption {
     line-height: 12px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 95, assets/sass/_partials/_typography.scss */
+  /* line 96, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) .caption,
-  body.white-scheme.wp-admin .th-block .caption {
+  body.white-scheme.wp-admin .th-block .caption,
+  body.white-scheme.wp-admin .wp-block-freeform .caption {
     line-height: calc(12px + 36 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 95, assets/sass/_partials/_typography.scss */
+  /* line 96, assets/sass/_partials/_typography.scss */
   body.white-scheme:not(.wp-admin) .caption,
-  body.white-scheme.wp-admin .th-block .caption {
+  body.white-scheme.wp-admin .th-block .caption,
+  body.white-scheme.wp-admin .wp-block-freeform .caption {
     line-height: 48px;
   }
 }
-/* line 101, assets/sass/_partials/_typography.scss */
+/* line 102, assets/sass/_partials/_typography.scss */
 body.white-scheme:not(.wp-admin) a,
 body.white-scheme:not(.wp-admin) a:visited,
 body.white-scheme.wp-admin .th-block a,
-body.white-scheme.wp-admin .th-block a:visited {
+body.white-scheme.wp-admin .th-block a:visited,
+body.white-scheme.wp-admin .wp-block-freeform a,
+body.white-scheme.wp-admin .wp-block-freeform a:visited {
   text-decoration: none;
   border-bottom: 1px solid black;
   color: black;
 }
-/* line 110, assets/sass/_partials/_typography.scss */
+/* line 111, assets/sass/_partials/_typography.scss */
 body.white-scheme:not(.wp-admin) a:hover,
 body.white-scheme:not(.wp-admin) a:active,
 body.white-scheme.wp-admin .th-block a:hover,
-body.white-scheme.wp-admin .th-block a:active {
+body.white-scheme.wp-admin .th-block a:active,
+body.white-scheme.wp-admin .wp-block-freeform a:hover,
+body.white-scheme.wp-admin .wp-block-freeform a:active {
   text-decoration: none;
   border-bottom: none;
 }
-/* line 118, assets/sass/_partials/_typography.scss */
+/* line 119, assets/sass/_partials/_typography.scss */
 body.white-scheme:not(.wp-admin) ::-moz-selection,
-body.white-scheme.wp-admin .th-block ::-moz-selection {
+body.white-scheme.wp-admin .th-block ::-moz-selection,
+body.white-scheme.wp-admin .wp-block-freeform ::-moz-selection {
   color: white;
   background: black;
 }
-/* line 123, assets/sass/_partials/_typography.scss */
+/* line 124, assets/sass/_partials/_typography.scss */
 body.white-scheme:not(.wp-admin) ::selection,
-body.white-scheme.wp-admin .th-block ::selection {
+body.white-scheme.wp-admin .th-block ::selection,
+body.white-scheme.wp-admin .wp-block-freeform ::selection {
   color: white;
   background: black;
 }
-/* line 130, assets/sass/_partials/_typography.scss */
+/* line 131, assets/sass/_partials/_typography.scss */
 body.white-scheme:not(.wp-admin) body:not(.user-is-tabbing) button:focus,
 body.white-scheme:not(.wp-admin) body:not(.user-is-tabbing) input:focus,
 body.white-scheme:not(.wp-admin) body:not(.user-is-tabbing) select:focus,
@@ -3306,13 +3366,18 @@ body.white-scheme:not(.wp-admin) body:not(.user-is-tabbing) textarea:focus,
 body.white-scheme.wp-admin .th-block body:not(.user-is-tabbing) button:focus,
 body.white-scheme.wp-admin .th-block body:not(.user-is-tabbing) input:focus,
 body.white-scheme.wp-admin .th-block body:not(.user-is-tabbing) select:focus,
-body.white-scheme.wp-admin .th-block body:not(.user-is-tabbing) textarea:focus {
+body.white-scheme.wp-admin .th-block body:not(.user-is-tabbing) textarea:focus,
+body.white-scheme.wp-admin .wp-block-freeform body:not(.user-is-tabbing) button:focus,
+body.white-scheme.wp-admin .wp-block-freeform body:not(.user-is-tabbing) input:focus,
+body.white-scheme.wp-admin .wp-block-freeform body:not(.user-is-tabbing) select:focus,
+body.white-scheme.wp-admin .wp-block-freeform body:not(.user-is-tabbing) textarea:focus {
   outline: none;
 }
 
 /* line 44, assets/sass/_partials/_typography.scss */
 body.black-scheme:not(.wp-admin),
-body.black-scheme.wp-admin .th-block {
+body.black-scheme.wp-admin .th-block,
+body.black-scheme.wp-admin .wp-block-freeform {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;
@@ -3332,62 +3397,71 @@ body.black-scheme.wp-admin .th-block {
 @media screen and (min-width: 0px) {
   /* line 44, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin),
-  body.black-scheme.wp-admin .th-block {
+  body.black-scheme.wp-admin .th-block,
+  body.black-scheme.wp-admin .wp-block-freeform {
     font-size: calc(12px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 44, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin),
-  body.black-scheme.wp-admin .th-block {
+  body.black-scheme.wp-admin .th-block,
+  body.black-scheme.wp-admin .wp-block-freeform {
     font-size: 12px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 44, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin),
-  body.black-scheme.wp-admin .th-block {
+  body.black-scheme.wp-admin .th-block,
+  body.black-scheme.wp-admin .wp-block-freeform {
     font-size: calc(12px + 36 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 44, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin),
-  body.black-scheme.wp-admin .th-block {
+  body.black-scheme.wp-admin .th-block,
+  body.black-scheme.wp-admin .wp-block-freeform {
     font-size: 48px;
   }
 }
 @media screen and (min-width: 0px) {
   /* line 44, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin),
-  body.black-scheme.wp-admin .th-block {
+  body.black-scheme.wp-admin .th-block,
+  body.black-scheme.wp-admin .wp-block-freeform {
     line-height: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 44, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin),
-  body.black-scheme.wp-admin .th-block {
+  body.black-scheme.wp-admin .th-block,
+  body.black-scheme.wp-admin .wp-block-freeform {
     line-height: 16px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 44, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin),
-  body.black-scheme.wp-admin .th-block {
+  body.black-scheme.wp-admin .th-block,
+  body.black-scheme.wp-admin .wp-block-freeform {
     line-height: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 44, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin),
-  body.black-scheme.wp-admin .th-block {
+  body.black-scheme.wp-admin .th-block,
+  body.black-scheme.wp-admin .wp-block-freeform {
     line-height: 64px;
   }
 }
-/* line 59, assets/sass/_partials/_typography.scss */
+/* line 60, assets/sass/_partials/_typography.scss */
 body.black-scheme:not(.wp-admin) h1.intro,
-body.black-scheme.wp-admin .th-block h1.intro {
+body.black-scheme.wp-admin .th-block h1.intro,
+body.black-scheme.wp-admin .wp-block-freeform h1.intro {
   font-family: "Helv-Norm", Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 36px;
   font-size: 36px;
@@ -3397,94 +3471,108 @@ body.black-scheme.wp-admin .th-block h1.intro {
   padding-bottom: 16px;
 }
 @media screen and (min-width: 0px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h1.intro,
-  body.black-scheme.wp-admin .th-block h1.intro {
+  body.black-scheme.wp-admin .th-block h1.intro,
+  body.black-scheme.wp-admin .wp-block-freeform h1.intro {
     font-size: calc(36px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h1.intro,
-  body.black-scheme.wp-admin .th-block h1.intro {
+  body.black-scheme.wp-admin .th-block h1.intro,
+  body.black-scheme.wp-admin .wp-block-freeform h1.intro {
     font-size: 36px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h1.intro,
-  body.black-scheme.wp-admin .th-block h1.intro {
+  body.black-scheme.wp-admin .th-block h1.intro,
+  body.black-scheme.wp-admin .wp-block-freeform h1.intro {
     font-size: calc(36px + 108 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h1.intro,
-  body.black-scheme.wp-admin .th-block h1.intro {
+  body.black-scheme.wp-admin .th-block h1.intro,
+  body.black-scheme.wp-admin .wp-block-freeform h1.intro {
     font-size: 144px;
   }
 }
 @media screen and (min-width: 0px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h1.intro,
-  body.black-scheme.wp-admin .th-block h1.intro {
+  body.black-scheme.wp-admin .th-block h1.intro,
+  body.black-scheme.wp-admin .wp-block-freeform h1.intro {
     line-height: calc(32px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h1.intro,
-  body.black-scheme.wp-admin .th-block h1.intro {
+  body.black-scheme.wp-admin .th-block h1.intro,
+  body.black-scheme.wp-admin .wp-block-freeform h1.intro {
     line-height: 32px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h1.intro,
-  body.black-scheme.wp-admin .th-block h1.intro {
+  body.black-scheme.wp-admin .th-block h1.intro,
+  body.black-scheme.wp-admin .wp-block-freeform h1.intro {
     line-height: calc(32px + 96 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h1.intro,
-  body.black-scheme.wp-admin .th-block h1.intro {
+  body.black-scheme.wp-admin .th-block h1.intro,
+  body.black-scheme.wp-admin .wp-block-freeform h1.intro {
     line-height: 128px;
   }
 }
 @media screen and (min-width: 0px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h1.intro,
-  body.black-scheme.wp-admin .th-block h1.intro {
+  body.black-scheme.wp-admin .th-block h1.intro,
+  body.black-scheme.wp-admin .wp-block-freeform h1.intro {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h1.intro,
-  body.black-scheme.wp-admin .th-block h1.intro {
+  body.black-scheme.wp-admin .th-block h1.intro,
+  body.black-scheme.wp-admin .wp-block-freeform h1.intro {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h1.intro,
-  body.black-scheme.wp-admin .th-block h1.intro {
+  body.black-scheme.wp-admin .th-block h1.intro,
+  body.black-scheme.wp-admin .wp-block-freeform h1.intro {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 59, assets/sass/_partials/_typography.scss */
+  /* line 60, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h1.intro,
-  body.black-scheme.wp-admin .th-block h1.intro {
+  body.black-scheme.wp-admin .th-block h1.intro,
+  body.black-scheme.wp-admin .wp-block-freeform h1.intro {
     padding-bottom: 64px;
   }
 }
-/* line 67, assets/sass/_partials/_typography.scss */
+/* line 68, assets/sass/_partials/_typography.scss */
 body.black-scheme:not(.wp-admin) h2,
 body.black-scheme:not(.wp-admin) .h2,
 body.black-scheme.wp-admin .th-block h2,
-body.black-scheme.wp-admin .th-block .h2 {
+body.black-scheme.wp-admin .th-block .h2,
+body.black-scheme.wp-admin .wp-block-freeform h2,
+body.black-scheme.wp-admin .wp-block-freeform .h2 {
   font-family: "Helv-Norm", Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-size: 12px;
@@ -3492,99 +3580,121 @@ body.black-scheme.wp-admin .th-block .h2 {
   line-height: 14px;
 }
 @media screen and (min-width: 0px) {
-  /* line 67, assets/sass/_partials/_typography.scss */
+  /* line 68, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h2,
   body.black-scheme:not(.wp-admin) .h2,
   body.black-scheme.wp-admin .th-block h2,
-  body.black-scheme.wp-admin .th-block .h2 {
+  body.black-scheme.wp-admin .th-block .h2,
+  body.black-scheme.wp-admin .wp-block-freeform h2,
+  body.black-scheme.wp-admin .wp-block-freeform .h2 {
     font-size: calc(12px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 67, assets/sass/_partials/_typography.scss */
+  /* line 68, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h2,
   body.black-scheme:not(.wp-admin) .h2,
   body.black-scheme.wp-admin .th-block h2,
-  body.black-scheme.wp-admin .th-block .h2 {
+  body.black-scheme.wp-admin .th-block .h2,
+  body.black-scheme.wp-admin .wp-block-freeform h2,
+  body.black-scheme.wp-admin .wp-block-freeform .h2 {
     font-size: 12px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 67, assets/sass/_partials/_typography.scss */
+  /* line 68, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h2,
   body.black-scheme:not(.wp-admin) .h2,
   body.black-scheme.wp-admin .th-block h2,
-  body.black-scheme.wp-admin .th-block .h2 {
+  body.black-scheme.wp-admin .th-block .h2,
+  body.black-scheme.wp-admin .wp-block-freeform h2,
+  body.black-scheme.wp-admin .wp-block-freeform .h2 {
     font-size: calc(12px + 36 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 67, assets/sass/_partials/_typography.scss */
+  /* line 68, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h2,
   body.black-scheme:not(.wp-admin) .h2,
   body.black-scheme.wp-admin .th-block h2,
-  body.black-scheme.wp-admin .th-block .h2 {
+  body.black-scheme.wp-admin .th-block .h2,
+  body.black-scheme.wp-admin .wp-block-freeform h2,
+  body.black-scheme.wp-admin .wp-block-freeform .h2 {
     font-size: 48px;
   }
 }
 @media screen and (min-width: 0px) {
-  /* line 67, assets/sass/_partials/_typography.scss */
+  /* line 68, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h2,
   body.black-scheme:not(.wp-admin) .h2,
   body.black-scheme.wp-admin .th-block h2,
-  body.black-scheme.wp-admin .th-block .h2 {
+  body.black-scheme.wp-admin .th-block .h2,
+  body.black-scheme.wp-admin .wp-block-freeform h2,
+  body.black-scheme.wp-admin .wp-block-freeform .h2 {
     line-height: calc(14px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 67, assets/sass/_partials/_typography.scss */
+  /* line 68, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h2,
   body.black-scheme:not(.wp-admin) .h2,
   body.black-scheme.wp-admin .th-block h2,
-  body.black-scheme.wp-admin .th-block .h2 {
+  body.black-scheme.wp-admin .th-block .h2,
+  body.black-scheme.wp-admin .wp-block-freeform h2,
+  body.black-scheme.wp-admin .wp-block-freeform .h2 {
     line-height: 14px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 67, assets/sass/_partials/_typography.scss */
+  /* line 68, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h2,
   body.black-scheme:not(.wp-admin) .h2,
   body.black-scheme.wp-admin .th-block h2,
-  body.black-scheme.wp-admin .th-block .h2 {
+  body.black-scheme.wp-admin .th-block .h2,
+  body.black-scheme.wp-admin .wp-block-freeform h2,
+  body.black-scheme.wp-admin .wp-block-freeform .h2 {
     line-height: calc(14px + 42 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 67, assets/sass/_partials/_typography.scss */
+  /* line 68, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) h2,
   body.black-scheme:not(.wp-admin) .h2,
   body.black-scheme.wp-admin .th-block h2,
-  body.black-scheme.wp-admin .th-block .h2 {
+  body.black-scheme.wp-admin .th-block .h2,
+  body.black-scheme.wp-admin .wp-block-freeform h2,
+  body.black-scheme.wp-admin .wp-block-freeform .h2 {
     line-height: 56px;
   }
 }
-/* line 74, assets/sass/_partials/_typography.scss */
+/* line 75, assets/sass/_partials/_typography.scss */
 body.black-scheme:not(.wp-admin) h3,
 body.black-scheme:not(.wp-admin) .h3,
 body.black-scheme.wp-admin .th-block h3,
-body.black-scheme.wp-admin .th-block .h3 {
+body.black-scheme.wp-admin .th-block .h3,
+body.black-scheme.wp-admin .wp-block-freeform h3,
+body.black-scheme.wp-admin .wp-block-freeform .h3 {
   font-family: "Helv-Norm", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-/* line 79, assets/sass/_partials/_typography.scss */
+/* line 80, assets/sass/_partials/_typography.scss */
 body.black-scheme:not(.wp-admin) h4,
 body.black-scheme:not(.wp-admin) .h4,
 body.black-scheme.wp-admin .th-block h4,
-body.black-scheme.wp-admin .th-block .h4 {
+body.black-scheme.wp-admin .th-block .h4,
+body.black-scheme.wp-admin .wp-block-freeform h4,
+body.black-scheme.wp-admin .wp-block-freeform .h4 {
   font-family: "Helv-Light", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-/* line 91, assets/sass/_partials/_typography.scss */
+/* line 92, assets/sass/_partials/_typography.scss */
 body.black-scheme:not(.wp-admin) b,
-body.black-scheme.wp-admin .th-block b {
+body.black-scheme.wp-admin .th-block b,
+body.black-scheme.wp-admin .wp-block-freeform b {
   font-family: "Helv-Norm", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-/* line 95, assets/sass/_partials/_typography.scss */
+/* line 96, assets/sass/_partials/_typography.scss */
 body.black-scheme:not(.wp-admin) .caption,
-body.black-scheme.wp-admin .th-block .caption {
+body.black-scheme.wp-admin .th-block .caption,
+body.black-scheme.wp-admin .wp-block-freeform .caption {
   font-family: "Helv-Light", Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 9px;
   font-size: 9px;
@@ -3592,91 +3702,105 @@ body.black-scheme.wp-admin .th-block .caption {
   line-height: 12px;
 }
 @media screen and (min-width: 0px) {
-  /* line 95, assets/sass/_partials/_typography.scss */
+  /* line 96, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) .caption,
-  body.black-scheme.wp-admin .th-block .caption {
+  body.black-scheme.wp-admin .th-block .caption,
+  body.black-scheme.wp-admin .wp-block-freeform .caption {
     font-size: calc(9px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 95, assets/sass/_partials/_typography.scss */
+  /* line 96, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) .caption,
-  body.black-scheme.wp-admin .th-block .caption {
+  body.black-scheme.wp-admin .th-block .caption,
+  body.black-scheme.wp-admin .wp-block-freeform .caption {
     font-size: 9px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 95, assets/sass/_partials/_typography.scss */
+  /* line 96, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) .caption,
-  body.black-scheme.wp-admin .th-block .caption {
+  body.black-scheme.wp-admin .th-block .caption,
+  body.black-scheme.wp-admin .wp-block-freeform .caption {
     font-size: calc(9px + 27 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 95, assets/sass/_partials/_typography.scss */
+  /* line 96, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) .caption,
-  body.black-scheme.wp-admin .th-block .caption {
+  body.black-scheme.wp-admin .th-block .caption,
+  body.black-scheme.wp-admin .wp-block-freeform .caption {
     font-size: 36px;
   }
 }
 @media screen and (min-width: 0px) {
-  /* line 95, assets/sass/_partials/_typography.scss */
+  /* line 96, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) .caption,
-  body.black-scheme.wp-admin .th-block .caption {
+  body.black-scheme.wp-admin .th-block .caption,
+  body.black-scheme.wp-admin .wp-block-freeform .caption {
     line-height: calc(12px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 95, assets/sass/_partials/_typography.scss */
+  /* line 96, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) .caption,
-  body.black-scheme.wp-admin .th-block .caption {
+  body.black-scheme.wp-admin .th-block .caption,
+  body.black-scheme.wp-admin .wp-block-freeform .caption {
     line-height: 12px;
   }
 }
 @media screen and (min-width: 800px) {
-  /* line 95, assets/sass/_partials/_typography.scss */
+  /* line 96, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) .caption,
-  body.black-scheme.wp-admin .th-block .caption {
+  body.black-scheme.wp-admin .th-block .caption,
+  body.black-scheme.wp-admin .wp-block-freeform .caption {
     line-height: calc(12px + 36 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
-  /* line 95, assets/sass/_partials/_typography.scss */
+  /* line 96, assets/sass/_partials/_typography.scss */
   body.black-scheme:not(.wp-admin) .caption,
-  body.black-scheme.wp-admin .th-block .caption {
+  body.black-scheme.wp-admin .th-block .caption,
+  body.black-scheme.wp-admin .wp-block-freeform .caption {
     line-height: 48px;
   }
 }
-/* line 101, assets/sass/_partials/_typography.scss */
+/* line 102, assets/sass/_partials/_typography.scss */
 body.black-scheme:not(.wp-admin) a,
 body.black-scheme:not(.wp-admin) a:visited,
 body.black-scheme.wp-admin .th-block a,
-body.black-scheme.wp-admin .th-block a:visited {
+body.black-scheme.wp-admin .th-block a:visited,
+body.black-scheme.wp-admin .wp-block-freeform a,
+body.black-scheme.wp-admin .wp-block-freeform a:visited {
   text-decoration: none;
   border-bottom: 1px solid white;
   color: white;
 }
-/* line 110, assets/sass/_partials/_typography.scss */
+/* line 111, assets/sass/_partials/_typography.scss */
 body.black-scheme:not(.wp-admin) a:hover,
 body.black-scheme:not(.wp-admin) a:active,
 body.black-scheme.wp-admin .th-block a:hover,
-body.black-scheme.wp-admin .th-block a:active {
+body.black-scheme.wp-admin .th-block a:active,
+body.black-scheme.wp-admin .wp-block-freeform a:hover,
+body.black-scheme.wp-admin .wp-block-freeform a:active {
   text-decoration: none;
   border-bottom: none;
 }
-/* line 118, assets/sass/_partials/_typography.scss */
+/* line 119, assets/sass/_partials/_typography.scss */
 body.black-scheme:not(.wp-admin) ::-moz-selection,
-body.black-scheme.wp-admin .th-block ::-moz-selection {
+body.black-scheme.wp-admin .th-block ::-moz-selection,
+body.black-scheme.wp-admin .wp-block-freeform ::-moz-selection {
   color: black;
   background: white;
 }
-/* line 123, assets/sass/_partials/_typography.scss */
+/* line 124, assets/sass/_partials/_typography.scss */
 body.black-scheme:not(.wp-admin) ::selection,
-body.black-scheme.wp-admin .th-block ::selection {
+body.black-scheme.wp-admin .th-block ::selection,
+body.black-scheme.wp-admin .wp-block-freeform ::selection {
   color: black;
   background: white;
 }
-/* line 130, assets/sass/_partials/_typography.scss */
+/* line 131, assets/sass/_partials/_typography.scss */
 body.black-scheme:not(.wp-admin) body:not(.user-is-tabbing) button:focus,
 body.black-scheme:not(.wp-admin) body:not(.user-is-tabbing) input:focus,
 body.black-scheme:not(.wp-admin) body:not(.user-is-tabbing) select:focus,
@@ -3684,7 +3808,11 @@ body.black-scheme:not(.wp-admin) body:not(.user-is-tabbing) textarea:focus,
 body.black-scheme.wp-admin .th-block body:not(.user-is-tabbing) button:focus,
 body.black-scheme.wp-admin .th-block body:not(.user-is-tabbing) input:focus,
 body.black-scheme.wp-admin .th-block body:not(.user-is-tabbing) select:focus,
-body.black-scheme.wp-admin .th-block body:not(.user-is-tabbing) textarea:focus {
+body.black-scheme.wp-admin .th-block body:not(.user-is-tabbing) textarea:focus,
+body.black-scheme.wp-admin .wp-block-freeform body:not(.user-is-tabbing) button:focus,
+body.black-scheme.wp-admin .wp-block-freeform body:not(.user-is-tabbing) input:focus,
+body.black-scheme.wp-admin .wp-block-freeform body:not(.user-is-tabbing) select:focus,
+body.black-scheme.wp-admin .wp-block-freeform body:not(.user-is-tabbing) textarea:focus {
   outline: none;
 }
 
@@ -8685,26 +8813,12 @@ Author: Simon van Stipriaan
 Author URI: http://svs.design
 */
 /* Various admin additions */
-@media (min-width: 480px) {
-  /* line 13, assets/sass/_partials/_admin.scss */
-  body.white-scheme:not(.wp-admin),
-  body.white-scheme.wp-admin .th-block {
-    zoom: 80%;
-  }
-}
 /* line 31, assets/sass/_partials/_admin.scss */
 body.white-scheme:not(.wp-admin) .image-wrap img,
 body.white-scheme.wp-admin .th-block .image-wrap img {
   opacity: 1;
 }
 
-@media (min-width: 480px) {
-  /* line 13, assets/sass/_partials/_admin.scss */
-  body.black-scheme:not(.wp-admin),
-  body.black-scheme.wp-admin .th-block {
-    zoom: 80%;
-  }
-}
 /* line 31, assets/sass/_partials/_admin.scss */
 body.black-scheme:not(.wp-admin) .image-wrap img,
 body.black-scheme.wp-admin .th-block .image-wrap img {
@@ -9214,6 +9328,128 @@ https://github.com/WordPress/gutenberg/issues/11888
 @import "_partials/block-logos"; // 
 */
 /* end blocks */
+/* _privacy-page.scss 
+
+
+*/
+/* line 11, assets/sass/_partials/_privacy-page.scss */
+body.white-scheme h1, body.white-scheme h2, body.white-scheme h3, body.white-scheme p {
+  padding-bottom: 16px;
+  padding-bottom: 16px;
+}
+@media screen and (min-width: 0px) {
+  /* line 11, assets/sass/_partials/_privacy-page.scss */
+  body.white-scheme h1, body.white-scheme h2, body.white-scheme h3, body.white-scheme p {
+    padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 11, assets/sass/_partials/_privacy-page.scss */
+  body.white-scheme h1, body.white-scheme h2, body.white-scheme h3, body.white-scheme p {
+    padding-bottom: 16px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 11, assets/sass/_partials/_privacy-page.scss */
+  body.white-scheme h1, body.white-scheme h2, body.white-scheme h3, body.white-scheme p {
+    padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 11, assets/sass/_partials/_privacy-page.scss */
+  body.white-scheme h1, body.white-scheme h2, body.white-scheme h3, body.white-scheme p {
+    padding-bottom: 64px;
+  }
+}
+/* line 16, assets/sass/_partials/_privacy-page.scss */
+body.white-scheme .target-links {
+  padding-bottom: 16px;
+  padding-bottom: 16px;
+}
+@media screen and (min-width: 0px) {
+  /* line 16, assets/sass/_partials/_privacy-page.scss */
+  body.white-scheme .target-links {
+    padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 16, assets/sass/_partials/_privacy-page.scss */
+  body.white-scheme .target-links {
+    padding-bottom: 16px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 16, assets/sass/_partials/_privacy-page.scss */
+  body.white-scheme .target-links {
+    padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 16, assets/sass/_partials/_privacy-page.scss */
+  body.white-scheme .target-links {
+    padding-bottom: 64px;
+  }
+}
+
+/* line 11, assets/sass/_partials/_privacy-page.scss */
+body.black-scheme h1, body.black-scheme h2, body.black-scheme h3, body.black-scheme p {
+  padding-bottom: 16px;
+  padding-bottom: 16px;
+}
+@media screen and (min-width: 0px) {
+  /* line 11, assets/sass/_partials/_privacy-page.scss */
+  body.black-scheme h1, body.black-scheme h2, body.black-scheme h3, body.black-scheme p {
+    padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 11, assets/sass/_partials/_privacy-page.scss */
+  body.black-scheme h1, body.black-scheme h2, body.black-scheme h3, body.black-scheme p {
+    padding-bottom: 16px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 11, assets/sass/_partials/_privacy-page.scss */
+  body.black-scheme h1, body.black-scheme h2, body.black-scheme h3, body.black-scheme p {
+    padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 11, assets/sass/_partials/_privacy-page.scss */
+  body.black-scheme h1, body.black-scheme h2, body.black-scheme h3, body.black-scheme p {
+    padding-bottom: 64px;
+  }
+}
+/* line 16, assets/sass/_partials/_privacy-page.scss */
+body.black-scheme .target-links {
+  padding-bottom: 16px;
+  padding-bottom: 16px;
+}
+@media screen and (min-width: 0px) {
+  /* line 16, assets/sass/_partials/_privacy-page.scss */
+  body.black-scheme .target-links {
+    padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 16, assets/sass/_partials/_privacy-page.scss */
+  body.black-scheme .target-links {
+    padding-bottom: 16px;
+  }
+}
+@media screen and (min-width: 800px) {
+  /* line 16, assets/sass/_partials/_privacy-page.scss */
+  body.black-scheme .target-links {
+    padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
+  }
+}
+@media screen and (min-width: 3200px) {
+  /* line 16, assets/sass/_partials/_privacy-page.scss */
+  body.black-scheme .target-links {
+    padding-bottom: 64px;
+  }
+}
+
 /*
 Theme Name: theseus
 Theme URI:  theseus.agency
@@ -10243,7 +10479,7 @@ body.black-scheme .flickity-page-dots .dot {
 }
 /* line 268, assets/sass/_partials/_block-slideshow.scss */
 .slideshow-block .slideshow-carousel .flickity-viewport .slideshow-image.image-wrap {
-  width: auto;
+  width: 100%;
 }
 /* line 272, assets/sass/_partials/_block-slideshow.scss */
 .slideshow-block .slideshow-carousel .flickity-viewport .slideshow-image img {
@@ -10297,8 +10533,8 @@ body.horizontal .slideshow-block {
 }
 /* line 306, assets/sass/_partials/_block-slideshow.scss */
 body.horizontal .slideshow-block .slideshow-carousel {
-  height: 80vh;
-  max-height: 60vh;
+  height: 100vh;
+  max-height: 30vh;
 }
 @media (min-width: 800px) {
   /* line 306, assets/sass/_partials/_block-slideshow.scss */
@@ -10306,14 +10542,37 @@ body.horizontal .slideshow-block .slideshow-carousel {
     max-height: 75vh;
   }
 }
-
+/* line 320, assets/sass/_partials/_block-slideshow.scss */
+body.horizontal.wp-admin .slideshow-block {
+  height: inherit;
+}
 /* line 323, assets/sass/_partials/_block-slideshow.scss */
+body.horizontal.wp-admin .slideshow-block .slideshow-carousel {
+  height: 80vh;
+  max-height: 60vh;
+}
+@media (min-width: 800px) {
+  /* line 323, assets/sass/_partials/_block-slideshow.scss */
+  body.horizontal.wp-admin .slideshow-block .slideshow-carousel {
+    max-height: 75vh;
+  }
+}
+
+/* line 342, assets/sass/_partials/_block-slideshow.scss */
 body.vertical .slideshow-block {
   height: inherit;
 }
-/* line 326, assets/sass/_partials/_block-slideshow.scss */
+/* line 345, assets/sass/_partials/_block-slideshow.scss */
 body.vertical .slideshow-block .slideshow-carousel {
   height: 60vw;
+}
+/* line 356, assets/sass/_partials/_block-slideshow.scss */
+body.vertical.wp-admin .slideshow-block {
+  height: inherit;
+}
+/* line 359, assets/sass/_partials/_block-slideshow.scss */
+body.vertical.wp-admin .slideshow-block .slideshow-carousel {
+  height: 30vh;
 }
 
 /*

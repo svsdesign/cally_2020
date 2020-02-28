@@ -1,16 +1,7 @@
-//https://www.advancedcustomfields.com/resources/acf_register_block_type/
-
-
-/* to do :
-
-Tidy all this up; remove INP stuff
-
-
-*/
-console.log("hello - slider script");
 
 (function($){
-        console.log("(function($)");
+  
+    //console.log("(function($)");
 
     /**
      * initializeBlock
@@ -26,43 +17,41 @@ console.log("hello - slider script");
      */
 
 
-
-
     var initializeBlock = function( $block ) {
             
         //$block.find('img').doSomething();
-         console.log('initializeBlock = function( $block ) - slideshow block');
+        // console.log('initializeBlock = function( $block ) - slideshow block');
  
-        var $thisgallery = $block.find(".slideshow-carousel");   // review this   class name 
+        var $thisgallery = $block.find(".slideshow-carousel"),   // review this   class name 
         // console.log('initializeBlock = function( $block ) - slideshow block from its own script.js file');
 
- var $thisimageblock = $thisgallery.find("img");  // just target img?
+            $thisimageblock = $thisgallery.find("img");  // just target img?
+            $thisimageblock.each(function() {  
 
-      $thisimageblock.each(function() {  
+             // console.log("each image?);
+             
+                  var $thisimage = $(this);
 
-         // console.log("each image?);
-         
-          var $thisimage = $(this);
+                        $thisimage.imagesLoaded( {
+                        // options...
+                        },
+                        function() {
+                         // console.log("images have loaded");
+                          var oldSrc = $thisimage.attr('src'),
+                              newSrc = $thisimage.attr('data-src');
+                             $thisimage.attr('src', newSrc);
+                             $thisimage.addClass("loaded"); // possibly not need
 
-               $thisimage.imagesLoaded( {
-                // options...
-                },
-                function() {
-                 // console.log("images have loaded");
-                  var oldSrc = $thisimage.attr('src'),
-                      newSrc = $thisimage.attr('data-src');
-                     $thisimage.attr('src', newSrc);
-                     $thisimage.addClass("loaded"); // possibly not need
+                        }
 
-                }
+                    ); // 
 
-              ); // 
-
-        });//  $thisimageblock.each(function()
+            });//  $thisimageblock.each(function()
 
           $thisgallery.flickity({
                 imagesLoaded: true, 
                 setGallerySize: false, //if you prefer to size the carousel with CSS, rather than using the size of cells.
+       
            // default cellAlign: 'center'
                 percentPosition: false, 
                 freeScroll: false, 
@@ -77,6 +66,13 @@ console.log("hello - slider script");
 
              });
 
+       /*     $(window).on('resize', function(){
+                $thisgallery.flickity('resize');
+                console.log("resize")
+            });
+
+        */
+
     }//var initializeBlock = function( $block ) 
 
     // Initialize each block on page load (front end).
@@ -85,7 +81,7 @@ console.log("hello - slider script");
         // if I only want to run the scripts on the admins side:
         if ($("body").hasClass("wp-admin")) {
             //console.log("is admin")
-             console.log("documentready - // Initialize each block on page load (front end). ")
+            // console.log("documentready - // Initialize each block on page load (front end). ")
 
                initializeBlock( $(this) );
 
@@ -96,9 +92,8 @@ console.log("hello - slider script");
 
     // Initialize dynamic block preview (editor).
     if( window.acf ) {
-        console.log("window.acf");
-
-           window.acf.addAction( 'render_block_preview/type=thslideshow', initializeBlock );
+       
+    window.acf.addAction( 'render_block_preview/type=thslideshow', initializeBlock );
 
     }
 

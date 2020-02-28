@@ -26,6 +26,7 @@ Text Domain: theseus
 @import "_partials/navigation";
 
 @import "_partials/cookie-notice";
+@import "_partials/privacy-page";
 
 // START reveiw in line with the admin stules im also enqueing:
 
@@ -71,7 +72,7 @@ Text Domain: theseus
   body.#{nth($scheme, 1)}:not(.wp-admin), // ensure we're not applying to admin 
   body.#{nth($scheme, 1)}.wp-admin .th-block
   {
-    
+
   width: 100%;
 
     /* SVG */

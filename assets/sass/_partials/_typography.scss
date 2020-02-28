@@ -42,7 +42,8 @@ Author URI: http://svs.design
 @each $scheme in $schemes { // start colour scheme
  
   body.#{nth($scheme, 1)}:not(.wp-admin), // ensure we're not applying to admin 
-  body.#{nth($scheme, 1)}.wp-admin .th-block // admin block styling - but need the colour scheme in admin aswell?
+  body.#{nth($scheme, 1)}.wp-admin .th-block, // admin block styling - but need the colour scheme in admin aswell?
+  body.#{nth($scheme, 1)}.wp-admin .wp-block-freeform // for classic editor
   {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

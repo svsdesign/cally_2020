@@ -17,7 +17,7 @@ Author URI: http://svs.design
     // this improve the visual repersentaiton of the designs
 
     @media (min-width: map-get($breakpoints, md)) {
-    zoom:80%; // probabbly only need this when all the additional admins panel are around it. Review in future work
+    //zoom:80%; // probabbly only need this when all the additional admins panel are around it. Review in future work
     }
 
     @media (min-width: map-get($breakpoints, lg)) {
