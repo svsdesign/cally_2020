@@ -11818,119 +11818,119 @@ body.black-scheme .cn-button.bootstrap:hover {
 
 */
 /* line 11, assets/sass/_partials/_privacy-page.scss */
-body.white-scheme h1, body.white-scheme h2, body.white-scheme h3, body.white-scheme p {
+body.privacy-policy.white-scheme h1, body.privacy-policy.white-scheme h2, body.privacy-policy.white-scheme h3, body.privacy-policy.white-scheme p {
   padding-bottom: 16px;
   padding-bottom: 16px;
 }
 @media screen and (min-width: 0px) {
   /* line 11, assets/sass/_partials/_privacy-page.scss */
-  body.white-scheme h1, body.white-scheme h2, body.white-scheme h3, body.white-scheme p {
+  body.privacy-policy.white-scheme h1, body.privacy-policy.white-scheme h2, body.privacy-policy.white-scheme h3, body.privacy-policy.white-scheme p {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 11, assets/sass/_partials/_privacy-page.scss */
-  body.white-scheme h1, body.white-scheme h2, body.white-scheme h3, body.white-scheme p {
+  body.privacy-policy.white-scheme h1, body.privacy-policy.white-scheme h2, body.privacy-policy.white-scheme h3, body.privacy-policy.white-scheme p {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 11, assets/sass/_partials/_privacy-page.scss */
-  body.white-scheme h1, body.white-scheme h2, body.white-scheme h3, body.white-scheme p {
+  body.privacy-policy.white-scheme h1, body.privacy-policy.white-scheme h2, body.privacy-policy.white-scheme h3, body.privacy-policy.white-scheme p {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 11, assets/sass/_partials/_privacy-page.scss */
-  body.white-scheme h1, body.white-scheme h2, body.white-scheme h3, body.white-scheme p {
+  body.privacy-policy.white-scheme h1, body.privacy-policy.white-scheme h2, body.privacy-policy.white-scheme h3, body.privacy-policy.white-scheme p {
     padding-bottom: 64px;
   }
 }
 /* line 16, assets/sass/_partials/_privacy-page.scss */
-body.white-scheme .target-links {
+body.privacy-policy.white-scheme .target-links {
   padding-bottom: 16px;
   padding-bottom: 16px;
 }
 @media screen and (min-width: 0px) {
   /* line 16, assets/sass/_partials/_privacy-page.scss */
-  body.white-scheme .target-links {
+  body.privacy-policy.white-scheme .target-links {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 16, assets/sass/_partials/_privacy-page.scss */
-  body.white-scheme .target-links {
+  body.privacy-policy.white-scheme .target-links {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 16, assets/sass/_partials/_privacy-page.scss */
-  body.white-scheme .target-links {
+  body.privacy-policy.white-scheme .target-links {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 16, assets/sass/_partials/_privacy-page.scss */
-  body.white-scheme .target-links {
+  body.privacy-policy.white-scheme .target-links {
     padding-bottom: 64px;
   }
 }
 
 /* line 11, assets/sass/_partials/_privacy-page.scss */
-body.black-scheme h1, body.black-scheme h2, body.black-scheme h3, body.black-scheme p {
+body.privacy-policy.black-scheme h1, body.privacy-policy.black-scheme h2, body.privacy-policy.black-scheme h3, body.privacy-policy.black-scheme p {
   padding-bottom: 16px;
   padding-bottom: 16px;
 }
 @media screen and (min-width: 0px) {
   /* line 11, assets/sass/_partials/_privacy-page.scss */
-  body.black-scheme h1, body.black-scheme h2, body.black-scheme h3, body.black-scheme p {
+  body.privacy-policy.black-scheme h1, body.privacy-policy.black-scheme h2, body.privacy-policy.black-scheme h3, body.privacy-policy.black-scheme p {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 11, assets/sass/_partials/_privacy-page.scss */
-  body.black-scheme h1, body.black-scheme h2, body.black-scheme h3, body.black-scheme p {
+  body.privacy-policy.black-scheme h1, body.privacy-policy.black-scheme h2, body.privacy-policy.black-scheme h3, body.privacy-policy.black-scheme p {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 11, assets/sass/_partials/_privacy-page.scss */
-  body.black-scheme h1, body.black-scheme h2, body.black-scheme h3, body.black-scheme p {
+  body.privacy-policy.black-scheme h1, body.privacy-policy.black-scheme h2, body.privacy-policy.black-scheme h3, body.privacy-policy.black-scheme p {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 11, assets/sass/_partials/_privacy-page.scss */
-  body.black-scheme h1, body.black-scheme h2, body.black-scheme h3, body.black-scheme p {
+  body.privacy-policy.black-scheme h1, body.privacy-policy.black-scheme h2, body.privacy-policy.black-scheme h3, body.privacy-policy.black-scheme p {
     padding-bottom: 64px;
   }
 }
 /* line 16, assets/sass/_partials/_privacy-page.scss */
-body.black-scheme .target-links {
+body.privacy-policy.black-scheme .target-links {
   padding-bottom: 16px;
   padding-bottom: 16px;
 }
 @media screen and (min-width: 0px) {
   /* line 16, assets/sass/_partials/_privacy-page.scss */
-  body.black-scheme .target-links {
+  body.privacy-policy.black-scheme .target-links {
     padding-bottom: calc(16px + 0 * (100vw - 0px) / 800);
   }
 }
 @media screen and (min-width: 800px) {
   /* line 16, assets/sass/_partials/_privacy-page.scss */
-  body.black-scheme .target-links {
+  body.privacy-policy.black-scheme .target-links {
     padding-bottom: 16px;
   }
 }
 @media screen and (min-width: 800px) {
   /* line 16, assets/sass/_partials/_privacy-page.scss */
-  body.black-scheme .target-links {
+  body.privacy-policy.black-scheme .target-links {
     padding-bottom: calc(16px + 48 * (100vw - 800px) / 2400);
   }
 }
 @media screen and (min-width: 3200px) {
   /* line 16, assets/sass/_partials/_privacy-page.scss */
-  body.black-scheme .target-links {
+  body.privacy-policy.black-scheme .target-links {
     padding-bottom: 64px;
   }
 }

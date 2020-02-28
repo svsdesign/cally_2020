@@ -40,7 +40,7 @@ if( !empty($block['align']) ) {
                      
                     <?php if( $title ): ?>
                         
-                        <h1 class="intro clear-col-item">
+                        <h1 class="intro clear-col-item clear-column-after">
                             <?php echo $title; ?>
                         </h1><!-- .title -->
                         <!-- make sure this columns is cleared at all times -->

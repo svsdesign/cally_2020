@@ -5,7 +5,7 @@
 
 @each $scheme in $schemes { // start colour scheme
  
-  body.#{nth($scheme, 1)}  
+  body.privacy-policy.#{nth($scheme, 1)}  
   {
 
     h1,h2,h3,p{
