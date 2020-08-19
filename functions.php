@@ -1,32 +1,147 @@
 <?php
 /**
- *  Theseus
+ *  cally_2020
  *  
  *  Developed by Simon van Stipriaan 
  * 	http://svs.design
  *
  *  
  */
+ 
+// Require our CPTs
+require 'inc/post-types.php';
+// Include helps and customisation files
+include 'inc/customisations.php';
+include 'inc/helpers.php';
+include 'inc/blocks.php';
 
-function theseus_style() {
-   
- wp_enqueue_style( 'style', get_stylesheet_uri() );
 
- }
-add_action( 'wp_enqueue_scripts', 'theseus_style' );
+// Constant definitions
+define('TXTDOMAIN', 'cally_2020');
 
+
+// Enable the option show in rest
+add_filter( 'acf/rest_api/field_settings/show_in_rest', '__return_true' );
+
+// Enable the option edit in rest
+add_filter( 'acf/rest_api/field_settings/edit_in_rest', '__return_true' );
+
+//and also that you have activated fields in rest api as depicted in image below.
+
+function svs_add_crossorigina( $tag, $handle ) {
+    if ( TXTDOMAIN .'-polyfill' === $handle ) {
+        return str_replace( "src", "crossorigin='anonymous' src", $tag );
+    }
+    return $tag;
+}
+add_filter( 'script_loader_tag', 'svs_add_crossorigina', 10, 2 );
+
+
+
+
+function cally_2020_style() {   
+wp_enqueue_style( 'style', get_stylesheet_uri() );
+}
+
+// add_action( 'wp_enqueue_scripts', 'cally_2020_style' );
+
+
+
+// Add theme gulp'ed & minified CSS/JS
+function svs_add_theme_files() {
+
+    wp_enqueue_media(); // front end WP media scripts
+
+    if ( !is_admin() ) :
+        // Remove as we don't want WP built it jQuery
+        wp_deregister_script( 'jquery' );
+
+    endif;
+
+    // Main budkled site styles
+    wp_enqueue_style( TXTDOMAIN .'-style', get_template_directory_uri() .'/dist/css/style.min.css', null, filemtime( get_stylesheet_directory() .'/dist/css/style.min.css' ) );
+
+    // Pull in any vendors styles and site app
+    // wp_enqueue_style( TXTDOMAIN .'-aos-css', '//unpkg.com/aos@2.3.1/dist/aos.css', null, null, false );
+
+    // Browserify & jQuery for local development
+    if ( $_SERVER['REMOTE_ADDR'] === '::1' || $_SERVER['REMOTE_ADDR'] === '127.0.0.1' ):
+
+
+
+
+        wp_enqueue_script( 'jquery', get_template_directory_uri() .'/dist/js/jquery.js', array(), null, false );
+        wp_enqueue_script( 'jquery ui', get_template_directory_uri() .'/dist/js/jquery-ui.min.js', array(), null, false );
+        wp_enqueue_script( '__bs_script__', 'http://'. $_SERVER['SERVER_NAME'] .':3000/browser-sync/browser-sync-client.js', array(), '2.17.3', true );
+
+    else:
+
+        wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js', array(), null, false );
+        wp_enqueue_script( 'jquery ui', get_template_directory_uri() .'/dist/js/jquery-ui.min.js', array(), null, false );
+
+    endif;
+
+    // Pull in any vendors scripts and site app
+    // wp_enqueue_script( TXTDOMAIN .'-gsap', '//cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js', null, null, true );
+    wp_enqueue_script( TXTDOMAIN .'-polyfill', '//polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.find%2CIntersectionObserver', null, null, true ); // review this - is it needed?
+    // wp_enqueue_script( TXTDOMAIN .'-aos', '//unpkg.com/aos@2.3.1/dist/aos.js', null, '2.3.1', true );
+    wp_enqueue_script( TXTDOMAIN .'-vendors', get_template_directory_uri() .'/dist/js/vendors.min.js', array('jquery'), filemtime( get_stylesheet_directory().'/dist/js/vendors.min.js' ), true );
+    // wp_enqueue_script( TXTDOMAIN .'-app', get_template_directory_uri() .'/dist/js/app.min.js', array('jquery', TXTDOMAIN .'-vendors', 'wp-mediaelement','media-upload','wp-plupload-all'), filemtime( get_stylesheet_directory().'/dist/js/app.min.js' ), true );
+    wp_enqueue_script( TXTDOMAIN .'-app', get_template_directory_uri() .'/dist/js/app.min.js', array('jquery', TXTDOMAIN .'-vendors'), filemtime( get_stylesheet_directory().'/dist/js/app.min.js' ), true );
+
+    // Localise our app scipt above with any PHP/site variables we may need
+    $theme_vars = array(
+        'base_url' => home_url(),
+        'template_url' => get_stylesheet_directory_uri(),
+        'root' => esc_url_raw( rest_url() ),
+        'nonce' => wp_create_nonce( 'wp_rest' )
+    );
+    wp_localize_script( TXTDOMAIN .'-app', 'WP_settings', $theme_vars );
+
+
+	
+}
+add_action( 'wp_enqueue_scripts', 'svs_add_theme_files' );
+
+
+
+
+function svs_admin_enqueue_scripts() {
+
+	wp_enqueue_script( TXTDOMAIN .'-app-admin', get_template_directory_uri() . '/dist/js/app.admin.min.js', array('jquery'), filemtime( get_stylesheet_directory().'/dist/js/app.admin.min.js' ), true );
+
+}
+add_action('acf/input/admin_enqueue_scripts', 'svs_admin_enqueue_scripts');
+
+//do_action( 'wp_enqueue_media' );
+
+
+
+function svs_admin_block_assets() {
+
+	//wp_enqueue_style('admin-artist-block',''.get_stylesheet_directory_uri().'/template-parts/blocks/inpartist/assets/css/style.css', array(), '1');
+	wp_enqueue_style('admin-blocks',''.get_stylesheet_directory_uri().'/dist/css/admin.style.min.css', array(), '1');
+ 	//enquire js
+	// wp_enqueue_script('th-admin-enquire', ''.get_stylesheet_directory_uri().'/assets/js/enquire.js', array( 'jquery' ), '', true );
+
+
+	 // admin js: - review
+	//   wp_enqueue_script('inp-admin-site', ''.get_stylesheet_directory_uri().'/dist/js/app.admin.min.js', array( 'jquery' ), '', true );
+
+}
+add_action( 'enqueue_block_editor_assets', 'svs_admin_block_assets' );
+
+
+
+
+
+
+
+/* 
+
+TOD O - ensure the headroom scripts are added to the vendords
 
 function site_scripts() {
-
-/*
-wp_enqueue_script(
-'headroom',
-'https://cdnjs.cloudflare.com/ajax/libs/headroom/0.10.3/headroom.min.js', //todo: place locacally?
-array('jquery'),
-false,
-true 
-);	
-*/
 
 wp_enqueue_script(
     'headroom',
@@ -43,27 +158,15 @@ wp_enqueue_script(
     false,
     true
 );
-
-
-
  
 wp_enqueue_script( 'navigation', get_template_directory_uri() . '/assets/js/navigation.js', array('jquery'), '1.0.0', true );
 
-
-//	wp_enqueue_script( 'packery', 'https://unpkg.com/packery@2/dist/packery.pkgd.js', array(), '1.0.0', true );
- //   wp_enqueue_script( 'packery-drag', 'https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.js', array(), '1.0.0', true );
 wp_enqueue_script( 'site', get_template_directory_uri() . '/assets/js/site.js', array('jquery'), false, true );
-  
-
-
 
 }
 
 add_action( 'wp_enqueue_scripts', 'site_scripts' );
-
-
-
-
+*/
 
 /* ALLOW SVG UPLOADS*/
 	
@@ -72,9 +175,6 @@ function cc_mime_types( $mimes ){
 	return $mimes;
 }
 add_filter( 'upload_mimes', 'cc_mime_types' );
-
- 
- 
 
 
 if( function_exists('acf_add_options_page') ) {
@@ -90,9 +190,6 @@ if( function_exists('acf_add_options_page') ) {
 	));
 	
 };
-
-
-
 
 
 /* Add Navigations */
@@ -116,7 +213,7 @@ add_action( 'init', 'register_navigations' );
 function add_favicon() {
     $favicon_url = get_stylesheet_directory_uri();
     echo'<link rel="apple-touch-icon" sizes="180x180" href="'. $favicon_url .'/assets/site-icons/back-end/apple-touch-icon.png">';
-    echo'<link rel="icon" type="image/png" sizes="32x32" href="'. $favicon_url .'/assets//site-icons/back-end/favicon-32x32.png">';
+    echo'<link rel="icon" type="image/png" sizes="32x32" href="'. $favicon_url .'/assets/site-icons/back-end/favicon-32x32.png">';
         '<link rel="icon" type="image/png" sizes="16x16" href="'. $favicon_url .'/assets/site-icons/back-end/favicon-16x16.png">';
         '<link rel="manifest" href="'. $favicon_url .'/assets/site-icons/back-end/site.webmanifest">';
         '<link rel="mask-icon" href="'. $favicon_url .'/assets/site-icons/back-end/safari-pinned-tab.svg" color="#f0523b">';
@@ -146,6 +243,7 @@ add_action( 'enqueue_block_editor_assets', 'legit_block_editor_styles' );
 */
 
 function my_admin_block_assets() {
+// Delete this I think
 
 	//https://wp.zacgordon.com/2017/12/26/how-to-add-javascript-and-css-to-gutenberg-blocks-the-right-way-in-plugins-and-themes/
 	//https://support.advancedcustomfields.com/forums/topic/js-fires-before-block-is-rendered/
@@ -164,7 +262,7 @@ function my_admin_block_assets() {
 
 
 }
- add_action( 'enqueue_block_editor_assets', 'my_admin_block_assets' );
+//  add_action( 'enqueue_block_editor_assets', 'my_admin_block_assets' );
  
 /* END ADMIN BLOCKS */
 
@@ -179,7 +277,7 @@ function wpse_320244_admin_body_class($classes) {
   // to return the value, and perhaps assign it to a variable for later use
  	$scheme = get_field('colour_scheme', 'option'); 
 
-//	$scheme = "white";// temporary - if needed
+    //	$scheme = "white";// temporary - if needed
 
 	if  ($scheme == 'black'){
 		$assignscheme = ' black-scheme';
@@ -211,309 +309,22 @@ function wpse_320244_admin_body_class($classes) {
 }
 
 
-// ACF CUSTOM FIELDS
-
-include_once( get_stylesheet_directory() .'/acf-fields.php');
-
-
-//END ACF CUSTOM FIELDS
 
 
 
+//start svs added - as part of acf api:
+function _checked( $haystack, $current, $echo = true ) {
+	if ( is_array( $haystack ) ) {
+		if ( in_array( $current, $haystack ) ) {
+			$current = $haystack = true;
+		} else {
+			$current = ! ( $haystack = true );
+		}
+	}
 
-function my_acf_init() {
-    
-    // check function exists
-    if( function_exists('acf_register_block') ) {
-        
-    // register a quote block:
-    /* - delete this unless I need the support uoption - and use this as referene rthen
-        acf_register_block(array(
-            'name'              => 'inpquote',
-            'title'             => __('Inp Quote'),
-            'description'       => __('A custom quote block.'),
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',
-            'enqueue_assets'    => function(){
-                //  wp_enqueue_script('inp-quote-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inpquote/assets/js/script.js', array( 'jquery' ), '', true );
-            },
-            'icon'              => 'editor-quote',
-          //  'mode'              => 'preview',//"auto" or "preview" This lets you control how the block is presented the Gutenberg block editor. The default is “auto” which renders the block to match the frontend until you select it, then it becomes an editor. If set to “preview” it will always look like the frontend and you can edit content in the sidebar.
-            'supports'           => array( 'mode' => false ),//If set to “Edit” it appears like a metabox in the content area. The user can switch the mode by clicking the button in the top right corner, unless you specifically disable it with 
-
-            'keywords'          => array( 'inpquote'),
-        ));
-    //END delete this unless I need the support uoption - and use this as referene rthen
-
-    */
-      
-    
-    // register a text block:
-
-		// one column: Text
-    
-        acf_register_block(array(
-            'name'              => 'thonecol', //th_one_col
-            'title'             => __('Text - One Column'),
-            'description'       => __('Text - One Column'), // review this
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
-            'enqueue_assets'    => function(){
-            //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
-            },
-            'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
-            'keywords'          => array('thonecol'),
-        ));
-
-		
-		// one column: Image
-
-  		 acf_register_block(array(
-            'name'              => 'thonecolimage', 
-            'title'             => __('Image - One Column'),
-            'description'       => __('Image - One Column'), // review this
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
-            'enqueue_assets'    => function(){          
-             wp_enqueue_script('th-one-col-image', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thonecolimage/assets/js/script.js', array( 'jquery' ), '', true );
-            },
-            'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
-            'keywords'          => array('thonecolimage'),
-        ));
-		// multi column: Image
-
-
-		acf_register_block(array(
-            'name'              => 'thmulticolimage', 
-            'title'             => __('Image - Multi Column'),
-            'description'       => __('Image - Multi Column'), // review this
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
-            'enqueue_assets'    => function(){    
-              wp_enqueue_script('th-multi-col-image', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thmulticolimage/assets/js/script.js', array( 'jquery' ), '', true );
-            },
-            'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
-            'keywords'          => array('thmulticolimage'),
-        ));
-
-
-
-		// two column: Text
-
-        acf_register_block(array(
-            'name'              => 'thtwocol', 
-            'title'             => __('Text - Two Column'),
-            'description'       => __('Text - Two Column'), // review this
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
-            'enqueue_assets'    => function(){
-            //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
-            },
-            'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
-            'keywords'          => array('thtwocol'),
-        ));
-
-		// two column: Text + Image
-
-        acf_register_block(array(
-            'name'              => 'thtwocoltextimage', 
-            'title'             => __('Text + Image - Two Column'),
-            'description'       => __('Text + Image - Two Column'), // review this
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
-            'enqueue_assets'    => function(){
-              wp_enqueue_script('th-two-col-text-image', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thtwocoltextimage/assets/js/script.js', array( 'jquery' ), '', true );
-            },
-            'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
-            'keywords'          => array('thtwocoltextimage'),
-        ));
-
-		// two column: Jobs
-
-    	acf_register_block(array(
-            'name'              => 'thtwocoljobs', 
-            'title'             => __('Text - Two Column - Job Vacancy'),
-            'description'       => __('Text - Two Column - Job Vacancy'), // review this
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
-            'enqueue_assets'    => function(){
-            //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
-            },
-            'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
-            'keywords'          => array('thtwocoljobs'),
-        ));
-
-
-
- 	   acf_register_block(array(
-            'name'              => 'thtwocolleftheader', 
-            'title'             => __('Text - Two Column - Left Header'),
-            'description'       => __('Text - Two Column - Left Header'), // review this
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
-            'enqueue_assets'    => function(){
-            //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
-            },
-            'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
-            'keywords'          => array('thtwocolleftheader'),
-        ));
-
-  		acf_register_block(array(
-            'name'              => 'thtwocolleftheaderimage', 
-            'title'             => __('Text - Two Column - Left Header + Image'),
-            'description'       => __('Text - Two Column - Left Header + Image'), // review this
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
-            'enqueue_assets'    => function(){
-            //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
-            },
-            'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
-            'keywords'          => array('thtwocolleftheaderimage'),
-        ));
-	 
-		 acf_register_block(array(
-            'name'              => 'thtwocolheader', 
-            'title'             => __('Text - Two Column - Header'),
-            'description'       => __('Text - Two Column - Header'), // review this
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
-            'enqueue_assets'    => function(){
-            //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
-            },
-            'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
-            'keywords'          => array('thtwocolheader'),
-        ));
-
-       
-
- 	   acf_register_block(array(
-            'name'              => 'thline', 
-            'title'             => __('Line'),
-            'description'       => __('Line'), // review this
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
-            'enqueue_assets'    => function(){
-            //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
-            },
-            'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
-            'keywords'          => array('thline'), // review this- its not liner sould be line?
-        ));
-
- 	    acf_register_block(array(
-            'name'              => 'thspacer', 
-            'title'             => __('Spacer'),
-            'description'       => __('Spacer'), // review this
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
-            'enqueue_assets'    => function(){
-            //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
-            },
-            'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
-            'keywords'          => array('thspace'),
-        ));
-
-		 acf_register_block(array(
-            'name'              => 'thclientlogos', 
-            'title'             => __('Client Logos'),
-            'description'       => __('Client Logos'), // review this
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
-            'enqueue_assets'    => function(){
-            //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
-            },
-            'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
-            'keywords'          => array('thclientlogos'),
-        ));
-
-
-
-        // register slideshow block:
-        // https://www.advancedcustomfields.com/resources/acf_register_block_type/#examples
-        acf_register_block(array(
-            'name'              => 'thslideshow',
-            'title'             => __('Slide Show'),
-            'description'       => __('Slide Show'),// review this
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',
-            // 'enqueue_script'    => '',
-
-            'enqueue_assets'    => function(){
-            //  wp_enqueue_script('flickity-pgkd','https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array('jquery'), false, true);
-            //  wp_enqueue_style( 'flickity styles', 'https://npmcdn.com/flickity@2.2.1/dist/flickity.css' );
-            //  wp_enqueue_style( 'flickity-style', 'https://npmcdn.com/flickity@2.2.1/dist/flickity.css'); // Styles moved into "block-gallery.scss"
-            //  wp_enqueue_script('flickity-pgkd', 'https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array( 'jquery' ), '', true ); // 
-             wp_enqueue_script('flickity-pgkd', 'https://npmcdn.com/flickity@2/dist/flickity.pkgd.js', array( 'jquery' ), '', true );
-             wp_enqueue_script('th-slide-show-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thslideshow/assets/js/script.js', array( 'jquery' ), '', true );
-
-            },
-
-            'icon'              => 'format-gallery',
-          //'mode'              => 'preview',//"auto" or "preview" This lets you control how the block is presented the Gutenberg block editor. The default is “auto” which renders the block to match the frontend until you select it, then it becomes an editor. If set to “preview” it will always look like the frontend and you can edit content in the sidebar.
-            'supports'          => array( 'mode' => false ),
-            'keywords'          => array( 'thslideshow'),
-        ));
-
-
-        // register contact block:
-
-        acf_register_block(array(
-            'name'              => 'thcontact',
-            'title'             => __('Contact'),
-            'description'       => __('Contact'),// review this
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',
-          //  'enqueue_script'    => '',
-            'enqueue_assets'    => function(){
-            wp_enqueue_script('th-contact-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thcontact/assets/js/script.js', array( 'jquery' ), '', true );
-            },
-
-            'icon'              => 'admin-comments',
-          //'mode'              => 'preview',//"auto" or "preview" This lets you control how the block is presented the Gutenberg block editor. The default is “auto” which renders the block to match the frontend until you select it, then it becomes an editor. If set to “preview” it will always look like the frontend and you can edit content in the sidebar.
-            'supports'          => array( 'mode' => false ),
-            'keywords'          => array( 'thcontact'),
-        ));
-
-        // register video block:
-
-        acf_register_block(array(
-            'name'              => 'thvideo',
-            'title'             => __('Video'),
-            'description'       => __('Video'),
-            'render_callback'   => 'my_acf_block_render_callback',
-            'category'          => 'common',
-          //  'enqueue_script'    => '',
-
-            'enqueue_assets'    => function(){
-            },
-
-            'icon'              => 'format-gallery',
-          //'mode'              => 'preview',//"auto" or "preview" This lets you control how the block is presented the Gutenberg block editor. The default is “auto” which renders the block to match the frontend until you select it, then it becomes an editor. If set to “preview” it will always look like the frontend and you can edit content in the sidebar.
-            'supports'          => array( 'mode' => false ),
-            'keywords'          => array( 'thvideo'),
-        ));
-		//end video
-
-    }// if( function_exists('acf_register_block') )
-
-}//function my_acf_init() 
-
-add_action('acf/init', 'my_acf_init'); 
-
-
-
-function my_acf_block_render_callback( $block ) {
-    
-    // convert name ("acf/quote") into path friendly slug ("quote")
-    $slug = str_replace('acf/', '', $block['name']);
-    
-    // include a template part from within the "template-parts/block" folder
-    if( file_exists( get_theme_file_path("/template-parts/blocks/{$slug}/content-{$slug}.php") ) ) {
-        include( get_theme_file_path("/template-parts/blocks/{$slug}/content-{$slug}.php") );
-    } //if
-
-}//function my_acf_block_render_callback( $block ) {
-
-/* END BLOCKS */
+	return checked( $haystack, $current, $echo );
+}
+//end svs added - as part of acf api:
 
 
 
@@ -594,12 +405,105 @@ function remove_draft_widget(){
 // End remove normal post type
 */
 
-
-/* END V2 stuff to review; maybe add:*/
-/* START ACF FIELDS */
-
+ 
 
 //add_action('init’, ‘register_field_group');
+/*
+acf_add_local_field_group(array(
+	'key' => 'group_5c1a77cdb4be8',
+	'title' => 'Website options',
+	'fields' => array(
+		array(
+			'key' => 'field_5c1a77d680beb',
+			'label' => 'Colour Scheme',
+			'name' => 'colour_scheme',
+			'type' => 'radio',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'choices' => array(
+				'white' => 'White',
+				'black' => 'Black',
+			),
+			'allow_null' => 0,
+			'other_choice' => 0,
+			'default_value' => '',
+			'layout' => 'vertical',
+			'return_format' => 'value',
+			'save_other_choice' => 0,
+		),
+		array(
+			'key' => 'field_5c1a88e680beb',
+			'label' => 'Keep Intro Logo Visible',
+			'name' => 'keep_intro_logo',
+			'type' => 'radio',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'choices' => array(
+				'no' => 'No',
+				'yes' => 'Yes',
+			),
+			'allow_null' => 0,
+			'other_choice' => 0,
+			'default_value' => '',
+			'layout' => 'vertical',
+			'return_format' => 'value',
+			'save_other_choice' => 0,
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'options_page',
+				'operator' => '==',
+				'value' => 'website-settings',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => 1,
+	'description' => '',
+));
+*/
+/*
+//This converst the php imports to the json file:
+// get all the local field groups 
+$field_groups = acf_get_local_field_groups();
 
+// loop over each of the gield gruops 
+foreach( $field_groups as $field_group ) {
 
-?>
+	// get the field group key 
+	$key = $field_group['key'];
+
+	// if this field group has fields 
+	if( acf_have_local_fields( $key ) ) {
+	
+      	// append the fields 
+		$field_group['fields'] = acf_get_local_fields( $key );
+
+	}
+
+	// save the acf-json file to the acf-json dir by default 
+	acf_write_json_field_group( $field_group );
+
+}
+*/
+?>		
+ 

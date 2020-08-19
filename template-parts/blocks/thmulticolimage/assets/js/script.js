@@ -48,7 +48,6 @@
 
     };//function images($block)
 
-
     // Initialize each block on page load (front end).
     $(document).ready(function(){
 
@@ -60,7 +59,6 @@
                initializeBlock( $(this) );
 
          }//end if I only want to run the scripts on the admins side:
-
 
     });
 

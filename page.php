@@ -1,16 +1,20 @@
 <?php
 /**
- *  Theseus
+ *  Cally 2020
  *  
  *  Developed by Simon van Stipriaan 
- * 	http://svs.design
+ *  http://svs.design
  *
  *  
+ * 
+ *  TO DO - rmove all trace of theseus & configure correctly accoridngly
  */
-
 get_header();
 
 if ( have_posts() ) :?>
+
+<div data-barba="container" data-barba-namespace="page"> <!-- ajax wrapper start -->
+<?php// echo $namespace?>
 
 	<div class="grid-container main"><!-- id wasa id="site-wrap" - reivew delete this? -->
 
@@ -28,7 +32,7 @@ if ( have_posts() ) :?>
 
 					 
 			else: /* other pages - use same template as Privacy Policy */?>
-		  	
+ 
 		  		<?php get_template_part( 'content-page' )?>
 
 			<?php endif;
@@ -36,6 +40,9 @@ if ( have_posts() ) :?>
 		endwhile;?>
 
 	</div><!-- class="grid-container main" -->
+
+
+</div ><!-- data-barba="container" data-barba-namespace=" ">  ajax wrapper start -->
 
 <?php endif;
 

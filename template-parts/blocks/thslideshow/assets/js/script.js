@@ -93,7 +93,7 @@
     // Initialize dynamic block preview (editor).
     if( window.acf ) {
        
-    window.acf.addAction( 'render_block_preview/type=thslideshow', initializeBlock );
+        window.acf.addAction( 'render_block_preview/type=thslideshow', initializeBlock );
 
     }
 

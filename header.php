@@ -1,6 +1,6 @@
 <?php
 /**
- *  Theseus
+ *  Cally 2020
  *  
  *  Developed by Simon van Stipriaan 
  *  http://svs.design
@@ -59,49 +59,9 @@
   <meta name="msapplication-TileColor" content="#ffffff"/>
   <meta name="theme-color" content="#ffffff"/>
 <!-- end meta -->
-<!-- STYLE -->
-
-  
-<!-- END STYLE -->
-
-<!-- SCRIPTS  - move into functions - apart from cookie consent ones?
-  REview the "defer" vs "async" - + also suggested to move this into the footer -->
-
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.min.js" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.easing-1.3.js" type="text/javascript"></script>
-<!-- <script src="<?php//echo get_template_directory_uri(); ?>/assets/js/jquery-ui.min.js" type="text/javascript"></script> -->
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/enquire.js" type="text/javascript" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.4and5history.js" type="text/javascript" defer></script>
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/ajaxify-html5.js" type="text/javascript" defer></script>
-
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/imagesloaded.pkgd.min.js" type="text/javascript" defer></script>
-<!-- <script src="https://labs.nearpod.com/bodymovin/demo/events/bodymovin.js" type="text/javascript"></script>-->
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/lottie.min-5.6.4.js" type="text/javascript"></script>
-
-<!--<script src="<?php //echo get_template_directory_uri(); ?>/assets/js/imagesloaded.pkgd.min.js" type="text/javascript"></script> -->
-<script type="text/ecmascript" xlink:href="<?php echo get_template_directory_uri(); ?>/assets/js/smil.user.js"></script>
  
 
-<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUXYryE2krCQ7nIvVcXcFzWEPY0cEcXbE"></script> -->
-
-<!-- END SCRIPTS -->
-
-
-<?php /*
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-46306774-2', 'auto');
-  ga('send', 'pageview');
-
-</script>
- */ ?>
-
 <?php wp_head(); ?>
-</head>
 
 <script>
 /* used for determining if we're local or live */
@@ -114,31 +74,31 @@
  var gMapsLoaded = false; // maybe I need to put this variable else where?
  //console.log("Header gMapsLoaded = " +gMapsLoaded+"");
 </script>
+</head>
+
 
 <?php if( get_field('keep_intro_logo', 'option') == 'no' ):  
   $keep_intro_logo_class = ' hide-intro-logo'; // don't keep the intro if this option is set to no
+ else:  
+  $keep_intro_logo_class = '';
+
 endif; ?>
 
 
 <?php if( get_field('colour_scheme', 'option') == 'black' ): ?>
 
- <body <?php body_class('animation-fix site-loading black-scheme dev-grid-on'.$keep_intro_logo_class.''); ?>>
+ <body data-barba="wrapper" <?php body_class('animation-fix site-loading black-scheme dev-grid-on can-edit'.$keep_intro_logo_class.''); ?>>
 
 <?php else: ?>
 
- <body <?php body_class('animation-fix site-loading white-scheme dev-grid-on'.$keep_intro_logo_class.''); ?>>
+ <body data-barba="wrapper" <?php body_class('animation-fix site-loading white-scheme dev-grid-on can-edit'.$keep_intro_logo_class.''); ?>>
 
 <?php endif; ?>
-
-<?php /*
-  <-- this moved from theseus-page 
-  it was also wrapped in  <div id='site-wrap'> - so might need to review my overarching div struture
-  to includ the navigation as well - delete this comment
-*/?>
+ 
 
 <div id="intro-area" class="visible"> 
 
-  <?php get_template_part( 'theseus_animation' );?>
+  <?php get_template_part( 'cally_animation' );?>
 
 </div> <!-- #intro-area .visible --> 
 
@@ -146,11 +106,8 @@ endif; ?>
 
 <div id="loader">
 </div> <!-- loader -->
+<?php 
+/* we need to move the following div, with data-barba="container" into the inde,page,post etc php files */
+?>
+<div id="main" class="wrapper main-fixer">
 
-<div id="main" class="wrapper main-fixer"> <!-- ajax wrapper start -->
-
-
-  <?php /*
-  <-- END this moved from theseus-page  - delete this comment
-*/?>
-  

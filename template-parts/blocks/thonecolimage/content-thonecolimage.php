@@ -31,8 +31,6 @@ if( !empty($block['align']) ) {
 classes; front end
 center - this just left alligned?
 
-
-
 */
 ?>
 <?php if( have_rows('one_col_content') ): ?>
@@ -56,8 +54,6 @@ center - this just left alligned?
                             <div class="image-wrap">
                                 
                                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
-
-                               <!-- <img src="<?php //echo esc_url($image['url']); ?>" alt="<?php// echo esc_attr($image['alt']); ?>" /> -->
                             
                             </div><!-- .image-wrap -->
 

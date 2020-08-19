@@ -12,7 +12,7 @@ TO DO
 site.js - handles the serving up of scripts for the entire website
 */
 
-
+console.log("site.js - this shuuldn't  be used at all")
 
 var themeurl = theme_directory;
 //console.log("themeurl = " + themeurl +"");
@@ -48,7 +48,7 @@ var app = (function() {
           mQuerySMPLUS = 'screen and (min-width:' + screenSM + 'px)';
 
       // START DEV Functions
-
+/*
       function devgrid() {
 
      
@@ -85,16 +85,15 @@ var app = (function() {
 
                 }); // click
 
-              /*
-            .dev-grid
-            */
+            
           }
   
       // END DEV Functions
  
     } // function devgrid()
-    // devgrid();       
-
+       devgrid();       
+*/
+/*
       function siteload(){
 
         if (introanimationdone == false){
@@ -121,7 +120,8 @@ var app = (function() {
           }//       if $("body:not(.animation-done)"){
 
       } // function indexsiteload();
-
+*/
+/*
     function contentheight() {
 
       var  
@@ -140,28 +140,9 @@ var app = (function() {
 
     }//contentheight();
   
-    function orientation(){
-    
-      //console.log("hell-orientation")
-      var winwidth = $(window).width();
-      var winheight = $(window).height();
-      var isHorizontal;
+  */
 
-      if (winwidth > winheight ) {
-        /* horizontal orientation */
-        $("body").addClass('horizontal');
-        $("body").removeClass('vertical');
-
-       } else{
-        /* vertical orientation */
-        $("body").removeClass('horizontal');
-        $("body").addClass('vertical');
-
-      }//else
-
-    } // function orientation
-    orientation();
-
+  /*
       function toparea(){
  
        var $thisitem = $(window);
@@ -182,7 +163,8 @@ var app = (function() {
 
       };// toparea()
 
-
+    */
+/*
       function topanimationSmall(){
 
         if ($('body').hasClass('black-scheme')){
@@ -214,7 +196,8 @@ var app = (function() {
 
 
       }; //function topanimationsmall()
-
+*/
+/*
       function topanimation(){
        
         if ($('body').hasClass('black-scheme')){
@@ -279,6 +262,8 @@ var app = (function() {
 
       };// topanimation()
 
+      */
+     /*
      function fade() {
 
         var animation_height = $(window).innerHeight() * 0.25; // was 0.25
@@ -329,8 +314,8 @@ var app = (function() {
             }//
 
       } // function fade()
-     
-
+*/     
+/*
     //BLCOKS JS - for ajax purposes
     function images($block){
      // console.log("images loaded applied here")
@@ -361,6 +346,7 @@ var app = (function() {
 
     };//function images($block)
 
+    */
     function slideshow($block){
   
         //$.getScript( ""+themeurl+'/assets/js/site.js', function( data, textStatus, jqxhr ) {
@@ -390,6 +376,7 @@ var app = (function() {
 
     }; // function gallery($block)
 
+    /*
     function map($block){
 
       //console.log("function map($block) - ONE")
@@ -436,7 +423,7 @@ var app = (function() {
                             ] } ],
                     }
 
-                    /*https://stackoverflow.com/questions/22047466/how-to-add-css-class-to-a-googlemaps-marker */
+                    //https://stackoverflow.com/questions/22047466/how-to-add-css-class-to-a-googlemaps-marker
 
                     map = new google.maps.Map(document.getElementById('g-map'),mapOptions);
             // var image = ""+themeurl+'/assets/svg/t_logo_svg.svg?i='+(index++);
@@ -455,7 +442,7 @@ var app = (function() {
             } // if #g-map
 
     } // function gallery($block)
-
+*/
     // end map funtion
 
      function clickcookierevoke() {

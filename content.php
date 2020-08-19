@@ -1,21 +1,12 @@
 <?php
 /**
- *  Theseus
+ *  Cally 2020
  *  
  *  Developed by Simon van Stipriaan 
- * 	http://svs.design
+ *  http://svs.design
  *
  *  
- *
- **/
-?>
-<?php /*
-
-TO DO
-review this - i./e some template/if stamtents not need; ensur this works for post etc
-
-*/
-
+ */
 ?>
  
 
@@ -32,13 +23,7 @@ review this - i./e some template/if stamtents not need; ensur this works for pos
 
 <?php endif; // is page ?>
 
-<?php if (is_single()):
-	// single
-	//$newsid = get_the_ID();
- 	//$newsimage = get_field('news_featured_image'); // image
- 	//$newsdescription = get_field('news_summary_description');// text area - 200 characters limit
- 	//$newscontent = get_field('news_content'); // wysiwig
- 	?>
+<?php if (is_single()):?>
 
 	<?php the_content(); ?>
  
@@ -46,6 +31,6 @@ review this - i./e some template/if stamtents not need; ensur this works for pos
 <?php endif; // is single ?>
 
 <?php if (is_archive()) : ?>	
- 
+
 
 <?php endif;  // is archive ?>

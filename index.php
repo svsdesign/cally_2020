@@ -1,11 +1,12 @@
 <?php
-/*
- *  Theseus
+/**
+ *  Cally 2020
  *  
  *  Developed by Simon van Stipriaan 
- * 	http://svs.design
+ *  http://svs.design
  *
- *  index.php - not using this template atm - pull in page instead
+ *  
+ *  index.php - not using this template atm - pulling front page instead>?
  */
 
 ?>
@@ -13,7 +14,9 @@
 
 <?php get_header(); ?>
 
-	
+<div data-barba="container" data-barba-namespace="index"> <!-- ajax wrapper start -->
+index.php	
+</div><!-- data-barba="container" data-barba-namespace="-->
 
 
 <?php get_footer(); ?>

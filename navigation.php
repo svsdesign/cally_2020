@@ -1,9 +1,9 @@
 <?php
 /**
- *  Theseus
+ *  Cally 2020
  *  
  *  Developed by Simon van Stipriaan 
- * 	http://svs.design
+ *  http://svs.design
  *
  *  
  */
