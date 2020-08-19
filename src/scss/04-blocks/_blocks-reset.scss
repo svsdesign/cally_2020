@@ -1,0 +1,26 @@
+/*/ This is to remove all this shite that wordpress is adding?! - I don't understand how badly their style are assigned. 
+// AND / OR It doesn't make any sense to me atm, 
+
+
+How can I re-create my general sitelayout, when they are constraining widths? 
+Surely people design and code their layouts based on the width available, where you would not add additional padding + margins?
+
+- Also, using flexbox is fucking impossible in this!
+
+
+ - review I imagine? 
+
+Further REading:
+https://github.com/WordPress/gutenberg/issues/11888
+
+ */
+
+.block-editor-block-list__layout .block-editor-block-list__block[data-align=left] .block-editor-block-list__block-edit,
+.block-editor-block-list__layout .block-editor-block-list__block[data-align=right]>.block-editor-block-list__block-edit,
+.edit-post-visual-editor .block-editor-block-list__block .block-editor-block-list__block-edit{
+
+width: 100%;
+
+}
+
+

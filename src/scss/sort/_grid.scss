@@ -1,0 +1,206 @@
+/*
+Theme Name: theseus
+Theme URI:  theseus-agency.com
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+ 
+
+
+// loop over the breakpoints for grid item sizing
+@each $key, $value in $breakpoints {
+  @for $i from 1 through $items {
+    .grid-#{$key}-#{$i} {
+       @include break($key) {
+        flex: 0 0 #{$i / $items * 100%};
+        width: #{$i / $items * 100%};
+
+      }
+    }//.grid-
+ 	.push-left-#{$key}-#{$i} {
+       @include break($key) {
+         margin-left: #{$i / $items * 100%};
+      }
+    }//.grid-
+
+ 	.hide-#{$key} {
+       @include break($key) {
+         display: none;
+      }
+
+    }//.hide-
+
+    .show-#{$key} {
+       @include break($key) {
+         display: block;
+      }
+
+    }//.show-
+
+  }//for
+} //each
+ 
+
+
+body,
+body.white-scheme,
+body.black-scheme
+{
+	*,
+	*::before,
+	*::after {
+	  box-sizing: border-box;
+	}
+
+}
+
+// grid container
+.grid-container {
+width: 100%;
+margin-right: auto;
+margin-left: auto;
+//@include fluid-type(min-height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($containerminimumheight, xs), map-get($containerminimumheight, lg)); // fixed sizing 
+//@include fluid-type(min-height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($containerminimumheight, lg), map-get($containerminimumheight, xxl)); // viewport sizing
+
+@include fluid-type(padding-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+@include fluid-type(padding-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+
+@include fluid-type(padding-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+@include fluid-type(padding-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+
+	@media (min-width: map-get($breakpoints, sm)) {
+	width: 80vw;  
+	//max-width: 500px;  // TBD - current a px value from the Design
+	}
+
+	@media (min-width: map-get($breakpoints, lg)) {
+	max-width:map-get($breakpoints, xxl) * 0.8; // 80% of maxwidth
+ 	}
+
+}//.grid
+
+.grid-row-holder {
+display: -ms-flexbox;
+display: flex;
+-ms-flex-wrap: wrap;
+flex-wrap: wrap;
+overflow: visible; /* so nav toggle shows through */
+ 
+  @include fluid-type(margin-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($offsetgutter, xs), map-get($offsetgutter, lg)); // fixed sizing // offset grid 
+  @include fluid-type(margin-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($offsetgutter, xs), map-get($offsetgutter, lg)); // fixed sizing // offset grid 
+
+  @include fluid-type(margin-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($offsetgutter, lg), map-get($offsetgutter, xxl)); // viewport sizing
+  @include fluid-type(margin-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($offsetgutter, lg), map-get($offsetgutter, xxl)); // viewport sizing
+
+
+}//grid-holder
+
+.grid-item {
+ float: left;
+
+  @include fluid-type(padding, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+  @include fluid-type(padding, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+
+  &:nth-child(even) {
+ //   background-color: #eee;
+  }
+  
+  &:nth-child(odd) {
+ //   background-color: #ddd;
+  }
+
+}//.grid-item
+
+ 
+
+/*Dev Grid */
+
+	.dev-grid-toggle{
+	display: block;
+	position: fixed;
+	background-color: $devcolor;
+	width: 20px;
+	height: 20px;
+   	z-index: 999;
+   	cursor: pointer;
+
+		@media (min-width: map-get($breakpoints, xs)) {
+		right: map-get($gutter, xs);
+	   	bottom: map-get($gutter, xs);
+		}
+	  
+		@media (min-width: map-get($breakpoints, sm)) {
+		right: map-get($gutter, sm);
+		bottom: map-get($gutter, sm);
+		}
+	 
+	}//	.dev-grid-toggle
+
+	.dev-grid{
+	opacity: 0;
+	pointer-events:none;	
+	height: 100vh;
+	position: fixed;
+	z-index: 99;
+ 	top: 0px;
+    left: 0px;
+	right: 0px;
+	
+		.grid-row-holder{
+		height: inherit;
+		}
+
+		.grid-item{
+		border: 1px dotted $devcolor;
+
+			.inner{
+			border: 1px solid $devcolor;		
+			height: 100%;
+			}
+
+		}	
+
+	}//.dev-grid
+
+	.dev-base-lines{
+		position: absolute;
+	z-index: 99;
+	width: 100%;
+	top: 100vh;// start at the text - because 100vh space above
+    left: 0px;
+	right: 0px;
+	opacity: 0;
+	pointer-events:none;	
+	margin-top:-1px;// visually align baseline to type
+
+		.base-line{
+		@include fluid-type(height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($baselineheight, xs), map-get($baselineheight, lg)); // fixed sizing
+			@include fluid-type(height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($baselineheight, lg), map-get($baselineheight, xxl)); // viewport sizing
+			border-top: 1px solid $devcolor20pc;		
+		width: 100%;
+		}
+
+	} // .dev-base-lines
+
+	body.dev-grid-on{
+
+		.dev-grid{
+		opacity: 1;
+		}
+		
+		.dev-base-lines{
+		opacity: 1;
+		}
+
+ 	}//	body.dev-grid-on
+
+	body.hide-intro{
+
+		.dev-base-lines{
+		top: 0vh;//top section no longer there
+		}
+
+ 	}//	body.dev-grid-on
+
+/*End Dev Grid */
+

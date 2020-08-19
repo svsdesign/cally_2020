@@ -1,0 +1,158 @@
+/*
+Theme Name: theseus
+Theme URI:  theseus-agency.com
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+//th-block:
+// general styling
+
+
+
+
+@each $scheme in $schemes { // start colour scheme
+ 
+    body.#{nth($scheme, 1)}:not(.wp-admin) // ensure we're not applying to admin 
+    {
+
+
+        .header-wrap{
+        display: flex;
+        width: 100%;
+        color:$highlight;
+          @include fluid-type(
+            margin-bottom,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($lineheight, xs) * 2,
+            map-get($lineheight,xxl) * 2
+          );
+          @include fluid-type(
+            line-height,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($lineheight, xs) * 1,
+            map-get($lineheight,xxl) *1
+        );
+
+          .post-title{
+          white-space: nowrap;
+          width: auto;
+          @include fluid-type(
+            padding-right,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($gutter, xs) * 0.5,
+            map-get($gutter,xxl) * 0.5
+          );
+          }
+
+          .line{
+          width: 100%;
+          border-top: 1px solid $highlight;//nth($scheme, 2);
+          @include fluid-type(
+            height,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($lineheight, xs) * 1,
+            map-get($lineheight,xxl) *1
+        );
+          @include fluid-type(
+              margin-top,
+              map-get($breakpoints, xs),
+              map-get($breakpoints,xxl),
+              map-get($lineheight, xs) * 0.5,
+              map-get($lineheight,xxl) * 0.5
+          );
+
+          }
+
+          .date{
+          white-space: nowrap;
+          width: auto;
+          @include fluid-type(
+            padding-left,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($gutter, xs) * 0.5,
+            map-get($gutter,xxl) * 0.5
+          );
+          }
+
+        }// header-wrap
+
+      
+
+    &.post-type-archive-news{
+
+      // div:not(.related-items-wrap){
+
+        .header-wrap{
+          display: flex;
+          width: 100%;
+          color: nth($scheme, 3);
+
+          .line{
+            width: 100%;
+            border-top: 1px solid nth($scheme, 3);
+          }
+
+        }//.header-wrap
+
+      // }//.related-items-wrap
+
+    }//&.post-type-archive-news
+
+    &.single-news{
+
+      .header-wrap.related-header-wrap{
+        display: flex;
+        width: 100%;
+        color: nth($scheme, 3);
+        margin: 0;
+
+        .line{
+          width: 100%;
+          border-top: 1px solid nth($scheme, 3);
+        }
+
+      }//.header-wrap
+
+      .post-wrap{
+        @include fluid-type(
+          margin-bottom,
+          map-get($breakpoints, xs),
+          map-get($breakpoints,xxl),
+          map-get($lineheight, xs) * 2,
+          map-get($lineheight,xxl) * 2
+        );
+   
+      }
+      
+      .related-items-wrap{
+       
+        .related-items-title{
+        text-align: center;
+          @include fluid-type(
+            line-height,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($lineheight, xs) * 2,
+            map-get($lineheight,xxl) *2
+          );
+          font-family: $medium-font-family;
+        }
+
+        a{
+          text-decoration: none!important;
+          border:none!important;
+        }
+
+      }
+
+    }// &.single-news
+
+    }//body
+
+}//scheme

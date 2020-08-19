@@ -1,0 +1,1129 @@
+/* _cookie-banner.scss 
+
+TO DO - this stylesheet is a mess + review inline with the inp css tht arent not required
+
+
+*/
+
+@each $scheme in $schemes { // start colour scheme
+ 
+  body.#{nth($scheme, 1)}  
+  {
+
+    #cookie-notice {
+    position: fixed;
+    min-width: 100%;
+    height: auto;
+    z-index: 100000;
+    opacity: 0;
+    top: 0px;
+    bottom: initial;
+    pointer-events:none;
+    background-color: nth($scheme, 3)!important;
+    left: 0;
+    right: 0;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    }
+    
+   &.main-reached{
+   
+      #cookie-notice,
+      #cookie-notice.cookie-revoke-hidden.cookie-notice-visible
+      {
+      @include animation(0s, 1s, fadeincookieconsent, normal, forwards);
+      pointer-events:initial;
+      }
+
+      #cookie-notice.cookie-revoke-hidden{
+      @include animation(0s, 1s, fadeoutcookieconsent, normal, forwards);
+      pointer-events:none;
+
+      }
+
+   }//&.main-reached{
+  
+
+    #cookie-notice.cn-animated {
+     //   -webkit-animation-duration: .5s;
+      //  animation-duration: .5s;
+      //  -webkit-animation-fill-mode: both;
+      //  animation-fill-mode: both
+    }
+
+    #cookie-notice.cn-animated.cn-effect-none {
+       // -webkit-animation-duration: 0s;
+       // animation-duration: 0s
+    }
+
+    #cookie-notice .cookie-notice-container {
+        display: block;
+
+       @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+       @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing
+
+       @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+       @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing
+     
+      @extend .grid-container;
+
+    
+
+    }
+
+    #cookie-notice.cookie-notice-hidden .cookie-notice-container {
+        display: none;
+     }
+
+    #cookie-notice .cookie-revoke-container {
+        display: block
+    }
+
+    #cookie-notice.cookie-revoke-hidden .cookie-revoke-container {
+        display: none
+    }
+
+    a.cn-revoke-inline{
+    display: none;// just hide this at all times  + trigger clicking it through other dom elements
+    }
+
+    .cn-position-top {
+        top: 0
+    }
+
+    .cn-position-bottom {
+        bottom: 0
+    }
+
+
+    .cookie-notice-container .cn-text-container {
+      display: block;
+      clear: both;
+      position: relative;
+
+       @include fluid-type(margin-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*0.5, map-get($lineheight, lg)*0.5); // fixed sizing 
+       @include fluid-type(margin-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*0.5, map-get($lineheight, xxl)*0.5); // viewport sizing
+  
+
+    }
+
+     .cookie-notice-container .cn-buttons-container{
+      display: flex;
+      clear: both;
+      position: relative;
+      overflow: hidden;
+
+     }
+
+    .cookie-notice-container {
+     //   padding: 15px;
+        text-align: left;
+        width: 100%;
+        z-index: 2;
+        color: nth($scheme, 2)!important;
+
+    }
+
+    .cookie-revoke-container {
+      ///  padding: 15px;
+        width: 100%;
+        z-index: 1
+    }
+
+    .cn-close-icon {
+        position: absolute;
+       // right: 15px;
+        top: 50%;
+      //  margin-top: -7.5px;
+      ///  width: 15px;
+       // height: 15px;
+        opacity: .5
+    }
+
+    .cn-close-icon:hover {
+        opacity: 1
+    }
+
+    .cn-close-icon:after,
+    .cn-close-icon:before {
+        position: absolute;
+        content: ' ';
+       // height: 15px;
+        //width: 2px;
+      //  background-color: #fff
+
+         color: nth($scheme, 3);
+  background-color: nth($scheme, 2);
+
+    }
+
+    .cn-close-icon:before {
+        transform: rotate(45deg)
+    }
+
+    .cn-close-icon:after {
+        transform: rotate(-45deg)
+    }
+
+    #cookie-notice .cn-revoke-cookie {
+        margin: 0
+    }
+
+    .cn-button.bootstrap,
+    .cn-button.bootstrap:hover,
+    .cn-button.wp-default,
+    .cn-button.wp-default:hover {
+        box-shadow: none;
+        text-decoration: none
+    }
+
+    #cookie-notice .cn-button {
+    flex-grow: 1;
+    cursor: pointer;
+    text-align: center;
+    float: left;
+    position: relative;
+    color: nth($scheme, 3);
+    background-color: nth($scheme, 2);
+    border-color:nth($scheme, 2);
+
+    @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*0.5, map-get($lineheight, lg)*0.5); // fixed sizing 
+    @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*0.5, map-get($lineheight, xxl)*0.5); // viewport sizing
+
+    @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*0.5, map-get($lineheight, lg)*0.5); // fixed sizing 
+    @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*0.5, map-get($lineheight, xxl)*0.5); // viewport sizing
+
+    @include fluid-type(margin-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*1, map-get($gutter, lg)*1); // fixed sizing
+    @include fluid-type(margin-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
+
+    @include fluid-type(border-radius, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*0.2, map-get($gutter, lg)*0.2); // fixed sizing
+    @include fluid-type(border-radius, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*0.2, map-get($gutter, xxl)*0.2); // viewport sizing
+
+    border-style:solid;
+
+    @include fluid-type(border-width, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*0.2, map-get($gutter, lg)*0.2); // fixed sizing           
+    @include fluid-type(border-width, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*0.2, map-get($gutter, xxl)*0.2); // viewport sizing
+
+
+        &:hover{
+        color: nth($scheme, 2);
+        background-color: nth($scheme, 3);
+        border-color:nth($scheme, 2);
+        }
+    
+        &:last-of-type{
+          margin-right: 0px;
+        }
+
+    }//#cookie-notice .cn-button 
+
+    .cn-button.wp-default {
+      //  font-family: sans-serif;
+      //  line-height: 18px;
+       // padding: 2px 12px;
+       // background: linear-gradient(to bottom, #fefefe, #f4f4f4) repeat scroll 0 0 #f3f3f3;
+       // border-color: #bbb;
+       // color: #333;
+      /* @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+       @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing
+
+       @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+       @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing
+   
+        color: nth($scheme, 3);
+        background-color: nth($scheme, 2);
+
+       // text-shadow: 0 1px 0 #fff;
+       // border-radius: 3px 3px 3px 3px;
+       // border-style: solid;
+       // border-width: 1px;
+        cursor: pointer;
+        display: inline-block;
+        //font-size: 12px;
+        //font-style: normal;
+        text-decoration: none;
+        white-space: nowrap;
+        outline: 0;
+      
+       &.cn-button.wp-default:hover {
+      
+          color: nth($scheme, 2);
+          background-color: nth($scheme, 3);
+        }
+     */
+    }
+
+    .cn-button.bootstrap {
+     /*   font-family: sans-serif;
+        display: inline-block;
+       // padding: 4px 12px;
+       // margin-right: .3em;
+        margin-bottom: 0;
+        //line-height: 20px;
+        color: #333;
+        text-align: center;
+        //text-shadow: 0 1px 1px rgba(255, 255, 255, .75);
+        font-style: normal;
+        vertical-align: middle;
+        cursor: pointer;
+        color: #fff;
+        //text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+        background-color: #006dcc;
+        background-image: -moz-linear-gradient(top, #08c, #04c);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#08c), to(#04c));
+        background-image: -webkit-linear-gradient(top, #08c, #04c);
+        background-image: -o-linear-gradient(top, #08c, #04c);
+        background-image: linear-gradient(to bottom, #08c, #04c);
+        background-repeat: repeat-x;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #04c #04c #002a80;
+        border-color: rgba(0, 0, 0, .1) rgba(0, 0, 0, .1) rgba(0, 0, 0, .25);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, .2) inset, 0 1px 2px rgba(0, 0, 0, .05);
+        padding: 2px 10px;
+        font-size: 12px;
+        text-decoration: none;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        outline: 0
+        */
+    }
+
+    .cn-button.bootstrap:hover {
+       /* color: #fff;
+        background-color: #04c;
+      //  background-position: 0 -15px;
+        -webkit-transition: background-position .1s linear;
+        -moz-transition: background-position .1s linear;
+        -o-transition: background-position .1s linear;
+        transition: background-position .1s linear
+   */
+    }
+
+    #cookie-notice.cookie-notice-visible.cn-effect-none,
+    #cookie-notice.cookie-revoke-visible.cn-effect-none {
+   //  -webkit-animation-name: fadeIn;
+   //   animation-name: fadeIn
+    }
+
+    #cookie-notice.cn-effect-none {
+    //  -webkit-animation-name: fadeOut;
+   //   animation-name: fadeOut
+    }
+
+    #cookie-notice.cookie-notice-visible.cn-effect-fade,
+    #cookie-notice.cookie-revoke-visible.cn-effect-fade {
+     //-webkit-animation-name: fadeIn;
+     //animation-name: fadeIn
+    }
+
+    #cookie-notice.cn-effect-fade {
+   //  -webkit-animation-name: fadeOut;
+   //   animation-name: fadeOut
+    }
+
+    #cookie-notice.cookie-notice-visible.cn-effect-slide,
+    #cookie-notice.cookie-revoke-visible.cn-effect-slide {
+     //-webkit-animation-name: slideInUp;
+     // animation-name: slideInUp
+    }
+
+    #cookie-notice.cn-effect-slide {
+   //  -webkit-animation-name: slideOutDown;
+   //    animation-name: slideOutDown
+    }
+
+    #cookie-notice.cookie-notice-visible.cn-position-top.cn-effect-slide,
+    #cookie-notice.cookie-revoke-visible.cn-position-top.cn-effect-slide {
+    //  -webkit-animation-name: slideInDown;
+     // animation-name: slideInDown
+    }
+
+    #cookie-notice.cn-position-top.cn-effect-slide {
+   // -webkit-animation-name: slideOutUp;
+   //   animation-name: slideOutUp
+    }
+
+  /* 
+
+   @media all and (max-width:900px) {
+        .cookie-notice-container #cn-notice-text {
+            display: block;
+         //   margin-bottom: 5px
+        }
+        #cookie-notice .cn-button {
+      //      margin-left: 5px;
+       //     margin-right: 5px
+        }
+    }*/
+/*
+    @-webkit-keyframes fadeIn {
+        from {
+            opacity: 0
+        }
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0
+        }
+        to {
+            opacity: 1
+        }
+    }
+
+    @-webkit-keyframes fadeOut {
+        from {
+            opacity: 1
+        }
+        to {
+            opacity: 0
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1
+        }
+        to {
+            opacity: 0
+        }
+    }
+
+    @-webkit-keyframes slideInUp {
+        from {
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+            visibility: visible
+        }
+        to {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+        }
+    }
+
+    @keyframes slideInUp {
+        from {
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+            visibility: visible
+        }
+        to {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+        }
+    }
+
+    @-webkit-keyframes slideOutDown {
+        from {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+        }
+        to {
+            visibility: hidden;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+    }
+
+    @keyframes slideOutDown {
+        from {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+        }
+        to {
+            visibility: hidden;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+    }
+
+    @-webkit-keyframes slideInDown {
+        from {
+            -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
+            visibility: visible
+        }
+        to {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+        }
+    }
+
+    @keyframes slideInDown {
+        from {
+            -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
+            visibility: visible
+        }
+        to {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+        }
+    }
+
+    @-webkit-keyframes slideOutUp {
+        from {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+        }
+        to {
+            visibility: hidden;
+            -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0)
+        }
+    }
+
+    @keyframes slideOutUp {
+        from {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+        }
+        to {
+            visibility: hidden;
+            -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0)
+        }
+    }
+
+*/
+
+
+
+// integrate:
+
+
+/*
+
+body.cookies-not-set // if no preferences set yet
+{
+
+     &.post-type-archive-releases,
+     &.preview-site.g-scale.post-type-archive-releases{
+
+       .scene-fixer{
+        @include grayscale-in; 
+        }
+
+    }// &.post-type-archive-releases
+
+    &:not(.post-type-archive-releases),
+    &.preview-site.g-scale:not(.post-type-archive-releases){
+
+        .ajax-container{
+        @include grayscale-in;
+        }
+
+    }//&:not(.post-type-archive-releases)
+   
+    // Colour preview on hover:
+
+    &.preview-site.post-type-archive-releases{
+
+        .scene-fixer{ // this for the releases
+        @include grayscale-out;
+        } 
+
+    }// &.preview-site.post-type-archive-releases
+
+    &.preview-site:not(.post-type-archive-releases){
+
+        .ajax-container{
+        @include grayscale-out;
+        }
+
+    }// &.preview-site:not(.post-type-archive-releases)
+
+        
+     &.preview-site{ // this all the other markiup 
+        //colour
+
+        .cookie-notice-container{
+        --borderWidth: 3px;
+        position: relative;
+        border-radius: var(--borderWidth);
+        }
+
+        .cookie-notice-container:after {
+        content: '';
+        position: absolute;
+        left:0;
+        height: 3px;
+        top: -3px;
+        width: 100%;
+     //   background: linear-gradient(60deg, $black, $red, $black);
+        z-index: -1;
+      //  animation: animatedgradient 3s ease alternate infinite;
+       // background-size: 300% 300%;
+        }
+
+    }//&.preview-site
+
+    &.preview-site.g-scale{ // this all the other markiup - grey out
+        //grey
+
+        .cookie-notice-container:after {
+       // background: linear-gradient(60deg, $black, $white, $black);
+       // animation: animatedgradient 3s ease alternate infinite;
+        //background-size: 300% 300%;
+        }
+
+    }//&.preview-site.g-scale
+
+
+}//body.cookies-not-set
+
+body.cookies-refused // if refused - make the site sligtly less usable aswell?
+{
+
+     &.post-type-archive-releases,
+     &.preview-site.g-scale.post-type-archive-releases
+     {
+
+      .scene-fixer{
+        @include grayscale-in;
+ 
+        }
+
+    }// &.post-type-archive-releases
+
+    &:not(.post-type-archive-releases),
+    &.preview-site.g-scale:not(.post-type-archive-releases)
+    {
+
+        .ajax-container{
+          @include grayscale-in;
+
+        }
+
+    }//&:not(.post-type-archive-releases)
+  
+    // preview on hover:
+    &.preview-site.post-type-archive-releases{
+ 
+        .scene-fixer{ // this for the releases
+        @include grayscale-out;
+        } 
+
+    }// &.preview-site.post-type-archive-releases
+
+    &.preview-site:not(.post-type-archive-releases){
+
+        .ajax-container{
+        @include grayscale-out;
+        }
+
+    }// &.preview-site:not(.post-type-archive-releases)
+
+  
+       
+    &.preview-site{ // this all the other markiup
+
+        .cookie-notice-container{
+        --borderWidth: 3px;
+        position: relative;
+        border-radius: var(--borderWidth);
+        }
+
+        .cookie-notice-container:after {
+        content: '';
+        position: absolute;
+        left:0;
+        height: 3px;
+        top: -3px;
+        width: 100%;
+       // background: linear-gradient(60deg, $black, $red, $black);
+        z-index: -1;
+       // animation: animatedgradient 3s ease alternate infinite;
+        //background-size: 300% 300%;
+        }
+
+    }//&.preview-site
+
+    &.preview-site.g-scale{
+
+        .cookie-notice-container:after {
+      //  background: linear-gradient(60deg, $black, $white, $black);
+      //  animation: animatedgradient 3s ease alternate infinite;
+      //  background-size: 300% 300%;
+        }
+
+    }//&.preview-site.g-scale
+
+
+}//body.cookies-refused
+
+body.cookies-accepted
+{
+
+    #cookie-notice{
+     display: none; 
+    }//#cookie-notice
+
+
+    .cookie-notice-revoke-container {
+     display: none!important;
+     visibility: hidden;
+    }
+  
+
+    &.post-type-archive-releases{
+
+        .scene-fixer{
+        @include grayscale-out;
+        }
+
+    }// &.post-type-archive-releases
+
+    &:not(.post-type-archive-releases){
+
+        .ajax-container{
+        @include grayscale-out;
+        }
+
+    }//&:not(.post-type-archive-releases
+
+
+    &.preview-site.g-scale.post-type-archive-releases{
+
+        .scene-fixer{ // this for the releases
+        @include grayscale-in;
+
+        } 
+
+    }// &.preview-site.post-type-archive-releases &.preview-site{
+
+    &.preview-site.g-scale:not(.post-type-archive-releases){
+
+        .ajax-container{
+         @include grayscale-in;
+        }
+
+    }// &.preview-site:not(.post-type-archive-releases)
+ 
+    &.preview-site{ // all the other markup:
+
+        .cookie-notice-container{
+          --borderWidth: 3px;
+          position: relative;
+          border-radius: var(--borderWidth);
+         }
+
+         .cookie-notice-container:after {
+          content: '';
+          position: absolute;
+          left:0;
+          height: 3px;
+          top: -3px;
+          width: 100%;
+        //  background: linear-gradient(60deg, $black, $red, $black);
+          z-index: -1;
+         // animation: animatedgradient 3s ease alternate infinite;
+         // background-size: 300% 300%;
+        }
+
+    }//&.preview-site
+
+    &.preview-site.g-scale{ // this all the other markiup - grey out
+        //grey
+        
+        .cookie-notice-container:after {
+        // background: linear-gradient(60deg, $black, $white, $black);
+       // animation: animatedgradient 3s ease alternate infinite;
+        //background-size: 300% 300%;
+        }
+
+    }//&.preview-site.g-scale
+
+}//body.cookies-accepted
+
+
+
+
+
+
+// opnce the cookie has been agreen on - lest not bother showing "the option button" unless on the privacy page?
+
+ body.cookies-accepted{ // if they agree and set yes - no point providng the options?
+
+
+  #cn-accept-cookie{
+    opacity: 0.2;
+    //pointer-events:none;
+    }
+
+    #cookie-notice{
+    // display: none;
+     //position:fixed;// sticky;//fixed;
+     }//#cookie-notice
+
+    .cookie-notice-revoke-container {
+     //display: none!important;
+    //visibility: hidden;
+    }
+
+}// body.cookies-set.cookies-accepted
+
+
+body.cookies-refused{
+
+    #cookie-cont{
+    width: 6.25vw;
+    height: 6.25vw;
+    background: transparent;// this se twith js at the mo ;( so have to veridre- find better solution
+
+        @media (min-width: map-get($breakpoints,sm)) { 
+        width: 12.5vw;
+        height: 12.5vw;
+        }  
+
+    }
+
+    #cookie-notice{
+    height: 100%;
+  //  padding: 30%; // this too much padding
+    }
+
+    .cookie-notice-container{
+    display: none;
+    //position:fixed;// sticky;//fixed;
+    }//#cookie-notice
+
+    #cn-refuse-cookie{
+    opacity: 0.2;
+    //pointer-events:none;
+    }
+    #cn-revoke-cookie{
+    height: inherit;
+    }
+
+    .cookie-notice-revoke-container {
+     height: inherit;
+  //  --borderWidth: 3px;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+
+   // border-radius: var(--borderWidth);
+    
+        a{
+        height: inherit;
+        padding:0px;
+        border:0px;
+        line-height: 10.5vw!important;// reviw + the copy used
+        text-align: center;
+     //   @include smaller;// evne smaller?
+        width: 100%;
+        display: block;
+       // @include fluid-type(font-size, 0.4);
+        color: transparent;
+       // @include fluid-type(line-height, 0.6);
+        }
+
+        a:after{               
+        content: '';
+        position: absolute;
+        left:0;
+        height: 100%;
+        //    top: -3px;
+        width: 100%; // this should probably pulsate slightly instead? but on hover only? - image of cookie
+       // background:radial-gradient( $red, $red_0, $red);
+
+      //  background: linear-gradient(60deg, $black, $red, $black);
+        z-index: -1;
+       // animation: animatedgradient 30s ease alternate infinite;
+       // background-size: 800% 800%;
+        }
+
+    }
+    
+
+}// body.cookies-refused
+
+body.cookies-set.cookies-revoke{
+
+    #cookie-cont{
+    width: 100%;
+    height: inherit;
+    background: $black;
+    }
+
+    #cookie-notice{
+    display: flex;
+   //  @extend .grid-item;// for padding
+    }
+
+    .cookie-notice-container{
+    display: flex;
+    }
+    
+    .footer-wrap{
+    // add sufficient padding - also ensure applied on "non-set cookieie3s"
+    padding-bottom: 200px;// don't use px
+
+    // set via js - probably better
+    }
+
+}//body.cookies-set.cookies-revoke
+
+ 
+
+body.page-id-3.cookies-revoke{
+
+    #cookie-notice{
+  //  position: fixed;//sticky;
+    }//#cookie-notice
+
+
+    .cookie-notice-revoke-container {
+
+    }
+
+}//body.cookies-revoke
+
+
+ 
+#cookie-cont{
+    display: block;
+    position: fixed;
+    background: $black;
+    width: 100%;
+    height: inherit;
+    top: initial;
+    bottom: 0;
+    pointer-events:none;
+    z-index: 99999;// review
+}
+
+#cookie-notice {
+   // border-top:1px solid $white;
+    display: block;
+  //  visibility: hidden;
+    pointer-events:initial;
+    position: sticky;//fixed;//sticky; //was:fixed;
+    min-width: 100%;
+    height: auto;
+    bottom: 0;
+    // z-index: 100000; // this a bit OTT - review maybe?
+    //font-size: 13px;
+    // line-height: 20px;
+    left: 0;
+    //text-align: left;
+   // @include h1;
+   // @extend .grid-item;// for padding
+
+}
+
+.cn-top {
+    top: 0
+}
+
+.cn-bottom {
+    bottom: 0
+}
+
+.cookie-notice-container {
+    //padding: 10px;
+	//@include cssvaluegutter(padding-left,0.5); 
+	//@include cssvaluegutter(padding-right,0.5); 
+  //	@include fluid-type(padding-left,1); 
+	//@include fluid-type(padding-right,1); 
+  //  @extend .outer-grid;
+  //  @extend .grid;
+   // @extend .inner;
+    text-align: left;
+    width: 100%;
+   // font-weight: $mediumweight;
+
+
+
+}
+
+.cookie-notice-revoke-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    visibility: hidden;// - review + delete if okay? or needed?
+}
+
+.cn-top .cookie-notice-revoke-container {
+    top: 0;
+    bottom: auto
+}
+
+#cookie-notice .cn-revoke-cookie {
+    margin: 0
+}
+
+.cn-button.wp-default,
+.cn-button.wp-default:hover,
+.cn-button.bootstrap,
+.cn-button.bootstrap:hover {
+    box-shadow: none;
+    text-decoration: none
+}
+
+#cookie-notice .cn-button {
+//   margin-left: 10px
+
+}
+
+
+.cn-button.wp-default,// no really used
+.cn-button.bootstrap, // not really used
+.cn-button {
+    text-align: center;
+    line-height: inherit;
+    font-size: inherit;
+    //@include fluid-type(line-height,1); 
+    background: $white;
+    color: $black;
+    border:1px solid $white;
+   // font-family: sans-serif;
+   // line-height: 18px;
+   // padding: 2px 12px;
+   // background: linear-gradient(to bottom, #FEFEFE, #F4F4F4) repeat scroll 0 0 #F3F3F3;
+   // border-color: #BBB;
+   // color: #333;
+    //text-shadow: 0 1px 0 #FFF;
+   // -moz-box-sizing: border-box;
+  //  @include fluid-type(border-radius,1); 
+   // @include fluid-type(padding,0.3); 
+    //@include fluid-type(margin-bottom,0.3); 
+
+  @include fluid-type(padding, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+  @include fluid-type(padding, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+
+ @include fluid-type(margin-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+  @include fluid-type(margin-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+
+
+   // @extend .grid-item-xs-8;
+  //  border-style: solid;
+   // border-width: 1px;
+    cursor: pointer;
+  //  display: inline-block;
+ //   font-size: 12px;
+   // font-style: normal;
+    text-decoration: none;
+    white-space: nowrap;
+//    outline: none;
+    display:block;
+}
+
+.cn-button.wp-default:hover,
+.cn-button.bootstrap:hover,
+.cn-button:hover
+{
+    background: $black;
+    color: $white;
+    border:1px solid $white;
+}
+
+.cn-button.bootstrap { 
+}
+
+.cn-button.bootstrap:hover {
+ 
+}
+
+ 
+ #cn-notice-text{
+ 
+
+     @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+  @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+
+   @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+  @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+
+
+
+   @media (min-width: map-get($breakpoints,md)) {   
+  //review this  @include fluid-type(padding-bottom,0.5); 
+  //rivew this  @include fluid-type(padding-top,0.5); 
+    }   
+
+ }// #cn-notice-text
+
+ 
+.cn-revoke-cookie.cn-button{
+    width: 100%;
+    background: transparent;
+    color: white;
+
+}
+
+#cn-accept-cookie{
+
+   // @extend .grid-item-xs-6;
+    display: block;
+    float: left;
+    background: $white;
+    color: $black;
+    border:1px solid $white;
+
+    @media (min-width: map-get($breakpoints,sm)) { 
+    flex:auto;
+    }     
+
+    &:hover{
+    background: $white;
+    color: $black;
+    border:1px solid $white;
+    }
+
+}
+
+#cn-more-info{
+  //  @extend .grid-item-xs-6;
+
+    background: transparent;
+    color: white;
+    border:1px solid transparent;
+
+    float: left;
+    clear: both;
+
+     @media (min-width: map-get($breakpoints,sm)) { 
+    flex:auto; 
+    }     
+
+ }
+
+#cn-refuse-cookie{
+   // @include cssguttervalue(margin-right,1); 
+   // @include cssguttervalue(margin-left,1); 
+   // @extend .grid-item-xs-6;
+   // @extend .grid-item-xs-6;
+
+   // @include cssvaluegutter(margin-left,2); 
+    float: right;
+    display: block;
+    background: transparent;
+    color: white;
+
+    @media (min-width: map-get($breakpoints,sm)) {   
+    flex: auto;
+  
+
+    }     
+
+}
+*/
+/* end styling */
+
+
+
+  }// body
+
+} //@each $scheme in $schemes // end colour scheme
+
+

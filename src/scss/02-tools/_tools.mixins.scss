@@ -1,0 +1,564 @@
+@mixin vertical-align($position: relative) {
+    position: $position;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin horizontal-align($position: relative) {
+    position: $position;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin responsive-ratio($x, $y, $pseudo: false) {
+    $padding: unquote(($y / $x) * 100 + '%');
+    @if $pseudo {
+        &:before {
+            @include pseudo($pos: relative);
+            width: 100%;
+            padding-top: $padding;
+        }
+    } @else {
+        padding-top: $padding;
+    }
+}
+
+@mixin center-align($position: relative, $adjust: 0) {
+    @if ($adjust!=0) {
+        top: calc(50% + #{$adjust});
+    } @else {
+        top: 50%;
+    }
+
+    left: 50%;
+    position: $position;
+    transform: translate(-50%, -50%);
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+@mixin bp($breakPoint, $property: 'width', $rule: 'min') {
+    @if $mq-support {
+        @media screen and (#{$rule}-#{$property}: $breakPoint) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+@mixin bp-max($breakPoint) {
+    @if $mq-support {
+        @media screen and (max-width: $breakPoint - em(1)) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+
+// svs additions
+//breakpoint mixin; mapped from array
+@mixin break($size) {
+    @media (min-width: map-get($breakpoints, $size)) {
+        @content;
+    }
+}
+
+@mixin keyframe($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@include keyframe(opacity) {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+} //    @include keyframe (opacity)
+
+/*
+Theme Name: theseus
+Theme URI:  theseus-agency.com
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+
+TO DO: ensure browser prefixes specified
+  - think some of the cookie consent opacity keyframes are not?
+  - might be others aswell
+
+  Consolidated some fo the animations into one: i.e opacity
+
+*/
+
+
+ 
+ // ----
+// libsass (v3.3.6)
+// ----
+
+// =========================================================================
+//
+//  PRECISE CONTROL OVER RESPONSIVE TYPOGRAPHY FOR SASS
+//  ---------------------------------------------------
+//  Indrek Paas @indrekpaas
+//
+//  Inspired by Mike Riethmuller's Precise control over responsive typography
+//  http://madebymike.com.au/writing/precise-control-responsive-typography/
+//
+//  `strip-unit()` function by Hugo Giraudel
+//  
+//  11.08.2016 Remove redundant `&` self-reference
+//  31.03.2016 Remove redundant parenthesis from output
+//  02.10.2015 Add support for multiple properties
+//  24.04.2015 Initial release
+//
+// =========================================================================
+
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+  }
+  
+  @mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+    @each $property in $properties {
+      #{$property}: $min-value;
+    }
+  
+    @media screen and (min-width: $min-vw) {
+      @each $property in $properties {
+        #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+      }
+    }
+  
+    @media screen and (min-width: $max-vw) {
+      @each $property in $properties {
+        #{$property}: $max-value;
+      }
+    }
+  }
+  
+  // Usage:
+  // ======
+  
+  // /* Single property */
+  // html {
+  //   @include fluid-type(font-size, 320px, 1366px, 14px, 18px);
+  // }
+  
+  // /* Multiple properties with same values */
+  // h1 {
+  //   @include fluid-type(padding-bottom padding-top, 20em, 70em, 2em, 4em);
+  // }
+  
+  ////////////////////////////////////////////////////////////////////////////
+  
+  
+  // media query mixin
+  @mixin break($size) {  
+    @media (min-width: map-get($breakpoints, $size)) {
+      @content;
+    }
+  }
+  
+  // small
+  @mixin type-small{
+  font-family: $light-font-family; 
+  
+  @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*0.75, map-get($fontsize, lg)*0.75); // fixed sizing 
+  @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*0.75, map-get($fontsize, xxl)*0.75); // fixed sizing 
+  
+  @include fluid-type(line-height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*0.75, map-get($lineheight, lg)*0.75); // fixed sizing 
+  @include fluid-type(line-height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*0.75, map-get($lineheight, xxl)*0.75); // viewport sizing 
+  }
+  
+  // mmedium
+  @mixin type-medium{
+  font-family: $medium-font-family;
+  /*
+   @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*1, map-get($fontsize, lg)*1); // fixed sizing 
+    @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*1, map-get($fontsize, xxl)*1); // viewport sizing 
+    @include fluid-type(line-height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+    @include fluid-type(line-height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing 
+    this normal size
+    */
+  
+  }
+  
+  
+  @mixin h2{
+  font-family: $medium-font-family;
+  
+  @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*1, map-get($fontsize, lg)*1); // fixed sizing 
+  @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*1, map-get($fontsize, xxl)*1); // fixed sizing 
+  
+  @include fluid-type(line-height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*0.875, map-get($lineheight, lg)*0.875); // fixed sizing 
+  @include fluid-type(line-height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*0.875, map-get($lineheight, xxl)*0.875); // viewport sizing
+  
+  }
+  // large
+  /*
+  @mixin h1
+  {
+  font-family: $medium-font-family;
+  
+  
+  @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*3, map-get($fontsize, lg)*3); // fixed sizing 
+  @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*3, map-get($fontsize, xxl)*3); //  viewport sizing
+  
+  @include fluid-type(line-height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*2, map-get($lineheight, lg)*2); // fixed sizing 
+  @include fluid-type(line-height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*2, map-get($lineheight, xxl)*2); // viewport sizing
+  
+  }*/
+  
+  @mixin type-large{
+  
+  font-family: $light-font-family;
+  
+  @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*2.5, map-get($fontsize, lg)*2.5); // fixed sizing 
+  @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*2.5, map-get($fontsize, xxl)*2.5); //  viewport sizing
+  
+  @include fluid-type(line-height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*2, map-get($lineheight, lg)*2); // fixed sizing 
+  @include fluid-type(line-height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*2, map-get($lineheight, xxl)*2); // viewport sizing
+  }
+  
+  @mixin h3
+   {
+  //font-family: $bold-font-family;
+  font-family: $medium-font-family;
+  }
+  
+  @mixin h4
+  {
+  font-family: $light-font-family; 
+  }
+   
+  
+  @mixin keyframe ($animation-name) {
+      @-webkit-keyframes #{$animation-name} {
+          @content;
+      }
+  
+      @-moz-keyframes #{$animation-name} {
+          @content;
+      }
+  
+      @-o-keyframes #{$animation-name} {
+          @content;
+      }
+  
+      @keyframes #{$animation-name} {
+          @content;
+      }
+  }
+  
+  // og: @mixin animation ($delay, $duration, $animation, $direction: forward, $fillmode: forwards) {
+  // should this not be:? i.e forward and forwards are values?
+  //@mixin animation ($delay, $duration, $animation, $direction, $fillmode) {
+   @mixin animation ($delay, $duration, $animation, $direction: forward, $fillmode: forwards) {
+  
+  
+      -webkit-animation-delay: $delay;
+      -webkit-animation-duration: $duration;
+      -webkit-animation-name: $animation;
+      -webkit-animation-fill-mode: $fillmode;
+      -webkit-animation-direction: $direction;
+  
+      -moz-animation-delay: $delay;
+      -moz-animation-duration: $duration;
+      -moz-animation-name: $animation;
+      -moz-animation-fill-mode: $fillmode;
+      -moz-animation-direction: $direction;
+  
+      animation-delay: $delay;
+      animation-duration: $duration;
+      animation-name: $animation;
+      animation-fill-mode: $fillmode;
+      animation-direction: $direction;
+  }
+  
+  
+  
+  
+  
+   
+   
+  //CONTENT
+  
+    // opacity
+  
+      @include keyframe (opacity) {
+      0%   { opacity: 0; }
+      100%   { opacity: 1; }
+      }//    @include keyframe (opacity) 
+  
+  
+      //loader keyframes
+  
+  
+      @keyframes loadergradient { 
+      0%   { background-position: 0 0; }
+      100% { background-position: -200% 0; }
+      } 
+  
+  
+  
+    //endloader keyframes
+  
+  
+    // Slide out Right from Center
+    @include keyframe(animation-slide-out-left) {
+        0% {
+  //         transform: translate( calc(~"100vh - 150px"),0);
+        //  transform: translate(0px,0px);
+           // right: 0vw;
+                 //  transform: translateX(0vw) translateX(0px);
+        transform: translate(0%, 0%);
+       //right: 0%;
+           // caculate - min witdh of the nav 200px - anything before that 100%
+        }
+  
+        100% {
+          //  transform: translate(60%,0);
+     //  right: -50%;
+         //s transform: translateX(0vw) translateX(100px);
+         // transform: translate(200px,0px);
+      transform: translate(-200px,0);
+  
+        }
+    }
+  
+     // Slide in Right to Center
+    @include keyframe(animation-slide-in-left) {
+        0% {
+        transform: translate(-200px,0);
+         //      right: -50%;
+        //  transform: translateX(0vw) translateX(100px);
+  
+        }
+  
+        100% {
+           transform: translate(0,0);
+                    //  right: -0vw;
+                //            transform: translate(0px,0px);
+        // transform: translate(0%, 0%);
+     //  right: 0%;
+  
+  
+        }
+    }
+  
+  
+  //TOGGLE
+  
+    // Slide out left from Center
+    @include keyframe(toggle-animation-slide-out-left) {
+        0% {
+       // right: 0px;
+                 transform: translate(0,0);
+  
+        }
+  
+        100% {
+      //  right: 200px;
+              transform: translate(-200px,0);
+  
+        }
+    }
+  
+     // Slide in left
+    @include keyframe(toggle-animation-slide-in-left) {
+        0% {
+       // right: 200px;
+              transform: translate(-200px,0);
+  
+        }
+  
+        100% {
+       //right: 0px;
+           transform: translate(0,0);
+  
+        }
+    }
+  
+  
+  // NAV FIXER
+  
+   
+  
+    // Slide out
+    @include keyframe(nav-fixer-bg-slide-out-right) {
+        0% {
+  
+          width: 0px;
+        }
+  
+        100% {
+  
+          width: 200px;
+  
+        }
+    }
+  
+  
+    // Slide in
+    @include keyframe(nav-fixer-bg-slide-in-right) {
+        0% {
+  
+          width: 200px;
+        }
+  
+        100% {
+  
+          width: 0px;
+  
+        }
+    }
+  
+  
+  //FOCUS (opacity)
+  
+    // active section items
+    @include keyframe(focus-opacity-in) {
+        0% {
+        opacity: 0.5;
+        }
+  
+        100% {
+        opacity: 1;
+        }
+    }
+  
+    // nonactive section items
+    @include keyframe(focus-opacity-out) {
+        0% {
+        opacity: 1;
+        }
+  
+  
+        100% {
+        opacity: 0.5;
+        }
+    }
+  
+    // between page loading
+    @include keyframe(ajax-site-loading-off) {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+      @include keyframe(ajax-site-loading-on) {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  // END between page loading
+  
+   @keyframes fadeincookieconsent
+   {
+     0% {
+           opacity: 0;
+  
+     }
+     100%{
+           opacity: 1;
+    //       background: red;
+     }
+  
+  }//@keyframes fadecookieconsentin 
+  @keyframes fadeoutcookieconsent {
+     0% {
+           opacity: 1;
+  
+     }
+     100%{
+           opacity: 0;
+    //       background: red;
+     }
+  
+  }//@keyframes fadecookieconsentin 
+   
+  // to do  this copied from inp + used for cookie consent - review
+  // strart grayscale animations
+  
+  @keyframes tograyscale {
+     0% {
+     
+     -webkit-filter: grayscale(0%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+            filter: grayscale(0%); /* FF 35+ */
+     }
+     100%{
+     -webkit-filter: grayscale(100%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+           filter: grayscale(100%); /* FF 35+ */
+     }
+  
+  }
+  
+  @keyframes tocolour {
+     0% {
+     
+     -webkit-filter: grayscale(100%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+            filter: grayscale(100%); /* FF 35+ */
+     }
+     100%{
+     -webkit-filter: grayscale(0%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+           filter: grayscale(0%); /* FF 35+ */
+     }
+  
+  }
+  
+  
+  
+  @keyframes animatedgradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  
+  
+  
+  @mixin grayscale-in{
+   animation: tograyscale 2s ease-in-out forwards;
+  }
+  
+  @mixin grayscale-out{
+   animation: tocolour 1s ease-in-out forwards;
+  }
+  
+  
+  // END to do  this copied from inp + used for cookie consent - review
+  
+  
+  

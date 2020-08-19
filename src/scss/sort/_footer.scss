@@ -1,0 +1,72 @@
+/*
+Theme Name: Cally 2020
+Theme URI:  
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+
+/* start Footer */
+
+
+
+@each $scheme in $schemes { // start colour scheme
+  
+  body.#{nth($scheme, 1)}:not(.wp-admin), // ensure we're not applying to admin 
+  body.#{nth($scheme, 1)}.wp-admin .th-block
+  {
+  
+    #footer-nav-area{
+    width: 100%;  
+    background-color: nth($scheme, 3);
+    color: nth($scheme, 2);
+
+      .grid-container{
+
+        .footer-branding{
+          
+          title{
+          clear: both;
+          display: block;
+          }
+          .sub-title{
+          clear: both;
+          display: block; 
+          }
+          
+        }//.footer-branding
+
+        .footer-socials{
+          ul{
+            li{
+              a{
+                color: nth($scheme, 2);
+              }
+            }    
+          }
+        }//.footer-socials
+
+        .footer-navigation{
+
+          .menu-footer{
+            
+          }
+
+          .svs-branding{
+            
+            a{
+              color: nth($scheme, 2);
+              }
+          }
+
+        }//.footer-navigation
+
+      }//.grid-container
+
+    }//#footer-nav-area 
+
+  }// body
+
+} //@each $scheme in $schemes // end colour scheme
+
+

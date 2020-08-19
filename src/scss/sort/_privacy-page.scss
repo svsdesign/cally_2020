@@ -1,0 +1,25 @@
+/* _privacy-page.scss 
+
+
+*/
+
+@each $scheme in $schemes { // start colour scheme
+ 
+  body.privacy-policy.#{nth($scheme, 1)}  
+  {
+
+    h1,h2,h3,p{
+    @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // px sizing
+    @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
+    }
+
+    .target-links{
+    @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // px sizing
+    @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing    
+    }
+
+  }// body
+
+} //@each $scheme in $schemes // end colour scheme
+
+

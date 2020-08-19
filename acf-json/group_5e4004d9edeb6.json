@@ -1,0 +1,62 @@
+{
+    "key": "group_5e4004d9edeb6",
+    "title": "Block: Video",
+    "fields": [
+        {
+            "key": "field_5e4004da042fe",
+            "label": "Video",
+            "name": "video_url",
+            "type": "text",
+            "instructions": "svs to discuss w\/ Mark regarding needs + options; i.e iframe embedds vs api usage?\r\nallowing iframes would essentially mean anything can be embedded in this block. Discuss + resolve accordingly",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5e4004da042f0",
+            "label": "Video Caption",
+            "name": "video_caption",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/thvideo"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1595420441
+}

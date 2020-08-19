@@ -1,0 +1,30 @@
+/*
+Theme Name: theseus
+Theme URI:  theseus.agency
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+
+
+
+.client-logos-block{
+ 
+    
+  .client-logo-image{
+  width: 100%;
+  overflow: hidden;
+  // mvoved the padding onto the img element to fix the column offset issue:
+
+    img{
+      width: 100%;
+      display: block;
+      height: auto;
+      @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing 
+      @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
+    }
+
+  }//.client-logo-image
+
+} //.client-logo-block
+

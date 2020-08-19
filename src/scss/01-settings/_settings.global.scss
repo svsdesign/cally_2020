@@ -1,0 +1,312 @@
+/// TO DO - go through this and delete antying we don't need; consilidate with tother settings file(s)
+
+
+// Base typographical styles and baseline grid, DO NOT CHANGE!
+$base-font-size: 16px;
+$base-line-height: 22px;
+
+
+// Global max-width.
+$base-max-width-unitless: 1020;
+$base-max-width: em($base-max-width-unitless);
+
+
+// Spacing points.
+$base-padding-unitless: 96;
+$base-padding: rem($base-padding-unitless);
+$base-spacing-unit--xx-small: rem(5);
+$base-spacing-unit--x-small:  rem(10);
+$base-spacing-unit--small:    rem(15);
+$base-spacing-unit--medium:   rem(20);
+$base-spacing-unit--large:    rem(45);
+$base-spacing-unit--x-large:  rem(65);
+$base-spacing-unit--xx-large: rem(85);
+
+
+// Aliased spacing points.
+$bsu--xx-small: $base-spacing-unit--xx-small;
+$bsu--x-small:  $base-spacing-unit--x-small;
+$bsu--small:    $base-spacing-unit--small;
+$bsu--medium:   $base-spacing-unit--medium;
+$bsu--large:    $base-spacing-unit--large;
+$bsu--x-large:  $base-spacing-unit--x-large;
+$bsu--xx-large: $base-spacing-unit--xx-large;
+
+
+// Component global sizing.
+$height-input: $bsu--small;
+
+
+// Grid Breakpoints.
+$xx-small: em(480);
+$x-small:  em(640);
+$small:    em(769);
+$medium:   em(992);
+$large:    em($base-max-width-unitless);
+$x-large:  em(1430);
+$xx-large: em(2000);
+
+/* svs - 
+pottentialy set up these variables as arrays so can easily access data accordingly:
+*/
+/* this don't work
+$breakpoints: (
+  xxxs: em(0),
+  xxs:  em(480),
+  xs:   em(640),
+  sm:   em(769),
+  md:   em(992),
+  lg:   em($base-max-width-unitless),
+  xlg:  em(1430),
+  xxlg: em(2000) 
+);
+
+
+$gutter: (
+  xxxs: em(8),
+  xxs:  em(8),
+  xs:   em(8),
+  sm:   em(8),
+  md:   em(8),
+  lg:   em(8),
+  xlg:  em(16),
+  xxlg: em(16) 
+);
+
+
+$offsetgutter: (
+  xxxs:     em(-8),
+  xx-small: em(-8),
+  x-small:  em(-8),
+  small:    em(-8),
+  medium:   em(-8),
+  large:    em(-8),
+  x-large:  em(-16),
+  xx-large: em(-16) 
+);
+ */
+
+ $breakpoints: (
+  xxxs: 0px,
+  xxs:  480px,
+  xs:   640px,
+  sm:   769px,
+  md:   992px,
+  lg:   1020px,
+  xxl:  1430px,
+  xxxl: 2000px 
+);
+
+
+$gutter: ( // review this - labels not correct
+xxxs: 8px,
+xxs:  8px,
+xs:   8px,
+sm:   8px,
+md:   16px,
+lg:   16px,
+xxl:  16px,
+xxxl: 16px   
+  /*
+  xs: 8px,
+  sm: 8px,
+  md: 8px,
+  lg: 8px,
+  xl: 16px,
+  xxl:32px
+  */
+);
+
+$offsetgutter: ( // review this - labels not correct
+xxxs: -8px,
+xxs:  -8px,
+xs:   -8px,
+sm:   -8px,
+md:   -16px,
+lg:   -16px,
+xxl:  -16px,
+xxxl: -16px   
+);
+ 
+
+$fontsize: ( // review this - labels not correct
+  xxxs: 12px,
+  xxs:  12px,
+  xs:   14px,
+  sm:   14px,
+  md:   16px,
+  lg:   16px,
+  xxl:  18px,
+  xxxl: 18px  
+/*
+  xs: 12px,
+  sm: 12px,
+  md: 12px,
+  lg: 12px,
+  xl: 24px,
+  xxl: 48px*/
+);
+
+$lineheight: (
+  xxxs: 14px,
+  xxs:  14px,
+  xs:   16px,
+  sm:   16px,
+  md:   18px,
+  lg:   18px,
+  xxl:  20px,
+  xxxl: 20px  
+);
+
+/*
+
+$baselineheight: (
+  xs: 4px,
+  sm: 4px,
+  md: 4px,
+  lg: 4px,
+  xl: 8px,
+  xxl:16px
+);
+*/
+$letterspacing: (
+  xs: 0.5px,
+  sm: 0.5px,
+  md: 0.5px,
+  lg: 0.5px,
+  xl: 1px,
+  xxl: 2px
+);
+
+
+/* Grid Items */
+$sitegriditems:16;// number of columns 
+ 
+
+
+/* example
+this from anothe site:
+$breakpoints: (
+  xs: 0px,
+  sm: 320px,
+  md: 480px, 
+  lg: 800px,
+  xl: 1600px, 
+  xxl: 3200px 
+);
+
+$gutter: (
+  xs: 8px,
+  sm: 8px,
+  md: 8px,
+  lg: 8px,
+  xl: 16px,
+  xxl:32px
+);
+
+$offsetgutter: (
+  xs: -8px,
+  sm: -8px,
+  md: -8px,
+  lg: -8px,
+  xl: -16px,
+  xxl:-32px
+);
+*/
+
+
+// $xx-small-max: new-breakpoint(max-width em(480 - 1));
+// $x-small-max:  new-breakpoint(max-width em(640 - 1));
+// $small-max:    new-breakpoint(max-width em(769 - 1));
+// $medium-max:   new-breakpoint(max-width em(992 - 1));
+// $large-max:    new-breakpoint(max-width em($base-max-width-unitless - 1));
+// $x-large-max:  new-breakpoint(max-width em(1430 - 1));
+// $xx-large-max: new-breakpoint(max-width em(2000 - 1));
+
+$iphone4-landscape: new-breakpoint(min-device-width em(320) max-device-width em(480) orientation landscape);
+$iphone5-landscape: new-breakpoint(min-device-width em(320) max-device-width em(568) orientation landscape);
+$iphone6-landscape: new-breakpoint(min-device-width em(375) max-device-width em(667) orientation landscape);
+$iphone6plus-landscape: new-breakpoint(min-device-width em(414) max-device-width em(736) orientation landscape);
+
+
+// z-index Depths.
+$z-indexes: (
+  "outdated-browser",
+  "modal",
+  "site-header",
+  "page-wrapper",
+  "site-footer"
+);
+
+
+// Font stacks.
+$font-stack-display: inherit;
+
+
+// Animations & transitions.
+$transition-speed: 0.25s;
+$transition-easing: ease-out;
+
+
+// Easing alternatives.
+$transition-easeInSine: cubic-bezier(0.47, 0, 0.745, 0.715);
+$transition-easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
+$transition-easeInOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
+
+$transition-easeInQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+$transition-easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$transition-easeInOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+$transition-easeInCubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$transition-easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+$transition-easeInOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+$transition-easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+$transition-easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
+$transition-easeInOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+$transition-easeInQuint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+$transition-easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
+$transition-easeInOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
+
+$transition-easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+$transition-easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+$transition-easeInOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+
+$transition-easeInCirc: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+$transition-easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
+$transition-easeInOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+$transition-easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+$transition-easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$transition-easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+$transition-easeInOutFast: cubic-bezier(1,0,0,1);
+
+
+// Paths.
+$path-images: "../images/";
+$path-fonts: "../fonts/";
+
+
+
+//Sizes - for grid
+//height vars 
+$height1:25vw;
+$height2:50vw;
+$height3:75vw;
+$height4:100vw;
+//width vars 
+$width1:25vw;
+$width2:50vw;
+$width3:75vw;
+$width4:100vw;
+
+$iconheight1:2.5vw;
+ //width vars 
+$iconwidth1:2.5vw;
+ 
+ 
+ 
+
+

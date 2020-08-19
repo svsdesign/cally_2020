@@ -1,0 +1,79 @@
+/*
+Theme Name: theseus
+Theme URI:  theseus.agency
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+
+/* start animation */
+
+.animation-done{
+
+
+  #intro-area{
+    z-index:10;// one above nav
+
+  }
+
+}//.animation-done
+
+.animation-hide{ 
+
+  #intro-area{
+    display: none!important;// never show the intro area
+    min-height: 0vh!important;
+    height: 0px!important;
+    opacity: 0; // this could maybe have transition?
+    z-index:8;// one below nav
+  }
+
+
+}//.animation-hide
+
+
+// between ajax site loading:
+
+@each $scheme in $schemes { // start colour scheme
+ 
+  body.#{nth($scheme, 1)}:not(.wp-admin), // ensure we're not applying to admin 
+  body.#{nth($scheme, 1)}.wp-admin .th-block
+   {
+   
+      #loader{
+      //background: transparent;
+      pointer-events:none;
+      position: fixed;
+      top:0px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      z-index: 7;
+
+      background: nth($scheme, 2);
+    //  opacity: 0;
+      @include animation(0s, 1s, ajax-site-loading-off, normal, forwards);
+//@mixin animation ($delay, $duration, $animation, $direction, $fillmode) {
+
+        &.on{
+        z-index:7;// two lower than nav
+        @include animation(0s, 1s, ajax-site-loading-on, normal, forwards);
+       // background: nth($scheme, 2);
+        }
+
+      }//#loader
+
+      &.site-loading{
+      z-index: -1;
+
+        #loader{
+        z-index:7;// two lower than nav
+        //background: nth($scheme, 2);
+
+        }// &.site-loading
+
+      }//&.site-loading
+
+    }//body
+
+}//@each $scheme in $schemes { // start colour scheme

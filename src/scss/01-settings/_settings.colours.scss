@@ -1,0 +1,58 @@
+// Basic colours.
+$color-black: rgba(0, 0, 0, 1);
+$color-white: rgba(255, 255, 255, 1 );
+$color-black-opacity: rgba(0, 0, 0, 0.5);
+$color-white-opacity: rgba(255, 255, 255, 0.5);
+ 
+$color-dark: #464646;
+$color-grey: rgba(0,0,0,0.20);
+
+// $color-active-grid: $color-dark;
+ 
+
+
+// Global colourations.
+$color-background: inherit;
+$color-type: $color-dark;
+
+
+$color-selection: $color-dark;
+$color-selection-text: $color-white;
+
+
+// Translucent things.
+$color-overlay: rgba(darken($color-dark, 10%), 0.8);
+
+
+// Icons.
+$color-social-icons: currentColor; // svs @ TOM what this?
+
+
+//svs - dev only purposes
+$devcolor:rgba(0, 251, 216, 1);
+$devcolor20pc: rgba(0, 251, 216, 0.2);
+ 
+
+
+  /// colours
+   
+  $dark:rgba(47,69,40,1);//rgba(0,0,0,1);
+  $darktransparent: rgba(47,69,40,0);
+  $light:rgba(255,253,244,1);//rgba(255,255,255,1);
+  $highlight:rgba(183,38,65,1);//rgba(255,255,255,1);
+  $color-red:$highlight;
+
+
+  $color-active-grid: $highlight;//:rgb(255, 53, 53);
+  $color-active-grid-item:$highlight;//rgb(255, 53, 53);
+
+
+    // use on grid edit instances
+ 
+  // Define your schemes with a name and colors
+  $scheme1: white-scheme $light $dark;
+  $scheme2: black-scheme $dark $light;
+   
+  // Here are your color schemes
+  $schemes: $scheme1 $scheme2;
+  

@@ -1,0 +1,177 @@
+/*
+Theme Name: theseus
+Theme URI:  theseus.agency
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+
+
+TO DO: review this sqaureheight business:
+
+-Its not quite sqaure
+- there's noo many declarion of variables; its a mess basically
+*/
+
+
+
+.contact-block{
+overflow: hidden;
+position: relative;
+
+/*	> div{ // for left + right area
+	-webkit-column-break-inside: avoid;
+	page-break-inside: avoid;
+	break-inside: avoid-column;
+	display: table;
+	position: relative;
+	overflow:	hidden;
+	width: 100%;
+	//display: block;
+	}
+*/
+	.left-area{
+	position: relative;
+	width: 100%;
+	float: left;
+	//$squareheight: 80vw;
+	//$margingutters: 16px; // this not the dynamic respsone height: 32px at large - svs to review
+	height:auto;
+
+
+	//display:block;
+	@media (min-width: map-get($breakpoints,md)) {
+	width: 50%;//	
+	$squareheight: 40vw;
+	$margingutters: 16px; // this not the dynamic respsone height: 32px at large - svs to review
+	height: calc(#{$squareheight} - #{$margingutters});
+
+
+
+	@include fluid-type(padding-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+	@include fluid-type(padding-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+    }
+
+
+		.text-area{
+		@include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*2, map-get($lineheight, lg)*2); // fixed sizing 
+  		@include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*2, map-get($lineheight, xxl)*2); // viewport sizing
+		}
+
+		.logos{
+		width: 100%;
+		clear: both;
+		position: relative;
+		@include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+  		@include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing
+  		overflow: hidden;
+	
+		@media (min-width: map-get($breakpoints,md)) {
+		bottom: 0;
+		position: absolute;
+		padding-bottom: 0px;
+		}
+
+			.logo{
+			width: 18.25%;
+			float: left;
+			}
+
+			img{
+			display: block;
+			width: 100%;
+			height: auto;
+			}
+
+		}//.logos
+		
+
+
+	}//.left-area
+
+	.right-area{
+	$squareheight: 80vw;
+	$margingutters: 16px; // this not the dynamic respsone height: 32px at large - svs to review
+	height: calc(#{$squareheight} - #{$margingutters});
+	pointer-events:none;
+	overflow: hidden;
+	width: 100%;
+
+		@media (min-width: map-get($breakpoints,md)) {
+		width: 50%;//	
+		$squareheight: 40vw;
+		$margingutters: 16px; // this not the dynamic respsone height: 32px at large - svs to review
+		height: calc(#{$squareheight} - #{$margingutters});
+
+		@include fluid-type(padding-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+		@include fluid-type(padding-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+	    }
+
+
+		.map-wrap{
+	    position: relative;
+	    width: 100%;
+	    height: inherit;
+    	display: block;
+    	float: left;
+
+		  	/*google maps */
+
+			#g-map-mask{
+		    position: relative;
+		    display: block;
+		    width: 100%; 
+		    overflow: hidden;
+		    bottom: -40px;
+		    height: 100%;
+		    top: 0px;
+		    }
+
+		    #g-map-holder{
+		    pointer-events:initial;
+		    width: 100%;
+		    height: inherit; //w wasauto;
+		    /* min-height: 100vh; */
+		 	$squareheight: 80vw;
+			$margingutters: 16px; 
+		    max-height: calc(#{$squareheight} - #{$margingutters}); // 80vw
+
+	    		@media (min-width: map-get($breakpoints,md)) {
+	    	
+	    		$squareheight: 40vw;
+				$margingutters: 16px; // this not the dynamic respsone height: 32px at large - svs to review
+	   			max-height: calc(#{$squareheight} - #{$margingutters}); // 40vw
+	    	
+	    		}
+
+		    overflow: hidden;
+		    position: absolute;
+		    left: 0px;
+		    right: 0px;
+		    bottom: 0px;
+		    top: 0px
+		    }
+	  		 
+	  		#g-map{
+		    width: 100%;
+ 			$squareheight: 80vw;
+			$margingutters: 16px; 
+		    height: calc(#{$squareheight} - #{$margingutters}); // 80vw
+
+	    		@media (min-width: map-get($breakpoints,md)) {
+	    	
+	    		$squareheight: 40vw;
+				$margingutters: 16px; // this not the dynamic respsone height: 32px at large - svs to review
+	   			height: calc(#{$squareheight} - #{$margingutters}); // 40vw
+	    	
+	    		}
+		  
+		    }//#g-map
+
+		    #g-map img{
+		    opacity: 1;
+		    }
+
+		}//.map-wrap
+
+	}//.right-area
+
+} //.contact-block

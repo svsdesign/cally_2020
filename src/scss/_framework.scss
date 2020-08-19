@@ -1,0 +1,113 @@
+//TODO//reivew the following import; not sure all neeced
+
+/*
+@import "02-tools/tools.functions";
+
+@import "00-vendor/bourbon";
+@import "00-vendor/vendor.flickity";
+@import "00-vendor/vendor.flickity.fade";
+
+@import "01-settings/settings.global";
+@import "01-settings/settings.colours";
+
+
+@import "03-generic/generic.normalize";
+@import "03-generic/generic.reset";
+@import "03-generic/generic.shared";
+@import "03-generic/generic.placeholders";
+@import "03-generic/generic.fonts";
+
+@import "04-elements/elements.page";
+@import "04-elements/elements.typography";
+@import "04-elements/elements.links";
+@import "04-elements/elements.lists";
+@import "04-elements/elements.svgs";
+@import "04-elements/elements.media";
+@import "04-elements/elements.forms";
+@import "04-elements/elements.quotes";
+@import "04-elements/elements.tables";
+@import "04-elements/elements.navigation";
+
+@import "05-objects/objects.blocks";
+
+@import "07-components/components.button";
+
+@import "08-scope/scope.themes";
+
+@import "09-trumps/trumps.helpers";
+
+@import "10-04-blocks/block.image"; // TO DO review this - not needed?
+@import "10-04-blocks/block.information-text";
+
+
+
+//svs additions:
+@import "11-layouts/layouts.grid-random";
+@import "11-layouts/layouts.grid-sitewide";
+@import "11-layouts/layouts.project-archive";
+@import "11-layouts/layouts.project-single";
+@import "11-layouts/layouts.home";
+@import "11-layouts/layouts.404";
+@import "11-layouts/layouts.pages";
+*/
+ 
+// Include RESet Files
+/* but not compass ones I guess
+
+@import "compass";
+@import "compass/reset";
+*/
+@import "00-vendor/vendor.jqueryui";
+
+@import "sort/variables";
+@import "01-settings/settings.colours";
+
+@import "02-tools/tools.mixins";
+@import "02-tools/tools.animations";
+  
+
+@import "03-generic/generic.normalize";
+@import "03-generic/generic.reset";
+
+// @import "sort/mixins";
+@import "sort/grid";
+// @import "sort/icons";
+@import "sort/typography";
+@import "sort/navigation";
+@import "sort/footer";
+@import "sort/cookie-notice";
+@import "sort/animation";
+// @import "sort/layouts";
+
+
+
+@import "sort/privacy-page";
+
+
+@import "04-blocks/block-one-col";  // 1 column text block
+@import "04-blocks/block-two-col";  // 2 column text block
+
+@import "04-blocks/block-two-col-left-header";  // 2 column text block: left header
+@import "04-blocks/block-two-col-left-header-image";  // 2 column text block: left header + Image
+
+@import "04-blocks/block-two-col-jobs";  // 2 column text block: jobs
+
+@import "04-blocks/block-line";  // line block
+@import "04-blocks/block-spacer";  // line block
+@import "04-blocks/block-client-logos";  // client logos block
+@import "04-blocks/block-slideshow";  // Slideshow block
+@import "04-blocks/block-contact";  // contact block
+@import "04-blocks/block-video";  // contact block
+
+
+@import "05-layouts/layouts.blocks";  
+@import "05-layouts/layouts.grid-random";  // layout grid - ENSURE css updatex accordibngly
+@import "05-layouts/layouts.news";  
+
+/*
+body {
+background: $background-color;
+}
+delete this i think
+
+*/

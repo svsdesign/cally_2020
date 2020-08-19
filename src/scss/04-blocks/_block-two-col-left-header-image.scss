@@ -1,0 +1,30 @@
+/*
+Theme Name: theseus
+Theme URI:  theseus.agency
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+
+
+
+.text-two-col-image-block-left-header{
+ 
+    .image-wrap{
+	@include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+  	@include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing
+    }
+
+    .title{
+    }
+
+    .subtitle{
+
+    }
+    .text-area{
+   // @extend h3;
+    }
+
+
+} //.text-two-col-block{
+
