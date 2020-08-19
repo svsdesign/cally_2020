@@ -329,6 +329,40 @@ function _checked( $haystack, $current, $echo = true ) {
 
 
 
+
+//ACF COMMENTS
+
+ 
+	//news
+	function my_news_comment_template( $comment, $args, $depth ) {
+		
+		?>
+		<div class="comment">
+			
+			<?php 
+		$terms = get_field('test_tag');
+		if( $terms ): ?>
+			<ul>
+			<?php foreach( $terms as $term ): ?>
+				<h2><?php echo esc_html( $term->name ); ?></h2>
+				<p><?php echo esc_html( $term->description ); ?></p>
+				<a href="<?php echo esc_url( get_term_link( $term ) ); ?>">View all '<?php echo esc_html( $term->name ); ?>' posts</a>
+			<?php endforeach; ?>
+			</ul>
+
+		<?php endif; ?>
+		
+		</div>
+		
+		<?php
+	}
+
+	
+
+
+//END ACF COMMENTS
+
+
 /*
 //wp_print_styles
 function wps_deregister_styles() {

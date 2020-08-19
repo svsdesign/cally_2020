@@ -13,9 +13,12 @@
 https://codepen.io/svsdesign/pen/qBdxjwN
 
 
-
+rasterise imgage to canvas
 //https://cburgmer.github.io/rasterizeHTML.js/
 //https://github.com/cburgmer/rasterizeHTML.js/wiki/Limitations
+
+canvas to image
+https://stackoverflow.com/questions/23681325/convert-canvas-to-pdf
 
 */
 
@@ -341,7 +344,7 @@ export default function init() {
             // get html and generate an image in canvas 
             rasterizeHTML.drawHTML(html, canvas);
               */
-             
+
           if (isGridItemsActive == false) {
 
             // console.log(isGridItemsActive+ "isGridItemsActive");            
@@ -656,14 +659,14 @@ export default function init() {
 
                    /* get html and update the image in canvas */
                     console.log("updates canvas:");
+//review this _ its positions + also suggest placing into one fucntion so we can use it in other places aswell
+                    var thiscanvas = document.getElementById("canvas"),
+                        html_container = document.getElementById("tester-grid-id"),
+                        thishtml = html_container.innerHTML;
 
-                    var canvas = document.getElementById("canvas"),
-    html_container = document.getElementById("tester-grid-id"),
-    html = html_container.innerHTML;
-
-                   rasterizeHTML.drawHTML(html, canvas);
-                  
-
+                   rasterizeHTML.drawHTML(thishtml, thiscanvas);
+      //END review this _ its positions + also suggest placing into one fucntion so we can use it in other places aswell
+ 
                 // localStorage.setItem("coordinates",  jsonpositions);
 
                 //  TODO - update this for unique gird

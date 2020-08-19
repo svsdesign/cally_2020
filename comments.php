@@ -9,11 +9,39 @@
  * 
  * 
  * TO DO: tidy this up - its a c&p from tbe Twenty_Thirteen WP theme 
+ * - Issues with BARBAjs:
+ * relative topics
+ * 
+ * https://github.com/barbajs/barba/issues/122
+ * 
  * 
  * 
  */
  //https://developer.wordpress.org/themes/template-files-section/partial-and-miscellaneous-template-files/comment-template/
+//https://rudrastyh.com/wordpress/ajax-comments.html
 
+
+//https://www.choosepizzi.net/wordpress-solve-ajax-conflicts-between-gravityform-and-barbajs/
+
+
+// JETPACK: https://www.fjobeir.com/implement-barba-js-with-wordpress/
+// is this in an iframe as well?
+
+
+
+//https://winningwp.com/best-commenting-plugins-for-wordpress/
+
+
+//VERy interesting:
+// https://thisisadvantage.com/page-transitions-using-barba-js-wordpress-elementor/
+
+//Rich text editor on comments
+// https://wordpress.stackexchange.com/questions/22415/use-rich-text-editor-in-comments
+
+
+//https://www.advancedcustomfields.com/resources/get-values-comment/
+//https://wordpress.stackexchange.com/questions/244264/add-store-extra-fields-wordpress-comments
+//
 /*
 //Get only the approved comments
 $args = array(
@@ -63,11 +91,13 @@ if ( post_password_required() )
         </h2>
  
         <ol class="comment-list">
+
             <?php
                 wp_list_comments( array(
                     'style'       => 'ol',
                     'short_ping'  => true,
                     'avatar_size' => 74,
+                    'callback'	  => 'my_news_comment_template' //https://www.advancedcustomfields.com/resources/get-values-comment/
                 ) );
             ?>
         </ol><!-- .comment-list -->
