@@ -335,45 +335,39 @@ function _checked( $haystack, $current, $echo = true ) {
  
 	//news
 	function my_news_comment_template( $comment, $args, $depth ) {
-	//  function my_gridpage_comment_template( $comment, $args, $depth ) {
-	
-		?>
-
-my_news_comment_template:
+ 	?>
+ 
 		<div class="comment">
- comment: 			<?php// echo $comment;?>.
-		<br>
-			<?php 
+
+			<?php  
+			// $comment_id = "comment_".$comment."";
 			$testfield = get_field('test', $comment);
 			if( $testfield ): ?>
-			$testfield =
-		
+ 		
 			<?php echo $testfield ;?>
 
 			<?php endif; ?>
-
+			<br>
 			<?php 
 			$testfield2 = get_field('field_test', $comment);
 			if( $testfield2 ): ?>
-		$testfield2 =
-			<?php echo $testfield2 ;?>
+ 
+ 			<?php echo $testfield2 ;?>
 
 			<?php endif; ?>
-
+			<br>
 			<?php
 			$tags = get_field('test_tag', $comment);?>
-			<?php echo $tags ;?>
 				<?php if( $tags ): ?>
-					$tags =
-			<ul>
-		
-			</ul>
+ 			<ul>
+			 <?php echo $tags ;?>
 
+			</ul>
+			<br>
 			<?php endif;  ?>
 
 			<?php if( get_field('image_test', $comment) ): ?>
-			if image test
-				<img src="<?php the_field('image_test', $comment); ?>" />
+ 				<img src="<?php the_field('image_test', $comment); ?>" />
 			
 			<?php endif; ?>
 		
@@ -389,14 +383,25 @@ my_news_comment_template:
 		?>
 	
 			<div class="comment">
-		
+			a comment
+
 				<?php  
 				// $comment_id = "comment_".$comment."";
-				$testfield = get_field('image_test', $comment);
+				$testfield = get_field('test', $comment);
+				if( $testfield ): ?>
+			
+				<?php echo $testfield ;?>
+
+				<?php endif; ?>
+				<br>
+				
+				<?php  
+				// $comment_id = "comment_".$comment."";
+				$testfield = get_field('an_image_test', $comment);
 
 				if( $testfield ): ?>
 
-					<img src="<?php the_field('image_test', $comment); ?>" />
+					<img src="<?php the_field('an_image_test', $comment); ?>" />
 				
 				<?php endif; ?>
 			

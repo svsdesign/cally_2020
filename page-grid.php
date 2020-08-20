@@ -40,8 +40,7 @@ if ( have_posts() ) :?>
 				<?php comments_template();?>
 	
 			</div>
-endif comments open
-		<?php
+ 		<?php
 	endif; ?>
 
 
