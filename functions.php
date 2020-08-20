@@ -332,7 +332,7 @@ function _checked( $haystack, $current, $echo = true ) {
 
 //ACF COMMENTS
 
- /*
+ 
 	//news
 	function my_news_comment_template( $comment, $args, $depth ) {
 	//  function my_gridpage_comment_template( $comment, $args, $depth ) {
@@ -381,43 +381,27 @@ my_news_comment_template:
 		
 		<?php
 	}
- */
+ 
 	
-	//gridtemplate
-	//  function my_news_comment_template( $comment, $args, $depth ) {
-	  function my_gridpage_comment_template( $comment, $args, $depth ) {
+		
+	// grid template
+ 	    function my_gridpage_comment_template( $comment, $args, $depth ) {
 		?>
-		my_gridpage_comment_template
-		<div class="comment">
-				comment: 			<?php// echo $comment;?>.
-		<br>
-			<?php
-			$antestfield = get_field('test', $comment);
-				if( $antestfield ): ?>
-			$testfield =
+	
+			<div class="comment">
 		
-			<?php echo $antestfield ;?>
+				<?php  
+				// $comment_id = "comment_".$comment."";
+				$testfield = get_field('image_test', $comment);
 
-			<?php endif; ?>
+				if( $testfield ): ?>
 
-			<?php  /*
-			$imagetestfield = get_field('image_test', $comment);
-			if( $imagetestfield): ?>
-			$imagetestfield =
-		
-			<?php echo $imagetestfield ;?>
-		 
-			<?php endif;  */?>
-
-			<?php if( get_field('an_image_test', $comment) ): ?>
-			if an_image test
-				<img src="<?php the_field('image_test', $comment); ?>" />
+					<img src="<?php the_field('image_test', $comment); ?>" />
+				
+				<?php endif; ?>
 			
-			<?php endif; ?>
-			end my my_gridpage_comment_template
-		
-		</div>
-		
+			</div>
+			
 		<?php
 	}
 
