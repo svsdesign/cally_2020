@@ -332,32 +332,94 @@ function _checked( $haystack, $current, $echo = true ) {
 
 //ACF COMMENTS
 
- 
+ /*
 	//news
 	function my_news_comment_template( $comment, $args, $depth ) {
-		
+	//  function my_gridpage_comment_template( $comment, $args, $depth ) {
+	
 		?>
+
+my_news_comment_template:
 		<div class="comment">
-			
+ comment: 			<?php// echo $comment;?>.
+		<br>
 			<?php 
-		$terms = get_field('test_tag');
-		if( $terms ): ?>
+			$testfield = get_field('test', $comment);
+			if( $testfield ): ?>
+			$testfield =
+		
+			<?php echo $testfield ;?>
+
+			<?php endif; ?>
+
+			<?php 
+			$testfield2 = get_field('field_test', $comment);
+			if( $testfield2 ): ?>
+		$testfield2 =
+			<?php echo $testfield2 ;?>
+
+			<?php endif; ?>
+
+			<?php
+			$tags = get_field('test_tag', $comment);?>
+			<?php echo $tags ;?>
+				<?php if( $tags ): ?>
+					$tags =
 			<ul>
-			<?php foreach( $terms as $term ): ?>
-				<h2><?php echo esc_html( $term->name ); ?></h2>
-				<p><?php echo esc_html( $term->description ); ?></p>
-				<a href="<?php echo esc_url( get_term_link( $term ) ); ?>">View all '<?php echo esc_html( $term->name ); ?>' posts</a>
-			<?php endforeach; ?>
+		
 			</ul>
 
-		<?php endif; ?>
+			<?php endif;  ?>
+
+			<?php if( get_field('image_test', $comment) ): ?>
+			if image test
+				<img src="<?php the_field('image_test', $comment); ?>" />
+			
+			<?php endif; ?>
 		
 		</div>
 		
 		<?php
 	}
-
+ */
 	
+	//gridtemplate
+	//  function my_news_comment_template( $comment, $args, $depth ) {
+	  function my_gridpage_comment_template( $comment, $args, $depth ) {
+		?>
+		my_gridpage_comment_template
+		<div class="comment">
+				comment: 			<?php// echo $comment;?>.
+		<br>
+			<?php
+			$antestfield = get_field('test', $comment);
+				if( $antestfield ): ?>
+			$testfield =
+		
+			<?php echo $antestfield ;?>
+
+			<?php endif; ?>
+
+			<?php  /*
+			$imagetestfield = get_field('image_test', $comment);
+			if( $imagetestfield): ?>
+			$imagetestfield =
+		
+			<?php echo $imagetestfield ;?>
+		 
+			<?php endif;  */?>
+
+			<?php if( get_field('an_image_test', $comment) ): ?>
+			if an_image test
+				<img src="<?php the_field('image_test', $comment); ?>" />
+			
+			<?php endif; ?>
+			end my my_gridpage_comment_template
+		
+		</div>
+		
+		<?php
+	}
 
 
 //END ACF COMMENTS

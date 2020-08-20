@@ -18,6 +18,13 @@ get_header();?>
    
 	<div class="grid-container main"> 
 	 
+	<div class="copy"> 
+Barry's intro copy: ensure to integrate with the CMS?
+	Well keep you posted on the parks development here or sign up to our mailing list to also receive the latest news. 
+
+Workshops, a gallery of designs, related projects and relevant news.
+
+</div>
 		<?php
 		// set the "paged" parameter (use 'page' if the query is on a static front page)
 		$newspaged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;

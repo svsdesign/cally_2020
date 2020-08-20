@@ -37,6 +37,19 @@ if ( have_posts() ) :?>
 
 			<?php endif;
 
+// If comments are open or we have at least one comment, load up the comment template.
+		if ( comments_open() || get_comments_number() ) :?>
+
+			<div class="comments-wrap">
+		
+				<?php comments_template();?>
+	
+			</div>
+endif comments open
+		<?php
+	endif; 
+
+
 		endwhile;?>
 
 	</div><!-- class="grid-container main" -->

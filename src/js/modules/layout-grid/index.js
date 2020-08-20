@@ -98,7 +98,7 @@ export default function init() {
   // The magic
   //----------------------------------------
 
-  $('form').submit(function (e) {
+  $('form#grid').submit(function (e) {
     e.preventDefault();
     var _this = $(this),
       url = _this.attr('action'),

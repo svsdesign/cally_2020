@@ -91,7 +91,7 @@
 
   <?php if ( is_user_logged_in() ) :?>
     
-      <form action="<?php echo esc_url( $url ); ?>" method="<?php echo $edit ? 'PUT' : 'POST'; ?>">
+      <form id="grid" action="<?php echo esc_url( $url ); ?>" method="<?php echo $edit ? 'PUT' : 'POST'; ?>">
 
         <div class="site-grid-container dev-layout-grid-toggle-wrap">
 
@@ -122,7 +122,7 @@
                 <form action="<?php echo esc_url( $url ); ?>" method="<?php echo $edit ? 'PUT' : 'POST'; ?>">
         */?>
 
-        <form action="<?php echo esc_url( $url ); ?>" method="<?php echo $edit ? 'PUT' : 'POST'; ?>">
+        <form id="grid" action="<?php echo esc_url( $url ); ?>" method="<?php echo $edit ? 'PUT' : 'POST'; ?>">
 
             <div class="site-grid-container dev-layout-grid-toggle-wrap">
 
@@ -550,3 +550,4 @@
 
 <?php //additional content:
 the_content();?>
+

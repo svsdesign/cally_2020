@@ -39,9 +39,39 @@
 // https://wordpress.stackexchange.com/questions/22415/use-rich-text-editor-in-comments
 
 
+//acf
+
 //https://www.advancedcustomfields.com/resources/get-values-comment/
 //https://wordpress.stackexchange.com/questions/244264/add-store-extra-fields-wordpress-comments
-//
+//https://stevepolito.design/blog/wordpress-acf-front-end-form-tutorial/
+// https://www.advancedcustomfields.com/resources/acf_form/
+// https://support.advancedcustomfields.com/forums/topic/custom-comment-field-not-to-display-on-reply/
+
+ 
+    //+ Gravity forms
+    //https://gravitywiz.com/upload-files-images-gravity-forms-advanced-custom-fields/
+
+    //acf extended
+    // https://wordpress.org/plugins/acf-extended/
+
+//RE-captha
+//https://betterstudio.com/blog/customize-wordpress-comment-form/
+
+
+//WP native COMMENTS
+//https://developer.wordpress.org/reference/functions/wp_list_comments/
+
+
+// "Comments Form plugin"
+//https://www.youtube.com/watch?v=GWtqDd7dKLI
+
+
+
+
+//ASKIMET - implement for spam purposes?
+
+
+
 /*
 //Get only the approved comments
 $args = array(
@@ -80,6 +110,13 @@ if ( post_password_required() )
     return;
 ?>
  
+
+
+<?php if (is_single()):?>
+
+ 
+
+
 <div id="comments" class="comments-area">
  
     <?php if ( have_comments() ) : ?>
@@ -92,16 +129,20 @@ if ( post_password_required() )
  
         <ol class="comment-list">
 
+
             <?php
                 wp_list_comments( array(
                     'style'       => 'ol',
                     'short_ping'  => true,
                     'avatar_size' => 74,
-                    'callback'	  => 'my_news_comment_template' //https://www.advancedcustomfields.com/resources/get-values-comment/
-                ) );
+                    // 'callback'	  => 'my_news_comment_template' //https://www.advancedcustomfields.com/resources/get-values-comment/
+                    'callback'	  => 'my_gridpage_comment_template' //https://www.advancedcustomfields.com/resources/get-values-comment/
+
+                    ) );
             ?>
         </ol><!-- .comment-list -->
  
+
         <?php
             // Are there comments to navigate through?
             if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
@@ -123,3 +164,50 @@ if ( post_password_required() )
  
 </div><!-- #comments -->
  
+
+<?php endif; // is single ?>
+ 
+ 
+
+
+
+
+<?php if (is_page()) : //layout grid - maybe ensure not just page ?>
+
+
+    <?php if ( have_comments() ) : ?>
+        <h2 class="comments-title">
+            <?php
+                // printf( _nx( 'One thought on "%2$s"', '%1$s thoughts on "%2$s"', get_comments_number(), 'comments title', 'twentythirteen' ),
+                    // number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
+            ?>
+        </h2>
+ 
+        <ol class="comment-list">
+
+
+            <?php
+                wp_list_comments( array(
+                    'style'       => 'ol',
+                    'short_ping'  => true,
+                    'avatar_size' => 74,
+                     
+                    // 'callback'	  => 'my_news_comment_template' //https://www.advancedcustomfields.com/resources/get-values-comment/
+
+                     'callback'	  => 'my_gridpage_comment_template' //https://www.advancedcustomfields.com/resources/get-values-comment/
+                ) );
+            ?>
+        </ol><!-- .comment-list -->
+ 
+
+  
+
+        start comment form:
+    <?php comment_form(); ?>
+ end comment form
+ 
+    <?php endif; // have_comments() ?>
+
+
+
+<?php endif; // is page ?>
