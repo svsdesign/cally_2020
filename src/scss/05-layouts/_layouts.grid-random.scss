@@ -58,7 +58,10 @@
         .grid-options-wrap {
             display: block;// allow editing if not logged in aswell - 
             // TO DO review other css aswell; // display only if logged in + admin on
-            position: sticky;
+            //position: sticky;
+            position:absolute;
+            top:-15vw;// 3 unites of 5vw
+
             z-index: 89; //review this; ensure not above navigation; but above everything else
         /*  @include fluid-type(
                 top,
@@ -67,6 +70,7 @@
                 map-get($lineheight, xs) * 2.5,
                 map-get($lineheight,xxl) * 2.5
             );*/
+        
             background-color: nth($scheme, 2);
             border-bottom: 1px solid;
             border-color: nth($scheme, 3);
@@ -1069,7 +1073,34 @@
       
         // onluy apply these values athe desired layout nbreakpoint
 
+        // positioning the grid and bg layer
 
+        .grid-layer{
+        position: relative;
+        overflow: hidden;
+        height:55vw;// = 11 units tall x 5vw
+
+
+            .grid-container{
+               margin-top:15vw;// review 
+            }
+
+            #outer-bg-layer{
+            position:absolute;
+            top:0px;
+            width:100%;  
+            pointer-events: none; 
+            z-index: -1; 
+
+                 //consider furher divs etc.
+                img{
+                position:relative;
+                width:100%;
+                height:auto;          
+                }
+            }
+        
+        } //.grid-layer{
 
 
         @media (min-width: map-get($breakpoints, md)) {
@@ -1191,9 +1222,10 @@
             // START dev functions
             .dev-layout-grid-toggle-wrap {
                 pointer-events: none;
-                position: sticky;
+                // position: sticky;
+                position: absolute;
                 z-index: 90; // review - ensure nav visble
-                background-color: nth($scheme, 2);
+                background-color: nth($scheme,3);
                 color: nth($scheme, 2);
                 // background-color: nth($scheme, 3);
                 border-bottom: 1px solid nth($scheme, 3);
