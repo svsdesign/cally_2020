@@ -21,674 +21,472 @@
     {
   
 
-.repeater-wrap {
-    width: 100%;
-    position: relative;
-    //overflow: hidden;// dont allow overflow breaks the sticky
-
-    #grid-wraps{
-    width: 100%;
-    position: relative;
-    display: block;
-    min-height: 50vw;//review - 5 rows atm
-
-        #background-map{
-        width:100%;
-        position: absolute;
-        top: 0;
-        z-index: -1;
-        opacity: 1;
-        pointer-events: none;
-
-            img{
-            display: block;
-            position: relative;    
+        .repeater-wrap {
             width: 100%;
-            height: auto;   
-            }
+            position: relative;
+            //overflow: hidden;// dont allow overflow breaks the sticky
 
-        }// #background-map
-    }
-
-}
-
-/* ---- grid options (top) ---- */
-
-.grid-options-wrap {
-    display: block;// allow editing if not logged in aswell - 
-    // TO DO review other css aswell; // display only if logged in + admin on
-    position: sticky;
-    z-index: 89; //review this; ensure not above navigation; but above everything else
-  /*  @include fluid-type(
-        top,
-        map-get($breakpoints, xs),
-        map-get($breakpoints,xxl),
-        map-get($lineheight, xs) * 2.5,
-        map-get($lineheight,xxl) * 2.5
-    );*/
-    background-color: nth($scheme, 2);
-    border-bottom: 1px solid;
-    border-color: nth($scheme, 3);
-    background-color: nth($scheme, 3);
-    color: nth($scheme, 2);
-
-    .grid-options {
-        .btn {
-            // text-align: left;
-            @media (min-width: map-get($breakpoints, xxs)) {
-                text-align: left;
-            }
-        } //.btn
-
-        .response-message-wrap {
-            pointer-events: none;
-            position: absolute;
-            opacity: 0;
+            #grid-wraps{
+            width: 100%;
+            position: relative;
             display: block;
-            right: 0;
-            left: 0;
-            text-align: center;
-            // left:0px;
+            // min-height: 50vw;//review - 5 rows atm if item is 10vw
+            min-height:  25vw;//review - 5 rows atm if item is 5vw
 
-            .response-message {
-                // @include center-align(absolute, 0);
-                color: red;
-            }
-
-            &.response-message-active {
+                #background-map{
+                width:100%;
+                position: absolute;
+                top: 0;
+                z-index: -1;
                 opacity: 1;
-            }
-        } // .response-message-wrap
-    } //.grid-options
-} //.grid-options-wrap
+                pointer-events: none;
 
-/* ---- grid toggle ---- */
-
-.grid-toggles {
-    background: nth($scheme, 2);
-    width: 100%;
-    height: auto;
-    position: sticky;
-    pointer-events: none;
-    // display: block;
-    // display:none;
-    z-index: 29; //review
-    text-align: center;
-    border-bottom: 1px solid;
-    border-color: nth($scheme, 3);
-     @include fluid-type(
-        height,
-        map-get($breakpoints, xs),
-        map-get($breakpoints,xxl),
-        map-get($lineheight, xs) * 2,
-        map-get($lineheight,xxl) * 2
-    );
-    @include fluid-type(
-        line-height,
-        map-get($breakpoints, xs),
-        map-get($breakpoints, xxl),
-        map-get($lineheight, xs) * 2,
-        map-get($lineheight,xxl) * 2
-    );
-    @include fluid-type(
-        top,
-        map-get($breakpoints, xs),
-        map-get($breakpoints,xxl),
-        map-get($lineheight, xs) * 2.5,
-        map-get($lineheight,xxl) * 2.5
-    );
-
-    @media (min-width: map-get($breakpoints, md)) {
-        border-bottom: none;
-        background: transparent;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-    }
-    @media (min-width: map-get($breakpoints, lg)) {
-        display: block;
-    }
-
-    .toggle-list {
-        .grid-toggle {
-            pointer-events: initial;
-            display: block;
-            width: 100%;
-            cursor: pointer;
-            position: relative;
-            // width: fit-content;
-            margin: auto;
-            // @include fluid-type(top, map-get($breakpoints, xs), map-get($breakpoints,xxl), map-get($lineheight, xs)*2, map-get($lineheight,xxl)*2);
-
-            &.active-layer {
-                // background-color: red;
-            }
-        } //.grid-toggle
-
-        @media (max-width: map-get($breakpoints, md)) {
-        margin-top: 0px!important;//ensure no offets applied on mobile
-        }
-
-        @media (min-width: map-get($breakpoints, md)) {
-            position: fixed;
-            top: 50%;
-            width: 100%;
-
-            .grid-toggle {
-                width: initial;
-
-                @include fluid-type(
-                    font-size,
-                    map-get($breakpoints, xs),
-                    map-get($breakpoints,xxl),
-                    map-get($fontsize, xs) * 2,
-                    map-get($fontsize,xxl) * 2
-                );
-                @include fluid-type(
-                    line-height,
-                    map-get($breakpoints, xs),
-                    map-get($breakpoints,xxl),
-                    map-get($lineheight, xs) * 2,
-                    map-get($lineheight,xxl) * 2
-                );
-
-                &.active-layer {
-                    //  -color: red;
-                }
-            } //.grid-toggle
-        } //   @media (min-width: map-get($breakpoints, lg))
-    } //.toggle-list
-
-    &.toggles-active {
-        .toggle-button {
-            display: none;
-        }
-        .toggle-list {
-            .grid-toggle {
-                pointer-events: initial;
-                //  width: 100%;
-                position: relative;
-                display: none;
-
-                &.active-layer {
-                    // background-color: green;
-                    display: inline-block;
-                }
-            } //.grid-toggle
-        } //.toggle-list
-    } //  &.toggles-active
-
-    &.toggles-active.toggles-on,
-    &.toggles-on {
-        bottom: 0;
-        height: var(--site-height);
-
-        @media (min-width: map-get($breakpoints, lg)) {
-        height: auto;
-        }
-
-        // top:0px;
-        display: flex;
-        flex-direction: column;
-        position: fixed; //review
-        border-bottom:0px;
-
-        .toggle-button {
-            // display: none;
-        }
-        .toggle-list {
-            height: inherit;
-
-            display: block;
-            position: relative;
-            overflow: hidden;
-
-            .grid-toggle {
-                pointer-events: initial;
-                display: block;
-                position: relative;
-                clear: both;
-                width: fit-content;
-                position: relative;
-
-                @media (max-width: map-get($breakpoints, md)) {
-                    border-bottom: 1px solid;
-                    border-color: nth($scheme, 3);
+                    img{
+                    display: block;
+                    position: relative;    
                     width: 100%;
-                    height: 33.33%;
-                    line-height:calc(var(--site-height) / 3);
-                    //33.33vh;
-                    @include fluid-type(
-                        font-size,
-                        map-get($breakpoints, xs),
-                        map-get($breakpoints,xxl),
-                        map-get($fontsize, xs) * 2,
-                        map-get($fontsize,xxl) * 2
-                    );
-                    //  @include fluid-type(line-height, map-get($breakpoints, xs), map-get($breakpoints,xxl), map-get($lineheight, xs)*2, map-get($lineheight,xxl)*2);
-                }
+                    height: auto;   
+                    }
 
-                &.active-layer {
-                    opacity: 0.5;
-                }
-                &:last-of-type{
-                border-bottom:0px;
-                }
-            } //.grid-toggle
-        } //.toggle-list
-    } //.toggles-on
-} //.grid-toggles
+                }// #background-map
+            }
 
-/* ---- grid layers ---- */
-
-.grid-layers {
-    position: relative;
-    // background-color: red;
-    width: 100%;
-
-    .grid-layer {
-        position: fixed;
-        opacity: 0;
-        //display: none;
-        width: 100%;
-        height: inherit;
-        display: block;
-
-        form {
-            position: relative;
-            //overflow:hidden; remove so options can be "sticky"
         }
 
-        .layer-title {
-            display: none; // review - do we even need this?
+        /* ---- grid options (top) ---- */
 
-            @media (min-width: map-get($breakpoints, md)) {
-                display: block;
-            }
-        } //.layer-title
+        .grid-options-wrap {
+            display: block;// allow editing if not logged in aswell - 
+            // TO DO review other css aswell; // display only if logged in + admin on
+            position: sticky;
+            z-index: 89; //review this; ensure not above navigation; but above everything else
+        /*  @include fluid-type(
+                top,
+                map-get($breakpoints, xs),
+                map-get($breakpoints,xxl),
+                map-get($lineheight, xs) * 2.5,
+                map-get($lineheight,xxl) * 2.5
+            );*/
+            background-color: nth($scheme, 2);
+            border-bottom: 1px solid;
+            border-color: nth($scheme, 3);
+            background-color: nth($scheme, 3);
+            color: nth($scheme, 2);
 
-        &.active-layer {
-            z-index: 9;
-            opacity: 1;
-            display: block;
-            position: relative;
-        } //&.active-layer
-    } //.grid-layer
-} //.grid-layers
+            .grid-options {
+                .btn {
+                    // text-align: left;
+                    @media (min-width: map-get($breakpoints, xxs)) {
+                        text-align: left;
+                    }
+                } //.btn
 
+                .response-message-wrap {
+                    pointer-events: none;
+                    position: absolute;
+                    opacity: 0;
+                    display: block;
+                    right: 0;
+                    left: 0;
+                    text-align: center;
+                    // left:0px;
 
- 
-/* ---- grid ---- */
+                    .response-message {
+                        // @include center-align(absolute, 0);
+                        color: red;
+                    }
 
-.grid {
-    max-width: 100vw; //review
-    width: 100%; //review - this will cause issue in the gutenber UI
-    // overflow: visible;// so vertical ofsett can be seend
-    overflow: hidden; // otherwise horizontal offset overflows
-    margin: 0; // maybe use padding instead if needed to add space?
-    height: 50vw;//review - 5 rows atm - need for horizontal layout
-    min-width: 100%;//review this 
-}
+                    &.response-message-active {
+                        opacity: 1;
+                    }
+                } // .response-message-wrap
+            } //.grid-options
+        } //.grid-options-wrap
 
-/* clear fix */
-.grid:after {
-    content: '';
-    display: block;
-    clear: both;
-}
+        /* ---- grid toggle ---- */
 
-/* ---- .layout-grid-item---- */
-.grid-sizer {
-    width: 100%; //$width1;
-    height: auto; // $height1;
-
-    @media (min-width: map-get($breakpoints, md)) {
-        //  width: 100%!important;
-        //  height: auto!important;
-        width: $width1;
-        height: $height1;
-    }
-}
-
-// z-index options:
-@for $i from 1 through 99 {
-    .item-z-index-#{$i} {
-        .inner-grid-item {
-            z-index: #{$i};
-        }
-    }
-}
-
-.layout-grid-item{
-    //float: left;
-    width: 100%; //$width1; // 100%
-    height: auto; // $height1;
-    // transitionDuration: '0s'; // review this + all transitions & animations
-    //transform:none!important;
-    overflow: visible;
-    // border:1px solid nth($scheme, 2);
-
-    @media (max-width: map-get($breakpoints, md)) {
-        transform: none !important;
-        width: 100% !important;
-        height: auto !important;
-        position: relative;
-        overflow: hidden;
-        top: 0px !important;
-        @include fluid-type(
-            padding-left padding-right,
-            map-get($breakpoints, xs),
-            map-get($breakpoints,xxl),
-            map-get($gutter, xs) * 1,
-            map-get($gutter,xxl) * 1
-        );
-        @include fluid-type(
-            padding-bottom,
-            map-get($breakpoints, xs),
-            map-get($breakpoints,xxl),
-            map-get($gutter, xs) * 1,
-            map-get($gutter,xxl) * 1
-        );
-
-        a {
-            overflow: hidden;
-            // background:nth($scheme, 3);
-            display: block;
-
-            img.place-holder {
-                display: none !important;
-            }
-        } //a
-
-        &:last-of-type {
-            padding-bottom: 0px;
-        }
-
-        &:hover {
-            // TODO remove hoverstates markup on touchscreens - svs to dig out bit of js if needed.
-
-            img {
-                opacity: 0.2 !important;
-            }
-            img.place-holder {
-            }
-        } //&:hover
-    } // @media
-
-    .grid-item-options-toggle {
-        display: none;
-        cursor: pointer;
-        position: absolute;
-        @include fluid-type(
-            padding,
-            map-get($breakpoints, xs),
-            map-get($breakpoints,xxl),
-            map-get($lineheight, xs) * 0.5,
-            map-get($lineheight,xxl) * 0.5
-        );
-        z-index: 4; //above images + text
-
-        //to do; create button appreaacne
-        &:hover {
-        }
-    } //.grid-item-options-toggle
-
-    .grid-item-options {
-        display: none;
-        position: fixed;
-        width: 100vw;
-        left: 0;
-        top: initial;
-        bottom: 0px;
-        // @include fluid-type(bottom, map-get($breakpoints, xs), map-get($breakpoints,xxl), map-get($lineheight, xs)*2, map-get($lineheight,xxl)*2);
-        right: initial;
-        z-index: 9;
-        background: nth($scheme, 2);
-        @include fluid-type(
-            font-size,
-            map-get($breakpoints, xs),
-            map-get($breakpoints,xxl),
-            map-get($fontsize, xs) * 0.75,
-            map-get($fontsize,xxl) * 0.75
-        );
-        @include fluid-type(
-            line-height,
-            map-get($breakpoints, xs),
-            map-get($breakpoints,xxl),
-            map-get($lineheight, xs) * 0.75,
-            map-get($lineheight,xxl) * 0.75
-        );
-        //transform: translateY(100%);// ensure if item at bottom its still visible
-        border-top: 1px solid nth($scheme, 3);
-
-        label {
-            display: inherit; // ensure it inherits flex
+        .grid-toggles {
+            background: nth($scheme, 2);
+            width: 100%;
+            height: auto;
+            position: sticky;
+            pointer-events: none;
             // display: block;
-        }
-
-        .input-id,
-        .input-height,
-        .input-width,
-        .input-z-index
-        // input// TO DO review // delete this selector
-        {
-            width: 100%; //25%;
-            float: left;
+            // display:none;
+            z-index: 29; //review
+            text-align: center;
+            border-bottom: 1px solid;
+            border-color: nth($scheme, 3);
             @include fluid-type(
-                padding,
+                height,
                 map-get($breakpoints, xs),
                 map-get($breakpoints,xxl),
-                map-get($lineheight, xs) * 0.25,
-                map-get($lineheight,xxl) * 0.25
-            );
-            @include fluid-type(
-                font-size,
-                map-get($breakpoints, xs),
-                map-get($breakpoints,xxl),
-                map-get($fontsize, xs) * 2,
-                map-get($fontsize,xxl) * 2
+                map-get($lineheight, xs) * 2,
+                map-get($lineheight,xxl) * 2
             );
             @include fluid-type(
                 line-height,
                 map-get($breakpoints, xs),
-                map-get($breakpoints,xxl),
-                map-get($lineheight, xs) * 2.75,
-                map-get($lineheight,xxl) * 2.75
+                map-get($breakpoints, xxl),
+                map-get($lineheight, xs) * 2,
+                map-get($lineheight,xxl) * 2
             );
-            // border: 1px solid nth($scheme, 3)
-
-        }
-
-            /* select with CSS avatar icons */
-        option.avatar {
-            background-repeat: no-repeat !important;
-            padding-left: 20px;
-        }
-        .avatar-selected{
             @include fluid-type(
-                width height,
+                top,
                 map-get($breakpoints, xs),
                 map-get($breakpoints,xxl),
-                map-get($lineheight, xs) * 1,
-                map-get($lineheight,xxl) * 1
+                map-get($lineheight, xs) * 2.5,
+                map-get($lineheight,xxl) * 2.5
             );
-        }
-        .ui-icon {
-            position:relative!important;
-            background-position: 0 0;
-            background-size: cover;
-            @include fluid-type(
-                width height,
-                map-get($breakpoints, xs),
-                map-get($breakpoints,xxl),
-                map-get($lineheight, xs) * 1,
-                map-get($lineheight,xxl) * 1
-            );
-            display: block;
-        }
-        .ui-menu {
-           /* @include fluid-type(
-                height,
-                map-get($breakpoints, xs),
-                map-get($breakpoints,xxl),
-                map-get($lineheight, xs) * 3.5,
-                map-get($lineheight,xxl) * 3.5
-            );*/
 
-            height:inherit;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, $iconwidth1);
-            //  grid-template-columns: $iconwidth1 $iconwidth1 $iconwidth1;
-            grid-template-rows: repeat(auto-fill, $iconheight1);
-            /* @include fluid-type(
-                grid-gap,
-                map-get($breakpoints, xs),
-                map-get($breakpoints,xxl),
-                map-get($lineheight, xs) * 0.25,
-                map-get($lineheight,xxl)* 0.25
-            );*/
-            grid-gap:0;
-            .ui-menu-item-wrapper {
-                @include fluid-type(
-                padding,
-                map-get($breakpoints, xs),
-                map-get($breakpoints,xxl),
-                map-get($lineheight, xs) * 0.125,
-                map-get($lineheight,xxl)* 0.125
-                );
-              
+            @media (min-width: map-get($breakpoints, md)) {
+                border-bottom: none;
+                background: transparent;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                bottom: 0;
             }
-        }
-        
-        
-        .input-id {
-            // review + delte probably
-            background-color: nth($scheme, 3);
-            color: nth($scheme, 2);
-        }
-
-        .input-image-position-x,
-        .input-image-position-y,
-        .input-image-scale {
-            width: 100%;
-        }
-
-        .grid-item-options-item {
-            border-bottom: 1px solid nth($scheme, 3);
-
-            @include fluid-type(
-                padding-bottom padding-top,
-                map-get($breakpoints, xs),
-                map-get($breakpoints,xxl),
-                map-get($lineheight, xs) * 0.5,
-                map-get($lineheight,xxl) * 0.5
-            );
-
             @media (min-width: map-get($breakpoints, lg)) {
-                border-bottom: 0px;
+                display: block;
             }
 
-            .options-item-title {
-                width: 100%;
-                clear: both;
-                // color: $color-grey;
+            .toggle-list {
+                .grid-toggle {
+                    pointer-events: initial;
+                    display: block;
+                    width: 100%;
+                    cursor: pointer;
+                    position: relative;
+                    // width: fit-content;
+                    margin: auto;
+                    // @include fluid-type(top, map-get($breakpoints, xs), map-get($breakpoints,xxl), map-get($lineheight, xs)*2, map-get($lineheight,xxl)*2);
 
+                    &.active-layer {
+                        // background-color: red;
+                    }
+                } //.grid-toggle
+
+                @media (max-width: map-get($breakpoints, md)) {
+                margin-top: 0px!important;//ensure no offets applied on mobile
+                }
+
+                @media (min-width: map-get($breakpoints, md)) {
+                    position: fixed;
+                    top: 50%;
+                    width: 100%;
+
+                    .grid-toggle {
+                        width: initial;
+
+                        @include fluid-type(
+                            font-size,
+                            map-get($breakpoints, xs),
+                            map-get($breakpoints,xxl),
+                            map-get($fontsize, xs) * 2,
+                            map-get($fontsize,xxl) * 2
+                        );
+                        @include fluid-type(
+                            line-height,
+                            map-get($breakpoints, xs),
+                            map-get($breakpoints,xxl),
+                            map-get($lineheight, xs) * 2,
+                            map-get($lineheight,xxl) * 2
+                        );
+
+                        &.active-layer {
+                            //  -color: red;
+                        }
+                    } //.grid-toggle
+                } //   @media (min-width: map-get($breakpoints, lg))
+            } //.toggle-list
+
+            &.toggles-active {
+                .toggle-button {
+                    display: none;
+                }
+                .toggle-list {
+                    .grid-toggle {
+                        pointer-events: initial;
+                        //  width: 100%;
+                        position: relative;
+                        display: none;
+
+                        &.active-layer {
+                            // background-color: green;
+                            display: inline-block;
+                        }
+                    } //.grid-toggle
+                } //.toggle-list
+            } //  &.toggles-active
+
+            &.toggles-active.toggles-on,
+            &.toggles-on {
+                bottom: 0;
+                height: var(--site-height);
+
+                @media (min-width: map-get($breakpoints, lg)) {
+                height: auto;
+                }
+
+                // top:0px;
+                display: flex;
+                flex-direction: column;
+                position: fixed; //review
+                border-bottom:0px;
+
+                .toggle-button {
+                    // display: none;
+                }
+                .toggle-list {
+                    height: inherit;
+
+                    display: block;
+                    position: relative;
+                    overflow: hidden;
+
+                    .grid-toggle {
+                        pointer-events: initial;
+                        display: block;
+                        position: relative;
+                        clear: both;
+                        width: fit-content;
+                        position: relative;
+
+                        @media (max-width: map-get($breakpoints, md)) {
+                            border-bottom: 1px solid;
+                            border-color: nth($scheme, 3);
+                            width: 100%;
+                            height: 33.33%;
+                            line-height:calc(var(--site-height) / 3);
+                            //33.33vh;
+                            @include fluid-type(
+                                font-size,
+                                map-get($breakpoints, xs),
+                                map-get($breakpoints,xxl),
+                                map-get($fontsize, xs) * 2,
+                                map-get($fontsize,xxl) * 2
+                            );
+                            //  @include fluid-type(line-height, map-get($breakpoints, xs), map-get($breakpoints,xxl), map-get($lineheight, xs)*2, map-get($lineheight,xxl)*2);
+                        }
+
+                        &.active-layer {
+                            opacity: 0.5;
+                        }
+                        &:last-of-type{
+                        border-bottom:0px;
+                        }
+                    } //.grid-toggle
+                } //.toggle-list
+            } //.toggles-on
+        } //.grid-toggles
+
+        /* ---- grid layers ---- */
+
+        .grid-layers {
+            position: relative;
+            // background-color: red;
+            width: 100%;
+
+            .grid-layer {
+                position: fixed;
+                opacity: 0;
+                //display: none;
+                width: 100%;
+                height: inherit;
+                display: block;
+
+                form {
+                    position: relative;
+                    //overflow:hidden; remove so options can be "sticky"
+                }
+
+                .layer-title {
+                    display: none; // review - do we even need this?
+
+                    @media (min-width: map-get($breakpoints, md)) {
+                        display: block;
+                    }
+                } //.layer-title
+
+                &.active-layer {
+                    z-index: 9;
+                    opacity: 1;
+                    display: block;
+                    position: relative;
+                } //&.active-layer
+            } //.grid-layer
+        } //.grid-layers
+
+        /* ---- grid ---- */
+
+        .grid {
+            max-width: 100vw; //review
+            width: 100%; //review - this will cause issue in the gutenber UI
+            // overflow: visible;// so vertical ofsett can be seend
+            // overflow: hidden; // otherwise horizontal offset overflows
+            // overflow-y: visible; // need to ensur the option selectmenu can overflow - is htis going to be an issue?
+            overflow-x:hidden;
+            overflow-y: hidden;  //cant have any overflow - yet also means the drop downs are only 1 grid itme heigt
+            margin: 0; // maybe use padding instead if needed to add space?
+            // height: 50vw;//review - 5 rows atm - need for horizontal layout if item is 10vw
+            height: 25vw;//review - 5 rows atm if item is5vw
+
+       
+            min-width: 100%;//review this 
+        }
+
+        /* clear fix */
+        .grid:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        /* ---- .layout-grid-item---- */
+        .grid-sizer {
+            width: 100%; //$width1;
+            height: auto; // $height1;
+
+            @media (min-width: map-get($breakpoints, md)) {
+                //  width: 100%!important;
+                //  height: auto!important;
+                // width: $width1;
+                // height: $height1;
+                width: $iconwidth1;
+                height: $iconheight1;
+            }
+        }
+
+        // z-index options:
+        @for $i from 1 through 99 {
+            .item-z-index-#{$i} {
+                .inner-grid-item {
+                    z-index: #{$i};
+                }
+            }
+        }
+
+        .layout-grid-item{
+            //float: left;
+            width: 100%; //$width1; // 100%
+            height: auto; // $height1;
+            // transitionDuration: '0s'; // review this + all transitions & animations
+            //transform:none!important;
+            overflow: visible;
+            // border:1px solid nth($scheme, 2);
+
+            /* 
+            // to do  - we don't have a mobile version so what to do?
+            
+            @media (max-width: map-get($breakpoints, md)) {
+                transform: none !important;
+                width: 100% !important;
+                height: auto !important;
+                position: relative;
+                overflow: hidden;
+                top: 0px !important;
+                @include fluid-type(
+                    padding-left padding-right,
+                    map-get($breakpoints, xs),
+                    map-get($breakpoints,xxl),
+                    map-get($gutter, xs) * 1,
+                    map-get($gutter,xxl) * 1
+                );
                 @include fluid-type(
                     padding-bottom,
+                    map-get($breakpoints, xs),
+                    map-get($breakpoints,xxl),
+                    map-get($gutter, xs) * 1,
+                    map-get($gutter,xxl) * 1
+                );
+
+                a {
+                    overflow: hidden;
+                    // background:nth($scheme, 3);
+                    display: block;
+
+                    img.place-holder {
+                        display: none !important;
+                    }
+                } //a
+
+                &:last-of-type {
+                    padding-bottom: 0px;
+                }
+
+                &:hover {
+                // TODO remove hoverstates markup on touchscreens - svs to dig out bit of js if needed.
+
+                    img {
+                        opacity: 0.2 !important;
+                    }
+                    img.place-holder {
+                    }
+                } //&:hover
+
+            } // @media
+            */
+
+            .grid-item-options-toggle {
+                display: none;
+                cursor: pointer;
+                position: absolute;
+                @include fluid-type(
+                    padding,
                     map-get($breakpoints, xs),
                     map-get($breakpoints,xxl),
                     map-get($lineheight, xs) * 0.5,
                     map-get($lineheight,xxl) * 0.5
                 );
+                z-index: 4; //above images + text
 
-                &.sub-title {
-                    color: nth($scheme, 3);
-                    @include fluid-type(
-                        padding-bottom,
-                        map-get($breakpoints, xs),
-                        map-get($breakpoints,xxl),
-                        map-get($lineheight, xs) * 0.25,
-                        map-get($lineheight,xxl) * 0.25
-                    );
+                //to do; create button appreaacne
+                &:hover {
                 }
-            } // .options-item-title
+            } //.grid-item-options-toggle
 
-            //furher styling for each option module
+            .grid-item-options {
+                display: none;
+                position: absolute;//fixed;
+                width: inherit;//100vw;
+                left: 0;
+                top: 0;
+                // bottom: 0px;
+                // @include fluid-type(bottom, map-get($breakpoints, xs), map-get($breakpoints,xxl), map-get($lineheight, xs)*2, map-get($lineheight,xxl)*2);
+                right: 0;
+                z-index: 9;
+                // background: nth($scheme, 2);
+                @include fluid-type(
+                    font-size,
+                    map-get($breakpoints, xs),
+                    map-get($breakpoints,xxl),
+                    map-get($fontsize, xs) * 0.75,
+                    map-get($fontsize,xxl) * 0.75
+                );
+                @include fluid-type(
+                    line-height,
+                    map-get($breakpoints, xs),
+                    map-get($breakpoints,xxl),
+                    map-get($lineheight, xs) * 0.75,
+                    map-get($lineheight,xxl) * 0.75
+                );
+                //transform: translateY(100%);// ensure if item at bottom its still visible
+                // border-top: 1px solid nth($scheme, 3);
 
-            &.image-options-item {
-                // background:red;
-                order: 1;
-                @media (min-width: map-get($breakpoints, md)) {
-                    order: 1;
-                }
-            } //&.image-options-item
-
-            &.item-options-item {
-                // background:green;
-                order: 2;
-                @media (min-width: map-get($breakpoints, md)) {
-                    order: 2;
-                }
-
-                .label-wrapper {
-                    flex-direction: row;
-                    display: flex;
-
-                    label {
-                        display: flex;
-                        flex-direction: column;
-                        flex-grow: 1;
-                    }
-                }
-
-                .post-options-item {
-                    @include fluid-type(
-                        padding-bottom padding-top,
-                        map-get($breakpoints, xs),
-                        map-get($breakpoints,xxl),
-                        map-get($lineheight, xs) * 0.5,
-                        map-get($lineheight,xxl) * 0.5
-                    );
-                    // background:yellow;
-                    // order:3;
-                    @media (min-width: map-get($breakpoints, md)) {
-                        // order:3;
-                    }
-
-                    .options.post-object {
-                        flex-direction: row;
-                        display: flex;
-
-                        label {
-                            display: flex;
-                            flex-direction: column;
-                            position:relative;
-
-                            .acf-post-object {
-                                display: flex;
-                                flex-direction: column;
-                                flex-grow: 1;
-                            }
-                        }
-                    }
-                } //.post-options-item
-            } //&.image-options-item
-
-            &.button-options-item {
-                //  background:blue;
-                order: 3;
-
-                @media (min-width: map-get($breakpoints, md)) {
-                    display: flex;
+                label {
+                display: inherit; // ensure it inherits flex
+                // display: block;
                 }
 
-                @media (min-width: map-get($breakpoints, lg)) {
-                    flex-flow: column;
-                }
-
-                .btn {
-                    width: 100%;
+                .input-id,
+                .input-height,
+                .input-width,
+                .input-z-index
+                // input// TO DO review // delete this selector
+                {
+                    width: 100%; //25%;
+                    float: left;
                     @include fluid-type(
                         padding,
                         map-get($breakpoints, xs),
@@ -697,645 +495,976 @@
                         map-get($lineheight,xxl) * 0.25
                     );
                     @include fluid-type(
+                        font-size,
+                        map-get($breakpoints, xs),
+                        map-get($breakpoints,xxl),
+                        map-get($fontsize, xs) * 2,
+                        map-get($fontsize,xxl) * 2
+                    );
+                    @include fluid-type(
                         line-height,
                         map-get($breakpoints, xs),
                         map-get($breakpoints,xxl),
-                        map-get($lineheight, xs) * 1.5,
-                        map-get($lineheight,xxl) * 1.5
+                        map-get($lineheight, xs) * 2.75,
+                        map-get($lineheight,xxl) * 2.75
                     );
+                    // border: 1px solid nth($scheme, 3)
+
+                }
+
+                    /* select with CSS avatar icons */
+                option.avatar {
+                    background-repeat: no-repeat !important;
+                    padding-left: 20px;
+                }
+                .avatar-selected{
                     @include fluid-type(
+                        width height,
+                        map-get($breakpoints, xs),
+                        map-get($breakpoints,xxl),
+                        map-get($lineheight, xs) * 1,
+                        map-get($lineheight,xxl) * 1
+                    );
+                }
+
+                .ui-selectmenu-button.ui-button{
+                // background-color: red;
+                width: 100%;  
+                }
+                .ui-icon {
+                    position:absolute!important;
+                    background-position: 0 0;
+                    background-size: cover;
+                /* @include fluid-type(
+                        width height,
+                        map-get($breakpoints, xs),
+                        map-get($breakpoints,xxl),
+                        map-get($lineheight, xs) * 1,
+                        map-get($lineheight,xxl) * 1
+                    );*/
+                    width:100%;
+                    height: 100%;
+                    display: block;
+                    right:0px;
+                    bottom: 0px;
+                    left:0px;
+                    top:0px;
+                    z-index: -1;
+                }
+                .ui-menu {
+                /* @include fluid-type(
                         height,
                         map-get($breakpoints, xs),
                         map-get($breakpoints,xxl),
-                        map-get($lineheight, xs) * 2,
-                        map-get($lineheight,xxl) * 2
-                    );
-                    @include fluid-type(
-                        margin-bottom,
+                        map-get($lineheight, xs) * 3.5,
+                        map-get($lineheight,xxl) * 3.5
+                    );*/
+
+                    height:inherit;
+                    max-height: 10vw;// can only be one grid size unit  for overflow issues on parent container//30vw;
+                    display: grid;
+                    grid-template-columns:$iconwidth1;//1fr;// repeat(auto-fill, $iconwidth1);
+                    //  grid-template-columns: $iconwidth1 $iconwidth1 $iconwidth1;
+                    grid-template-rows: repeat(auto-fill, $iconheight1);
+                    /* @include fluid-type(
+                        grid-gap,
                         map-get($breakpoints, xs),
                         map-get($breakpoints,xxl),
                         map-get($lineheight, xs) * 0.25,
-                        map-get($lineheight,xxl) * 0.25
+                        map-get($lineheight,xxl)* 0.25
+                    );*/
+                    grid-gap:0;
+
+                    .ui-menu-item{
+                    width:100%;
+                    height:$iconheight1;
+                    text-align:center;
+                    @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*0.75, map-get($fontsize, lg)*0.75); // fixed sizing 
+                    @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*0.75, map-get($fontsize, xxl)*0.75); // viewport sizing 
+                    // @include fluid-type(line-height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+                    // @include fluid-type(line-height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing 
+                    // line-height:10vw;
+                    
+                        .ui-menu-item-wrapper {
+                            @include fluid-type(
+                            padding,
+                            map-get($breakpoints, xs),
+                            map-get($breakpoints,xxl),
+                            map-get($lineheight, xs) * 0.125,
+                            map-get($lineheight,xxl)* 0.125
+                            );
+                            z-index: 0;
+                            height:inherit;
+                        }
+                        
+                    }//.ui-menu-item
+
+                }//.ui-menu
+                
+                
+                .input-id {
+                    // review + delte probably
+                    background-color: nth($scheme, 3);
+                    color: nth($scheme, 2);
+                }
+
+                .input-image-position-x,
+                .input-image-position-y,
+                .input-image-scale {
+                    width: 100%;
+                }
+
+                .grid-item-options-item {
+                    border-bottom: 1px solid nth($scheme, 3);
+
+                    @include fluid-type(
+                        padding-bottom padding-top,
+                        map-get($breakpoints, xs),
+                        map-get($breakpoints,xxl),
+                        map-get($lineheight, xs) * 0.5,
+                        map-get($lineheight,xxl) * 0.5
                     );
-                    background-color: nth($scheme, 2) ;
-                    color: nth($scheme, 3);
 
-                    &.remove-row {
-                        background-color: nth($scheme, 3);
-                        color: nth($scheme, 2);
+                    @media (min-width: map-get($breakpoints, lg)) {
+                        border-bottom: 0px;
                     }
 
-                    &:last-of-type {
-                        margin-bottom: 0px;
+                    .options-item-title {
+                        width: 100%;
+                        clear: both;
+                        // color: $color-grey;
+
+                        @include fluid-type(
+                            padding-bottom,
+                            map-get($breakpoints, xs),
+                            map-get($breakpoints,xxl),
+                            map-get($lineheight, xs) * 0.5,
+                            map-get($lineheight,xxl) * 0.5
+                        );
+
+                        &.sub-title {
+                            color: nth($scheme, 3);
+                            @include fluid-type(
+                                padding-bottom,
+                                map-get($breakpoints, xs),
+                                map-get($breakpoints,xxl),
+                                map-get($lineheight, xs) * 0.25,
+                                map-get($lineheight,xxl) * 0.25
+                            );
+                        }
+                    } // .options-item-title
+
+                    //furher styling for each option module
+
+                    &.image-options-item {
+                        // background:red;
+                        order: 1;
+                        @media (min-width: map-get($breakpoints, md)) {
+                            order: 1;
+                        }
+                    } //&.image-options-item
+
+                    &.item-options-item {
+                        // background:green;
+                        order: 2;
+                        @media (min-width: map-get($breakpoints, md)) {
+                            order: 2;
+                        }
+
+                        .label-wrapper {
+                            flex-direction: row;
+                            display: flex;
+
+                            label {
+                                display: flex;
+                                flex-direction: column;
+                                flex-grow: 1;
+                            }
+                        }
+
+                        .post-options-item {
+                            @include fluid-type(
+                                padding-bottom padding-top,
+                                map-get($breakpoints, xs),
+                                map-get($breakpoints,xxl),
+                                map-get($lineheight, xs) * 0.5,
+                                map-get($lineheight,xxl) * 0.5
+                            );
+                            // background:yellow;
+                            // order:3;
+                            @media (min-width: map-get($breakpoints, md)) {
+                                // order:3;
+                            }
+
+                            .options.post-object {
+                                flex-direction: row;
+                                display: flex;
+
+                                label {
+                                    display: flex;
+                                    flex-direction: column;
+                                    position:relative;
+
+                                    .acf-post-object {
+                                        display: flex;
+                                        flex-direction: column;
+                                        flex-grow: 1;
+                                    }
+                                }
+                            }
+                        } //.post-options-item
+                    } //&.image-options-item
+
+                    &.button-options-item {
+                        //  background:blue;
+                        order: 3;
+
+                        @media (min-width: map-get($breakpoints, md)) {
+                            display: flex;
+                        }
+
+                        @media (min-width: map-get($breakpoints, lg)) {
+                            flex-flow: column;
+                        }
+
+                        .btn {
+                            width: 100%;
+                            @include fluid-type(
+                                padding,
+                                map-get($breakpoints, xs),
+                                map-get($breakpoints,xxl),
+                                map-get($lineheight, xs) * 0.25,
+                                map-get($lineheight,xxl) * 0.25
+                            );
+                            @include fluid-type(
+                                line-height,
+                                map-get($breakpoints, xs),
+                                map-get($breakpoints,xxl),
+                                map-get($lineheight, xs) * 1.5,
+                                map-get($lineheight,xxl) * 1.5
+                            );
+                            @include fluid-type(
+                                height,
+                                map-get($breakpoints, xs),
+                                map-get($breakpoints,xxl),
+                                map-get($lineheight, xs) * 2,
+                                map-get($lineheight,xxl) * 2
+                            );
+                            @include fluid-type(
+                                margin-bottom,
+                                map-get($breakpoints, xs),
+                                map-get($breakpoints,xxl),
+                                map-get($lineheight, xs) * 0.25,
+                                map-get($lineheight,xxl) * 0.25
+                            );
+                            background-color: nth($scheme, 2) ;
+                            color: nth($scheme, 3);
+
+                            &.remove-row {
+                                background-color: nth($scheme, 3);
+                                color: nth($scheme, 2);
+                            }
+
+                            &:last-of-type {
+                                margin-bottom: 0px;
+                            }
+                        } //.btn
+                    } //&.button-options-item
+                    .options.post-object {
+                        width: 100%;
                     }
-                } //.btn
-            } //&.button-options-item
-            .options.post-object {
+                } //.grid-item-options-item
+            } //.grid-item-options
+
+            .inner-grid-item {
                 width: 100%;
-            }
-        } //.grid-item-options-item
-    } //.grid-item-options
-
-    .inner-grid-item {
-        width: 100%;
-        height: 100%;
-        // padding:1vw;// removed - delete line
-        position: relative;
-        box-sizing: border-box;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        pointer-events: none;
-        text-align: center;
-
-        @media (max-width: map-get($breakpoints, md)) {
-            transform: none !important; // apply on mobile only
-        }
-
-        .text-wrap {
-            opacity: 0;
-            z-index: 3; //above the two images;
-            color: nth($scheme, 2)
-;
-            text-align: center;
-            @include center-align(absolute, 0);
-
-            @media (max-width: map-get($breakpoints, md)) {
-                @include fluid-type(
-                    font-size,
-                    map-get($breakpoints, xs),
-                    map-get($breakpoints,xxl),
-                    map-get($fontsize, xs) * 1.2,
-                    map-get($fontsize,xxl) * 1.2
-                ); // fixed sizing
-                @include fluid-type(
-                    line-height,
-                    map-get($breakpoints, xs),
-                    map-get($breakpoints,xxl),
-                    map-get($lineheight, xs) * 1.2,
-                    map-get($lineheight,xxl) * 1.2
-                ); // fixed sizing
-            }
-
-            .title {
-            }
-            .date {
-            }
-        }
-
-        .image-wrap {
-            //initial value
-            // opacity: 0;
-            // transform: matrix(1, 0, 0, 1, 0, 500);
-            //end inital value
-            position: relative;
-            width: 100%;
-            height: 100%;
-            float: left; //ensure it topleft
-            pointer-events: all;
-
-            @media (max-width: map-get($breakpoints, md)) {
-                // background: nth($scheme, 3)
-                transform: none !important;
-                width: 100% !important;
-                height: auto !important;
-            }
-
-            img {
-                display: block;
-                margin: auto;
-                position: absolute; // was relative. But trying to align both images
-                z-index: 1;
-                top: 0px;
-                bottom: 0px;
-                left: 0px;
-                right: 0px;
+                height: 100%;
+                // padding:1vw;// removed - delete line
+                position: relative;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                pointer-events: none;
+                text-align: center;
 
                 @media (max-width: map-get($breakpoints, md)) {
-                    // transform: none !important; // apply on mobile only
-                    width: 100% !important;
-                    height: auto !important;
-                    position: relative; //still relative on mobile
+                    transform: none !important; // apply on mobile only
                 }
-                &.place-holder {
-                    top: 0px;
-                    z-index: 2;
-                    opacity: 0;
-                    position: absolute;
-                    left: 0px;
-                    right: 0px;
-                    bottom: 0px; //wass initial; //was 0px; - review this, if I come back to it agin; clearly not a solution?
-                }
-            } //img
 
-            &:hover {
                 .text-wrap {
-                    opacity: 1;
-                    color: nth($scheme, 3)
-;
-                } //.text-wrap
-                img {
-                    opacity: 0.4;
-                } //img
-            }
-        } //.image-wrap
-    } //.inner-grid-item
+                    opacity: 0;
+                    z-index: 3; //above the two images;
+                    color: nth($scheme, 2)
+        ;
+                    text-align: center;
+                    @include center-align(absolute, 0);
 
-    &.blank-item {
-        //.grid-item.blank-item
+                    @media (max-width: map-get($breakpoints, md)) {
+                        @include fluid-type(
+                            font-size,
+                            map-get($breakpoints, xs),
+                            map-get($breakpoints,xxl),
+                            map-get($fontsize, xs) * 1.2,
+                            map-get($fontsize,xxl) * 1.2
+                        ); // fixed sizing
+                        @include fluid-type(
+                            line-height,
+                            map-get($breakpoints, xs),
+                            map-get($breakpoints,xxl),
+                            map-get($lineheight, xs) * 1.2,
+                            map-get($lineheight,xxl) * 1.2
+                        ); // fixed sizing
+                    }
 
-        @media (max-width: map-get($breakpoints, md)) {
-            padding-bottom: 0px;
-        }
-    } ////.grid-item.blank-item
+                    .title {
+                    }
+                    .date {
+                    }
+                }
 
-    &.vertical-item {
-        .inner-grid-item {
-            .image-wrap {
-                img {
-                    &.horizontal-image {
-                        width: 100%; // was:width: auto;
-                        height: auto; //was: height:100%;
+                .image-wrap {
+                    //initial value
+                    // opacity: 0;
+                    // transform: matrix(1, 0, 0, 1, 0, 500);
+                    //end inital value
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    float: left; //ensure it topleft
+                    pointer-events: all;
+
+                    @media (max-width: map-get($breakpoints, md)) {
+                        // background: nth($scheme, 3)
+                        transform: none !important;
+                        width: 100% !important;
+                        height: auto !important;
+                    }
+
+                    img {
+                        display: block;
                         margin: auto;
-                        // top: 50%;//review
-                        margin-top: 50%; // this was top: 50%
-                        // might need to set positions with js- review
-                    } //&.
+                        position: absolute; // was relative. But trying to align both images
+                        z-index: 1;
+                        top: 0px;
+                        bottom: 0px;
+                        left: 0px;
+                        right: 0px;
 
-                    &.vertical-image {
-                        width: 100%;
-                        height: auto;
-                    } //&.
-
-                    &.square-image {
-                        width: 100%;
-                        height: auto;
-                    } //&.
-                } //img
-            } //.image-wrap
-        } //inner-grid-item
-    } //&.vertical-item
-
-    &.horizontal-item {
-        .inner-grid-item {
-            .image-wrap {
-                img {
-                    &.horizontal-image {
-                        width: 100%;
-                        height: auto;
-                    }
-
-                    &.vertical-image {
-                        width: auto;
-                        height: 100%;
-                    }
-                    &.square-image {
-                        width: auto;
-                        height: 100%;
-                    } //&.
-                } //img
-            } //image-wrap
-        } //.inner-grid-item
-
-        &.image-larger-than-item {
-            .inner-grid-item {
-                .image-wrap {
-                    img {
-                        &.horizontal-image {
-                            width: auto;
-                            height: 100%;
+                        @media (max-width: map-get($breakpoints, md)) {
+                            // transform: none !important; // apply on mobile only
+                            width: 100% !important;
+                            height: auto !important;
+                            position: relative; //still relative on mobile
                         }
-
-                        &.vertical-image {
+                        &.place-holder {
+                            top: 0px;
+                            z-index: 2;
+                            opacity: 0;
+                            position: absolute;
+                            left: 0px;
+                            right: 0px;
+                            bottom: 0px; //wass initial; //was 0px; - review this, if I come back to it agin; clearly not a solution?
                         }
-                        &.square-image {
-                        } //&.
                     } //img
-                } //image-wrap
+
+                    &:hover {
+                        .text-wrap {
+                            opacity: 1;
+                            color: nth($scheme, 3)
+        ;
+                        } //.text-wrap
+                        img {
+                            opacity: 0.4;
+                        } //img
+                    }
+                } //.image-wrap
             } //.inner-grid-item
-        } //&.larger-than-container
-    } // &.horizontal-item
 
-    &.square-item {
-        .inner-grid-item {
-            .image-wrap {
-                img {
-                    &.horizontal-image {
-                        width: 100%;
-                        height: auto;
-                    } //&.
+            &.blank-item {
+                //.grid-item.blank-item
 
-                    &.vertical-image {
-                        width: 100%;
-                        height: auto;
-                    } //&.
-
-                    &.square-image {
-                        width: 100%;
-                        height: auto;
-                    } //&.
-                } //img
-            } //.image-wrap
-        } //inner-grid-item
-
-        &.image-larger-than-item {
-            .inner-grid-item {
-                .image-wrap {
-                    img {
-                        &.horizontal-image {
-                        }
-
-                        &.vertical-image {
-                            width: auto;
-                            height: 100%;
-                        }
-                        &.square-image {
-                        } //&.
-                    } //img
-                } //image-wrap
-            } //.inner-grid-item
-        } //&.larger-than-container
-    } //&.square-item
-
-    &.item-added {
-        .inner-grid-item {
-            border: 1px solid $color-active-grid;
-        }
-    } //&.item-added
-
-    &.fade-in {
-        .inner-grid-item {
-            .image-wrap {
-                // // opacity: 0;
-                // -webkit-animation:fade-in 0.5s ease-in 0s 1 normal forwards, transform-in 0.5s ease-in 0s 1 normal forwards;
-                // -moz-animation:fade-in 0.5s ease-in 0s 1 normal forwards, transform-in 0.5s ease-in 0s 1 normal forwards;
-                // -ms-animation:fade-in 0.5s ease-in 0s 1 normal forwards, transform-in 0.5s ease-in 0s 1 normal forwards;
-                animation: fade-in 0.5s ease-in 0s 1 normal forwards,
-                    transform-in 0.5s ease-in 0s 1 normal forwards;
-            }
-        }
-    } // &.fade-in
-
-    & &-link {
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-        margin: 0 auto;
-    }
-} //.grid-item
-
-
-.blur {
-    .layout-grid-item{
-        filter: blur(1px); /* Blur with 8px radius */
-    }
-} //.blur
-
-.is-touch .blur { //touch devices
-    .layout-grid-item{
-         filter: none; /* Blur with 8px radius */
-    }
-} //.is-touch .blur
-
-//http://angrytools.com/css-generator/transform/
-
-// onluy apply these values athe desired layout nbreakpoint
-
-@media (min-width: map-get($breakpoints, md)) {
-    .layout-grid-item{
-        width: $width1;
-        height: $height1;
-    }
-
-    .grid-item-width-2 {
-        width: $width2;
-        .inner-grid-item {
-            .image-wrap {
-                //  background: nth($scheme, 3)
-            }
-        }
-    }
-
-    .grid-item-height-3 {
-        height: $height3;
-        .inner-grid-item {
-            .image-wrap {
-                // background: nth($scheme, 3)
-           }
-        }
-
-        &.grid-item-width-2 {
-            .inner-grid-item {
-                .image-wrap {
-                    //  background: nth($scheme, 3)
+                @media (max-width: map-get($breakpoints, md)) {
+                    padding-bottom: 0px;
                 }
-            }
-        }
-    }
+            } ////.grid-item.blank-item
 
-    .grid-item-height-2 {
-        height: $height2;
+            &.vertical-item {
+                .inner-grid-item {
+                    .image-wrap {
+                        img {
+                            &.horizontal-image {
+                                width: 100%; // was:width: auto;
+                                height: auto; //was: height:100%;
+                                margin: auto;
+                                // top: 50%;//review
+                                margin-top: 50%; // this was top: 50%
+                                // might need to set positions with js- review
+                            } //&.
 
-        .inner-grid-item {
-            .image-wrap {
-                //  background: nth($scheme, 3)
-            }
-        }
+                            &.vertical-image {
+                                width: 100%;
+                                height: auto;
+                            } //&.
 
-        &.grid-item-width-2 {
-            .inner-grid-item {
-                .image-wrap {
-                    //  background: nth($scheme, 3)
+                            &.square-image {
+
+                                width: 100%;
+                                height: auto;
+                            } //&.
+                        } //img
+                    } //.image-wrap
+                } //inner-grid-item
+            } //&.vertical-item
+
+            &.horizontal-item {
+                .inner-grid-item {
+                    .image-wrap {
+                        img {
+                            &.horizontal-image {
+                                width: 100%;
+                                height: auto;
+                            }
+
+                            &.vertical-image {
+                                width: auto;
+                                height: 100%;
+                            }
+                            &.square-image {
+                                width: auto;
+                                height: 100%;
+                            } //&.
+                        } //img
+                    } //image-wrap
+                } //.inner-grid-item
+
+                &.image-larger-than-item {
+                    .inner-grid-item {
+                        .image-wrap {
+                            img {
+                                &.horizontal-image {
+                                    width: auto;
+                                    height: 100%;
+                                }
+
+                                &.vertical-image {
+                                }
+                                &.square-image {
+                                } //&.
+                            } //img
+                        } //image-wrap
+                    } //.inner-grid-item
+                } //&.larger-than-container
+            } // &.horizontal-item
+
+            &.square-item {
+                .inner-grid-item {
+                    .image-wrap {
+                        img {
+                            &.horizontal-image {
+                                width: 100%;
+                                height: auto;
+                            } //&.
+
+                            &.vertical-image {
+                                width: 100%;
+                                height: auto;
+                            } //&.
+
+                            &.square-image {
+                            
+                                // width:10vw;//ensure image corect size
+                                // width: 100%;
+                                height: auto;
+                            } //&.
+                        } //img
+                    } //.image-wrap
+                } //inner-grid-item
+
+                &.image-larger-than-item {
+                    .inner-grid-item {
+                        .image-wrap {
+                            img {
+                                &.horizontal-image {
+                                }
+
+                                &.vertical-image {
+                                    width: auto;
+                                    height: 100%;
+                                }
+                                &.square-image {
+                                } //&.
+                            } //img
+                        } //image-wrap
+                    } //.inner-grid-item
+                } //&.larger-than-container
+            } //&.square-item
+
+            &.item-added {
+                .inner-grid-item {
+                    border: 1px solid $color-active-grid;
                 }
-            }
-        }
-    }
+            } //&.item-added
 
-    .grid-item-height-3 {
-        height: $height3;
+            &.fade-in {
+                .inner-grid-item {
+                    .image-wrap {
+                        // // opacity: 0;
+                        // -webkit-animation:fade-in 0.5s ease-in 0s 1 normal forwards, transform-in 0.5s ease-in 0s 1 normal forwards;
+                        // -moz-animation:fade-in 0.5s ease-in 0s 1 normal forwards, transform-in 0.5s ease-in 0s 1 normal forwards;
+                        // -ms-animation:fade-in 0.5s ease-in 0s 1 normal forwards, transform-in 0.5s ease-in 0s 1 normal forwards;
+                        animation: fade-in 0.5s ease-in 0s 1 normal forwards,
+                            transform-in 0.5s ease-in 0s 1 normal forwards;
+                    }
+                }
+            } // &.fade-in
 
-        .inner-grid-item {
-            .image-wrap {
-                // background: nth($scheme, 3)
-            }
-        }
-    }
-
-    .grid-item-width-3 {
-        width: $width3;
-
-        .inner-grid-item {
-            .image-wrap {
-                //  background: nth($scheme, 3)
-            }
-        }
-    }
-
-    .grid-item-height-4 {
-        height: $height4;
-
-        .inner-grid-item {
-            .image-wrap {
-                // background: nth($scheme, 3)
-            }
-        }
-    }
-
-    .grid-item-width-4 {
-        width: $width4;
-
-        .inner-grid-item {
-            .image-wrap {
-                //  background: nth($scheme, 3)
-            }
-        }
-    }
-
-    .gutter-sizer {
-        // width: 2.5%;
-    }
-} //breakpiotns
-
-//if logged in
-//&.logged-in {
-&.can-edit {
-
-    //if user is logged in
-
-    .grid-item:hover {
-        // background: nth($scheme, 3)
-        @media (min-width: map-get($breakpoints, lg)) {
-            cursor: move;
-        }
-
-        .inner-grid-item {
-            // opacity:1;
-            // opacity:0.8;
-        }
-    }
-
-    // START dev functions
-    .dev-layout-grid-toggle-wrap {
-        pointer-events: none;
-        position: sticky;
-        z-index: 90; // review - ensure nav visble
-        background-color: nth($scheme, 2);
-        color: nth($scheme, 2);
-        // background-color: nth($scheme, 3);
-        border-bottom: 1px solid nth($scheme, 3);
-        display: none;
-        @include fluid-type(
-            top,
-            map-get($breakpoints, xs),
-            map-get($breakpoints,xxl),
-            map-get($lineheight, xs) * 4.5,
-            map-get($lineheight,xxl) * 4.5
-        );
-
-        @media (min-width: map-get($breakpoints, md)) {
-            display: block;
-
-            @include fluid-type(
-                top,
-                map-get($breakpoints, xs),
-                map-get($breakpoints,xxl),
-                map-get($lineheight, xs) * 2.5,
-                map-get($lineheight,xxl) * 2.5
-            );
-        }
-
-        .dev-layout-grid-toggle {
-            pointer-events: none;
-            @include fluid-type(
-                line-height,
-                map-get($breakpoints, xs),
-                map-get($breakpoints,xxl),
-                map-get($lineheight, xs) * 1,
-                map-get($lineheight,xxl) * 1
-            );
-            // @include fluid-type(top, map-get($breakpoints, xs), map-get($breakpoints,xxl), map-get($lineheight, xs)*2, map-get($lineheight,xxl)*2);
-            text-align: center;
-            height: inherit;
-
-            @media (min-width: map-get($breakpoints, xxs)) {
-                text-align: right;
-            }
-
-            .is-on,
-            .is-off {
-                cursor: pointer;
-                pointer-events: initial;
-                float: right;
-            }
-
-            .is-on {
-                display: none;
-            }
-
-            .is-off {
-                display: block;
-            }
-        } //.dev-layout-grid-toggle
-    } //.dev-layout-grid-toggle-wrap
-} //body.logged-in
-
-
-
-//&.logged-in.dev-layout-grid-on {
-&.can-edit.dev-layout-grid-on {
-
-// &.logged-in.dev-layout-grid-on {
-
-    .grid-toggles {
-        display: none;
-    }
-    .grid-options-wrap {
-        display: block;
-
-        .grid-options {
-            //packery input
-
-            label {
-            }
-            .coordinates {
+            & &-link {
+                display: inline-block;
+                height: 100%;
                 width: 100%;
+                margin: 0 auto;
             }
-        }
-    } //.grid-options-wrap
-
-    .grid {
-        // border-top:1px solid nth($scheme, 2)
-    }
-
-    .layout-grid-item{
-        border: 1px solid nth($scheme, 3);
-        // background:nth($scheme, 3)
+        } //.grid-item
 
 
-        .grid-item-options-toggle {
-            display: none;
-
-            .is-on {
-                display: none;
+        .blur {
+            .layout-grid-item{
+                filter: blur(1px); /* Blur with 8px radius */
             }
-            .is-off {
-                display: block;
+        } //.blur
+
+        .is-touch .blur { //touch devices
+            .layout-grid-item{
+                filter: none; /* Blur with 8px radius */
             }
-        } //.grid-item-options-toggle
+        } //.is-touch .blur
 
-        //
-        &:hover {
-            // border:1px solid $color-active-grid-item;
+        //http://angrytools.com/css-generator/transform/
 
-            .grid-item-options-toggle {
-                display: block;
-                background-color: nth($scheme, 2);
+      
+        .exports{
+        // display: none;// no need to show this atm
 
-                &:hover {
-                color: $color-active-grid-item;
+            #canvas-wrap{
+
+                canvas{
+                width:100%!important;
+                height:auto!important;
                 }
+                
+            }//#canvas-wrap
+        
+            #export-image-wrap{
 
-                .is-on {
-                    // display:none;
+                img{
+                width:100%!important;
+                height:auto!important;
                 }
-                .is-off {
-                    //  display:none;
-                }
-            } //.grid-item-options-toggle
-        } // &:hover  //.grid-item:hover
+            
+            }// #export-image-wrap
 
-        &.item-edit-active {
-            border: 1px solid $color-active-grid-item;
+        
+        }//.exports
+      
+        // onluy apply these values athe desired layout nbreakpoint
 
-            .grid-item-options-toggle {
-                display: block;
-                color: $color-active-grid-item;
-                background-color: nth($scheme, 2);
- 
-                .is-on {
-                    display: block;
-                }
-                .is-off {
-                    display: none;
-                }
-            } //.grid-item-options-toggle
 
-            .grid-item-options {
-                flex-wrap: inherit;
-                display: flex;
-                flex-flow: row wrap;
-                // justify-content: space-around; 
-                max-height: 50vh;//review this after ui/ux of mapsegments complete
-                min-height: 25vh;//review this after ui/ux of mapsegments complete
-                height: inherit;
-            }
-        } // &.item-edit-active
-    } //.grid-item
 
-    .dev-layout-grid-toggle-wrap {
-        position: fixed;
-        z-index: 99; // review - ensure nav visble
-        color: nth($scheme, 2);
-        background-color: nth($scheme, 3);
-        top: 0px;
-        border-bottom: none;
 
         @media (min-width: map-get($breakpoints, md)) {
-            @include fluid-type(
-                top,
-                map-get($breakpoints, xs),
-                map-get($breakpoints,xxl),
-                map-get($lineheight, xs) * 2.5,
-                map-get($lineheight,xxl) * 2.5
-            );
-        }
-        @media (min-width: map-get($breakpoints, lg)) {
-            @include fluid-type(
-                top,
-                map-get($breakpoints, xs),
-                map-get($breakpoints,xxl),
-                map-get($lineheight, xs) * 2.5,
-                map-get($lineheight,xxl) * 2.5
-            );
-        }
-
-        .dev-layout-grid-toggle {
-            // @include fluid-type(top, map-get($breakpoints, xs), map-get($breakpoints,xxl), map-get($lineheight, xs)*2, map-get($lineheight,xxl)*2);
-
-            .is-on {
-                display: block;
+       
+            .layout-grid-item{
+                // width: $width1;
+                // height: $height1;
+                width: $iconwidth1;
+                height: $iconheight1;
             }
 
-            .is-off {
+            .grid-item-width-2 {
+                width: $width2;
+                .inner-grid-item {
+                    .image-wrap {
+                        //  background: nth($scheme, 3)
+                    }
+                }
+            }
+
+            .grid-item-height-3 {
+                height: $height3;
+                .inner-grid-item {
+                    .image-wrap {
+                        // background: nth($scheme, 3)
+                }
+                }
+
+                &.grid-item-width-2 {
+                    .inner-grid-item {
+                        .image-wrap {
+                            //  background: nth($scheme, 3)
+                        }
+                    }
+                }
+            }
+
+            .grid-item-height-2 {
+                height: $height2;
+
+                .inner-grid-item {
+                    .image-wrap {
+                        //  background: nth($scheme, 3)
+                    }
+                }
+
+                &.grid-item-width-2 {
+                    .inner-grid-item {
+                        .image-wrap {
+                            //  background: nth($scheme, 3)
+                        }
+                    }
+                }
+            }
+
+            .grid-item-height-3 {
+                height: $height3;
+
+                .inner-grid-item {
+                    .image-wrap {
+                        // background: nth($scheme, 3)
+                    }
+                }
+            }
+
+            .grid-item-width-3 {
+                width: $width3;
+
+                .inner-grid-item {
+                    .image-wrap {
+                        //  background: nth($scheme, 3)
+                    }
+                }
+            }
+
+            .grid-item-height-4 {
+                height: $height4;
+
+                .inner-grid-item {
+                    .image-wrap {
+                        // background: nth($scheme, 3)
+                    }
+                }
+            }
+
+            .grid-item-width-4 {
+                width: $width4;
+
+                .inner-grid-item {
+                    .image-wrap {
+                        //  background: nth($scheme, 3)
+                    }
+                }
+            }
+
+            .gutter-sizer {
+                // width: 2.5%;
+            }
+        } //breakpiotns
+
+        //if logged in
+        //&.logged-in {
+        &.can-edit {
+
+            //if user is logged in
+
+            .grid-item:hover {
+                // background: nth($scheme, 3)
+                @media (min-width: map-get($breakpoints, lg)) {
+                    cursor: move;
+                }
+
+                .inner-grid-item {
+                    // opacity:1;
+                    // opacity:0.8;
+                }
+            }
+
+            // START dev functions
+            .dev-layout-grid-toggle-wrap {
+                pointer-events: none;
+                position: sticky;
+                z-index: 90; // review - ensure nav visble
+                background-color: nth($scheme, 2);
+                color: nth($scheme, 2);
+                // background-color: nth($scheme, 3);
+                border-bottom: 1px solid nth($scheme, 3);
+                display: none;
+                @include fluid-type(
+                    top,
+                    map-get($breakpoints, xs),
+                    map-get($breakpoints,xxl),
+                    map-get($lineheight, xs) * 4.5,
+                    map-get($lineheight,xxl) * 4.5
+                );
+
+                @media (min-width: map-get($breakpoints, md)) {
+                    display: block;
+
+                    @include fluid-type(
+                        top,
+                        map-get($breakpoints, xs),
+                        map-get($breakpoints,xxl),
+                        map-get($lineheight, xs) * 2.5,
+                        map-get($lineheight,xxl) * 2.5
+                    );
+                }
+
+                .dev-layout-grid-toggle {
+                    pointer-events: none;
+                    @include fluid-type(
+                        line-height,
+                        map-get($breakpoints, xs),
+                        map-get($breakpoints,xxl),
+                        map-get($lineheight, xs) * 1,
+                        map-get($lineheight,xxl) * 1
+                    );
+                    // @include fluid-type(top, map-get($breakpoints, xs), map-get($breakpoints,xxl), map-get($lineheight, xs)*2, map-get($lineheight,xxl)*2);
+                    text-align: center;
+                    height: inherit;
+
+                    @media (min-width: map-get($breakpoints, xxs)) {
+                        text-align: right;
+                    }
+
+                    .is-on,
+                    .is-off {
+                        cursor: pointer;
+                        pointer-events: initial;
+                        float: right;
+                    }
+
+                    .is-on {
+                        display: none;
+                    }
+
+                    .is-off {
+                        display: block;
+                    }
+                } //.dev-layout-grid-toggle
+            } //.dev-layout-grid-toggle-wrap
+
+        } //body.logged-in
+
+
+
+        //&.logged-in.dev-layout-grid-on {
+        &.can-edit.dev-layout-grid-on {
+
+        // &.logged-in.dev-layout-grid-on {
+
+            .grid-toggles {
                 display: none;
             }
-        }
-    } //.dev-layout-grid-toggle-wrap
-} //body.dev-layout-grid-on
+            .grid-options-wrap {
+                display: block;
+
+                .grid-options {
+                    //packery input
+
+                    label {
+                    }
+                    .coordinates {
+                        width: 100%;
+                    }
+                }
+            } //.grid-options-wrap
+
+            .grid {
+                // border-top:1px solid nth($scheme, 2)
+            }
+
+            .layout-grid-item{
+                // border: 1px solid nth($scheme, 3);
+                // background:nth($scheme, 3)
 
 
-    //images loaded
-    &:not(.images-loaded) {
-        img {
-            opacity: 0; // look to apply transitions on image elements
-        }
-    } //body:not(.images-loaded)
+                .grid-item-options-toggle {
+                display: none;
+                width:50%;
+                    .is-on {
+                        display: none;
+                    }
+                    .is-off {
+                        display: block;
+                    }
 
-    &.images-loaded.page-template-page-grid {
 
-        img {
-            opacity: 1; // look to apply transitions on image elements
-        }
-    } //body.images-loaded.page-template-page-grid {
+                    &.grid-item-options-toggle-rotate{
+                        right:0px;
+                    }
+
+                    
+                } //.grid-item-options-toggle
+
+
+
+                //
+                &:hover {
+                   border:1px solid $color-active-grid-item;
+                
+                    .grid-item-options-toggle {
+                        display: block;
+                        color: nth($scheme, 2);
+                        opacity:0.5;
+                        width:50%;
+                        background-color:red;
+
+                        &:hover {
+                        color: nth($scheme, 2);
+                        opacity:1;
+                        }
+
+                        .is-on {
+                            // display:none;
+                        }
+                        .is-off {
+                            //  display:none;
+                        }
+                    } //.grid-item-options-toggle
+
+                    .inner-grid-item{
+                    background-color: nth($scheme, 3);
+
+                        .image-wrap{
+                        opacity: 0.2;
+                        }
+
+                    }//.inner-grid-item
+
+                } // &:hover  //.grid-item:hover
+
+                &.item-edit-active {
+                    border: 1px solid $color-active-grid-item;
+
+                    .grid-item-options-toggle {
+                        display: block;
+                        color: $color-active-grid-item;
+                        background-color: nth($scheme, 2);
+                        // width:50%;
+
+                        .is-on {
+                            display: block;
+                        }
+                        .is-off {
+                            display: none;
+                        }
+
+                        &.grid-item-options-toggle-rotate{
+
+                        }
+
+                    } //.grid-item-options-toggle
+
+                    .grid-item-options {
+                        flex-wrap: inherit;
+                        display: flex;
+                        flex-flow: row wrap;
+                        // justify-content: space-around; 
+                        // max-height: 50vh;//review this after ui/ux of mapsegments complete
+                        // min-height: 25vh;//review this after ui/ux of mapsegments complete
+                        height: inherit;
+                    }
+                } // &.item-edit-active
+            } //.grid-item
+
+            .dev-layout-grid-toggle-wrap {
+                position: fixed;
+                z-index: 99; // review - ensure nav visble
+                color: nth($scheme, 2);
+                background-color: nth($scheme, 3);
+                top: 0px;
+                border-bottom: none;
+
+                @media (min-width: map-get($breakpoints, md)) {
+                    @include fluid-type(
+                        top,
+                        map-get($breakpoints, xs),
+                        map-get($breakpoints,xxl),
+                        map-get($lineheight, xs) * 2.5,
+                        map-get($lineheight,xxl) * 2.5
+                    );
+                }
+                @media (min-width: map-get($breakpoints, lg)) {
+                    @include fluid-type(
+                        top,
+                        map-get($breakpoints, xs),
+                        map-get($breakpoints,xxl),
+                        map-get($lineheight, xs) * 2.5,
+                        map-get($lineheight,xxl) * 2.5
+                    );
+                }
+
+                .dev-layout-grid-toggle {
+                    // @include fluid-type(top, map-get($breakpoints, xs), map-get($breakpoints,xxl), map-get($lineheight, xs)*2, map-get($lineheight,xxl)*2);
+
+                    .is-on {
+                        display: block;
+                    }
+
+                    .is-off {
+                        display: none;
+                    }
+                }
+            } //.dev-layout-grid-toggle-wrap
+        } //body.dev-layout-grid-on
+
+
+        //images loaded
+        &:not(.images-loaded) {
+            img {
+                opacity: 0; // look to apply transitions on image elements
+            }
+        } //body:not(.images-loaded)
+
+        &.images-loaded.page-template-page-grid {
+
+            img {
+                opacity: 1; // look to apply transitions on image elements
+            }
+        } //body.images-loaded.page-template-page-grid {
+
+        //Ensure only images are visible when copying to canvas
+
+        &.capturing-image{
+        // background:red;
+
+            .layout-grid-item{
+            border:none!important;
+            }
+
+            .grid-item-options-toggle,
+            .grid-item-options {
+            z-index: -999;
+            opacity:0;
+            display:none!important;
+            }
+
+            .image-wrap{
+                img{
+                // width:10vw;//ensure image corect size
+                }
+            }//.image-wrap
+        
+        }//body.capturing-image
+
 
 
 
     }//body.#{nth($scheme, 1)}:not(.wp-admin) // ensure we're not applying to admin 
+
 }//scheme
 
 
  
-
  
 
 body.toggles-on {
@@ -1361,9 +1490,7 @@ body:after {
 
 /* widescreen */
 @media (min-width: map-get($breakpoints, md)) {
-body{
 
-}
     body:after {
         content: 'widescreen';
     }

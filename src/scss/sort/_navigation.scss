@@ -315,7 +315,7 @@ Author URI: http://svs.design
     // start footer nav
 
     #footer-nav-area{
-    width: 80%;// was 80vh - review accordingluy - get rid of 80vh widht aeverywhere?
+    // width: 80%;// was 80vh - review accordingluy - get rid of 80vh widht aeverywhere?
     overflow: hidden;
     display: block;
     margin:auto;
@@ -328,7 +328,8 @@ Author URI: http://svs.design
            .menu-item a,
            .menu-item a:visited{ 
             text-decoration: none;
-            color: nth($scheme, 3);
+             color: nth($scheme, 2);
+
             } //a
           
             
@@ -338,28 +339,14 @@ Author URI: http://svs.design
             display: block;
             float: left;
             font-family: $light-font-family;
-           width: 50%;
-           // @extend .nav-grid-size; // review tis + also based on the number of links - set this maybe using a data attribute? then loop through the data attrabiutes + caluclate sizes accordingly
-            @include fluid-type(padding-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
-            @include fluid-type(padding-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
-            @include fluid-type(padding-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
-            @include fluid-type(padding-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
-           
-                padding-bottom: 0px;
-
-                  // what if more than 4? / set up a 
-            
-                @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
-              //  padding-top: 0px;
-                width: 25%;
-            //    @include fluid-type(border-top-width, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*1, map-get($gutter, lg)*1); // fixed sizing
-            //    @include fluid-type(margin-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*1, map-get($gutter, lg)*1); // fixed sizing
-               // @include fluid-type(padding-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
-             //   @include fluid-type(margin-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*1, map-get($gutter, lg)*1); // fixed sizing
-             //   @include fluid-type(padding-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
-                }
-
-
+            width: auto;
+           position: relative;
+              @include fluid-type(margin-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+            @include fluid-type(margin-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+            @include fluid-type(margin-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+            @include fluid-type(margin-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+            padding:0px;
+                // padding-bottom: 0px;
                 a{
 
                 text-align: left;
@@ -368,12 +355,7 @@ Author URI: http://svs.design
                 border-top: none;
                 border-top-style:none;
                 border-bottom-style:solid;
-
-           // @include fluid-type(border-bottom-width, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($gutter, lg)*1); // fixed sizing
-           // @include fluid-type(border-bottom-width, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
-
-              
-                //   @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
+              //   @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
                   
                    @include fluid-type(border-bottom-width, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
                    @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*1, map-get($gutter, xxl)*1); // viewport sizing
@@ -381,8 +363,15 @@ Author URI: http://svs.design
                    border-color:transparent;//  
                    //border-top-style: none;
                 //   }
-              
+             
                 }
+
+              &:after{
+                content:"-";
+                position:absolute;
+                @include fluid-type(right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*-1.25, map-get($gutter, lg)*-1.25); // fixed sizing
+                @include fluid-type(right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg)*-1.25, map-get($gutter, xxl)*-1.25); // viewport sizing
+               } 
 
               &.current_page_item{ // active itme; assign the appropriat colou:
               font-family: $medium-font-family;
@@ -397,6 +386,10 @@ Author URI: http://svs.design
                     }
 
                 }//&.current_page_item
+
+                &:last-child:after{
+                  content:""
+                }
           
             }//.menu-item
 

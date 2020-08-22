@@ -249,6 +249,29 @@
                     "multiple": 0,
                     "return_format": "object",
                     "ui": 1
+                },
+                {
+                    "key": "field_5f40467535855",
+                    "label": "Item Angle",
+                    "name": "item_rotate",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "show_in_rest": 1,
+                    "edit_in_rest": 1,
+                    "default_value": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": 0,
+                    "max": 360,
+                    "step": 90
                 }
             ]
         }
@@ -279,5 +302,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1595939113
+    "modified": 1598047956
 }

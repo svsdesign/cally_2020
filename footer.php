@@ -8,6 +8,7 @@
  *  
  */
 ?>
+	<?php include( 'signup.php' );?>
 
 	<?php include( 'navigation-footer.php' ); // this good idea? - is this inside ajax? - review?>
 

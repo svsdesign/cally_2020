@@ -106,6 +106,7 @@ $font-family: "Helv-Light", Helvetica Neue, Helvetica, Arial, sans-serif;
 
 $light-font-family: "AkkuratStd-Light", Akkurat Light, Helvetica Neue, Helvetica, Arial, sans-serif;
 $medium-font-family: "AkkuratStd", Akkurat, Helvetica Neue, Helvetica, Arial, sans-serif;
+$medium-italic-font-family: "AkkuratStd-Italic", Akkurat Italic, Helvetica Neue, Helvetica, Arial, sans-serif;
 $bold-font-family: "AkkuratStd-Bold", Akkurat Bold, Helvetica Neue, Helvetica, Arial, sans-serif;
 
 
@@ -127,7 +128,7 @@ $width3:75vw;
 $width4:100vw;
  //end delete the follwoing non needed 
 
-$iconheight1:5vw;
- //width vars 
-$iconwidth1:5vw;
+//icons/segments in grid
+$iconheight1:5vw;//10vw; // based on 10 grid items
+$iconwidth1:5vw;//10vw; // based on 10 grid items
  

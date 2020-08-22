@@ -93,7 +93,6 @@ export default function init() {
   };
 
  
-
   //----------------------------------------
   // The magic
   //----------------------------------------
@@ -281,6 +280,7 @@ export default function init() {
   // end used for packery: debounce
 
 
+
   function makedraggable($newitem, $thisgrid) {
 
     // console.log("make new item draggable");
@@ -294,6 +294,59 @@ export default function init() {
 
   } // function makedraggable($newitem){
 
+
+
+  function captureCanvas(){
+    console.log("function captureCanvas()");
+  /* consideration - I don't really want to run this everytime a changes is made
+  - i.e only really needed on submussion I think?
+  */
+
+    // Way to increase resolution of the image generated via toDataURL
+    //https://github.com/niklasvh/html2canvas/issues/241
+    // https://stackoverflow.com/questions/18316065/set-quality-of-png-with-html2canvas
+            
+    $('body').addClass("capturing-image");//hide none image elements
+
+
+
+    //https://stackoverflow.com/questions/18935518/on-render-in-html2canvas-the-page-is-scrolled-to-the-top
+    // review this - to ensure position is relative maybe?
+    window.scrollTo(0, 0);
+
+     html2canvas(document.querySelector("#grid-wraps"), {
+          scale:4 // instead of scale: //scale: 2 will double the resolution from the default 96dpi)
+        // //consider setting equal size; so imports are always the same?
+        // //2:1 ration - width:height
+        // width: 4800, // this set canvas size but not image
+        // height: 2400// this set canvas size but not image
+
+      }).then(canvas => {
+          
+        var img = document.createElement("img"); // create an image object
+            img.src = canvas.toDataURL(); // get canvas content as data URI
+
+          if ($('#canvas-wrap').has('canvas').length) {
+            //console.log("delete exisint canvas
+            $('#canvas-wrap').find('canvas').remove(); // delete existing canvas
+            $('#export-image-wrap').find('img').remove(); // delete existing img
+          }
+          //create images
+          document.querySelector("#export-image-wrap").appendChild(img);
+          //create canvas
+          document.querySelector("#canvas-wrap").appendChild(canvas);
+      
+      });//  }).then(canvas => 
+
+
+    $('body').removeClass("capturing-image");//hided none image elements
+  // saving into wp cms
+  // https://wordpress.stackexchange.com/questions/165321/saving-data-uri-to-media-library
+
+
+  }// function captureCanvas(thishtml, thiscanvas)
+
+  
 
   // console.log("imagesloading");
 
@@ -400,9 +453,12 @@ export default function init() {
   // resolve this
  
 //https://stackoverflow.com/questions/39064344/jqueryui-adding-an-image-in-option
+
                 $('#'+$thisUiId+'')
                   .iconselectmenu({
                     appendTo:$thisUiAppend,
+                    maxHeight:300, 
+                    style: 'dropdown',
                     change: function( event, ui ) { 
                          console.log("change" +ui+"");
                         // $(ui.item.element).css("background","red");
@@ -410,20 +466,29 @@ export default function init() {
                        console.log("thisimage" +thisimage+"");
                        $originalimage.attr("src",thisimage);//replace image 
 
+                      /* review this - why re-open?
                        setTimeout(function(){ 
                         //$(ui.item.element).closest('.options.post-object').find('.ui-selectmenu-button').css("background","red");
 
                          // this works.... but probably not the best approach
                         $(ui.item.element).closest('.options.post-object').find('.ui-selectmenu-button').click(); 
 
-                        }, 50);
+                        }, 50);    
+                        end review this
+                        */
 
-                       
-  
-                    }     
+                    }, //change functions
+                     //change  
+                    select: function( event, ui ) {
+                        // $(ui).selectmenu( "close" ); // close
+                        // console.log("close");
+                      }//select
                   })
                   .iconselectmenu("menuWidget")
                   .addClass("ui-menu-icons avatar");
+
+
+                  
 
                   // $('#'+$thisUiId+'').css("background","red");
                   // $('#'+$thisUiId+'').iconselectmenu("open");// open by default - doesn't seem to work - i guess because I can't open all in one go... as opening one closes others
@@ -491,6 +556,7 @@ export default function init() {
 
  
 
+                      // change this based on abovecode of init iitems
                  $('#'+$thisUiId+'')
                   .iconselectmenu({
                     appendTo:$thisUiAppend,
@@ -502,8 +568,15 @@ export default function init() {
                        $originalimage.attr("src",thisimage);//replace image 
                         //ensure to replace the title of the tile aswell
                         // $('#'+$thisUiId+'').iconselectmenu( "open" )// keep open by default?
-                        $('#'+$thisUiId+'').find('.ui-button').click();
-                      }  //change    
+                        
+                        // $('#'+$thisUiId+'').find('.ui-button').click();// keeps it open
+
+                      },  //change  
+                    select: function( event, ui ) {
+                        $(ui).selectmenu( "close" ); // close
+                        console.log("close");
+                      }
+                        
                   })
                   .iconselectmenu("menuWidget")
                   // .iconselectmenu( "open" )// open by default
@@ -657,15 +730,12 @@ export default function init() {
                 $coordinates.val(jsonpositions);
                 $coordinates.attr('value', jsonpositions);
 
-                   /* get html and update the image in canvas */
-                    console.log("updates canvas:");
-//review this _ its positions + also suggest placing into one fucntion so we can use it in other places aswell
-                    var thiscanvas = document.getElementById("canvas"),
-                        html_container = document.getElementById("tester-grid-id"),
-                        thishtml = html_container.innerHTML;
+                      
+                //capture canvas - consider if this best place to have this - look to attach to an initial init and the submit instead I think
+                 captureCanvas();
 
-                   rasterizeHTML.drawHTML(thishtml, thiscanvas);
-      //END review this _ its positions + also suggest placing into one fucntion so we can use it in other places aswell
+
+       //END review this _ its positions + also suggest placing into one fucntion so we can use it in other places aswell
  
                 // localStorage.setItem("coordinates",  jsonpositions);
 
@@ -704,6 +774,9 @@ export default function init() {
                 $coordinates.attr('value', jsonpositions);
 
                 localStorage.setItem("coordinates",  jsonpositions);
+
+                 //capture canvas - consider if this best place to have this - look to attach to an initial init and the submit instead I think
+                 captureCanvas();
 
                 //  TODO - update this for unique gird
                 // $('.coordinates').val(jsonpositions);
@@ -1279,13 +1352,17 @@ export function itemEdit($thisitem, $grid) {
 
   var $this = $thisitem,
     // $grid = $grid,
-    $thisedittoggle = $thisitem.find('.grid-item-options-toggle'),
+    $thisedittoggle = $thisitem.find('.grid-item-options-toggle').not(".grid-item-options-toggle-rotate"),
+    $thisrotatetoggle = $thisitem.find('.grid-item-options-toggle-rotate'),
+
     //image:
     thisitemidvalue = $this.find('input.input-id').val(),
 
     thisitemwidthvalue = $this.find('input.input-width').val(),
     thisitemheightvalue = $this.find('input.input-height').val(),
     thisitemzindexvalue = $this.find('input.input-z-index').val(),
+    applyrotate = $this.find('input.input-rotate').val() + "deg",
+
     applyxvalue = $this.find('input.input-image-position-x').val() + "%",
     applyyvalue = $this.find('input.input-image-position-y').val() + "%",
     applyscalevalue = $this.find('input.input-image-scale').val() / 100,
@@ -1305,10 +1382,38 @@ export function itemEdit($thisitem, $grid) {
       $('.layout-grid-item.repeater-item').removeClass("item-edit-active");
       //add active
       $this.addClass("item-edit-active");
-      $this.find('.image-ui').css("background","red");
+      // $this.find('.image-ui').css("background","red");
       // $postfield.selectmenu( "open" );// doesnt work because not initiated yet?
       $this.find('.ui-button').click(); // the post object select field; ensure its open
     }
+
+  }); // $this.click
+
+  $thisrotatetoggle.click(function () {
+    console.log("click; rotate clicking");
+
+    var $thisrotate = $this.find('input.input-rotate'),
+        thisrotatevalue = Number($thisrotate.val());
+        
+    // console.log("thisrotate" +$thisrotate +"");
+    console.log("thisrotatevalue" +thisrotatevalue +"");
+
+    if (thisrotatevalue == 270){
+
+     var thisnewrotatevalue = 0;
+
+   
+     } else {
+       
+      var thisnewrotatevalue = Number(thisrotatevalue + 90);
+    }
+    $thisrotate.val(thisnewrotatevalue);
+
+      console.log("thisnewrotatevalue" +thisnewrotatevalue +"");
+    $this.find(".inner-grid-item").css("transform", "rotate(" + thisnewrotatevalue + "deg)"); // to do - ensure cross browser
+
+    // $this.find('.ui-button').click(); // the post object select field; ensure its open
+    
 
   }); // $this.click
 
@@ -1331,14 +1436,35 @@ export function itemEdit($thisitem, $grid) {
     // console.log("thisfield type= "+thisfieldtype);
 
     // TODO - @tom - I epext there's maybe a better way of writtin this js, using less lines + an "input item variable" of sorts?
+    if (thisfieldtype == "image_rotate") {
 
-    if (thisfieldtype == "input-id") {
+  console.log("rotate input on pinput change");
+
+
+      applyrotatevalue = newvalue + "deg";
+      // $this.find(".inner-grid-item").css("left", applyvalue);
+      // $this.find(".inner-grid-item").css("transform", "translateX("+applyzvalue+")"); // to do - ensure cross browser
+
+      $thisfield.attr("value", newvalue);
+      console.log("newvalue" +newvalue+"")
+
+      // console.log("applyvalue x position" +applyxvalue+"")
+
+      $this.find(".inner-grid-item").css("transform", "rotate(" + applyrotatevalue + ")"); // to do - ensure cross browser
+
+
+
+
+
+    }else if (thisfieldtype == "input-id") {
 
       // console.log("id field change" + newvalue + "")
       //newvalue
 
     } else if (thisfieldtype == "input-width") {
 
+
+      /*
       var thisclass = "grid-item-width", // this prefix of class
         newclass = "grid-item-width-" + (newvalue / 25) + "", // divide by four
 
@@ -1356,9 +1482,9 @@ export function itemEdit($thisitem, $grid) {
         thisimageheight; // declare - but don't assign value yet
 
       gridImageOrientation($thisitem, thisimagewidth, thisimageheight); // assign image orientation classes
-
+        */
     } else if (thisfieldtype == "input-height") {
-
+      /*
       var thisclass = "grid-item-height", // this prefix of class
         newclass = "grid-item-height-" + (newvalue / 25) + "",
         classes = $this.attr('class').split(" ").filter(function (c) {
@@ -1372,9 +1498,9 @@ export function itemEdit($thisitem, $grid) {
       var thisimagewidth, // declare - but don't assign value yet
         thisimageheight; // declare - but don't assign value yet
       gridImageOrientation($thisitem, thisimagewidth, thisimageheight); // assign image orientation classes
-
+*/
     } else if (thisfieldtype == "input-z-index") {
-
+/*
       var thisclass = "item-z-index", // this prefix of class
         newclass = "item-z-index-" + newvalue + "",
         classes = $this.attr('class').split(" ").filter(function (c) {
@@ -1384,9 +1510,9 @@ export function itemEdit($thisitem, $grid) {
       $this.attr('class', classes.join(" ").trim());
       $this.addClass(newclass);
       //$grid.packery('layout'); // don't layout on z-index, as it re-arranges existinglayout
-
+*/
     } else if (thisfieldtype == "input-image-position-x") {
-
+/*
       applyxvalue = newvalue + "%";
       // $this.find(".inner-grid-item").css("left", applyvalue);
       // $this.find(".inner-grid-item").css("transform", "translateX("+applyzvalue+")"); // to do - ensure cross browser
@@ -1397,9 +1523,9 @@ export function itemEdit($thisitem, $grid) {
       // console.log("applyvalue x position" +applyxvalue+"")
 
       $this.find(".inner-grid-item").css("transform", "translateX(" + applyxvalue + ") translateY(" + applyyvalue + ")"); // to do - ensure cross browser
-
+*/
     } else if (thisfieldtype == "input-image-position-y") {
-
+/*
       applyyvalue = newvalue + "%";
 
       // console.log("applyvalue y position" +applyyvalue+"");
@@ -1425,7 +1551,7 @@ export function itemEdit($thisitem, $grid) {
     };
 
   }); //$inputfields.change(function()
-
+*/
 } // function itemedit(itemid){ // for new items
 
 // export function imageEdit(itemid, $grid) { // for new items

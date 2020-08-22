@@ -39,15 +39,6 @@
 ?>
 
  
- 
-<?php
-
-
-
-
-
-    //felicity's ?>
-
   <?php if ( is_user_logged_in() ):
 
     $edit = true;
@@ -87,11 +78,11 @@
     endif;//is_user_logged_in() ?>
 
 
-<div class="grid-layer">
+<div class="grid-layer grid-container">
 
   <?php if ( is_user_logged_in() ) :?>
     
-      <form id="grid" action="<?php echo esc_url( $url ); ?>" method="<?php echo $edit ? 'PUT' : 'POST'; ?>">
+      <form id="grid" class="grid-row-holder" action="<?php echo esc_url( $url ); ?>" method="<?php echo $edit ? 'PUT' : 'POST'; ?>">
 
         <div class="site-grid-container dev-layout-grid-toggle-wrap">
 
@@ -285,7 +276,7 @@
 
                   ?>
 
-                  <div data-item-id="<?php echo esc_attr( $v['item_id'] ); ?>"  data-url="<?php echo $activelink;?>" data-item-z-index="<?php echo esc_attr( $v['item_z-index'] ); ?>" name="fields[layout_items][<?php echo absint( $k ); ?>][item_size_w][item_size_h]['item_z-index']['image_scale]['image_position_x']['image_position_y']['associated_segment']" class="layout-grid-item repeater-item grid-fade-item grid-item-width-<?php echo esc_attr( $v['item_size_w']/25 ); ?> item-z-index-<?php echo esc_attr( $v['item_z-index'] ); ?> grid-item-height-<?php echo esc_attr( $v['item_size_h']/25 ); ?><?php if (!$source_image ):?> blank-item<?php endif; ?><?php echo $class; ?>">
+                  <div data-item-id="<?php echo esc_attr( $v['item_id'] ); ?>"  data-url="<?php echo $activelink;?>" data-item-z-index="<?php echo esc_attr( $v['item_z-index'] ); ?>" name="fields[layout_items][<?php echo absint( $k ); ?>][item_size_w][item_size_h]['item_z-index']['image_scale]['image_position_x']['image_position_y']['associated_segment']['image_rotate]" class="layout-grid-item repeater-item grid-fade-item grid-item-width-<?php echo esc_attr( $v['item_size_w']/25 ); ?> item-z-index-<?php echo esc_attr( $v['item_z-index'] ); ?> grid-item-height-<?php echo esc_attr( $v['item_size_h']/25 ); ?><?php if (!$source_image ):?> blank-item<?php endif; ?><?php echo $class; ?>">
 
 
                     <?php /* [DOM] Found 21 elements with non-unique id #:
@@ -297,14 +288,34 @@
                       <div class="btn grid-item-options-toggle">
 
                         <div class="is-on">
-                        Hide Options
+                        Close
                         </div>
 
                         <div class="is-off">
-                        Show Options
+                        Edit
                         </div>
 
                       </div><!--grid-item-options-toggle-->
+
+                      <div class="btn grid-item-options-toggle grid-item-options-toggle-rotate">
+
+                        <div class="rotate" style="
+                            transform:
+                            rotate(<?php echo esc_attr( $v['item_rotate'] ); ?>deg)">
+
+              
+
+                        <?php get_template_part( '/dist/svg/inline-rotate_arrow_svg' ); ?>						 
+
+                            <label style="display:none;">
+
+                              <span class="options-item-title sub-title">rotate (in %)</span>
+                                <input class="input-rotate" data-input-type="input-rotate" min="0" max="360" step="90" type="number" name="fields[layout_items][<?php echo absint( $k ); ?>][item_rotate]" value="<?php echo esc_attr( $v['item_rotate'] ); ?>">
+                            </label>
+ 
+                        </div>
+ 
+                      </div><!--grid-item-options-toggle-rotate-->
 
                       <div class="grid-item-options site-grid-container">
 
@@ -350,11 +361,11 @@
                                      <fieldset>
 
                                       <label for="acf-post-object-<?php echo esc_attr( $v['item_id'] ); ?>">
-                                      <span class="options-item-title">Associated Segment:</span>
+                                    <!--  <span class="options-item-title">Associated Segment:</span>-->
 
                                   <?php/* select had this: id="acf-post-object" */?>
                                         <select class="form-control input-sm image-ui acf-post-object" id="acf-post-object-<?php echo esc_attr( $v['item_id'] ); ?>" name="fields[layout_items][<?php echo absint( $k ); ?>][associated_segment]">
-                                          <option value="">-- select --</option>
+                                          <option value="">SELECT:</option>
                                           <?php 
                                             //https://stackoverflow.com/questions/2965971/how-to-add-images-in-select-list
                                             // this bg doesn't work in most browsers; use jquery ui instead:
@@ -371,13 +382,11 @@
                                                 $selected = '';
                                               }?>
                                               
-                                             
-
-
-                                              
+                                                                         
                                             
                                             <option <?php echo esc_attr( $selected ); ?> <?php if( !empty($segmentimage) ): ?> data-segment-image="<?php echo $segmentimage['url']; ?>" data-class="avatar" data-style="background-image: url('<?php echo $segmentimage['url']; ?>');"<?php endif; ?> value="<?php echo $p->ID; ?>">
-                                                <?php echo $p->post_title; ?>
+                                          
+                                              <span class="title">  <?php echo $p->post_title; ?></span>
                                              </option>
                                             <?php //echo $activelink;?>
 
@@ -389,7 +398,8 @@
 
                                         </select>
                                       </label>
-                                            </fieldset>
+                                    
+                                    </fieldset>
 
                                   </div>
                                   <!-- </div>  .options left-options -->
@@ -399,9 +409,6 @@
                                   </div><!-- .grid-item-options-item  -->
 
                           </div><!-- .grid-item-options-item  -->
-
-
-
 
                           <div class="grid-item-options-item image-options-item site-grid-item site-grid-xxxs-16 site-grid-xs-8 site-grid-sm-6" style="display:none;">
 
@@ -458,7 +465,13 @@
 
                       </div><!--.grid-item-options-->
 
-                      <div class="inner-grid-item" style="transform: translateX(<?php echo esc_attr( $v['image_position_x'] ); ?>%) translateY(<?php echo esc_attr( $v['image_position_y'] ); ?>%) scale(<?php echo esc_attr( $v['image_scale']/100); ?>)">
+                      <div class="inner-grid-item" 
+                      style="
+                      transform:
+                      rotate(<?php echo esc_attr( $v['item_rotate'] ); ?>deg)
+                      translateX(<?php echo esc_attr( $v['image_position_x'] ); ?>%) 
+                      translateY(<?php echo esc_attr( $v['image_position_y'] ); ?>%) 
+                      scale(<?php echo esc_attr( $v['image_scale']/100); ?>)">
 
                         <div data-aos="fade-up" data-aos-mirror="true" data-aos-duration="750" data-aos-anchor-placement="center-bottom" class="image-wrap" style="<?php if($v['item_size_h'] > $v['item_size_w'] && $source_image ) : ?>height: calc(<?php echo esc_attr( $v['item_size_w'] ); ?>vw / <?php echo $source_image[1] / $source_image[2]; ?>);<?php elseif( $source_image ) : ?> width: calc(<?php echo esc_attr( $v['item_size_h'] ); ?>vw * <?php echo $source_image[1] / $source_image[2]; ?>);<?php endif; ?>">
 
@@ -532,11 +545,18 @@
 
           </div>
 
-<!--          <canvas id="canvas" width="100%" height="100%" style="width:100vw; height:50vw; border: 1px solid black;"></canvas> -->
-                <canvas id="canvas" width="1000px" height="500px" style="height:50vw; border: 1px solid black;"></canvas>
+<!--          <canvas id="canvas" width="100%" height="100%" style="width:100vw; height:50vw; border: 1px solid black;"></canvas>
+              <canvas id="canvas" width="1000px" height="500px" style="height:50vw; border: 1px solid black;"></canvas>
+ -->
+            <div class="exports">
+           
+                <div id="canvas-wrap">
+                </div><!-- #canvas-wrap -->
 
-
-                <!-- investigated how to get the sizing corect - probbaly look to resizse the canvas via JS? -->
+                <div id="export-image-wrap">
+                </div><!-- #image-wrap -->
+            
+            </div><!--.exports -->
 
         </div><!-- repeater-wrap -->
 
@@ -548,6 +568,9 @@
 
     </div><!--.grid-layer-->
 
-<?php //additional content:
-the_content();?>
+    <div class="grid-container">
 
+        <?php //additional content:
+        the_content();?>
+
+    </div><!--.grid-container-->

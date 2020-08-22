@@ -25,7 +25,7 @@ if ( have_posts() ) :?>
 			// if( is_page('theseus') ): /*if is_page('work') */
 
 		 
-		  		// get_template_part( 'content-page-grid' );?>
+		  		 get_template_part( 'content-page-grid' );?>
  
 
 			<?php //endif;
@@ -35,7 +35,7 @@ if ( have_posts() ) :?>
 	<?php	// If comments are open or we have at least one comment, load up the comment template.
 		if ( comments_open() || get_comments_number() ) :?>
 
-			<div class="comments-wrap">
+			<div class="comments-wrap grid-container"> 
 		
 				<?php comments_template();?>
 	
