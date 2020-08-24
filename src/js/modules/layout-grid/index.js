@@ -325,6 +325,8 @@ export default function init() {
           
         var img = document.createElement("img"); // create an image object
             img.src = canvas.toDataURL(); // get canvas content as data URI
+          
+            getCanvas = canvas;
 
           if ($('#canvas-wrap').has('canvas').length) {
             //console.log("delete exisint canvas
@@ -334,21 +336,34 @@ export default function init() {
           //create images
           document.querySelector("#export-image-wrap").appendChild(img);
           //create canvas
-          document.querySelector("#canvas-wrap").appendChild(canvas);
-      
+          // document.querySelector("#canvas-wrap").appendChild(canvas);
+        
+          $('body').find("input[name='image-data_hidden_field']").val(img.src);
+// https://stackoverflow.com/questions/15153776/convert-base64-string-to-an-image-file
+
       });//  }).then(canvas => 
 
 
     $('body').removeClass("capturing-image");//hided none image elements
+
   // saving into wp cms
   // https://wordpress.stackexchange.com/questions/165321/saving-data-uri-to-media-library
-
+  // downloadImage();
 
   }// function captureCanvas(thishtml, thiscanvas)
 
+   
+
+
+  function downloadCanvas(link, canvasId, filename) {
+    link.href = document.getElementById(canvasId).toDataURL();
+    link.download = filename;
+}
+
+ 
   
 
-  // console.log("imagesloading");
+
 
 
   function initiatepackery($thisgrid) {
@@ -914,6 +929,18 @@ export default function init() {
 
  
 
+
+$("#download-image").on('click', function () {
+  console.log("hello?!")
+  var imgageData = getCanvas.toDataURL("image/png");
+// considerations: further vars and values for custom names etc
+
+  // Now browser starts downloading it instead of just showing it
+  var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+  $("#download-image").attr("download", "your_pic_name.png").attr("href", newData);
+});
+
+
   // dev toggle - TO DO - move this elsewhere
   $(".dev-layout-grid-toggle").click(function () {
 
@@ -1462,9 +1489,7 @@ export function itemEdit($thisitem, $grid) {
       //newvalue
 
     } else if (thisfieldtype == "input-width") {
-
-
-      /*
+      
       var thisclass = "grid-item-width", // this prefix of class
         newclass = "grid-item-width-" + (newvalue / 25) + "", // divide by four
 
@@ -1482,9 +1507,9 @@ export function itemEdit($thisitem, $grid) {
         thisimageheight; // declare - but don't assign value yet
 
       gridImageOrientation($thisitem, thisimagewidth, thisimageheight); // assign image orientation classes
-        */
+
     } else if (thisfieldtype == "input-height") {
-      /*
+
       var thisclass = "grid-item-height", // this prefix of class
         newclass = "grid-item-height-" + (newvalue / 25) + "",
         classes = $this.attr('class').split(" ").filter(function (c) {
@@ -1498,9 +1523,9 @@ export function itemEdit($thisitem, $grid) {
       var thisimagewidth, // declare - but don't assign value yet
         thisimageheight; // declare - but don't assign value yet
       gridImageOrientation($thisitem, thisimagewidth, thisimageheight); // assign image orientation classes
-*/
+
     } else if (thisfieldtype == "input-z-index") {
-/*
+
       var thisclass = "item-z-index", // this prefix of class
         newclass = "item-z-index-" + newvalue + "",
         classes = $this.attr('class').split(" ").filter(function (c) {
@@ -1510,9 +1535,9 @@ export function itemEdit($thisitem, $grid) {
       $this.attr('class', classes.join(" ").trim());
       $this.addClass(newclass);
       //$grid.packery('layout'); // don't layout on z-index, as it re-arranges existinglayout
-*/
+
     } else if (thisfieldtype == "input-image-position-x") {
-/*
+
       applyxvalue = newvalue + "%";
       // $this.find(".inner-grid-item").css("left", applyvalue);
       // $this.find(".inner-grid-item").css("transform", "translateX("+applyzvalue+")"); // to do - ensure cross browser
@@ -1523,9 +1548,9 @@ export function itemEdit($thisitem, $grid) {
       // console.log("applyvalue x position" +applyxvalue+"")
 
       $this.find(".inner-grid-item").css("transform", "translateX(" + applyxvalue + ") translateY(" + applyyvalue + ")"); // to do - ensure cross browser
-*/
+
     } else if (thisfieldtype == "input-image-position-y") {
-/*
+
       applyyvalue = newvalue + "%";
 
       // console.log("applyvalue y position" +applyyvalue+"");
@@ -1551,7 +1576,7 @@ export function itemEdit($thisitem, $grid) {
     };
 
   }); //$inputfields.change(function()
-*/
+
 } // function itemedit(itemid){ // for new items
 
 // export function imageEdit(itemid, $grid) { // for new items

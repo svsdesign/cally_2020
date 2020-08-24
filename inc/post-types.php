@@ -94,6 +94,9 @@ add_action('admin_menu','remove_default_post_type');
 
 
 
+
+
+
     /* NEWS */
  
     function post_type_news() {
@@ -174,6 +177,90 @@ add_action('admin_menu','remove_default_post_type');
      
     add_action( 'init', 'post_type_news' );
  
+    
+    /* MAP SUBMISSION */
+ 
+ function post_type_submissions() {
+
+    // Set UI labels for Custom Post Type
+    $labels = array(
+        'name'                => _x( 'submissions', 'Post Type General Name', 'cally' ),
+        'singular_name'       => _x( 'submission', 'Post Type Singular Name', 'cally' ),
+        'menu_name'           => __( 'Submissions', 'cally' ),
+        'parent_item_colon'   => __( 'submissions', 'cally' ),
+        'all_items'           => __( 'All submissions', 'cally' ),
+        'view_item'           => __( 'View submissions', 'cally' ),
+        'add_new_item'        => __( 'Add New submissions', 'cally' ),
+        'add_new'             => __( 'Add New', 'cally' ),
+        'edit_item'           => __( 'Edit submissions', 'cally' ),
+        'update_item'         => __( 'Update submissions', 'cally' ),
+        'search_items'        => __( 'Search submissions', 'cally' ),
+        'not_found'           => __( 'Not Found', 'cally' ),
+        'not_found_in_trash'  => __( 'Not found in Trash', 'cally' ),
+    );
+     
+    // Set other options for Custom Post Type
+     
+    $args = array(
+        // 'label'               => __( 'submissions', 'cally' ),
+        // 'description'         => __( 'Cally Label submissions', 'cally' ),
+        'labels'              => $labels,
+        // Features this CPT supports in Post Editor
+        'taxonomies' => array('post_tag','category'),
+        'show_in_rest' => true,
+        'supports' => array( 'title', 'author', 'revisions'),
+        // You can associate this CPT with a taxonomy or custom taxonomy. 
+      //'taxonomies'          => array( 'genres' ),
+        /* A hierarchical CPT is like Pages and can have
+        * Parent and child items. A non-hierarchical CPT
+        * is like Posts.
+        */ 
+        '_builtin' => false, // It's a custom post type, not built in
+        '_edit_link' => 'post.php?post=%d',
+        'capability_type' => 'post',
+        'hierarchical'        => false,
+        'public'              => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'show_in_nav_menus'   => true,
+        'show_in_admin_bar'   => true,
+      //  'menu_position'       => 5,
+        'can_export'          => true,
+        'has_archive'         => true,
+        // 'query_var'           => true,
+        // 'rewrite' => array('slug' => 'submissions', 'with_front' => true ),
+        $rewrite = array(
+            'slug'                  => 'submissions',
+            'with_front'            => true,
+            'pages'                 => true,
+            'feeds'                 => true,
+        ),
+        'rewrite' =>  $rewrite,
+        // 'query_var'           => 'post_type',//false,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true
+     );
+     
+    // Registering your Custom Post Type
+//  flush_rewrite_rules(false);
+//  flush_rewrite_rules();
+
+    register_post_type( 'submissions', $args );
+
+}
+
+
+ 
+/* Hook into the 'init' action so that the function
+* Containing our post type registration is not 
+* unnecessarily executed. 
+*/
+ 
+add_action( 'init', 'post_type_submissions' );
+
+
+
+
 
  /*   add_action( 'pre_get_posts', function ( $query ) {
         if ( $query->is_post_type_archive( 'news' ) && $query->is_main_query() && ! is_admin() ) {

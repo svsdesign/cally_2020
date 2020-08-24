@@ -70,7 +70,19 @@
 
 //ASKIMET - implement for spam purposes?
 
+// allow non logged in user to upload images in media library
 
+//https://wordpress.stackexchange.com/questions/355626/allow-non-logged-in-user-to-upload-images-in-media-library
+
+
+// Using the REST API to upload a file to WordPress is quite simple. All you need is to send the file in a POST-Request to the wp/v2/media route.
+// https://gist.github.com/ahmadawais/0ccb8a32ea795ffac4adfae84797c19a#:~:text=Using%20the%20REST%20API%20to,the%20body%20of%20the%20request.
+// https://wordpress.org/support/topic/uploading-image-by-base64-format-to-wordpress-by-rest-api/
+// https://stackoverflow.com/questions/37432114/wp-rest-api-upload-image
+
+
+// https://support.advancedcustomfields.com/forums/topic/acf_form-without-loggin-in/
+// https://medium.com/techcompose/how-to-add-advanced-custom-fields-acf-to-a-frontend-form-2b89c8cfdcee
 
 /*
 //Get only the approved comments
@@ -129,7 +141,6 @@ if ( post_password_required() )
  
         <ol class="comment-list">
 
-
             <?php
                 wp_list_comments( array(
                     'style'       => 'ol',
@@ -172,7 +183,7 @@ if ( post_password_required() )
 
 
 
-<?php if (is_page()) : //layout grid - maybe ensure not just page ?>
+<?php /*if (is_page()) : //layout grid - maybe ensure not just page ?>
 
 
         
@@ -224,4 +235,5 @@ if ( post_password_required() )
 
 
 
-<?php endif; // is page ?>
+<?php *endif; // is page  */
+?>

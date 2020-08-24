@@ -1,12 +1,12 @@
 {
     "key": "group_5f3d739c71936",
-    "title": "Comments: Freeling Street",
+    "title": "Freeling Street Submission Form",
     "fields": [
         {
             "key": "field_5f3d739c7938b",
-            "label": "test",
-            "name": "test",
-            "type": "textarea",
+            "label": "Image Data",
+            "name": "image-data_hidden_field",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -19,9 +19,9 @@
             "edit_in_rest": 0,
             "default_value": "",
             "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_5f3d73be508af",
@@ -53,9 +53,9 @@
     "location": [
         [
             {
-                "param": "page",
+                "param": "post_type",
                 "operator": "==",
-                "value": "104"
+                "value": "submissions"
             }
         ]
     ],
@@ -67,5 +67,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1598022895
+    "modified": 1598221155
 }

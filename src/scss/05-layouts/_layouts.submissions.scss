@@ -1,0 +1,46 @@
+ /*
+Theme Name: cally 2020
+Theme URI:  cultivatingcally.com
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+
+@each $scheme in $schemes { // start colour scheme
+ 
+    body.#{nth($scheme, 1)}:not(.wp-admin) // ensure we're not applying to admin 
+    {
+      // start generic styles for all post;archive etc
+
+      .submission-image{
+        width:100%;
+        height:auto;
+        display:block;
+      }
+
+      //start post / arcive specice
+      &.post-type-archive-submissions{
+
+
+        
+      }//&.post-type-archive-news
+
+      &.single-submissions{
+ 
+        /* don't wrap in this It breaks stuff
+        .wpuf_customs{
+        background: green;
+        } //.wpuf_customs
+        */
+
+        .submission-image{
+        width:100%;
+        height:auto;
+        display:block;
+        }
+
+      }// &.single-submissions
+
+    }//body
+
+}//scheme

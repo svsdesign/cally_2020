@@ -220,7 +220,9 @@ export function opacity(){
         
         function waitloading(){
 
-        $("body").addClass('loaded')
+        // $("body").addClass('loaded'); was this- bbut change to:
+        //reivew as it might cause issues
+         $("body").addClass('images-loaded');  
 
         }; //waitloading()
         setTimeout(waitloading, 200);

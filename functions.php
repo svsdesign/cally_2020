@@ -327,9 +327,34 @@ function _checked( $haystack, $current, $echo = true ) {
 //end svs added - as part of acf api:
 
 
+/*
+ * Add filter attribute 
+ */
+
+add_filter( 'walker_nav_menu_start_el', 'modify_walker_data_attr', 10, 4);
+
+function modify_walker_data_attr( $item_output, $item, $depth, $args )
+{
+
+    // I use ACF for adding field to a menu item
+    // https://www.advancedcustomfields.com/resources/adding-fields-menu-items/
+	$data_hover = get_field('prevent', $item);
+	
 
 
+	$old = '<a';
+	if (!empty($data_hover)) {
+    $new = '<a data-barba-prevent="'.$data_hover.'" ';
+	}else{
+	$new = '<a';
+	}
 
+    $item_output = str_replace($old, $new, $item_output);
+
+	return $item_output;
+	
+
+}
 //ACF COMMENTS
 
  
@@ -379,6 +404,7 @@ function _checked( $haystack, $current, $echo = true ) {
 	
 		
 	// grid template
+	// review this - delete it probably not needed anymore
  	    function my_gridpage_comment_template( $comment, $args, $depth ) {
 		?>
 	
@@ -589,6 +615,18 @@ foreach( $field_groups as $field_group ) {
 	acf_write_json_field_group( $field_group );
 
 }
+*/
+
+
+/* Add custom post type to USP Meta Box - delet this pronbably nnot using it anymore
+function usp_meta_box_custom_post_types($post_types) {
+	
+	array_push($post_types, 'news'); // change 'book' to your custom post type
+	
+	return $post_types;
+	
+}
+add_filter('usp_meta_box_post_types', 'usp_meta_box_custom_post_types');
 */
 ?>		
  

@@ -38,6 +38,16 @@
  */
 ?>
 
+<div class="grid-container">
+
+
+
+    <?php //additional content:
+    the_content();?>
+
+ </div><!--.grid-container-->
+
+ 
  
   <?php if ( is_user_logged_in() ):
 
@@ -114,7 +124,8 @@
                   <form action="<?php echo esc_url( $url ); ?>" method="<?php echo $edit ? 'PUT' : 'POST'; ?>">
           */?>
 
-          <form id="grid" action="<?php echo esc_url( $url ); ?>" method="<?php echo $edit ? 'PUT' : 'POST'; ?>">
+<?php /*    <form id="grid" action="<?php echo esc_url( $url ); ?>" method="<?php echo $edit ? 'PUT' : 'POST'; ?>">
+ */?>         <div id="grid">
 
               <div class="site-grid-container dev-layout-grid-toggle-wrap">
 
@@ -174,6 +185,7 @@
 
                       <button type="button" class="btn site-grid-item site-grid-xxxs-16 site-grid-xxs-2 btn-primary add-row">Add Item</button>
                       <button type="submit" class="btn site-grid-item site-grid-xxxs-16 site-grid-xxs-2 btn-success">Save All</button>
+                      <a id="download-image" type="button" class="btn site-grid-item site-grid-xxxs-16 site-grid-xxs-2  btn-primary download-image">Download Image</a>
 
                       <div class="response-message-wrap site-grid-item">
 
@@ -209,6 +221,7 @@
                       <button type="submit" class="btn site-grid-item site-grid-xxxs-16 site-grid-xxs-2 btn-success">Save All</button>
 
                       <button type="button"  class="clear-local-storage site-grid-item site-grid-xxxs-16 site-grid-xxs-16">Clear LocalStorage</button><!-- .clear-local-storage -->
+                      <a id="download-image" type="button" class="btn site-grid-item site-grid-xxxs-16 site-grid-xxs-2  btn-primary download-image">Download Image</a>
 
                       <div class="response-message-wrap site-grid-item">
 
@@ -562,6 +575,7 @@
       <?php if ( is_user_logged_in() ) :?>
       </form>
       <?php else: // not logged in?>
+      </div>
       <?php endif;//is_user_logged_in() ?>
 
     </div><!--.grid-container-->
@@ -580,9 +594,13 @@
 </div><!--.grid-layer-->
  
     
-<div class="grid-container">
 
-    <?php //additional content:
-    the_content();?>
+
+ <div class="grid-container">
+ <?php
+//  https://stackoverflow.com/questions/49442428/attach-canvas-image-created-to-input-file-to-upload-it-html5-jquery
+ 
+ echo do_shortcode("[wpuf_form id='310']"); ?>
+<?php// echo do_shortcode("[wpuf_edit]");?>
 
 </div><!--.grid-container-->
