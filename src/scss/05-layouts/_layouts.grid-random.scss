@@ -51,7 +51,7 @@
                 }// #background-map
             }
 
-        }
+        }//repeater-wrap
 
         /* ---- grid options (top) ---- */
 
@@ -325,19 +325,25 @@
         /* ---- grid ---- */
 
         .grid {
-            max-width: 100vw; //review
-            width: 100%; //review - this will cause issue in the gutenber UI
-            // overflow: visible;// so vertical ofsett can be seend
-            // overflow: hidden; // otherwise horizontal offset overflows
-            // overflow-y: visible; // need to ensur the option selectmenu can overflow - is htis going to be an issue?
-            overflow-x:hidden;
-            overflow-y: hidden;  //cant have any overflow - yet also means the drop downs are only 1 grid itme heigt
-            margin: 0; // maybe use padding instead if needed to add space?
-            // height: 50vw;//review - 5 rows atm - need for horizontal layout if item is 10vw
-            height: 25vw;//review - 5 rows atm if item is5vw
+        max-width: 100vw; //review
+        width: 100%; //review - this will cause issue in the gutenber UI
+        // overflow: visible;// so vertical ofsett can be seend
+        // overflow: hidden; // otherwise horizontal offset overflows
+        // overflow-y: visible; // need to ensur the option selectmenu can overflow - is htis going to be an issue?
+      
+        //cant have any overflow - yet also means the drop downs are only 1 grid itme heigt      
+        // overflow-x:hidden;
+        // overflow-y: hidden; 
+      
+        //now that we have margins araound the area - overflow okay I think:
+        overflow: visible;
 
-       
-            min-width: 100%;//review this 
+        margin: 0; // maybe use padding instead if needed to add space?
+        // height: 50vw;//review - 5 rows atm - need for horizontal layout if item is 10vw
+        height: 25vw;//review - 5 rows atm if item is5vw
+
+    
+        min-width: 100%;//review this 
         }
 
         /* clear fix */
@@ -437,18 +443,23 @@
                 cursor: pointer;
                 position: absolute;
                 @include fluid-type(
-                    padding,
+                    padding-left padding-right padding-bottom,
                     map-get($breakpoints, xs),
                     map-get($breakpoints,xxl),
                     map-get($lineheight, xs) * 0.5,
                     map-get($lineheight,xxl) * 0.5
                 );
                 z-index: 4; //above images + text
+                padding-bottom:0px;
 
                 //to do; create button appreaacne
                 &:hover {
                 }
             } //.grid-item-options-toggle
+
+            .move-arrow-area{
+            display:none;
+            }
 
             .grid-item-options {
                 display: none;
@@ -477,6 +488,11 @@
                 );
                 //transform: translateY(100%);// ensure if item at bottom its still visible
                 // border-top: 1px solid nth($scheme, 3);
+
+                  > div.site-grid-row-holder{
+                width:100%;
+                // background:red;
+                }
 
                 label {
                 display: inherit; // ensure it inherits flex
@@ -516,96 +532,163 @@
 
                 }
 
-                    /* select with CSS avatar icons */
-                option.avatar {
-                    background-repeat: no-repeat !important;
-                    padding-left: 20px;
-                }
-                .avatar-selected{
+                .image-ui{
+                font-family: $medium-font-family;
+                text-align: center;
+                }// image-ui{
+
+                .ui-widget{
+                font-family: $medium-font-family;
                     @include fluid-type(
-                        width height,
+                     font-size,
                         map-get($breakpoints, xs),
                         map-get($breakpoints,xxl),
-                        map-get($lineheight, xs) * 1,
-                        map-get($lineheight,xxl) * 1
+                        map-get($lineheight, xs) * 0.4,
+                        map-get($lineheight,xxl) * 0.4
                     );
                 }
 
-                .ui-selectmenu-button.ui-button{
-                // background-color: red;
-                width: 100%;  
-                }
-                .ui-icon {
-                    position:absolute!important;
-                    background-position: 0 0;
-                    background-size: cover;
-                /* @include fluid-type(
-                        width height,
-                        map-get($breakpoints, xs),
-                        map-get($breakpoints,xxl),
-                        map-get($lineheight, xs) * 1,
-                        map-get($lineheight,xxl) * 1
-                    );*/
-                    width:100%;
-                    height: 100%;
-                    display: block;
-                    right:0px;
-                    bottom: 0px;
-                    left:0px;
-                    top:0px;
-                    z-index: -1;
-                }
-                .ui-menu {
-                /* @include fluid-type(
-                        height,
-                        map-get($breakpoints, xs),
-                        map-get($breakpoints,xxl),
-                        map-get($lineheight, xs) * 3.5,
-                        map-get($lineheight,xxl) * 3.5
-                    );*/
+                .ui-front {
+                z-index: 100;
+                right:0px;
+                background-color: nth($scheme, 3);
+                color: nth($scheme, 2);
 
-                    height:inherit;
-                    max-height: 10vw;// can only be one grid size unit  for overflow issues on parent container//30vw;
-                    display: grid;
-                    grid-template-columns:$iconwidth1;//1fr;// repeat(auto-fill, $iconwidth1);
-                    //  grid-template-columns: $iconwidth1 $iconwidth1 $iconwidth1;
-                    grid-template-rows: repeat(auto-fill, $iconheight1);
-                    /* @include fluid-type(
-                        grid-gap,
-                        map-get($breakpoints, xs),
-                        map-get($breakpoints,xxl),
-                        map-get($lineheight, xs) * 0.25,
-                        map-get($lineheight,xxl)* 0.25
-                    );*/
-                    grid-gap:0;
-
-                    .ui-menu-item{
-                    width:100%;
-                    height:$iconheight1;
-                    text-align:center;
-                    @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*0.75, map-get($fontsize, lg)*0.75); // fixed sizing 
-                    @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*0.75, map-get($fontsize, xxl)*0.75); // viewport sizing 
-                    // @include fluid-type(line-height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
-                    // @include fluid-type(line-height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing 
-                    // line-height:10vw;
-                    
-                        .ui-menu-item-wrapper {
-                            @include fluid-type(
-                            padding,
+                    /* select with CSS avatar icons */
+                    option.avatar {
+                        background-repeat: no-repeat !important;
+                        // padding-left: 20px;
+                    }
+                    .avatar-selected{
+                        @include fluid-type(
+                            width height,
                             map-get($breakpoints, xs),
                             map-get($breakpoints,xxl),
-                            map-get($lineheight, xs) * 0.125,
-                            map-get($lineheight,xxl)* 0.125
-                            );
-                            z-index: 0;
-                            height:inherit;
-                        }
-                        
-                    }//.ui-menu-item
+                            map-get($lineheight, xs) * 1,
+                            map-get($lineheight,xxl) * 1
+                        );
+                    }
 
-                }//.ui-menu
+                    .ui-selectmenu-button.ui-button{
+                    // background-color: red;
+                    width: 100%;  
+                    }
+                    .ui-icon {
+                        position:absolute!important;
+                        background-position: 0 0;
+                        background-size: cover;//contain;
+                        background-image: none; // so that default image not showing fromn other style sheet
+                        background-blend-mode: multiply;
+                        background-color:nth($scheme, 3);
+                    /* @include fluid-type(
+                            width height,
+                            map-get($breakpoints, xs),
+                            map-get($breakpoints,xxl),
+                            map-get($lineheight, xs) * 1,
+                            map-get($lineheight,xxl) * 1
+                        );*/
+                        width:100%;
+                        height: 100%;
+                        display: block;
+                        right:0px;
+                        bottom: 0px;
+                        left:0%;
+                        top:0px;
+                        z-index: -1;
+                    }
+
+
+                    .ui-menu {
+                    /* @include fluid-type(
+                            height,
+                            map-get($breakpoints, xs),
+                            map-get($breakpoints,xxl),
+                            map-get($lineheight, xs) * 3.5,
+                            map-get($lineheight,xxl) * 3.5
+                        );*/
+
+                        height:inherit;
+                        max-height: 15vw;// can only be one grid size unit  for overflow issues on parent container//30vw;
+                        display: grid;
+                        border:0px;
+                        grid-template-columns:10vw;//$iconwidth1;//1fr;// repeat(auto-fill, $iconwidth1);
+                        //  grid-template-columns: $iconwidth1 $iconwidth1 $iconwidth1;
+                        grid-template-rows: repeat(auto-fill, $iconheight1);
+                        /* @include fluid-type(
+                            grid-gap,
+                            map-get($breakpoints, xs),
+                            map-get($breakpoints,xxl),
+                            map-get($lineheight, xs) * 0.25,
+                            map-get($lineheight,xxl)* 0.25
+                        );*/
+                        grid-gap:0;
+                        width:10vw;// = 2 x iconwidth $iconwidth1!important;//to overide the css set via js jquery ui
+                        margin:auto;
+                        background: nth($scheme, 3);
+
+                        .ui-menu-item{ 
+                        color:rgba(255, 255, 255, 0.5);
+                        width:100%;
+                        // height:$iconheight1;
+                        height:inherit;// allows item to change based on active child or
+                        text-align:center;
+                        margin:auto;
+                        @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*0.75, map-get($fontsize, lg)*0.75); // fixed sizing 
+                        @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*0.75, map-get($fontsize, xxl)*0.75); // viewport sizing 
+                        // @include fluid-type(line-height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+                        // @include fluid-type(line-height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing 
+                        // line-height:10vw;
+                        
+                            .ui-menu-item-wrapper {
+                                @include fluid-type(
+                                padding,
+                                map-get($breakpoints, xs),
+                                map-get($breakpoints,xxl),
+                                map-get($lineheight, xs) * 0.125,
+                                map-get($lineheight,xxl)* 0.125
+                                );
+                                z-index: 0;
+                                height:inherit;
+                                padding: 0;
+                                line-height: $iconheight1;
+                                // color: nth($scheme, 2);
+                            }
+                            
+                            .ui-state-active{
+                            border:none;
+                            background:none;
+                            font-size: 0px;// don't display text
+                            height:10vw;
+
+                                 span.ui-icon {
+                                    position:absolute!important;
+                                    background-position: 0 0;
+                                    background-size: contain;
+                                    background-blend-mode: none;
+                                    background-color:nth($scheme, 2);
+                                    width:100%;
+                                    height: 10vw;
+                                    display: block;
+                                    right:0px;
+                                    bottom: 0px;
+                                    left:0;
+                                    top:0px;
+                                    z-index: 1;
+
+                                }
+            
+                            }
+                            .ui-selectmenu-text{
+                            opacity:0; 
+                            }
+                        }//.ui-menu-item
+
+                    }//.ui-menu
+
+                } // .ui-front 
                 
-                
+
+
                 .input-id {
                     // review + delte probably
                     background-color: nth($scheme, 3);
@@ -638,7 +721,7 @@
                         clear: both;
                         // color: $color-grey;
 
-                        @include fluid-type(
+                    /*    @include fluid-type(
                             padding-bottom,
                             map-get($breakpoints, xs),
                             map-get($breakpoints,xxl),
@@ -646,6 +729,8 @@
                             map-get($lineheight,xxl) * 0.5
                         );
 
+
+                        */
                         &.sub-title {
                             color: nth($scheme, 3);
                             @include fluid-type(
@@ -670,10 +755,12 @@
 
                     &.item-options-item {
                         // background:green;
-                        order: 2;
-                        @media (min-width: map-get($breakpoints, md)) {
+                        // order: 2;
+                     /*   @media (min-width: map-get($breakpoints, md)) {
                             order: 2;
                         }
+                       */
+                        padding:0;
 
                         .label-wrapper {
                             flex-direction: row;
@@ -687,7 +774,8 @@
                         }
 
                         .post-options-item {
-                            @include fluid-type(
+                           
+                           /* @include fluid-type(
                                 padding-bottom padding-top,
                                 map-get($breakpoints, xs),
                                 map-get($breakpoints,xxl),
@@ -696,6 +784,7 @@
                             );
                             // background:yellow;
                             // order:3;
+                            */
                             @media (min-width: map-get($breakpoints, md)) {
                                 // order:3;
                             }
@@ -1031,6 +1120,13 @@
             }
         } //.grid-item
 
+         //draggabiltiy rules:
+        .layout-grid-item.is-dragging{
+            //ensure taht draggabel one is above everything else:
+            z-index: 99;
+          
+            
+        }
 
         .blur {
             .layout-grid-item{
@@ -1219,28 +1315,39 @@
                 }
             }
 
-            // START dev functions
+         
+
+            // START dev functions - this now part of the UI/UX for "starting the grid"
             .dev-layout-grid-toggle-wrap {
                 pointer-events: none;
                 // position: sticky;
                 position: absolute;
+                width:100%;
+                height: 100%;
                 z-index: 90; // review - ensure nav visble
-                background-color: nth($scheme,3);
+                // background-color: nth($scheme,3);
                 color: nth($scheme, 2);
                 // background-color: nth($scheme, 3);
-                border-bottom: 1px solid nth($scheme, 3);
+                // border-bottom: 1px solid nth($scheme, 3);
                 display: none;
-                @include fluid-type(
+                left:0px;
+                top:0px;
+                text-align:center;
+                background:red;
+
+               /* @include fluid-type(
                     top,
                     map-get($breakpoints, xs),
                     map-get($breakpoints,xxl),
                     map-get($lineheight, xs) * 4.5,
                     map-get($lineheight,xxl) * 4.5
                 );
+                */
 
                 @media (min-width: map-get($breakpoints, md)) {
                     display: block;
 
+                     /*
                     @include fluid-type(
                         top,
                         map-get($breakpoints, xs),
@@ -1248,40 +1355,43 @@
                         map-get($lineheight, xs) * 2.5,
                         map-get($lineheight,xxl) * 2.5
                     );
+                    */
                 }
 
                 .dev-layout-grid-toggle {
                     pointer-events: none;
-                    @include fluid-type(
+                   /* @include fluid-type(
                         line-height,
                         map-get($breakpoints, xs),
                         map-get($breakpoints,xxl),
                         map-get($lineheight, xs) * 1,
                         map-get($lineheight,xxl) * 1
-                    );
+                    );*/
                     // @include fluid-type(top, map-get($breakpoints, xs), map-get($breakpoints,xxl), map-get($lineheight, xs)*2, map-get($lineheight,xxl)*2);
                     text-align: center;
                     height: inherit;
+                    line-height: 55vw; // maybve needs reviewing
 
                     @media (min-width: map-get($breakpoints, xxs)) {
-                        text-align: right;
+                        // text-align: right;
                     }
 
                     .is-on,
                     .is-off {
                         cursor: pointer;
                         pointer-events: initial;
-                        float: right;
+                        // float: right;
                     }
 
                     .is-on {
-                        display: none;
+                    display: none;
                     }
 
                     .is-off {
                         display: block;
                     }
                 } //.dev-layout-grid-toggle
+
             } //.dev-layout-grid-toggle-wrap
 
         } //body.logged-in
@@ -1297,7 +1407,8 @@
                 display: none;
             }
             .grid-options-wrap {
-                display: block;
+            display: block;
+
 
                 .grid-options {
                     //packery input
@@ -1319,9 +1430,11 @@
                 // background:nth($scheme, 3)
 
 
+                 
+
                 .grid-item-options-toggle {
                 display: none;
-                width:50%;
+                // width:50%;
                     .is-on {
                         display: none;
                     }
@@ -1337,18 +1450,90 @@
                     
                 } //.grid-item-options-toggle
 
+                .move-arrow-area{
+                display:block;
+                width:100%;
+                position: absolute;
+                height:100%;
+                padding:30%;
+                pointer-events:none;
+                opacity: 0;
+                z-index:9;//review this?
 
+                    svg{
+                    width:100%;
+                    height:100%;
+                    }
 
-                //
+                }//.move-arrow-area
+
+                //grid item on hover
                 &:hover {
                    border:1px solid $color-active-grid-item;
                 
+                   .move-arrow-area{
+                     opacity:0.5; // turn on
+                     pointer-events:initial;
+
+                        &:hover{
+                        opacity:1;
+                        }
+                    } //.move-arrow-area
+
                     .grid-item-options-toggle {
-                        display: block;
-                        color: nth($scheme, 2);
-                        opacity:0.5;
-                        width:50%;
-                        background-color:red;
+                    display: block;
+                    color: nth($scheme, 2);
+                    opacity:1;
+                    width:200%;
+                    height:200%;
+                    bottom:-50%;
+                    top:-50%;
+                    left:-50%;
+                    right:-50%;
+                    position:absolute;
+                    z-index:3;//above edit
+                    background-color: nth($scheme, 3);
+                    text-align:center;
+
+                      
+
+                        &.grid-item-options-toggle-rotate{
+                        // right:0px;
+                        width:200%;
+                        height:50%;
+                        z-index:4;// 1 above edit
+                        top:initial;
+                        background-color: none;
+                        padding: 0;
+                        
+                            .rotate{
+                            margin: auto;
+                            position: relative;
+                            display: block;
+                            width:100%;
+                            height: 100%;
+                            @include fluid-type(
+                                padding,
+                                map-get($breakpoints, xs),
+                                map-get($breakpoints,xxl),
+                                map-get($lineheight, xs) * 0.125,
+                                map-get($lineheight,xxl) * 0.125
+                            );
+
+                                svg{
+                                margin:auto;
+                                display:block;
+                                width:inherit;
+                                height:100%;
+                                position:relative;
+                                }
+                            }
+
+                            &:hover {
+                                
+                            }
+
+                        }
 
                         &:hover {
                         color: nth($scheme, 2);
@@ -1365,9 +1550,11 @@
 
                     .inner-grid-item{
                     background-color: nth($scheme, 3);
+                    z-index:4;// 1 above controls; shocases the image
+                    pointer-events: none;// don't allow clicking on it though
 
                         .image-wrap{
-                        opacity: 0.2;
+                        opacity: 1;
                         }
 
                     }//.inner-grid-item
@@ -1404,19 +1591,32 @@
                         // max-height: 50vh;//review this after ui/ux of mapsegments complete
                         // min-height: 25vh;//review this after ui/ux of mapsegments complete
                         height: inherit;
+
+                        left: -50%;
+                        top: 0;
+                        right: -50%;
+                        width: 200%;
+
                     }
                 } // &.item-edit-active
             } //.grid-item
 
             .dev-layout-grid-toggle-wrap {
-                position: fixed;
-                z-index: 99; // review - ensure nav visble
+             // I probably don't need to ever show his - so diplay none once its activated?
+
+                // position: fixed;
+                z-index: 99;  
                 color: nth($scheme, 2);
                 background-color: nth($scheme, 3);
                 top: 0px;
-                border-bottom: none;
+                bottom:initial;
+                height:auto;
+                border-bottom: none;       
+                left: initial;
+                width: auto;
+                right: 0;
 
-                @media (min-width: map-get($breakpoints, md)) {
+             /*   @media (min-width: map-get($breakpoints, md)) {
                     @include fluid-type(
                         top,
                         map-get($breakpoints, xs),
@@ -1434,9 +1634,11 @@
                         map-get($lineheight,xxl) * 2.5
                     );
                 }
-
+                */
                 .dev-layout-grid-toggle {
                     // @include fluid-type(top, map-get($breakpoints, xs), map-get($breakpoints,xxl), map-get($lineheight, xs)*2, map-get($lineheight,xxl)*2);
+                    // background:yellow;
+                    line-height: inherit; // so doesn't take up all space
 
                     .is-on {
                         display: block;

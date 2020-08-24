@@ -47,7 +47,7 @@
 
  </div><!--.grid-container-->
 
- 
+
  
   <?php if ( is_user_logged_in() ):
 
@@ -103,7 +103,7 @@
                 <div class="dev-layout-grid-toggle site-grid-item site-grid-xxxs-16 site-grid-xxs-16">
 
                     <div class="is-off">
-                    Open Edit Mode
+                    Click to Start
                     </div>
 
                     <div class="is-on">
@@ -134,7 +134,7 @@
                       <div class="dev-layout-grid-toggle site-grid-item site-grid-xxxs-16 site-grid-xxs-16">
 
                           <div class="is-off">
-                          Open Edit Mode
+                          Click to Start
                           </div>
 
                           <div class="is-on">
@@ -185,7 +185,7 @@
 
                       <button type="button" class="btn site-grid-item site-grid-xxxs-16 site-grid-xxs-2 btn-primary add-row">Add Item</button>
                       <button type="submit" class="btn site-grid-item site-grid-xxxs-16 site-grid-xxs-2 btn-success">Save All</button>
-                      <a id="download-image" type="button" class="btn site-grid-item site-grid-xxxs-16 site-grid-xxs-2  btn-primary download-image">Download Image</a>
+                      <a id="download-image" type="button" class="btn site-grid-item site-grid-xxxs-16 site-grid-xxs-2 btn-primary download-image">Download Image</a>
 
                       <div class="response-message-wrap site-grid-item">
 
@@ -309,7 +309,13 @@
                             Edit
                             </div>
 
+                          
                           </div><!--grid-item-options-toggle-->
+                        
+                          <div class="move-arrow-area">
+                            <?php get_template_part( '/dist/svg/inline-move_arrow_svg' ); ?>						 
+                           </div>
+
 
                           <div class="btn grid-item-options-toggle grid-item-options-toggle-rotate">
 
@@ -399,9 +405,10 @@
                                                                             
                                                 
                                                 <option <?php echo esc_attr( $selected ); ?> <?php if( !empty($segmentimage) ): ?> data-segment-image="<?php echo $segmentimage['url']; ?>" data-class="avatar" data-style="background-image: url('<?php echo $segmentimage['url']; ?>');"<?php endif; ?> value="<?php echo $p->ID; ?>">
-                                              
-                                                  <span class="title">  <?php echo $p->post_title; ?></span>
-                                                </option>
+                                                  <div class="title">
+                                                  <div><?php echo $p->post_title; ?></div>
+                                                  </div>
+                                                 </option>
                                                 <?php //echo $activelink;?>
 
                                                 <?php endforeach; ?>

@@ -102,7 +102,7 @@ is home content-news.php
 	
 				if ( get_post_status ($post->ID ) == 'publish'):?>
 
-				<a href="<?php echo the_permalink();?>" class="grid-item grid-xs-12 <?php if ($countpost === 1 ):?><?php gridclass($related_count);?><?php endif;?>">
+				<a data-barba-prevent="self" href="<?php echo the_permalink();?>" class="grid-item grid-xs-12 <?php if ($countpost === 1 ):?><?php gridclass($related_count);?><?php endif;?>">
 
 						<div class="header-wrap related-header-wrap">
 							
@@ -181,7 +181,7 @@ is home content-news.php
 	?>
 			
 		
-		<a href="<?php echo the_permalink();?>" class="">
+		<a data-barba-prevent="self" href="<?php echo the_permalink();?>" class="">
 
 			<div class="header-wrap">
 				

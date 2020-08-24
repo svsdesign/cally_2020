@@ -358,7 +358,7 @@ export default function init() {
   function downloadCanvas(link, canvasId, filename) {
     link.href = document.getElementById(canvasId).toDataURL();
     link.download = filename;
-}
+  }// function downloadCanvas(link, canvasId, filename) 
 
  
   
@@ -467,12 +467,14 @@ export default function init() {
                 // $thisitem.css("opacity","0.2");
   // resolve this
  
-//https://stackoverflow.com/questions/39064344/jqueryui-adding-an-image-in-option
+              //https://stackoverflow.com/questions/39064344/jqueryui-adding-an-image-in-option
+              // $('#'+$thisUiId+'').css("background","red");
 
                 $('#'+$thisUiId+'')
                   .iconselectmenu({
                     appendTo:$thisUiAppend,
-                    maxHeight:300, 
+                    // maxHeight:300, -- set via css atm
+                    width: 'auto',
                     style: 'dropdown',
                     change: function( event, ui ) { 
                          console.log("change" +ui+"");
@@ -496,8 +498,9 @@ export default function init() {
                      //change  
                     select: function( event, ui ) {
                         // $(ui).selectmenu( "close" ); // close
-                        // console.log("close");
-                      }//select
+                          console.log("close this grid-item-options-toggle");
+                          $thisitem.find('.grid-item-options-toggle').click();//trigger click
+                        }//select
                   })
                   .iconselectmenu("menuWidget")
                   .addClass("ui-menu-icons avatar");
@@ -562,7 +565,7 @@ export default function init() {
                 $newlastitem.find('.input-id').attr('value', '' + itemid + ''); //update item id on remove button
                 $newlastitem.find('.image-ui').attr('id', 'acf-post-object-' + itemid + '');//update id on acf ui (postobject) field
 
-                $thisUi.css("background","yellow");
+                // $thisUi.css("background","yellow");
 
                 var $thisUiId = $thisUi.attr('id'),
                     $originalimage = $newlastitem.find('img:not(.place-holder)');
@@ -572,32 +575,46 @@ export default function init() {
  
 
                       // change this based on abovecode of init iitems
-                 $('#'+$thisUiId+'')
-                  .iconselectmenu({
-                    appendTo:$thisUiAppend,
-                    change: function( event, ui ) { 
-                         console.log("change" +ui+"");
-                        $(ui.item.element).css("background","red");
-                       var thisimage = $(ui.item.element).attr("data-segment-image");
-                       console.log("thisimage" +thisimage+"");
-                       $originalimage.attr("src",thisimage);//replace image 
-                        //ensure to replace the title of the tile aswell
-                        // $('#'+$thisUiId+'').iconselectmenu( "open" )// keep open by default?
-                        
-                        // $('#'+$thisUiId+'').find('.ui-button').click();// keeps it open
 
-                      },  //change  
-                    select: function( event, ui ) {
-                        $(ui).selectmenu( "close" ); // close
-                        console.log("close");
-                      }
+                            
+
+                      $('#'+$thisUiId+'')
+                        .iconselectmenu({
+                          appendTo:$thisUiAppend,
+                          // maxHeight:300, -- set via css atm
+                          width: 'auto',
+                          style: 'dropdown',
+                          change: function( event, ui ) { 
+                              console.log("change" +ui+"");
+                              // $(ui.item.element).css("background","red");
+                            var thisimage = $(ui.item.element).attr("data-segment-image");
+                            console.log("thisimage" +thisimage+"");
+                            $originalimage.attr("src",thisimage);//replace image 
+
+                            /* review this - why re-open?
+                            setTimeout(function(){ 
+                              //$(ui.item.element).closest('.options.post-object').find('.ui-selectmenu-button').css("background","red");
+
+                              // this works.... but probably not the best approach
+                              $(ui.item.element).closest('.options.post-object').find('.ui-selectmenu-button').click(); 
+
+                              }, 50);    
+                              end review this
+                              */
+
+                          }, //change functions
+                          //change  
+                          select: function( event, ui ) {
+                              // $(ui).selectmenu( "close" ); // close
+                                console.log("close this grid-item-options-toggle");
+                                $newlastitem.find('.grid-item-options-toggle').click();//trigger click
+                              }//select
+                        })
+                        .iconselectmenu("menuWidget")
+                        .addClass("ui-menu-icons avatar");
+
                         
-                  })
-                  .iconselectmenu("menuWidget")
-                  // .iconselectmenu( "open" )// open by default
-                  .addClass( "ui-menu-icons avatar" ); 
- 
-                 
+                      //end change this based on abovecode of init iitems
 
                 makedraggable($(clone), $grid); // allow item to become draggabel
                 // imageEdit(itemid, $grid); // allow edit on image
@@ -747,7 +764,8 @@ export default function init() {
 
                       
                 //capture canvas - consider if this best place to have this - look to attach to an initial init and the submit instead I think
-                 captureCanvas();
+                //Temp turned off ; determine where best to run; on some sort of "capture button clikc I rkon"
+                //  captureCanvas();
 
 
        //END review this _ its positions + also suggest placing into one fucntion so we can use it in other places aswell
@@ -790,8 +808,8 @@ export default function init() {
 
                 localStorage.setItem("coordinates",  jsonpositions);
 
-                 //capture canvas - consider if this best place to have this - look to attach to an initial init and the submit instead I think
-                 captureCanvas();
+                //capture canvas - consider if this best place to have this - look to attach to an initial init and the submit instead I think
+                // captureCanvas();
 
                 //  TODO - update this for unique gird
                 // $('.coordinates').val(jsonpositions);
@@ -1046,6 +1064,387 @@ $("#download-image").on('click', function () {
 
 
 } //export default function init()
+
+
+
+
+export function removeClassByPrefix($this, prefix) {
+  var regx = new RegExp('\\b' + prefix + '.*?\\b', 'g');
+  $this.className = $this.className.replace(regx, '');
+  return $this;
+}
+
+export function itemEdit($thisitem, $grid) {
+
+  // console.log("itemedit");
+
+  var $this = $thisitem,
+    // $grid = $grid,
+    $thisedittoggle = $thisitem.find('.grid-item-options-toggle').not(".grid-item-options-toggle-rotate"),
+    $thisrotatetoggle = $thisitem.find('.grid-item-options-toggle-rotate'),
+
+    //image:
+    thisitemidvalue = $this.find('input.input-id').val(),
+
+    thisitemwidthvalue = $this.find('input.input-width').val(),
+    thisitemheightvalue = $this.find('input.input-height').val(),
+    thisitemzindexvalue = $this.find('input.input-z-index').val(),
+    applyrotate = $this.find('input.input-rotate').val() + "deg",
+
+    applyxvalue = $this.find('input.input-image-position-x').val() + "%",
+    applyyvalue = $this.find('input.input-image-position-y').val() + "%",
+    applyscalevalue = $this.find('input.input-image-scale').val() / 100,
+    $inputfields = $this.find('input');
+    $postfield = $this.find('.post-object select');
+
+  $thisedittoggle.click(function () {
+    console.log("click; activate edit item");
+
+    if ($this.hasClass("item-edit-active")) {
+
+      $this.removeClass("item-edit-active");
+
+    } else {
+
+      //remove other active items:
+      $('.layout-grid-item.repeater-item').removeClass("item-edit-active");
+      //add active
+      $this.addClass("item-edit-active");
+      // $this.find('.image-ui').css("background","red");
+      // $postfield.selectmenu( "open" );// doesnt work because not initiated yet?
+      $this.find('.ui-button').click(); // the post object select field; ensure its open
+    }
+
+  }); // $this.click
+
+  $thisrotatetoggle.click(function () {
+    console.log("click; rotate clicking");
+
+    var $thisrotate = $this.find('input.input-rotate'),
+        thisrotatevalue = Number($thisrotate.val());
+        
+    // console.log("thisrotate" +$thisrotate +"");
+    console.log("thisrotatevalue" +thisrotatevalue +"");
+
+    if (thisrotatevalue == 270){
+
+     var thisnewrotatevalue = 0;
+
+   
+     } else {
+       
+      var thisnewrotatevalue = Number(thisrotatevalue + 90);
+    }
+    $thisrotate.val(thisnewrotatevalue);
+
+      console.log("thisnewrotatevalue" +thisnewrotatevalue +"");
+    $this.find(".inner-grid-item").css("transform", "rotate(" + thisnewrotatevalue + "deg)"); // to do - ensure cross browser
+
+    // $this.find('.ui-button').click(); // the post object select field; ensure its open
+    
+
+  }); // $this.click
+
+
+  /*$postfield.css("background","red");
+  $postfield.on('selectmenuchange', function() {
+   console.log("$postfield");
+
+  });
+  */
+
+  $inputfields.on('input', function () {
+
+    // console.log("$inputfields changed")
+
+    var $thisfield = $(this),
+      newvalue = $thisfield.val(),
+      thisfieldtype = $thisfield.attr('data-input-type'); // should get
+
+    // console.log("thisfield type= "+thisfieldtype);
+
+    // TODO - @tom - I epext there's maybe a better way of writtin this js, using less lines + an "input item variable" of sorts?
+    if (thisfieldtype == "image_rotate") {
+
+  console.log("rotate input on pinput change");
+
+
+      applyrotatevalue = newvalue + "deg";
+      // $this.find(".inner-grid-item").css("left", applyvalue);
+      // $this.find(".inner-grid-item").css("transform", "translateX("+applyzvalue+")"); // to do - ensure cross browser
+
+      $thisfield.attr("value", newvalue);
+      console.log("newvalue" +newvalue+"")
+
+      // console.log("applyvalue x position" +applyxvalue+"")
+
+      $this.find(".inner-grid-item").css("transform", "rotate(" + applyrotatevalue + ")"); // to do - ensure cross browser
+
+    }else if (thisfieldtype == "input-id") {
+
+      // console.log("id field change" + newvalue + "")
+      //newvalue
+
+    } else if (thisfieldtype == "input-width") {
+      
+      var thisclass = "grid-item-width", // this prefix of class
+        newclass = "grid-item-width-" + (newvalue / 25) + "", // divide by four
+
+        classes = $this.attr('class').split(" ").filter(function (c) {
+
+          return c.lastIndexOf(thisclass, 0) !== 0;
+
+        });
+
+      $this.attr('class', classes.join(" ").trim());
+      $this.addClass(newclass);
+      $grid.packery('layout');
+
+      var thisimagewidth, // declare - but don't assign value yet
+        thisimageheight; // declare - but don't assign value yet
+
+      gridImageOrientation($thisitem, thisimagewidth, thisimageheight); // assign image orientation classes
+
+    } else if (thisfieldtype == "input-height") {
+
+      var thisclass = "grid-item-height", // this prefix of class
+        newclass = "grid-item-height-" + (newvalue / 25) + "",
+        classes = $this.attr('class').split(" ").filter(function (c) {
+          return c.lastIndexOf(thisclass, 0) !== 0;
+        });
+
+      $this.attr('class', classes.join(" ").trim());
+      $this.addClass(newclass);
+      $grid.packery('layout');
+
+      var thisimagewidth, // declare - but don't assign value yet
+        thisimageheight; // declare - but don't assign value yet
+      gridImageOrientation($thisitem, thisimagewidth, thisimageheight); // assign image orientation classes
+
+    } else if (thisfieldtype == "input-z-index") {
+
+      var thisclass = "item-z-index", // this prefix of class
+        newclass = "item-z-index-" + newvalue + "",
+        classes = $this.attr('class').split(" ").filter(function (c) {
+          return c.lastIndexOf(thisclass, 0) !== 0;
+        });
+
+      $this.attr('class', classes.join(" ").trim());
+      $this.addClass(newclass);
+      //$grid.packery('layout'); // don't layout on z-index, as it re-arranges existinglayout
+
+    } else if (thisfieldtype == "input-image-position-x") {
+
+      applyxvalue = newvalue + "%";
+      // $this.find(".inner-grid-item").css("left", applyvalue);
+      // $this.find(".inner-grid-item").css("transform", "translateX("+applyzvalue+")"); // to do - ensure cross browser
+
+      $thisfield.attr("value", newvalue);
+      // console.log("newvalue" +newvalue+"")
+
+      // console.log("applyvalue x position" +applyxvalue+"")
+
+      $this.find(".inner-grid-item").css("transform", "translateX(" + applyxvalue + ") translateY(" + applyyvalue + ")"); // to do - ensure cross browser
+
+    } else if (thisfieldtype == "input-image-position-y") {
+
+      applyyvalue = newvalue + "%";
+
+      // console.log("applyvalue y position" +applyyvalue+"");
+
+      $thisfield.attr("value", newvalue);
+      $this.find(".inner-grid-item").css("transform", "translateX(" + applyxvalue + ") translateY(" + applyyvalue + ")"); // to do - ensure cross browser
+      // console.log("scale value from insdie the input y " +applyscalevalue+"");
+      // console.log("x value value from inside the input y " +applyxvalue+"");
+      // console.log("applyyvalue from inside the input y " +applyyvalue +"");
+
+      // $this.find(".inner-grid-item").css("transform", "translateY("+applyyvalue+")"); // to do - ensure cross browser
+
+    } else if (thisfieldtype == "input-image-scale") {
+
+      applyscalevalue = (newvalue / 100); // value: 1 - 200. So divided by 100
+
+      // console.log("applyvalue scale" +applyscalevalue+"");
+
+      $thisfield.attr("value", newvalue);
+
+      $this.find(".inner-grid-item .image-wrap img").css("transform", "scale(" + applyscalevalue + ")"); // to do - ensure cross browser
+
+    };
+
+  }); //$inputfields.change(function()
+
+} // function itemedit(itemid){ // for new items
+
+// export function imageEdit(itemid, $grid) { // for new items
+export function imageEdit(itemid) { // for new items
+
+  console.log("imageedit function itemid" + itemid + "");
+  // error:
+
+  //app.min.js:3 Uncaught ReferenceError: mediaImage is not defined
+
+  /* how to replicate:
+
+  Click "Add Row"
+  Open item's options
+  Click "Replace Image"
+
+  This error only occurs if we haven't opened the media window previously
+  Suggesting that maybe the  "mediaImage" isn't known after adding item
+
+  wp.media variable declared as expeectd
+  so maybe need do "redeclare" mediaImage ? or diff variable
+
+  I'm 50% sure that this wasn't an issue before - i.e not qutie sure
+  */
+
+  var $thisimagethumb = $(`#acf-image-edit-${itemid}`);
+
+  console.log("$thisimagethumb" + $thisimagethumb + "");
+
+  $thisimagethumb.click(function () {
+
+    var $this = $(this),
+      thisimagethumbid = $this.attr("id"),
+      thisitemid = $this.closest(".layout-grid-item").attr("data-item-id"),
+      // $thisitem = $grid.closest(`.layout-grid-item[data-item-id=${thisitemid}]`),
+      $thisitem = $(`.layout-grid-item[data-item-id=${thisitemid}]`),
+      // this probably means we have more than one item per page on /projects
+      // look to ensure I can target - Or just don't allow edit on /projects page?
+
+      $thisimage = $thisitem.find(".acf-image"),
+      mediaImage; // declared this to ensure new items can use the media library
+
+
+ 
+
+    if (!$.isFunction(wp.media)) {
+      console.log("! $.isFunction( wp.media )");
+      return;
+    }
+
+
+    if (mediaImage) { // (mediaImage returns undefined on new items; why?
+
+      console.log("mediaImage");
+      mediaImage.open();
+      return;
+
+    }
+
+    mediaImage = wp.media({
+      library: {
+        type: 'image'
+      },
+      multiple: false
+    });
+
+    mediaImage.on('select', function () {
+
+      console.log("mediaImage.on( 'select', function()");
+      // console.log("$thisimage"+ $thisimage+"");
+
+      //var $thisitem = $thisitem;
+      var image = mediaImage.state().get('selection').first().toJSON();
+
+      $('.media-modal-close').trigger('click');
+      var $thisitem = $thisimage.closest(".layout-grid-item"),
+        thisimagewidth = image.width,
+        thisimageheight = image.height,
+        thisimageurl = image.url; //$(this).find('img:not(.place-holder)').attr("src"),
+
+
+      $thisimage.val(image.id); // thi sis the input field
+
+      // console.log("image.id"+image.id+"");
+      // console.log("image.url"+image.url+"");
+
+      $thisitem.find('img').remove(); // remove existing images
+      $thisitem.find('.image-wrap').append($('<img src="' + image.url + '"">'));
+      $thisitem.find('.image-wrap').append($('<img class="place-holder" src="' + image.url + '"">'));
+
+      gridImageOrientation($thisitem, thisimagewidth, thisimageheight); // calculate new ratio + assign classes
+
+      convertImgToDataURLviaCanvas(thisimageurl, function (base64_data) {
+        // console.log( base64_data );
+        //  $thisplaceholder.attr("src",base64_data);
+        $thisitem.find('img.place-holder').attr("src", base64_data);
+        // $thisimage.insertAfter('<img src="'+base64_data+'"/>');
+      });
+
+
+
+      // scroll to the active item
+      $('html, body').animate({
+
+        scrollTop: $thisitem.offset().top
+      }, 200);
+      // console.log("scrolling");
+
+
+    }); //mediaImage.on( 'select', function() {
+
+
+    mediaImage.open();
+
+    return false;
+  });
+
+
+} // function imageEdit($imagethumb)
+
+export function imageRemove(itemid) { // for new items
+
+  // console.log("imageedelete function itemid" + itemid + "");
+
+  var $thisimagedelete = $(`#acf-image-remove-${itemid}`);
+
+  $thisimagedelete.click(function () {
+
+    var $this = $(this),
+      // thisimagethumbid = $this.attr("id"),
+      thisitemid = $this.closest(".layout-grid-item").attr("data-item-id"),
+      $thisitem = $(`.layout-grid-item[data-item-id=${thisitemid}]`);
+    //  $thisimage = $thisitem.find(".acf-image");
+    // console.log(" thisitemid deleting" + thisitemid+"");
+    $thisitem.find('img').remove(); // remove existing images
+    // need to remove from input value aswell:
+
+    $thisitem.find('input.acf-image').val(""); //update to empyt value
+
+
+    return false;
+  });
+
+
+} // function imageRemove($imagethumb)
+
+
+export function convertImgToDataURLviaCanvas(url, callback) {
+  let img = new Image();
+
+  img.crossOrigin = 'Anonymous';
+
+  img.onload = function () {
+    let canvas = document.createElement('CANVAS');
+    let ctx = canvas.getContext('2d');
+    let dataURL;
+    canvas.height = this.height;
+    canvas.width = this.width;
+    // ctx.drawImage(this, 0, 0);
+    //   ctx.fillStyle = "#09f";
+    ctx.fillStyle = "#000"; // in theory we could now specify colour overlay choice aswll
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    dataURL = canvas.toDataURL();
+    callback(dataURL);
+    canvas = null;
+  };
+
+  img.src = url;
+}
+
 
 
 
@@ -1366,384 +1765,3 @@ var gridContent = document.getElementById("tester-grid-id").innerHTML;//
 
 } //initgrid()
 */
-
-export function removeClassByPrefix($this, prefix) {
-  var regx = new RegExp('\\b' + prefix + '.*?\\b', 'g');
-  $this.className = $this.className.replace(regx, '');
-  return $this;
-}
-
-export function itemEdit($thisitem, $grid) {
-
-  // console.log("itemedit");
-
-  var $this = $thisitem,
-    // $grid = $grid,
-    $thisedittoggle = $thisitem.find('.grid-item-options-toggle').not(".grid-item-options-toggle-rotate"),
-    $thisrotatetoggle = $thisitem.find('.grid-item-options-toggle-rotate'),
-
-    //image:
-    thisitemidvalue = $this.find('input.input-id').val(),
-
-    thisitemwidthvalue = $this.find('input.input-width').val(),
-    thisitemheightvalue = $this.find('input.input-height').val(),
-    thisitemzindexvalue = $this.find('input.input-z-index').val(),
-    applyrotate = $this.find('input.input-rotate').val() + "deg",
-
-    applyxvalue = $this.find('input.input-image-position-x').val() + "%",
-    applyyvalue = $this.find('input.input-image-position-y').val() + "%",
-    applyscalevalue = $this.find('input.input-image-scale').val() / 100,
-    $inputfields = $this.find('input');
-    $postfield = $this.find('.post-object select');
-
-  $thisedittoggle.click(function () {
-    console.log("click; activate edit item");
-
-    if ($this.hasClass("item-edit-active")) {
-
-      $this.removeClass("item-edit-active");
-
-    } else {
-
-      //remove other active items:
-      $('.layout-grid-item.repeater-item').removeClass("item-edit-active");
-      //add active
-      $this.addClass("item-edit-active");
-      // $this.find('.image-ui').css("background","red");
-      // $postfield.selectmenu( "open" );// doesnt work because not initiated yet?
-      $this.find('.ui-button').click(); // the post object select field; ensure its open
-    }
-
-  }); // $this.click
-
-  $thisrotatetoggle.click(function () {
-    console.log("click; rotate clicking");
-
-    var $thisrotate = $this.find('input.input-rotate'),
-        thisrotatevalue = Number($thisrotate.val());
-        
-    // console.log("thisrotate" +$thisrotate +"");
-    console.log("thisrotatevalue" +thisrotatevalue +"");
-
-    if (thisrotatevalue == 270){
-
-     var thisnewrotatevalue = 0;
-
-   
-     } else {
-       
-      var thisnewrotatevalue = Number(thisrotatevalue + 90);
-    }
-    $thisrotate.val(thisnewrotatevalue);
-
-      console.log("thisnewrotatevalue" +thisnewrotatevalue +"");
-    $this.find(".inner-grid-item").css("transform", "rotate(" + thisnewrotatevalue + "deg)"); // to do - ensure cross browser
-
-    // $this.find('.ui-button').click(); // the post object select field; ensure its open
-    
-
-  }); // $this.click
-
-
-  /*$postfield.css("background","red");
-  $postfield.on('selectmenuchange', function() {
-   console.log("$postfield");
-
-  });
-  */
-
-  $inputfields.on('input', function () {
-
-    // console.log("$inputfields changed")
-
-    var $thisfield = $(this),
-      newvalue = $thisfield.val(),
-      thisfieldtype = $thisfield.attr('data-input-type'); // should get
-
-    // console.log("thisfield type= "+thisfieldtype);
-
-    // TODO - @tom - I epext there's maybe a better way of writtin this js, using less lines + an "input item variable" of sorts?
-    if (thisfieldtype == "image_rotate") {
-
-  console.log("rotate input on pinput change");
-
-
-      applyrotatevalue = newvalue + "deg";
-      // $this.find(".inner-grid-item").css("left", applyvalue);
-      // $this.find(".inner-grid-item").css("transform", "translateX("+applyzvalue+")"); // to do - ensure cross browser
-
-      $thisfield.attr("value", newvalue);
-      console.log("newvalue" +newvalue+"")
-
-      // console.log("applyvalue x position" +applyxvalue+"")
-
-      $this.find(".inner-grid-item").css("transform", "rotate(" + applyrotatevalue + ")"); // to do - ensure cross browser
-
-
-
-
-
-    }else if (thisfieldtype == "input-id") {
-
-      // console.log("id field change" + newvalue + "")
-      //newvalue
-
-    } else if (thisfieldtype == "input-width") {
-      
-      var thisclass = "grid-item-width", // this prefix of class
-        newclass = "grid-item-width-" + (newvalue / 25) + "", // divide by four
-
-        classes = $this.attr('class').split(" ").filter(function (c) {
-
-          return c.lastIndexOf(thisclass, 0) !== 0;
-
-        });
-
-      $this.attr('class', classes.join(" ").trim());
-      $this.addClass(newclass);
-      $grid.packery('layout');
-
-      var thisimagewidth, // declare - but don't assign value yet
-        thisimageheight; // declare - but don't assign value yet
-
-      gridImageOrientation($thisitem, thisimagewidth, thisimageheight); // assign image orientation classes
-
-    } else if (thisfieldtype == "input-height") {
-
-      var thisclass = "grid-item-height", // this prefix of class
-        newclass = "grid-item-height-" + (newvalue / 25) + "",
-        classes = $this.attr('class').split(" ").filter(function (c) {
-          return c.lastIndexOf(thisclass, 0) !== 0;
-        });
-
-      $this.attr('class', classes.join(" ").trim());
-      $this.addClass(newclass);
-      $grid.packery('layout');
-
-      var thisimagewidth, // declare - but don't assign value yet
-        thisimageheight; // declare - but don't assign value yet
-      gridImageOrientation($thisitem, thisimagewidth, thisimageheight); // assign image orientation classes
-
-    } else if (thisfieldtype == "input-z-index") {
-
-      var thisclass = "item-z-index", // this prefix of class
-        newclass = "item-z-index-" + newvalue + "",
-        classes = $this.attr('class').split(" ").filter(function (c) {
-          return c.lastIndexOf(thisclass, 0) !== 0;
-        });
-
-      $this.attr('class', classes.join(" ").trim());
-      $this.addClass(newclass);
-      //$grid.packery('layout'); // don't layout on z-index, as it re-arranges existinglayout
-
-    } else if (thisfieldtype == "input-image-position-x") {
-
-      applyxvalue = newvalue + "%";
-      // $this.find(".inner-grid-item").css("left", applyvalue);
-      // $this.find(".inner-grid-item").css("transform", "translateX("+applyzvalue+")"); // to do - ensure cross browser
-
-      $thisfield.attr("value", newvalue);
-      // console.log("newvalue" +newvalue+"")
-
-      // console.log("applyvalue x position" +applyxvalue+"")
-
-      $this.find(".inner-grid-item").css("transform", "translateX(" + applyxvalue + ") translateY(" + applyyvalue + ")"); // to do - ensure cross browser
-
-    } else if (thisfieldtype == "input-image-position-y") {
-
-      applyyvalue = newvalue + "%";
-
-      // console.log("applyvalue y position" +applyyvalue+"");
-
-      $thisfield.attr("value", newvalue);
-      $this.find(".inner-grid-item").css("transform", "translateX(" + applyxvalue + ") translateY(" + applyyvalue + ")"); // to do - ensure cross browser
-      // console.log("scale value from insdie the input y " +applyscalevalue+"");
-      // console.log("x value value from inside the input y " +applyxvalue+"");
-      // console.log("applyyvalue from inside the input y " +applyyvalue +"");
-
-      // $this.find(".inner-grid-item").css("transform", "translateY("+applyyvalue+")"); // to do - ensure cross browser
-
-    } else if (thisfieldtype == "input-image-scale") {
-
-      applyscalevalue = (newvalue / 100); // value: 1 - 200. So divided by 100
-
-      // console.log("applyvalue scale" +applyscalevalue+"");
-
-      $thisfield.attr("value", newvalue);
-
-      $this.find(".inner-grid-item .image-wrap img").css("transform", "scale(" + applyscalevalue + ")"); // to do - ensure cross browser
-
-    };
-
-  }); //$inputfields.change(function()
-
-} // function itemedit(itemid){ // for new items
-
-// export function imageEdit(itemid, $grid) { // for new items
-export function imageEdit(itemid) { // for new items
-
-  console.log("imageedit function itemid" + itemid + "");
-  // error:
-
-  //app.min.js:3 Uncaught ReferenceError: mediaImage is not defined
-
-  /* how to replicate:
-
-  Click "Add Row"
-  Open item's options
-  Click "Replace Image"
-
-  This error only occurs if we haven't opened the media window previously
-  Suggesting that maybe the  "mediaImage" isn't known after adding item
-
-  wp.media variable declared as expeectd
-  so maybe need do "redeclare" mediaImage ? or diff variable
-
-  I'm 50% sure that this wasn't an issue before - i.e not qutie sure
-  */
-
-  var $thisimagethumb = $(`#acf-image-edit-${itemid}`);
-
-  console.log("$thisimagethumb" + $thisimagethumb + "");
-
-  $thisimagethumb.click(function () {
-
-    var $this = $(this),
-      thisimagethumbid = $this.attr("id"),
-      thisitemid = $this.closest(".layout-grid-item").attr("data-item-id"),
-      // $thisitem = $grid.closest(`.layout-grid-item[data-item-id=${thisitemid}]`),
-      $thisitem = $(`.layout-grid-item[data-item-id=${thisitemid}]`),
-      // this probably means we have more than one item per page on /projects
-      // look to ensure I can target - Or just don't allow edit on /projects page?
-
-      $thisimage = $thisitem.find(".acf-image"),
-      mediaImage; // declared this to ensure new items can use the media library
-
-
- 
-
-    if (!$.isFunction(wp.media)) {
-      console.log("! $.isFunction( wp.media )");
-      return;
-    }
-
-
-    if (mediaImage) { // (mediaImage returns undefined on new items; why?
-
-      console.log("mediaImage");
-      mediaImage.open();
-      return;
-
-    }
-
-    mediaImage = wp.media({
-      library: {
-        type: 'image'
-      },
-      multiple: false
-    });
-
-    mediaImage.on('select', function () {
-
-      console.log("mediaImage.on( 'select', function()");
-      // console.log("$thisimage"+ $thisimage+"");
-
-      //var $thisitem = $thisitem;
-      var image = mediaImage.state().get('selection').first().toJSON();
-
-      $('.media-modal-close').trigger('click');
-      var $thisitem = $thisimage.closest(".layout-grid-item"),
-        thisimagewidth = image.width,
-        thisimageheight = image.height,
-        thisimageurl = image.url; //$(this).find('img:not(.place-holder)').attr("src"),
-
-
-      $thisimage.val(image.id); // thi sis the input field
-
-      // console.log("image.id"+image.id+"");
-      // console.log("image.url"+image.url+"");
-
-      $thisitem.find('img').remove(); // remove existing images
-      $thisitem.find('.image-wrap').append($('<img src="' + image.url + '"">'));
-      $thisitem.find('.image-wrap').append($('<img class="place-holder" src="' + image.url + '"">'));
-
-      gridImageOrientation($thisitem, thisimagewidth, thisimageheight); // calculate new ratio + assign classes
-
-      convertImgToDataURLviaCanvas(thisimageurl, function (base64_data) {
-        // console.log( base64_data );
-        //  $thisplaceholder.attr("src",base64_data);
-        $thisitem.find('img.place-holder').attr("src", base64_data);
-        // $thisimage.insertAfter('<img src="'+base64_data+'"/>');
-      });
-
-
-
-      // scroll to the active item
-      $('html, body').animate({
-
-        scrollTop: $thisitem.offset().top
-      }, 200);
-      // console.log("scrolling");
-
-
-    }); //mediaImage.on( 'select', function() {
-
-
-    mediaImage.open();
-
-    return false;
-  });
-
-
-} // function imageEdit($imagethumb)
-
-export function imageRemove(itemid) { // for new items
-
-  // console.log("imageedelete function itemid" + itemid + "");
-
-  var $thisimagedelete = $(`#acf-image-remove-${itemid}`);
-
-  $thisimagedelete.click(function () {
-
-    var $this = $(this),
-      // thisimagethumbid = $this.attr("id"),
-      thisitemid = $this.closest(".layout-grid-item").attr("data-item-id"),
-      $thisitem = $(`.layout-grid-item[data-item-id=${thisitemid}]`);
-    //  $thisimage = $thisitem.find(".acf-image");
-    // console.log(" thisitemid deleting" + thisitemid+"");
-    $thisitem.find('img').remove(); // remove existing images
-    // need to remove from input value aswell:
-
-    $thisitem.find('input.acf-image').val(""); //update to empyt value
-
-
-    return false;
-  });
-
-
-} // function imageRemove($imagethumb)
-
-
-export function convertImgToDataURLviaCanvas(url, callback) {
-  let img = new Image();
-
-  img.crossOrigin = 'Anonymous';
-
-  img.onload = function () {
-    let canvas = document.createElement('CANVAS');
-    let ctx = canvas.getContext('2d');
-    let dataURL;
-    canvas.height = this.height;
-    canvas.width = this.width;
-    // ctx.drawImage(this, 0, 0);
-    //   ctx.fillStyle = "#09f";
-    ctx.fillStyle = "#000"; // in theory we could now specify colour overlay choice aswll
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    dataURL = canvas.toDataURL();
-    callback(dataURL);
-    canvas = null;
-  };
-
-  img.src = url;
-}

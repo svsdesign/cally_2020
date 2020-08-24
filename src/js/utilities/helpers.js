@@ -836,3 +836,19 @@ export function unforceheadroompin(){
    return;
 
 }//forceheadroom
+
+
+
+
+export function removeCommentBubble(){
+  // console.log(" function removeCommentBubble()")
+
+
+  if ($('#wpd-bubble-wrapper').length){
+  console.log("#wpd-bubble-wrapper exists")
+  $('#wpd-bubble-wrapper').remove();// remove it
+  } //if($('#wpd-bubble-wrapper').length)
+
+  
+};//removeCommentBubble()
+   

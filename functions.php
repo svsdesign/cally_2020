@@ -52,10 +52,15 @@ function svs_add_theme_files() {
 
     wp_enqueue_media(); // front end WP media scripts
 
+
+	
     if ( !is_admin() ) :
         // Remove as we don't want WP built it jQuery
-        wp_deregister_script( 'jquery' );
-
+		wp_deregister_script( 'jquery' );
+		
+		//remove jquery ui script as its clashing with Discuz and my script equeue below
+		wp_deregister_script( 'jquery-ui-core' );
+	
     endif;
 
     // Main budkled site styles
@@ -66,9 +71,6 @@ function svs_add_theme_files() {
 
     // Browserify & jQuery for local development
     if ( $_SERVER['REMOTE_ADDR'] === '::1' || $_SERVER['REMOTE_ADDR'] === '127.0.0.1' ):
-
-
-
 
         wp_enqueue_script( 'jquery', get_template_directory_uri() .'/dist/js/jquery.js', array(), null, false );
         wp_enqueue_script( 'jquery ui', get_template_directory_uri() .'/dist/js/jquery-ui.min.js', array(), null, false );
