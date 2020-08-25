@@ -593,7 +593,7 @@
     
     <?php //additional content *consier furher divs etc. ?>
 
-      <img src="<?php echo get_template_directory_uri() ?>/dist/img/freeling-bg-outer.jpg"/>
+      <img src="<?php echo get_template_directory_uri() ?>/dist/img/freeling-bg-outer.png"/>
            
     </div><!--.outer-bg-layer-->
 
