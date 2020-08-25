@@ -888,8 +888,7 @@
                 .text-wrap {
                     opacity: 0;
                     z-index: 3; //above the two images;
-                    color: nth($scheme, 2)
-        ;
+                    color: nth($scheme, 2);
                     text-align: center;
                     @include center-align(absolute, 0);
 
@@ -1175,11 +1174,31 @@
         position: relative;
         overflow: hidden;
         height:55vw;// = 11 units tall x 5vw
-
+        border-bottom:2px solid nth($scheme, 3);
+        border-top:2px solid nth($scheme, 3);
 
             .grid-container{
                margin-top:15vw;// review 
             }
+
+            #outer-front-layer{
+                position:absolute;
+                top:0px;
+                width:100%;  
+                pointer-events: none; 
+                z-index: 9;//ensure above everything 
+                // background:white;
+    
+                     //consider furher divs etc.
+                    img{
+                    position:relative;
+                    pointer-events: none; 
+                    width:100%;
+                    height:auto;          
+                    }
+                    
+            }//  #outer-bg-layer
+            
 
             #outer-bg-layer{
             position:absolute;
@@ -1195,7 +1214,7 @@
                 width:100%;
                 height:auto;          
                 }
-            }
+            }// #outer-bg-layer
         
         } //.grid-layer{
 

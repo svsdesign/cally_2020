@@ -587,7 +587,16 @@
 
     </div><!--.grid-container-->
 
-      
+    <div id="outer-front-layer">
+
+    
+    <?php //additional content *consier furher divs etc. ?>
+
+      <img src="<?php echo get_template_directory_uri() ?>/dist/img/freeling-front-outer.png"/>
+           
+    </div><!--.outer-front-layer-->
+ 
+    
     <div id="outer-bg-layer">
 
     
