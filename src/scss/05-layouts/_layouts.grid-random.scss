@@ -1326,16 +1326,15 @@
                 width:100%;
                 height: 100%;
                 z-index: 90; // review - ensure nav visble
-                // background-color: nth($scheme,3);
+                 background-color: nth($scheme,3);
                 color: nth($scheme, 2);
-                // background-color: nth($scheme, 3);
-                // border-bottom: 1px solid nth($scheme, 3);
+                 // border-bottom: 1px solid nth($scheme, 3);
                 display: none;
                 left:0px;
                 top:0px;
                 text-align:center;
-                // background:red;
 
+                
                /* @include fluid-type(
                     top,
                     map-get($breakpoints, xs),
