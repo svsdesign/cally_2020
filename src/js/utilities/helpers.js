@@ -7,7 +7,7 @@ export function domReady(fn) {
 }//domReady(fn)
 
 export function detectTouch(){
-console.log("detectTouch();")
+  console.log("detectTouch();")
 
   //https://medium.com/@david.gilbertson/the-only-way-to-detect-touch-with-javascript-7791a3346685
   // test this on IE - read the comments in the article RE issues
@@ -63,134 +63,36 @@ export function SetAppHeight() {
   window.addEventListener('resize', appHeight)
   appHeight();
 
-}//function SetAppHeight() {
-
-//TO DO change to jquery markup
- 
-/* - deltet this funciotn I recok; its for the inp toggle
-export function navigation(){
-
-    var svg = document.getElementById("itoggle");
-    var s = Snap(svg);
-
-    var idot = Snap.select('#idot');
-    var idotpath = Snap.select('#idot-path');
-
-    var minus = Snap.select('#minus');
-
-    var idotPoints = idot.node.getAttribute('d');
-    var minusPoints = minus.node.getAttribute('d');
-    var idotpathPoints = idotpath.node.getAttribute('d'); // this added
+}//function SetAppHeight()
 
 
-    var toMinus = function(){
-      idot.animate({ d: minusPoints }, 100, mina.easin);  
-      //console.log("toMinus")
-    }
-
-    var toIdot = function(){
-      idot.animate({ d: idotpathPoints }, 100, mina.easin); 
-      //console.log("toIdot shoul animate")
-
-    } // toIdot
+export function detectAttrChange() {
+console.log("detectAttrChange()");
 
 
-    var body = document.body;
-    var nav = document.getElementById( 'head-nav' ), button, menu;
-    if ( ! nav )
-      return;
-   button = nav.getElementsByClassName( 'navigation-toggle')[0];
-   bgclose = nav.getElementsByClassName( 'inp-bg-close')[0]; 
+  $(".wpuf-submit").on("remove", function () {
+    // alert("Element was removed");
 
-
-  //  button = nav.querySelectorAll(".navigation-toggle, .inp-bg-close")
-    menu   = nav.getElementsByTagName( 'ul' )[0];
-    
-
-    if ( ! button )
-      return;
-
-    // Hide button if menu is missing or empty.
-    if ( ! menu || ! menu.childNodes.length ) {
-      button.style.display = 'none';
-      return;
-    }
-
-    
-    bgclose.onclick = function toggler() {
-      if ( -1 == menu.className.indexOf( 'navigation-item' ) )
-        menu.className = 'navigation-item';
-
-      if ( -1 != button.className.indexOf( ' toggled-on' ) ) {
-          body.className = body.className.replace( ' toggled-on', '' );
-          button.className = button.className.replace( ' toggled-on', '' );
-          menu.className = menu.className.replace( ' toggled-on', '' );
-
-          toIdot();          
-        
-      } else {
-
-          body.className += ' toggled-on';
-          button.className += ' toggled-on';
-          menu.className += ' toggled-on';
-
-          toMinus();
-                             
-      } // if
-
-    }; // we're essetnially repeating two functions - not very neat
-
-    button.onclick = function toggler() {
-      if ( -1 == menu.className.indexOf( 'navigation-item' ) )
-        menu.className = 'navigation-item';
-
-      if ( -1 != button.className.indexOf( ' toggled-on' ) ) {
-          body.className = body.className.replace( ' toggled-on', '' );
-          button.className = button.className.replace( ' toggled-on', '' );
-          menu.className = menu.className.replace( ' toggled-on', '' );
-
-          toIdot();    
+    // $(".wpuf-success").css("background","red");
+    $("body").addClass('form-submitted');    
   
-          
-      
-      } else {
+        function removeSuccess(){
 
-          body.className += ' toggled-on';
-          button.className += ' toggled-on';
-          menu.className += ' toggled-on';
+         $(".wpuf-success").css("display","none");
 
-          toMinus();
+        }; //waitloading()
+        setTimeout(removeSuccess, 6000);
 
-          // disable scroll
-          
-          document.addEventListener('touchmove', function(e) {e.preventDefault()}, false);
-
-          
-                             
-      } // if
-
-    };
+  })
 
 
-     if  ($('.navigation-toggle').hasClass('toggled-on')){
-      //  console.log('if navigation was previously on - turn it off');
-      //  $('body').addClass('toggled-on'); // because this was previously on
-     
-           body.className = body.className.replace( ' toggled-on', '' );
-           button.className = button.className.replace( ' toggled-on', '' );
-           menu.className = menu.className.replace( ' toggled-on', '' );
-    
-            idot.animate({ d: idotpathPoints }, 100, mina.easin); 
-    //        console.log("toIdot shoul animate")
+  
+}//function detectAttrChange()
 
-      } //if has class
-
-}//navigation()
- */
 export function orientation(){
 // review this - we might need it to esnure image orienations are correct
 
- console.log("hello orientation function")
+//  console.log("hello orientation function")
 
   var winwidth = $(window).width(); // should be inner weidth
   var winheight = $(window).height(); // inner height
@@ -216,7 +118,7 @@ export function opacity(){
 
     $("body").imagesLoaded(function(){ // consider a lazloadng options?
 
-      console.log("Images have loaded")
+      // console.log("Images have loaded")
         
         function waitloading(){
 
@@ -231,9 +133,8 @@ export function opacity(){
 
 };//opacity
 
-
 export function imageopacity(){
-  console.log("images loaded applied here")
+  // console.log("images loaded applied here")
     
       var $thisimageblock = $("body").find("img.apply-image-load");  // just target img?
    
@@ -260,7 +161,7 @@ export function imageopacity(){
   
         });//  $thisimageblock.each(function()
   
-    };//function images($block)
+};//function imageopacity()
 
 export function devGrid(){
 
@@ -357,7 +258,7 @@ if ($('.dev-grid').length > 0)
 export function previewSite(){
 
   // preview site - if cookies diables or not on
-    console.log("previewsite function");
+    // console.log("previewsite function");
 
       $("body").attrchange({
         trackValues: true, // set to true so that the event object is updated with old & new values
@@ -448,7 +349,7 @@ export function previewSite(){
 }//previewSite();
 
 export function menuPositioner(){
-   console.log("menupositioner");
+  //  console.log("menupositioner");
 
 var $positioner = $("#positioner")
     $menu = $("#menu-header-navigation"),
@@ -644,15 +545,14 @@ export function clickcookierevoke() {
 
 }//clickcookierevoke
 
-  
 export function topAnimation(){
-  console.log("function topAnimation()");
+  // console.log("function topAnimation()");
 
 
   setTimeout(function(){ 
-    console.log("hello");
+    // console.log("hello");
 
-    console.log("setTimeout(function()");
+    // console.log("setTimeout(function()");
 
       $('body').removeClass('animation-fix'); //ensure people can now scroll
 
@@ -688,7 +588,7 @@ export function topAnimation(){
         
       } else{
 
-        console.log("about to animate?")
+        // console.log("about to animate?")
 
         $('html, body').animate(
             { scrollTop: $("#main").offset().top + 0 },
@@ -720,7 +620,7 @@ export function topAnimation(){
 };// topanimation()
 
 export function fade() {
-  console.log("function fade()");
+  // console.log("function fade()");
 
   var animation_height = $(window).innerHeight() * 0.25; // was 0.25
   var ratio = Math.round( (1 / animation_height) * 10000 ) / 10000; //ratio
@@ -771,8 +671,6 @@ export function fade() {
 
 } // function fade()
 
-
-
 export function destroyheadroom(){
   // to destroy
  // console.log("destroyheadroom")
@@ -781,7 +679,6 @@ export function destroyheadroom(){
    return;
 
 }// destroyheadroom()
-
 
 export function freezeheadroom(){
   // to freeze
@@ -792,8 +689,6 @@ export function freezeheadroom(){
 
 }// freezeheadroom();
 
-
-
 export function unfreezeheadroom(){
   // to unfreeze
  // console.log("freezeheadroom");
@@ -802,7 +697,6 @@ export function unfreezeheadroom(){
    return;
 
 }// unfreezeheadroom();
-
 
 export function forceheadroompin(){
 
@@ -823,7 +717,7 @@ export function forceheadroompin(){
 
 export function unforceheadroompin(){
 
-  console.log('unforceheadroompin();');
+  // console.log('unforceheadroompin();');
 
    if ($("#header-nav-area").hasClass("pinned")){
     
@@ -837,15 +731,12 @@ export function unforceheadroompin(){
 
 }//forceheadroom
 
-
-
-
 export function removeCommentBubble(){
   // console.log(" function removeCommentBubble()")
 
 
   if ($('#wpd-bubble-wrapper').length){
-  console.log("#wpd-bubble-wrapper exists")
+  // console.log("#wpd-bubble-wrapper exists")
   $('#wpd-bubble-wrapper').remove();// remove it
   } //if($('#wpd-bubble-wrapper').length)
 

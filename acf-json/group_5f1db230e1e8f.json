@@ -48,6 +48,32 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_5f4e1401ad83e",
+            "label": "Segment Type",
+            "name": "segment_type",
+            "type": "radio",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_rest": 0,
+            "edit_in_rest": 0,
+            "choices": {
+                "normal": "Normal",
+                "tree": "Tree"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "normal",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
         }
     ],
     "location": [
@@ -67,5 +93,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1595781748
+    "modified": 1598957608
 }

@@ -3,27 +3,6 @@
     "title": "Freeling Street Submission Form",
     "fields": [
         {
-            "key": "field_5f3d739c7938b",
-            "label": "Image Data",
-            "name": "image-data_hidden_field",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "show_in_rest": 0,
-            "edit_in_rest": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
             "key": "field_5f44bd7ea319b",
             "label": "Message",
             "name": "submission_description",
@@ -110,6 +89,27 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_5f3d739c7938b",
+            "label": "Image Data",
+            "name": "image-data_hidden_field",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_rest": 0,
+            "edit_in_rest": 0,
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
         }
     ],
     "location": [
@@ -129,5 +129,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1598341072
+    "modified": 1599070513
 }

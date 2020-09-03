@@ -20,22 +20,25 @@ rasterise imgage to canvas
 canvas to image
 https://stackoverflow.com/questions/23681325/convert-canvas-to-pdf
 
+
+  // saving into wp cms
+  // https://wordpress.stackexchange.com/questions/165321/saving-data-uri-to-media-library
+  // downloadImage();
+
+
 */
 
-
-
-
-
-
+import {
+  detectAttrChange
+} from '../../utilities/helpers';
 
 
 export default function init() {
 
-  console.log("layout-grid/index.js");
+  // console.log("layout-grid/index.js");
 
   // external js: packery.pkgd.js, draggabilly.pkgd.js
   // add Packery.prototype methods
-
   // get JSON-friendly data for items posiredtions
 
   Packery.prototype.getShiftPositions = function (attrName) {
@@ -105,7 +108,7 @@ export default function init() {
 
       method = _this.attr('method'),
       data = _this.serializeArray(),
-      btn = _this.find('button[type="submit"]'),
+      // btn = _this.find('button[type="submit"]'),
       modal = $('#modalResponse');
 
     if ($('#ag_wysiwyg_editor').length && typeof tinyMCE !== 'undefined') {
@@ -121,8 +124,9 @@ export default function init() {
     /*local storage
     // https://stackoverflow.com/questions/56156486/how-to-store-form-data-in-local-storage
 
-// https://stackoverflow.com/questions/52474321/how-to-save-and-get-form-state-from-localstorage-in-jquery-javascript
+    // https://stackoverflow.com/questions/52474321/how-to-save-and-get-form-state-from-localstorage-in-jquery-javascript
     */
+
     $.ajax({
       url: url,
       // method: 'POST', // trhing to get local storage to work
@@ -150,7 +154,6 @@ export default function init() {
 
     return false;
   });
-
 
 
   // move these variables elsewhere I reckon - near init
@@ -262,7 +265,6 @@ export default function init() {
   };
 
   // used for packeruy: debounce
-
   function debounce(fn, threshold) {
     var timeout;
     return function debounced() {
@@ -276,13 +278,9 @@ export default function init() {
       }
       setTimeout(delayed, threshold || 100);
     }
-  }
-  // end used for packery: debounce
-
-
+  } // end used for packery: debounce
 
   function makedraggable($newitem, $thisgrid) {
-
     // console.log("make new item draggable");
 
     $thisgrid.find($newitem).each(function (i, itemElem) {
@@ -294,32 +292,62 @@ export default function init() {
 
   } // function makedraggable($newitem){
 
+  function onSubmission(){
+    // form can submitted now
+    detectAttrChange();
+  }// onSubmission()
 
-
+    
   function captureCanvas(){
     console.log("function captureCanvas()");
-  /* consideration - I don't really want to run this everytime a changes is made
-  - i.e only really needed on submussion I think?
-  */
+    $('body').addClass("capturing-image");//hide none image elements
+    // As its takes seconds for this class + consequent css rules to "take affect?"
+    //timeoutadded; seem to solv ethe issue in chrome
+    setTimeout(function(){ 
+      
+    if ($('#canvas-wrap').has('canvas').length) {
+        console.log("delete exisint canvas");
+      $('#canvas-wrap').find('canvas').remove(); // delete existing canvas
+    }
 
+    if ($('#export-image-wrap img').length) {
+       console.log("delete existing image");
+       $('#export-image-wrap').find('img').remove(); // delete existing img
+    }
     // Way to increase resolution of the image generated via toDataURL
     //https://github.com/niklasvh/html2canvas/issues/241
     // https://stackoverflow.com/questions/18316065/set-quality-of-png-with-html2canvas
             
-    $('body').addClass("capturing-image");//hide none image elements
 
-
-
+    // delete this:
     //https://stackoverflow.com/questions/18935518/on-render-in-html2canvas-the-page-is-scrolled-to-the-top
     // review this - to ensure position is relative maybe?
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0); // review thgus
+    /*
 
-     html2canvas(document.querySelector("#grid-wraps"), {
-          scale:4 // instead of scale: //scale: 2 will double the resolution from the default 96dpi)
+      Unsupported CSS properties
+      These CSS properties are NOT currently supported by html2canvas
+
+      Amongst others:
+      box-shadow <<< NOTE THIS!!!
+
+    // end delete this - if working
+
+    */
+    //  html2canvas(document.querySelector("#grid-wraps"), {
+      html2canvas(document.querySelector(".grid-layer"), {
+
+        //when scale is 4, values not saving into the databse; issuew ith number of characters maybe?
+
+
+         scale:2, // instead of scale: //scale: 2 will double the resolution from the default 96dpi)
         // //consider setting equal size; so imports are always the same?
+        //ie set height and width instead of scale?
+        
         // //2:1 ration - width:height
         // width: 4800, // this set canvas size but not image
         // height: 2400// this set canvas size but not image
+        scrollY: (window.pageYOffset * -1) //https://stackoverflow.com/questions/18935518/on-render-in-html2canvas-the-page-is-scrolled-to-the-top
 
       }).then(canvas => {
           
@@ -328,43 +356,39 @@ export default function init() {
           
             getCanvas = canvas;
 
-          if ($('#canvas-wrap').has('canvas').length) {
-            //console.log("delete exisint canvas
-            $('#canvas-wrap').find('canvas').remove(); // delete existing canvas
-            $('#export-image-wrap').find('img').remove(); // delete existing img
-          }
+         
           //create images
           document.querySelector("#export-image-wrap").appendChild(img);
           //create canvas
           // document.querySelector("#canvas-wrap").appendChild(canvas);
         
           $('body').find("input[name='image-data_hidden_field']").val(img.src);
-// https://stackoverflow.com/questions/15153776/convert-base64-string-to-an-image-file
+          // https://stackoverflow.com/questions/15153776/convert-base64-string-to-an-image-file
+          // $('body').find("textarea[name='submission_description']").val(img.src);
 
-      });//  }).then(canvas => 
 
+          $('body').addClass("submission-previewed");// submit button now clickable
 
-    $('body').removeClass("capturing-image");//hided none image elements
+          //change width of export options buttons to fit next to preview image
 
-  // saving into wp cms
-  // https://wordpress.stackexchange.com/questions/165321/saving-data-uri-to-media-library
-  // downloadImage();
+          $('.export-options').removeClass("grid-md-9").addClass("grid-md-6")
+     
+          $('body').removeClass("capturing-image");
+              
+          //if the update class was added lets remove it; as there are no more update once we generate the next image:
+          $('body').removeClass("update-available");
+
+  
+        });//  }).then(canvas => 
+ 
+      }, 1);
 
   }// function captureCanvas(thishtml, thiscanvas)
-
-   
-
 
   function downloadCanvas(link, canvasId, filename) {
     link.href = document.getElementById(canvasId).toDataURL();
     link.download = filename;
   }// function downloadCanvas(link, canvasId, filename) 
-
- 
-  
-
-
-
 
   function initiatepackery($thisgrid) {
 
@@ -379,7 +403,6 @@ export default function init() {
       var isPackeryInit = false;
       var isEditModeActive;
       var isGridItemsActive = false;
-
 
       function checkPackery() {
 
@@ -452,6 +475,7 @@ export default function init() {
                     $thisplaceholder.attr("src", base64_data);
                     // $thisimage.insertAfter('<img src="'+base64_data+'"/>');
                   });
+ 
 
                 } else {
                   // there might not be an image available
@@ -468,8 +492,7 @@ export default function init() {
   // resolve this
  
               //https://stackoverflow.com/questions/39064344/jqueryui-adding-an-image-in-option
-              // $('#'+$thisUiId+'').css("background","red");
-
+ 
                 $('#'+$thisUiId+'')
                   .iconselectmenu({
                     appendTo:$thisUiAppend,
@@ -480,20 +503,18 @@ export default function init() {
                          console.log("change" +ui+"");
                         // $(ui.item.element).css("background","red");
                        var thisimage = $(ui.item.element).attr("data-segment-image");
-                       console.log("thisimage" +thisimage+"");
+                       var imagetype = $(ui.item.element).attr("data-segment-type");
+
+                      //  console.log("thisimage" +thisimage+"");
                        $originalimage.attr("src",thisimage);//replace image 
+                       $originalimage.attr("data-segment-type", imagetype);
 
-                      /* review this - why re-open?
-                       setTimeout(function(){ 
-                        //$(ui.item.element).closest('.options.post-object').find('.ui-selectmenu-button').css("background","red");
+                      //  console.log("imagetype = "+imagetype+"");
+                       updateImageObject($thisitem, imagetype);
 
-                         // this works.... but probably not the best approach
-                        $(ui.item.element).closest('.options.post-object').find('.ui-selectmenu-button').click(); 
-
-                        }, 50);    
-                        end review this
-                        */
-
+                        // canvashasChanged as soon as items are changed
+                        canvasChange();    
+  
                     }, //change functions
                      //change  
                     select: function( event, ui ) {
@@ -503,17 +524,12 @@ export default function init() {
                         }//select
                   })
                   .iconselectmenu("menuWidget")
-                  .addClass("ui-menu-icons avatar");
-
-
-                  
+                  .addClass("ui-menu-icons avatar");  
 
                   // $('#'+$thisUiId+'').css("background","red");
                   // $('#'+$thisUiId+'').iconselectmenu("open");// open by default - doesn't seem to work - i guess because I can't open all in one go... as opening one closes others
                   
               }); //$('.layout-grid-item').each( function( )
-
-
 
               $addrow.click(function () {
                 // $('.repeater-wrap > .add-row').click(function () {
@@ -546,7 +562,7 @@ export default function init() {
  
                     $newlastitem.find('.ui-selectmenu-button, .ui-front').remove(); //remove existing iconmenu
 
-                $newlastitem.attr('data-item-id', itemid); //update item id
+                    $newlastitem.attr('data-item-id', itemid); //update item id
 
 
                 $closestrepeater.find('.repeater-item:last[name]').attr('name', function (index, name) {
@@ -572,11 +588,7 @@ export default function init() {
 
                      console.log("$thisUiId" +$thisUiId+"");
 
- 
-
-                      // change this based on abovecode of init iitems
-
-                            
+                      // change this based on abovecode of init item
 
                       $('#'+$thisUiId+'')
                         .iconselectmenu({
@@ -588,19 +600,18 @@ export default function init() {
                               console.log("change" +ui+"");
                               // $(ui.item.element).css("background","red");
                             var thisimage = $(ui.item.element).attr("data-segment-image");
-                            console.log("thisimage" +thisimage+"");
+                            var imagetype = $(ui.item.element).attr("data-segment-type");
+
+                            // console.log("thisimage" +thisimage+"");
                             $originalimage.attr("src",thisimage);//replace image 
+                            $originalimage.attr("data-segment-type", imagetype);
+                            // console.log("imagetype = "+imagetype+"");
 
-                            /* review this - why re-open?
-                            setTimeout(function(){ 
-                              //$(ui.item.element).closest('.options.post-object').find('.ui-selectmenu-button').css("background","red");
-
-                              // this works.... but probably not the best approach
-                              $(ui.item.element).closest('.options.post-object').find('.ui-selectmenu-button').click(); 
-
-                              }, 50);    
-                              end review this
-                              */
+                            updateImageObject($thisitem, imagetype)
+                  
+                        
+                            // Canvas has Changed as soon as items are changed
+                            canvasChange();    
 
                           }, //change functions
                           //change  
@@ -630,7 +641,6 @@ export default function init() {
                 var positions = $thisgrid.packery('getShiftPositions', 'data-item-id'),
                   jsonpositions = JSON.stringify(positions);
                   // localStorage.setItem("lastname", "Smith");
-
 
                 $coordinates.val(jsonpositions);
                 verifyItemsRepeater($closestrepeater); // verify items
@@ -695,13 +705,9 @@ export default function init() {
                   var gridContent = document.getElementById("tester-grid-id").innerHTML;//
                   localStorage.setItem("gridContent",gridContent);
                   console.log("gridContent" +gridContent+"");
-
-                  
-                  
+    
                   //  verifyItemsRepeater();
                   verifyItemsRepeater($closestrepeater);
-
-                  
 
                 }
                 // verifyItemsRepeater();
@@ -713,25 +719,21 @@ export default function init() {
 
             }//if (isGridItemsActive === false) 
 
-
             // console.log("before packery init initPositions " +initPositions+"");
             // init layout with saved positions
             if ($('body').hasClass('logged-in')) {
 
-            $grid.packery('initShiftLayout', initPositions, 'data-item-id');
-            console.log("storedcoordinates" +initPositions+"");
+                $grid.packery('initShiftLayout', initPositions, 'data-item-id');
+                console.log("storedcoordinates" +initPositions+"");
 
- 
+              }else{
 
-           }else{
+                // console.log("not logged in here ");
+                // var storedcoordinates = JSON.parse(localStorage.getItem('coordinates'));
+                var storedcoordinates = localStorage.getItem('coordinates');
 
-             console.log("not logged in hhere ");
-              // var storedcoordinates = JSON.parse(localStorage.getItem('coordinates'));
-              var storedcoordinates =  localStorage.getItem('coordinates');
-
-              console.log("storedcoordinates" +storedcoordinates+"");
-
-              $grid.packery('initShiftLayout', storedcoordinates, 'data-item-id');
+                // console.log("storedcoordinates" +storedcoordinates+"");
+                $grid.packery('initShiftLayout', storedcoordinates, 'data-item-id');
 
             }
 
@@ -762,13 +764,10 @@ export default function init() {
                 $coordinates.val(jsonpositions);
                 $coordinates.attr('value', jsonpositions);
 
-                      
-                //capture canvas - consider if this best place to have this - look to attach to an initial init and the submit instead I think
-                //Temp turned off ; determine where best to run; on some sort of "capture button clikc I rkon"
-                //  captureCanvas();
-
-
-       //END review this _ its positions + also suggest placing into one fucntion so we can use it in other places aswell
+                // canvashasChanged
+                canvasChange();    
+               
+                //END review this _ its positions + also suggest placing into one fucntion so we can use it in other places aswell
  
                 // localStorage.setItem("coordinates",  jsonpositions);
 
@@ -808,8 +807,8 @@ export default function init() {
 
                 localStorage.setItem("coordinates",  jsonpositions);
 
-                //capture canvas - consider if this best place to have this - look to attach to an initial init and the submit instead I think
-                // captureCanvas();
+                  // canvashasChanged
+                  canvasChange();    
 
                 //  TODO - update this for unique gird
                 // $('.coordinates').val(jsonpositions);
@@ -817,10 +816,7 @@ export default function init() {
 
               }); // $grid.on('dragItemPositioned', function ()
 
-
            } //if logged in
-
-  
 
             // Bind to scroll
             // $(window).scroll(function () {
@@ -830,7 +826,7 @@ export default function init() {
 
           if ($('body').hasClass("is-touch")) {
 
-              
+              console.log("ensure to have touch screen message enabled")
             // $(window).scroll(function () {
 
               // activeTouchItem();
@@ -850,9 +846,6 @@ export default function init() {
           //trigger initial scroll to ensure all object are layed out (includign thenegative offests)
           /// far too much shite in this function - tidy up
 
-
- 
-
           isPackeryInit = true;
           // if edit mode was alredy active
           console.log(isEditModeActive+ "isEditModeActive");
@@ -862,7 +855,8 @@ export default function init() {
             console.log(isEditModeActive);
 
             $('body').addClass('dev-layout-grid-on')
-
+            //scroll to the top of the grid
+          
           }// if (isEditModeActive === true)
 
 
@@ -895,13 +889,8 @@ export default function init() {
         $(window).resize(function() {
           console.log("resize(function()");
           // $grid.packery('reloadItems')
-  
         });
-  
-     
-  
- 
-  
+    
         setTimeout(function () {
           console.log("setTimeout(function)");
 
@@ -927,37 +916,31 @@ export default function init() {
       checkPackery();
       // AOS.init();
 
-   
-
-
       // check this on resize, debounced
       $(window).on('resize', debounce(checkPackery, 200));
-      
-    
-
 
     }); //var $grid = $thisgrid.imagesLoaded(function() {
 
-
-
- 
-
   } // function initiatepackery()
 
+  $("#load-image").on('click', function () {
+    //load image before download possible
+    console.log("load-image click")
+    captureCanvas();
 
- 
+    //once this is done, we''l be able t download and also submit submission
+    //takes fucking ages to load; how to resolve; could the data
+  });
+  
+  $("#download-image").on('click', function () {
+    console.log("hello dowload click - ensure to update the picture name is submiossion title exists");
+    var imgageData = getCanvas.toDataURL("image/png");
+   // considerations: further vars and values for custom names etc
 
-
-$("#download-image").on('click', function () {
-  console.log("hello?!")
-  var imgageData = getCanvas.toDataURL("image/png");
-// considerations: further vars and values for custom names etc
-
-  // Now browser starts downloading it instead of just showing it
-  var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
-  $("#download-image").attr("download", "your_pic_name.png").attr("href", newData);
-});
-
+    // Now browser starts downloading it instead of just showing it
+    var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+    $("#download-image").attr("download", "your_pic_name.png").attr("href", newData);
+  });
 
   // dev toggle - TO DO - move this elsewhere
   $(".dev-layout-grid-toggle").click(function () {
@@ -965,15 +948,21 @@ $("#download-image").on('click', function () {
     if ($('body').hasClass("dev-layout-grid-on")) {
 
       $('body').removeClass('dev-layout-grid-on');
+  
     } else {
 
       $('body').addClass('dev-layout-grid-on');
+      console.log("scrolling to the top of grid")
+    
+      $('html, body').animate({
+        scrollTop: $('.grid-layer').offset().top - 0 // top of grid            
+       }, 'slow');
+
 
     } //click
 
   }); //  $(".dev-toggle").click(function ( )
   // dev toggle - TO DO - move this elsewhere
-
 
   $(".clear-local-storage").click(function () {
 
@@ -1037,7 +1026,7 @@ $("#download-image").on('click', function () {
       
               // localStorage.setItem("coordinates",  jsonpositions);
               $("#tester-grid-id").empty();
-            $("#tester-grid-id").append(gridContent);
+              $("#tester-grid-id").append(gridContent);
 
             // $("#tester-grid-id").css("background","red");
 
@@ -1061,12 +1050,27 @@ $("#download-image").on('click', function () {
   } //initgrid()
 
   initgriditems(); // start initial init
-
-
+  onSubmission();// even listner for attr change
 } //export default function init()
 
+export function canvasChange(){
+  console.log("canvasChange()");
 
+  // if we have generated an initial preview:
+  if($("body").hasClass("submission-previewed")){
+        //once an edit has been made to the canvas, we can allow update availability
 
+        $("body").addClass("update-available");
+        $("a#load-image").text("Update Preview Image");
+       
+
+  }/* else{
+    console.log("change detected be non preview click yet;")
+
+ }  */
+ //if($("body").hasClass("submission-previewed")
+
+}//CanvasChange()
 
 export function removeClassByPrefix($this, prefix) {
   var regx = new RegExp('\\b' + prefix + '.*?\\b', 'g');
@@ -1118,30 +1122,29 @@ export function itemEdit($thisitem, $grid) {
   }); // $this.click
 
   $thisrotatetoggle.click(function () {
-    console.log("click; rotate clicking");
+    // console.log("click; rotate clicking");
 
     var $thisrotate = $this.find('input.input-rotate'),
         thisrotatevalue = Number($thisrotate.val());
         
     // console.log("thisrotate" +$thisrotate +"");
-    console.log("thisrotatevalue" +thisrotatevalue +"");
+    // console.log("thisrotatevalue" +thisrotatevalue +"");
 
     if (thisrotatevalue == 270){
 
      var thisnewrotatevalue = 0;
 
-   
      } else {
        
       var thisnewrotatevalue = Number(thisrotatevalue + 90);
     }
     $thisrotate.val(thisnewrotatevalue);
 
-      console.log("thisnewrotatevalue" +thisnewrotatevalue +"");
+    console.log("thisnewrotatevalue" +thisnewrotatevalue +"");
     $this.find(".inner-grid-item").css("transform", "rotate(" + thisnewrotatevalue + "deg)"); // to do - ensure cross browser
-
-    // $this.find('.ui-button').click(); // the post object select field; ensure its open
-    
+    $this.find('input.input-rotate').val(thisnewrotatevalue);
+    // Canvas has Changed as soon as items are rotated
+    canvasChange(); 
 
   }); // $this.click
 
@@ -1413,7 +1416,6 @@ export function imageRemove(itemid) { // for new items
 
     $thisitem.find('input.acf-image').val(""); //update to empyt value
 
-
     return false;
   });
 
@@ -1445,7 +1447,44 @@ export function convertImgToDataURLviaCanvas(url, callback) {
   img.src = url;
 }
 
+export function updateImageObject($thisitem, imagetype){
 
+//export function updateImageObject($newlastitem, ){
+//  console.log("updateImageObject:")
+// console.log(imagetype);
+
+ 
+  var zIndexClass = $thisitem.attr('class').split(' ');
+
+  for (var i = 0; i < zIndexClass.length; i++) {
+      if (zIndexClass[i].indexOf('item-z-index') != -1) {
+        $thisitem.removeClass(zIndexClass[i]);
+      }
+  }
+ 
+
+  if (imagetype == 'tree') {
+  //find the z-index and change it
+
+  // console.log("updating tree z-ndex");
+
+    $thisitem.attr("data-item-z-index","2");
+    $thisitem.find("[data-input-type='input-z-index']").val("2");
+    $thisitem.addClass("item-z-index-2");
+
+  } else if (imagetype == 'normal'){
+
+    $thisitem.attr("data-item-z-index","1");
+    $thisitem.find("[data-input-type='input-z-index']").val("1");
+    $thisitem.addClass("item-z-index-1");
+  //  console.log("updatingnormal z-ndex");
+
+  }
+
+
+
+
+}//export function updateImageObject()
 
 
 /* to do - delete the following stuff */

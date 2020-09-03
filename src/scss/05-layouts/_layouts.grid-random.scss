@@ -442,19 +442,20 @@
                 display: none;
                 cursor: pointer;
                 position: absolute;
-                @include fluid-type(
+               /* @include fluid-type(
                     padding-left padding-right padding-bottom,
                     map-get($breakpoints, xs),
                     map-get($breakpoints,xxl),
                     map-get($lineheight, xs) * 0.5,
                     map-get($lineheight,xxl) * 0.5
-                );
+                ); */ // not sure why we had padding?
                 z-index: 4; //above images + text
                 padding-bottom:0px;
 
                 //to do; create button appreaacne
                 &:hover {
                 }
+
             } //.grid-item-options-toggle
 
             .move-arrow-area{
@@ -538,6 +539,8 @@
                 }// image-ui{
 
                 .ui-widget{
+                background-color: nth($scheme, 3);
+                color: nth($scheme, 2);
                 font-family: $medium-font-family;
                     @include fluid-type(
                      font-size,
@@ -546,6 +549,20 @@
                         map-get($lineheight, xs) * 0.4,
                         map-get($lineheight,xxl) * 0.4
                     );
+                 
+                }
+                .ui-selectmenu-text{
+                    @include fluid-type(
+                        padding-left,
+                        map-get($breakpoints, xs),
+                        map-get($breakpoints,xxl),
+                        map-get($lineheight, xs) * 0.125,
+                        map-get($lineheight,xxl) * 0.125
+                    );
+                }
+
+                .ui-selectmenu-icon.ui-icon-triangle-1-s{
+                background:none; 
                 }
 
                 .ui-front {
@@ -596,8 +613,7 @@
                         top:0px;
                         z-index: -1;
                     }
-
-
+             
                     .ui-menu {
                     /* @include fluid-type(
                             height,
@@ -606,13 +622,14 @@
                             map-get($lineheight, xs) * 3.5,
                             map-get($lineheight,xxl) * 3.5
                         );*/
-
+                        padding:0;
                         height:inherit;
                         max-height: 15vw;// can only be one grid size unit  for overflow issues on parent container//30vw;
                         display: grid;
                         border:0px;
-                        grid-template-columns:10vw;//$iconwidth1;//1fr;// repeat(auto-fill, $iconwidth1);
+                        // grid-template-columns:10vw;//$iconwidth1;//1fr;// repeat(auto-fill, $iconwidth1);
                         //  grid-template-columns: $iconwidth1 $iconwidth1 $iconwidth1;
+                        grid-template-columns:9vw;
                         grid-template-rows: repeat(auto-fill, $iconheight1);
                         /* @include fluid-type(
                             grid-gap,
@@ -623,8 +640,11 @@
                         );*/
                         grid-gap:0;
                         width:10vw;// = 2 x iconwidth $iconwidth1!important;//to overide the css set via js jquery ui
+                        max-width:9vw;//might need reviewing
                         margin:auto;
                         background: nth($scheme, 3);
+
+                    
 
                         .ui-menu-item{ 
                         color:rgba(255, 255, 255, 0.5);
@@ -658,7 +678,7 @@
                             border:none;
                             background:none;
                             font-size: 0px;// don't display text
-                            height:10vw;
+                            height: 9vw;
 
                                  span.ui-icon {
                                     position:absolute!important;
@@ -667,7 +687,7 @@
                                     background-blend-mode: none;
                                     background-color:nth($scheme, 2);
                                     width:100%;
-                                    height: 10vw;
+                                    height: 9vw;//10vw; might need reviewing
                                     display: block;
                                     right:0px;
                                     bottom: 0px;
@@ -681,6 +701,8 @@
                             .ui-selectmenu-text{
                             opacity:0; 
                             }
+
+                          
                         }//.ui-menu-item
 
                     }//.ui-menu
@@ -942,6 +964,7 @@
                         bottom: 0px;
                         left: 0px;
                         right: 0px;
+                        pointer-events: none;
 
                         @media (max-width: map-get($breakpoints, md)) {
                             // transform: none !important; // apply on mobile only
@@ -958,13 +981,20 @@
                             right: 0px;
                             bottom: 0px; //wass initial; //was 0px; - review this, if I come back to it agin; clearly not a solution?
                         }
+
+                        &[data-segment-type="tree"] {
+                        transform: scale(1.5); //review
+                        }
+                        &[data-segment-type="normal"] {
+                        transform: scale(1);  
+                        }
+                        
                     } //img
 
                     &:hover {
                         .text-wrap {
                             opacity: 1;
-                            color: nth($scheme, 3)
-        ;
+                            color: nth($scheme, 3);
                         } //.text-wrap
                         img {
                             opacity: 0.4;
@@ -1143,9 +1173,10 @@
 
       
         .exports{
-        // display: none;// no need to show this atm
+        display: none;// no need to show this atm; untill preview button pressed
 
             #canvas-wrap{
+            position:relative;
 
                 canvas{
                 width:100%!important;
@@ -1155,10 +1186,41 @@
             }//#canvas-wrap
         
             #export-image-wrap{
+            background: nth($scheme, 2);
+            border: 1px solid nth($scheme, 3); 
+            overflow: hidden;
+            position:relative;
+            @include fluid-type(
+                min-height,
+                map-get($breakpoints, xs),
+                map-get($breakpoints,xxl),
+                map-get($lineheight, xs) * 2.5,
+                map-get($lineheight,xxl) * 2.5
+            ); // fixed sizing
 
                 img{
-                width:100%!important;
-                height:auto!important;
+                width:auto!important;
+                height:100%!important;
+                margin:auto;
+                display:block;
+                @include fluid-type(
+                    max-height,
+                    map-get($breakpoints, xs),
+                    map-get($breakpoints,xxl),
+                    map-get($lineheight, xs) * 2.5,
+                    map-get($lineheight,xxl) * 2.5
+                ); // fixed sizing
+      
+                }
+                .submission-loader{
+                position: absolute;
+                z-index: 1;
+                display:none;
+                color:nth($scheme, 3);
+                background: $color-red;
+                font-family: $medium-font-family;
+                height: 100%;
+                width:100%;
                 }
             
             }// #export-image-wrap
@@ -1174,8 +1236,9 @@
         position: relative;
         overflow: hidden;
         height:55vw;// = 11 units tall x 5vw
-        border-bottom:2px solid nth($scheme, 3);
-        border-top:2px solid nth($scheme, 3);
+        // border-bottom:2px solid nth($scheme, 3);
+        // border-top:2px solid nth($scheme, 3);
+        z-index:4;//ensure below nav
 
             .grid-container{
                margin-top:15vw;// review 
@@ -1196,7 +1259,7 @@
                     width:100%;
                     height:auto;          
                     }
-                    
+
             }//  #outer-bg-layer
             
 
@@ -1317,12 +1380,11 @@
             }
         } //breakpiotns
 
-        //if logged in
-        //&.logged-in {
+        //if can edit
         &.can-edit {
 
-            //if user is logged in
-
+         
+ 
             .grid-item:hover {
                 // background: nth($scheme, 3)
                 @media (min-width: map-get($breakpoints, lg)) {
@@ -1330,8 +1392,8 @@
                 }
 
                 .inner-grid-item {
-                    // opacity:1;
-                    // opacity:0.8;
+                // opacity:1;
+                // opacity:0.8;
                 }
             }
 
@@ -1413,7 +1475,63 @@
 
             } //.dev-layout-grid-toggle-wrap
 
-        } //body.logged-in
+            // hide the form submission stuff until "dev-on"
+            .submission-form-wrap{
+            display:none;//
+            @include fluid-type(
+                padding-bottom,
+                map-get($breakpoints, xs),
+                map-get($breakpoints,xxl),
+                map-get($lineheight, xs) * 1,
+                map-get($lineheight,xxl) * 1
+            );
+            }
+            
+            //submission loader - 
+            .submission-loader-wrap{
+            position: relative;
+            width:100%;
+            display:none;
+            right:0px;
+            background-color: $color-red;
+            z-index:20;// ensure above all else
+            @include fluid-type(
+                height,
+                map-get($breakpoints, xs),
+                map-get($breakpoints,xxl),
+                map-get($lineheight, xs) * 2,
+                map-get($lineheight,xxl) * 2
+            );
+
+            }//.submission-loader-wrap
+
+        
+            .submission-loader{
+            // color: white;
+            @include fluid-type(
+                line-height,
+                map-get($breakpoints, xs),
+                map-get($breakpoints,xxl),
+                map-get($lineheight, xs) * 2,
+                map-get($lineheight,xxl) * 2
+            );
+            text-align: center;
+            color: nth($scheme, 2);
+            width:100%;
+            // @include center-align(absolute, 0);
+            height:100%;
+            font-family: $bold-font-family;
+
+                &:after {
+                content: ' .';
+                animation: dots 1s steps(5, end) infinite;
+                
+                }
+            
+            }
+
+
+        } //body.can-edit
 
 
 
@@ -1441,19 +1559,18 @@
             } //.grid-options-wrap
 
             .grid {
-                // border-top:1px solid nth($scheme, 2)
+            // border-top:1px solid nth($scheme, 2)
             }
 
             .layout-grid-item{
                 // border: 1px solid nth($scheme, 3);
                 // background:nth($scheme, 3)
-
-
-                 
-
+   
                 .grid-item-options-toggle {
                 display: none;
                 // width:50%;
+
+
                     .is-on {
                         display: none;
                     }
@@ -1466,12 +1583,13 @@
                         right:0px;
                     }
 
-                    
+                 
                 } //.grid-item-options-toggle
 
                 .move-arrow-area{
                 display:block;
-                width:100%;
+                width:200%;
+                left:-50%;
                 position: absolute;
                 height:100%;
                 padding:30%;
@@ -1487,7 +1605,9 @@
                 }//.move-arrow-area
 
                 //grid item on hover
-                &:hover {
+                &:hover,
+                &.item-edit-active 
+                    {
                    border:1px solid $color-active-grid-item;
                 
                    .move-arrow-area{
@@ -1520,10 +1640,13 @@
                         // right:0px;
                         width:200%;
                         height:50%;
-                        z-index:4;// 1 above edit
+                        // z-index:4;// 1 above edit
+                        z-index:6;// above tree images aswell
                         top:initial;
-                        background-color: none;
+                        background-color:initial;
+                        overflow: hidden;
                         padding: 0;
+                        border:none;
                         
                             .rotate{
                             margin: auto;
@@ -1531,13 +1654,15 @@
                             display: block;
                             width:100%;
                             height: 100%;
-                            @include fluid-type(
-                                padding,
-                                map-get($breakpoints, xs),
-                                map-get($breakpoints,xxl),
-                                map-get($lineheight, xs) * 0.125,
-                                map-get($lineheight,xxl) * 0.125
-                            );
+                            opacity:0.6;
+
+                                @include fluid-type(
+                                    padding,
+                                    map-get($breakpoints, xs),
+                                    map-get($breakpoints,xxl),
+                                    map-get($lineheight, xs) * 0.125,
+                                    map-get($lineheight,xxl) * 0.125
+                                );
 
                                 svg{
                                 margin:auto;
@@ -1547,24 +1672,44 @@
                                 position:relative;
                                 }
                             }
-
+ 
                             &:hover {
-                                
+                                .rotate{
+                                opacity:1;
+                                }
                             }
 
-                        }
+                        }//&.grid-item-options-toggle-rotate
 
                         &:hover {
                         color: nth($scheme, 2);
                         opacity:1;
                         }
 
+                        .is-on,
+                        .is-off {
+                        height: 25%;
+                        opacity:0.6;
+                        // line-height: 25%;
+                        @include fluid-type(
+                            padding,
+                            map-get($breakpoints, xs),
+                            map-get($breakpoints,xxl),
+                            map-get($lineheight, xs) * 0.125,
+                            map-get($lineheight,xxl) * 0.125
+                        );
+
+                            &:hover {
+                             opacity:1;
+                            }
+                        }
                         .is-on {
                             // display:none;
                         }
                         .is-off {
                             //  display:none;
                         }
+
                     } //.grid-item-options-toggle
 
                     .inner-grid-item{
@@ -1579,16 +1724,15 @@
                     }//.inner-grid-item
 
                 } // &:hover  //.grid-item:hover
-
+             //this maybe the same as the hover state:
                 &.item-edit-active {
-                    border: 1px solid $color-active-grid-item;
+                    // border: 1px solid $color-active-grid-item;
 
                     .grid-item-options-toggle {
                         display: block;
-                        color: $color-active-grid-item;
-                        background-color: nth($scheme, 2);
-                        // width:50%;
-
+                        // color: $color-active-grid-item;
+                        // background-color: nth($scheme, 2);
+                     
                         .is-on {
                             display: block;
                         }
@@ -1612,12 +1756,13 @@
                         height: inherit;
 
                         left: -50%;
-                        top: 0;
+                        top: -50%;
                         right: -50%;
                         width: 200%;
 
                     }
                 } // &.item-edit-active
+                 
             } //.grid-item
 
             .dev-layout-grid-toggle-wrap {
@@ -1635,7 +1780,8 @@
                 width: auto;
                 right: 0;
 
-             /*   @media (min-width: map-get($breakpoints, md)) {
+                /* 
+                @media (min-width: map-get($breakpoints, md)) {
                     @include fluid-type(
                         top,
                         map-get($breakpoints, xs),
@@ -1667,7 +1813,53 @@
                         display: none;
                     }
                 }
+
             } //.dev-layout-grid-toggle-wrap
+
+            // we can now show the form submission stuff
+            .submission-form-wrap{
+            display:block;
+            }
+
+            .submission-loader-wrap{
+            
+               .submission-loader{
+          
+               }
+                
+            }//.submission-loader-wrap
+
+            .export-options{
+            // background:red;
+
+                a#load-image{
+                border: 1px solid $color-red; 
+                color: $color-red;
+    
+                @include fluid-type(
+                    height line-height,
+                    map-get($breakpoints, xs),
+                    map-get($breakpoints,xxl),
+                    map-get($lineheight, xs) * 1,
+                    map-get($lineheight,xxl) * 1
+                ); // fixed sizing
+                  
+                    &:hover{
+                    border: 1px solid $color-red; 
+                    background: $color-red; 
+                    color:nth($scheme, 2);         
+                    }
+                }
+
+                a#download-image{
+                display: none;   
+                }
+                a#reload-page{
+                display: none;   
+                }
+
+            }// .export-options
+
         } //body.dev-layout-grid-on
 
 
@@ -1688,29 +1880,398 @@
         //Ensure only images are visible when copying to canvas
 
         &.capturing-image{
-        // background:red;
-
+ 
             .layout-grid-item{
             border:none!important;
             }
-
             .grid-item-options-toggle,
-            .grid-item-options {
+            .grid-item-options,
+            .grid-options-wrap,
+            .dev-layout-grid-toggle-wrap
+            {
             z-index: -999;
             opacity:0;
             display:none!important;
             }
 
             .image-wrap{
+
                 img{
                 // width:10vw;//ensure image corect size
                 }
+             
             }//.image-wrap
         
+            #export-image-wrap{
+            border: 1px solid $color-red;
+            
+                .submission-loader{
+                display:block;
+                color:nth($scheme, 2);
+                }
+
+            }
+            
+            //only show this - on capturing (item hidden via js html2canvas options
+            .submission-loader-wrap{
+            display:block;
+
+                .submission-loader{ 
+           
+                }            
+                 
+            }//.submission-loader-wrap
+
+            &.submission-previewed{
+                //no longer need to have big loader
+                .submission-loader-wrap{
+                display:none;         
+                }//.submission-loader-wrap
+
+            }//body.capturing-image..submission-previewed
+    
         }//body.capturing-image
+   
+      
+
+        #preview-label{
+        font-family: $medium-font-family;
+        }
+
+        //before submit possible; disable button:
+        .wpuf-submit-button{
+        opacity: 0.2;
+        pointer-events: none;
+        color: nth($scheme, 3);
+        background-color: nth($scheme, 2);
+        border:1px solid nth($scheme, 3);
+        padding:0;
+        width:49%;//50%; bit messy :(
+        @include fluid-type(
+            height line-height,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($lineheight, xs) * 1,
+            map-get($lineheight,xxl) * 1
+        ); // fixed sizing
+        @include fluid-type(
+            padding-left,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($gutter, xs) * 0.35, // bit messy ":(
+            map-get($gutter,xxl) * 0.35
+        ); // fixed sizing    
+        
+        @include fluid-type(
+            margin-left margin-right,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($gutter, xs) * 0.35, // bit messy ":(
+            map-get($gutter,xxl) * 0.35
+        ); // fixed sizing
+        }
+         
+        ul.wpuf-form .wpuf-fields{
+        width: 75%;
+        @include fluid-type(
+            padding-left,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($gutter, xs) * 0.35, // bit messy ":(
+            map-get($gutter,xxl) * 0.35
+        ); // fixed sizing
+       
+        }
+        //wpuf-form - additional styling related css over rides
+    
+        ul.wpuf-form li {
+            margin-left: 0;
+            padding: 0;
+            @include fluid-type(
+                margin-bottom,
+                map-get($breakpoints, xs),
+                map-get($breakpoints,xxl),
+                map-get($lineheight, xs) * 0.125,
+                map-get($lineheight,xxl) * 0.125
+            ); // fixed sizing
+            @include fluid-type(
+                padding-top,
+                map-get($breakpoints, xs),
+                map-get($breakpoints,xxl),
+                map-get($lineheight, xs) * 0.125,
+                map-get($lineheight,xxl) * 0.125
+            ); // fixed sizing
+        }
+        ul.wpuf-form li:after {
+            clear: both;
+            content: "";
+            display: table;
+        }
+
+        ul.wpuf-form .wpuf-submit .wpuf-errors{
+        float:left;
+        font-size: inherit;
+        width: 100%;
+        text-align: center;
+         @include fluid-type(
+            padding-left,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($gutter, xs) * 0.35, // bit messy ":(
+            map-get($gutter,xxl) * 0.35
+        ); // fixed sizing
+        background:$color-red;
+        border:none;
+        color:nth($scheme, 2);          
+        }
+
+        ul.wpuf-form li.has-error {
+        background:transparent;
+        border:1px solid $color-red;
 
 
+            .wpuf-label{
+                @include fluid-type(
+                padding-left,
+                map-get($breakpoints, xs),
+                map-get($breakpoints,xxl),
+                map-get($gutter, xs) * 0.25, // bit messy ":(
+                map-get($gutter,xxl) * 0.25
+            ); // fixed sizing 
+            }
 
+            .wpuf-fields{
+            @include fluid-type(
+                padding-right,
+                map-get($breakpoints, xs),
+                map-get($breakpoints,xxl),
+                map-get($gutter, xs) * 0.25, // bit messy ":(
+                map-get($gutter,xxl) * 0.25
+            ); // fixed sizing 
+
+            }
+
+        }// ul.wpuf-form li.has-error
+
+        ul.wpuf-form .wpuf-error-msg{
+        color: $color-red;
+        @include fluid-type(
+            font-size,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($fontsize, xs) * 0.5,
+            map-get($fontsize,xxl) * 0.5
+        ); // fixed sizing
+        }
+
+        ul.wpuf-form li .wp-editor-wrap {
+        border: none;
+        }
+        ul.wpuf-form li.wpuf_hidden_field {
+        display: none;
+        }
+        ul.wpuf-form li .wpuf-label {
+        float: left;
+        width: 25%;
+        min-height: 1px;
+        font-weight: bold;
+        }
+        
+        .wpuf-fields input.textfield,
+        .wpuf-fields input.email,
+        .wpuf-fields textarea.textareafield {
+        padding:0;
+        background:transparent;
+        border:1px solid nth($scheme, 3);
+        width:100%;
+        @include fluid-type(
+            height line-height,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($lineheight, xs) * 1,
+            map-get($lineheight,xxl) * 1
+        ); // fixed sizing
+        @include fluid-type(
+            padding-left,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($lineheight, xs) * 0.125,
+            map-get($lineheight,xxl) * 0.125
+        ); // fixed sizing
+       
+            &:focus{
+            border:2px solid nth($scheme, 3);
+            outline: none;
+            }
+        }
+        .wpuf-fields textarea.textareafield {
+        resize: none;
+        @include fluid-type(
+            height,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($lineheight, xs) * 6,
+            map-get($lineheight,xxl) * 6
+        ); // fixed sizing
+        }
+
+        ul.wpuf-form li .wpuf-label .required {
+        color:$color-red;
+        }
+        
+        ul.wpuf-form li .wpuf-fields .wpuf-help{
+            margin:0;
+        }
+        
+        // END wpuf-form - css over rides
+
+        //submission previewed; change styles
+        &.can-edit.dev-layout-grid-on.submission-previewed{  
+            .exports{
+            display:block;
+            }
+            //before submit possible; disable button:
+            .wpuf-submit-button{
+            opacity: 1;
+            pointer-events: initial;
+            cursor:pointer;
+          
+                &:hover{
+                background: nth($scheme, 3);
+                color: nth($scheme, 2);   
+                }
+
+                &.button-primary-disabled{
+                border: 1px solid $color-red;
+                color: nth($scheme, 3)!important;
+                background: $color-red!important;
+                text-shadow:none!important;
+                }
+
+                .wpuf-loading{
+                display:none!important;//removes that shitty gif
+                }
+
+            }// .wpuf-submit-button
+
+            .export-options{
+     
+                a#load-image{
+                border: 1px solid nth($scheme, 3);
+                color: nth($scheme, 3);
+                @include fluid-type(
+                    margin-bottom,
+                    map-get($breakpoints, xs),
+                    map-get($breakpoints,xxl),
+                    map-get($lineheight, xs) * 0.5,
+                    map-get($lineheight,xxl) * 0.5
+                ); // fixed sizing 
+                
+                     &:hover{
+                    border: 1px solid nth($scheme, 2); 
+                    background: nth($scheme, 3); 
+                    color:nth($scheme, 2);         
+                    }
+                }
+                a#download-image{
+                border: 1px solid nth($scheme, 3);
+                display: block; 
+                @include fluid-type(
+                    line-height,
+                    map-get($breakpoints, xs),
+                    map-get($breakpoints,xxl),
+                    map-get($lineheight, xs) * 1,
+                    map-get($lineheight,xxl) * 1
+                ); // fixed sizing
+                @include fluid-type(
+                    height,
+                    map-get($breakpoints, xs),
+                    map-get($breakpoints,xxl),
+                    map-get($lineheight, xs) * 1,
+                    map-get($lineheight,xxl) * 1
+                ); // fixed sizing  
+                
+                     &:hover{
+                    border: 1px solid nth($scheme, 2); 
+                    background: nth($scheme, 3); 
+                    color:nth($scheme, 2);         
+                    }
+                
+                }
+
+            }// .export-options
+        
+        }//body.can-edit.dev-layout-grid-on.submission-previewed
+
+        &.can-edit.dev-layout-grid-on.submission-previewed.update-available{ 
+ 
+            .export-options{
+     
+                a#load-image{
+                border: 1px solid $color-red;
+                color: $color-red;  
+                
+                     &:hover{
+                    background: $color-red; 
+                    color:nth($scheme, 2);         
+                    }
+                }
+                a#download-image{
+                display: block;   
+                }
+
+            }// .export-options
+        
+            .wpuf-submit-button{
+                // this way they can't submit any non updated images
+            opacity: 0.2;
+            pointer-events: none;
+            }
+        
+        }//body.can-edit.dev-layout-grid-on.submission-previewed.update-available
+
+        &.can-edit.dev-layout-grid-on.submission-previewed.form-submitted{  
+ 
+            .grid-layer{
+            display:none;
+            }
+
+            .export-options{
+
+                a#load-image{
+                display: none;   
+                }
+     
+                a#reload-page{
+                display: block; 
+                border: 1px solid nth($scheme, 3);
+
+                @include fluid-type(
+                    margin-top,
+                    map-get($breakpoints, xs),
+                    map-get($breakpoints,xxl),
+                    map-get($lineheight, xs) * 0.5,
+                    map-get($lineheight,xxl) * 0.5
+                ); // fixed sizing 
+                @include fluid-type(
+                    height line-height,
+                    map-get($breakpoints, xs),
+                    map-get($breakpoints,xxl),
+                    map-get($lineheight, xs) * 1,
+                    map-get($lineheight,xxl) * 1
+                ); // fixed sizing  
+                
+                
+                    &:hover{
+                    border: 1px solid nth($scheme, 2); 
+                    background: nth($scheme, 3); 
+                    color:nth($scheme, 2);         
+                    }
+                }
+
+            }// .export-options    
+
+        }//body.can-edit.dev-layout-grid-on.submission-previewed.form-submitted
 
     }//body.#{nth($scheme, 1)}:not(.wp-admin) // ensure we're not applying to admin 
 
@@ -1732,6 +2293,27 @@ body:not(.can-edit) {
     }
 } //body:not(.logged-in){
 
+
+body:not(.logged-in){
+//only show the coordiantes, toggles, options etc for logged in user
+
+    // .dev-layout-grid-toggle-wrap
+    .grid-options-wrap
+    {
+    display:none!important;
+    }
+
+    &.can-edit{
+
+        .dev-layout-grid-toggle-wrap{
+            background:red
+        }
+
+   }
+
+}//body:not(.logged-in)
+
+
 //Test
 /* conditional CSS - https://adactio.com/journal/5429 */
 body:after {
@@ -1748,3 +2330,6 @@ body:after {
         content: 'widescreen';
     }
 }
+
+
+ 

@@ -323,25 +323,21 @@ Author URI: http://svs.design
     @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*2, map-get($lineheight, xxl)*2); // viewport sizing
     
         .menu{
-          width: 100%;//
+        width: 100%;
 
-           .menu-item a,
-           .menu-item a:visited{ 
+            .menu-item a,
+            .menu-item a:visited{ 
             text-decoration: none;
-             color: nth($scheme, 2);
-
+            color: nth($scheme, 2);
             } //a
-          
-            
-
-
+      
             .menu-item{
             display: block;
             float: left;
             font-family: $light-font-family;
             width: auto;
-           position: relative;
-              @include fluid-type(margin-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
+            position: relative;
+            @include fluid-type(margin-left, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
             @include fluid-type(margin-left, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
             @include fluid-type(margin-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs), map-get($gutter, lg)); // fixed sizing
             @include fluid-type(margin-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing

@@ -137,9 +137,9 @@
                           Click to Start
                           </div>
 
-                          <div class="is-on">
+                         <!-- <div class="is-on"> not need
                           Close Edit Mode
-                          </div>
+                          </div> -->
 
                       </div><!-- .site-grid-item -->
 
@@ -185,8 +185,7 @@
 
                       <button type="button" class="btn site-grid-item site-grid-xxxs-16 site-grid-xxs-2 btn-primary add-row">Add Item</button>
                       <button type="submit" class="btn site-grid-item site-grid-xxxs-16 site-grid-xxs-2 btn-success">Save All</button>
-                      <a id="download-image" type="button" class="btn site-grid-item site-grid-xxxs-16 site-grid-xxs-2 btn-primary download-image">Download Image</a>
-
+ 
                       <div class="response-message-wrap site-grid-item">
 
                           <div class="response-message">
@@ -221,7 +220,6 @@
                       <button type="submit" class="btn site-grid-item site-grid-xxxs-16 site-grid-xxs-2 btn-success">Save All</button>
 
                       <button type="button"  class="clear-local-storage site-grid-item site-grid-xxxs-16 site-grid-xxs-16">Clear LocalStorage</button><!-- .clear-local-storage -->
-                      <a id="download-image" type="button" class="btn site-grid-item site-grid-xxxs-16 site-grid-xxs-2  btn-primary download-image">Download Image</a>
 
                       <div class="response-message-wrap site-grid-item">
 
@@ -290,7 +288,11 @@
 
                       ?>
 
-                      <div data-item-id="<?php echo esc_attr( $v['item_id'] ); ?>"  data-url="<?php echo $activelink;?>" data-item-z-index="<?php echo esc_attr( $v['item_z-index'] ); ?>" name="fields[layout_items][<?php echo absint( $k ); ?>][item_size_w][item_size_h]['item_z-index']['image_scale]['image_position_x']['image_position_y']['associated_segment']['image_rotate]" class="layout-grid-item repeater-item grid-fade-item grid-item-width-<?php echo esc_attr( $v['item_size_w']/25 ); ?> item-z-index-<?php echo esc_attr( $v['item_z-index'] ); ?> grid-item-height-<?php echo esc_attr( $v['item_size_h']/25 ); ?><?php if (!$source_image ):?> blank-item<?php endif; ?><?php echo $class; ?>">
+                      <div data-item-id="<?php echo esc_attr( $v['item_id'] ); ?>"  data-url="<?php echo $activelink;?>" data-item-z-index="<?php echo esc_attr( $v['item_z-index'] ); ?>" name="fields[layout_items][<?php echo absint( $k ); ?>][item_size_w][item_size_h]['item_z-index']['image_scale]['image_position_x']['image_position_y']['associated_segment']['image_rotate]" 
+                      class="layout-grid-item repeater-item grid-fade-item 
+                      grid-item-width-<?php echo esc_attr( $v['item_size_w']/25 ); ?> 
+                      item-z-index-<?php echo esc_attr( $v['item_z-index'] ); ?> 
+                      grid-item-height-<?php echo esc_attr( $v['item_size_h']/25 ); ?><?php if (!$source_image ):?> blank-item<?php endif; ?><?php echo $class; ?>">
 
 
                         <?php /* [DOM] Found 21 elements with non-unique id #:
@@ -299,10 +301,10 @@
                               TODO - resolve this.
                                   -->*/?>
 
-                          <div class="btn grid-item-options-toggle">
+                          <div class="grid-item-options-toggle">
 
                             <div class="is-on">
-                            Close
+                            <?php /* Close */?>
                             </div>
 
                             <div class="is-off">
@@ -384,7 +386,9 @@
                                         <!--  <span class="options-item-title">Associated Segment:</span>-->
 
                                       <?php/* select had this: id="acf-post-object" */?>
-                                            <select class="form-control input-sm image-ui acf-post-object" id="acf-post-object-<?php echo esc_attr( $v['item_id'] ); ?>" name="fields[layout_items][<?php echo absint( $k ); ?>][associated_segment]">
+                                            <select class="form-control input-sm image-ui acf-post-object" 
+                                            id="acf-post-object-<?php echo esc_attr( $v['item_id'] ); ?>" 
+                                            name="fields[layout_items][<?php echo absint( $k ); ?>][associated_segment]">
                                               <option value="">SELECT:</option>
                                               <?php 
                                                 //https://stackoverflow.com/questions/2965971/how-to-add-images-in-select-list
@@ -392,11 +396,12 @@
                                                 //https://jqueryui.com/selectmenu/#custom_render
                                                 foreach ( (array) get_posts((array('post_type' => 'segments','post_status' => 'publish', 'numberposts' => -1 ))) as $p ) :
                                                 $segmentimage = get_field( 'segment_image',$p->ID ); //array
+                                                $segmenttype = get_field( 'segment_type',$p->ID ); //radiobutton; return value
 
                                                   if ( isset( $post_object->ID ) ) {
                                                     $selected = selected( $post_object->ID, $p->ID, false );
                                                     // $segmentimage = get_field( 'segment_image',$p->ID ); //array
-
+                                                  
                                                     
                                                   } else {
                                                     $selected = '';
@@ -404,7 +409,16 @@
                                                   
                                                                             
                                                 
-                                                <option <?php echo esc_attr( $selected ); ?> <?php if( !empty($segmentimage) ): ?> data-segment-image="<?php echo $segmentimage['url']; ?>" data-class="avatar" data-style="background-image: url('<?php echo $segmentimage['url']; ?>');"<?php endif; ?> value="<?php echo $p->ID; ?>">
+                                                <option <?php echo esc_attr( $selected ); ?> 
+                                                <?php if( !empty($segmentimage) ): ?> 
+                                                  data-segment-image="<?php echo $segmentimage['url']; ?>" 
+                                                  data-segment-type="<?php echo $segmenttype;?>"
+                                                  data-class="avatar" 
+                                                  data-style="background-image: url('<?php echo $segmentimage['url']; ?>');"
+                                                <?php endif; ?> 
+                                                  value="<?php echo $p->ID; ?>">
+                                                  
+                                                  
                                                   <div class="title">
                                                   <div><?php echo $p->post_title; ?></div>
                                                   </div>
@@ -412,12 +426,9 @@
                                                 <?php //echo $activelink;?>
 
                                                 <?php endforeach; ?>
-    
-
-
-
 
                                             </select>
+
                                           </label>
                                         
                                         </fieldset>
@@ -504,10 +515,12 @@
                                       <?php if($v['associated_segment']) :
                           
                                         $segmentimage = get_field( 'segment_image',$v['associated_segment']->ID); //array
-                                        
+                                        // $segmenttype = get_field( 'segment_type',$v['associated_segment']->ID); 
+                                        $segmenttype = get_field( 'segment_type',$v['associated_segment']->ID); 
+
                                         if ( $segmentimage ) : ?>
     
-                                            <img src="<?php echo $segmentimage['url']; ?>" />
+                                            <img src="<?php echo $segmentimage['url']; ?>" data-segment-type="<?php echo $segmenttype;?>" class=""/>
 
                                             <div class="text-wrap">
 
@@ -567,15 +580,7 @@
               </div>
 
 
-              <div class="exports">
-            
-                  <div id="canvas-wrap">
-                  </div><!-- #canvas-wrap -->
-
-                  <div id="export-image-wrap">
-                  </div><!-- #image-wrap -->
-              
-              </div><!--.exports -->
+          
 
         </div><!-- repeater-wrap -->
 
@@ -595,28 +600,88 @@
       <img src="<?php echo get_template_directory_uri() ?>/dist/img/freeling-front-outer.png"/>
            
     </div><!--.outer-front-layer-->
- 
     
     <div id="outer-bg-layer">
-
-    
-    <?php //additional content *consier furher divs etc. ?>
-
+  
+      <?php //additional content *consier furher divs etc. ?>
       <img src="<?php echo get_template_directory_uri() ?>/dist/img/freeling-bg-outer.png"/>
            
     </div><!--.outer-bg-layer-->
 
-
 </div><!--.grid-layer-->
- 
-    
+
+<div class="submission-form-wrap">  
+
+    <div class="exports-wrap">
+
+      <!--<div class="submission-loader-wrap" data-html2canvas-ignore="true"> -->
+        <div class="submission-loader-wrap"> 
+            <!-- replace with gif of sorts -->
+            <div class="submission-loader">
+            Loading
+            </div>
+
+        </div><!--.submission-loader-wrap-->
+
+        <div class="grid-container">
+
+            <div class="grid-row-holder">
+
+              <label id="preview-label" class="grid-item grid-xs-12 grid-sm-12 grid-md-3">
+              Preview
+              </label>
+
+              <div class="exports grid-item grid-xs-12 grid-sm-12 grid-md-3">
+                  
+                      <div id="canvas-wrap">
+                      </div><!-- #canvas-wrap -->
+
+                      <div id="export-image-wrap">
+
+                          <div class="submission-loader">
+                          Loading
+                          </div>
+                          
+                      </div><!-- #image-wrap -->
+                  
+              </div><!--.exports -->
+
+              <div class="export-options grid-item grid-xs-12 grid-sm-12 grid-md-9">
+                
+                <a id="load-image" type="button" class="btn btn-primary download-image grid-xs-12">
+                  Preview Image
+                </a> 
+
+                <a id="download-image" type="button" class="btn site-grid-item btn-primary download-image grid-xs-12">
+                  Download Image
+                </a>
+
+                <a href="<?php the_permalink(); ?>"id="reload-page" type="button" class="btn btn-primary download-image grid-xs-12">
+                  Start Again
+                </a> 
+
+              </div><!--.export-options-->
+            
+            </div><!--.grid-row-holder -->
+
+        </div><!--.grid-container -->
+
+    </div><!--.exports-wrap -->
+
+        
+        
+    <div class="form-wrap">
+       
+          <div class="grid-container">
+
+          <?php
+          //  https://stackoverflow.com/questions/49442428/attach-canvas-image-created-to-input-file-to-upload-it-html5-jquery
+          
+          echo do_shortcode("[wpuf_form id='310']"); ?>
+          <?php// echo do_shortcode("[wpuf_edit]");?>
+          </div><!--.grid-container-->
+
+    </div><!--.form-wrap -->
 
 
- <div class="grid-container">
- <?php
-//  https://stackoverflow.com/questions/49442428/attach-canvas-image-created-to-input-file-to-upload-it-html5-jquery
- 
- echo do_shortcode("[wpuf_form id='310']"); ?>
-<?php// echo do_shortcode("[wpuf_edit]");?>
-
-</div><!--.grid-container-->
+</div><!--.submission-form-wrap -->
