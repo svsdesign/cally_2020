@@ -18,17 +18,17 @@ add_action('admin_menu','remove_default_post_type');
   
         // Set UI labels for Custom Post Type
         $labels = array(
-            'name'                => _x( 'segments', 'Post Type General Name', 'cally' ),
-            'singular_name'       => _x( 'segment', 'Post Type Singular Name', 'cally' ),
-            'menu_name'           => __( 'segments', 'cally' ),
-            'parent_item_colon'   => __( 'segments', 'cally' ),
-            'all_items'           => __( 'All segments', 'cally' ),
-            'view_item'           => __( 'View segments', 'cally' ),
-            'add_new_item'        => __( 'Add New segments', 'cally' ),
+            'name'                => _x( 'Segments', 'Post Type General Name', 'cally' ),
+            'singular_name'       => _x( 'Segment', 'Post Type Singular Name', 'cally' ),
+            'menu_name'           => __( 'Segments', 'cally' ),
+            'parent_item_colon'   => __( 'Segments', 'cally' ),
+            'all_items'           => __( 'All Segments', 'cally' ),
+            'view_item'           => __( 'View Segment', 'cally' ),
+            'add_new_item'        => __( 'Add New Segment', 'cally' ),
             'add_new'             => __( 'Add New', 'cally' ),
-            'edit_item'           => __( 'Edit segments', 'cally' ),
-            'update_item'         => __( 'Update segments', 'cally' ),
-            'search_items'        => __( 'Search segments', 'cally' ),
+            'edit_item'           => __( 'Edit Segment', 'cally' ),
+            'update_item'         => __( 'Update Segment', 'cally' ),
+            'search_items'        => __( 'Search Segment', 'cally' ),
             'not_found'           => __( 'Not Found', 'cally' ),
             'not_found_in_trash'  => __( 'Not found in Trash', 'cally' ),
         );

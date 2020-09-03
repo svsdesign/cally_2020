@@ -923,23 +923,55 @@ export default function init() {
 
   } // function initiatepackery()
 
+  var submissionname; //move elswhere
+    //  posttitle
+
+  $('input[name="submission_name"]').on('change', function () {
+
+    submissionname = $('input[name="submission_name"]').val();
+
+  var posttitle = submissionname;
+
+    $('input[name="post_title"]').val(""+posttitle+"");
+    // $('input[name="submission_name"]').val(""+submissionname+"");
+
+    console.log("submissionname =" +submissionname+"");
+    console.log("posttitle =" +posttitle+"");
+
+  });
+
+
   $("#load-image").on('click', function () {
     //load image before download possible
-    console.log("load-image click")
+    console.log("load-image click");
     captureCanvas();
+    // $('input[name="submission_name"]').css("background","red");
+    // var submissionname = $('input[data-input-type]').val();
+  //  var submissionname = $('input[name="submission_name"]').val();//.attr('data-input-type');
+
+    // console.log("submissionname on load =" +submissionname+"");
 
     //once this is done, we''l be able t download and also submit submission
     //takes fucking ages to load; how to resolve; could the data
   });
   
   $("#download-image").on('click', function () {
-    console.log("hello dowload click - ensure to update the picture name is submiossion title exists");
-    var imgageData = getCanvas.toDataURL("image/png");
-   // considerations: further vars and values for custom names etc
+   // Now browser starts downloading it instead of just showing it
 
-    // Now browser starts downloading it instead of just showing it
+    // console.log("hello dowload click - ensure to update the picture name is submiossion title exists");
+  
+    var imgageData = getCanvas.toDataURL("image/png");
+        // submissionname = $('input[data-input-type]').val();
+   
+        console.log("submissionname on download =" +submissionname+"");
+    //  console.log("name" +submissionname +'');
+
+    // TO DO figure out isues with space on not a problem is reality?
+
     var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
-    $("#download-image").attr("download", "your_pic_name.png").attr("href", newData);
+    // $("#download-image").attr("download", "your_pic_name.png").attr("href", newData);
+    $("#download-image").attr("download", ""+ submissionname +"'s Freeling Street.png").attr("href", newData);
+
   });
 
   // dev toggle - TO DO - move this elsewhere
@@ -1142,7 +1174,11 @@ export function itemEdit($thisitem, $grid) {
 
     console.log("thisnewrotatevalue" +thisnewrotatevalue +"");
     $this.find(".inner-grid-item").css("transform", "rotate(" + thisnewrotatevalue + "deg)"); // to do - ensure cross browser
+    $this.find('.grid-item-options-toggle-rotate .rotate').css("transform", "rotate(" + thisnewrotatevalue + "deg)");
     $this.find('input.input-rotate').val(thisnewrotatevalue);
+
+    
+
     // Canvas has Changed as soon as items are rotated
     canvasChange(); 
 

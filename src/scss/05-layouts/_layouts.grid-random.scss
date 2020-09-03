@@ -593,10 +593,11 @@
                     .ui-icon {
                         position:absolute!important;
                         background-position: 0 0;
-                        background-size: cover;//contain;
+                         
+                        background-size: contain;//contain;
                         background-image: none; // so that default image not showing fromn other style sheet
-                        background-blend-mode: multiply;
-                        background-color:nth($scheme, 3);
+                        // background-blend-mode: multiply;
+                        // background-color:nth($scheme, 3);
                     /* @include fluid-type(
                             width height,
                             map-get($breakpoints, xs),
@@ -612,6 +613,7 @@
                         left:0%;
                         top:0px;
                         z-index: -1;
+
                     }
              
                     .ui-menu {
@@ -624,13 +626,16 @@
                         );*/
                         padding:0;
                         height:inherit;
-                        max-height: 15vw;// can only be one grid size unit  for overflow issues on parent container//30vw;
+                        max-height: 18vw;// can only be one grid size unit  for overflow issues on parent container//30vw;
                         display: grid;
                         border:0px;
                         // grid-template-columns:10vw;//$iconwidth1;//1fr;// repeat(auto-fill, $iconwidth1);
                         //  grid-template-columns: $iconwidth1 $iconwidth1 $iconwidth1;
-                        grid-template-columns:9vw;
-                        grid-template-rows: repeat(auto-fill, $iconheight1);
+//                        grid-template-columns:3vw;
+//                        grid-template-rows: repeat(auto-fill, $iconheight1);
+                         grid-template-columns: repeat(auto-fill,3vw);
+                        grid-template-rows: repeat(auto-fill,3vw);
+                        grid-gap: 0vw;
                         /* @include fluid-type(
                             grid-gap,
                             map-get($breakpoints, xs),
@@ -638,9 +643,8 @@
                             map-get($lineheight, xs) * 0.25,
                             map-get($lineheight,xxl)* 0.25
                         );*/
-                        grid-gap:0;
-                        width:10vw;// = 2 x iconwidth $iconwidth1!important;//to overide the css set via js jquery ui
-                        max-width:9vw;//might need reviewing
+                        width:15vw;// = 2 x iconwidth $iconwidth1!important;//to overide the css set via js jquery ui
+                        max-width:15vw;//might need reviewing
                         margin:auto;
                         background: nth($scheme, 3);
 
@@ -652,9 +656,10 @@
                         // height:$iconheight1;
                         height:inherit;// allows item to change based on active child or
                         text-align:center;
+                        font-size:0px!important;
                         margin:auto;
                         @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*0.75, map-get($fontsize, lg)*0.75); // fixed sizing 
-                        @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*0.75, map-get($fontsize, xxl)*0.75); // viewport sizing 
+                        // @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*0.75, map-get($fontsize, xxl)*0.75); // viewport sizing 
                         // @include fluid-type(line-height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
                         // @include fluid-type(line-height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing 
                         // line-height:10vw;
@@ -670,7 +675,8 @@
                                 z-index: 0;
                                 height:inherit;
                                 padding: 0;
-                                line-height: $iconheight1;
+                                color:transparent;
+                                // line-height: $iconheight1;
                                 // color: nth($scheme, 2);
                             }
                             
@@ -678,7 +684,7 @@
                             border:none;
                             background:none;
                             font-size: 0px;// don't display text
-                            height: 9vw;
+                            // height: 9vw;
 
                                  span.ui-icon {
                                     position:absolute!important;
@@ -687,7 +693,7 @@
                                     background-blend-mode: none;
                                     background-color:nth($scheme, 2);
                                     width:100%;
-                                    height: 9vw;//10vw; might need reviewing
+                                    // height: 9vw;//10vw; might need reviewing
                                     display: block;
                                     right:0px;
                                     bottom: 0px;
@@ -1217,7 +1223,7 @@
                 z-index: 1;
                 display:none;
                 color:nth($scheme, 3);
-                background: $color-red;
+                background:nth($scheme, 2);
                 font-family: $medium-font-family;
                 height: 100%;
                 width:100%;
@@ -1381,14 +1387,12 @@
         } //breakpiotns
 
         //if can edit
-        &.can-edit {
-
-         
+        &.can-edit {        
  
-            .grid-item:hover {
+            .layout-grid-item:hover {
                 // background: nth($scheme, 3)
                 @media (min-width: map-get($breakpoints, lg)) {
-                    cursor: move;
+                 cursor: move;
                 }
 
                 .inner-grid-item {
@@ -1396,8 +1400,6 @@
                 // opacity:0.8;
                 }
             }
-
-         
 
             // START dev functions - this now part of the UI/UX for "starting the grid"
             .dev-layout-grid-toggle-wrap {
@@ -1414,7 +1416,6 @@
                 left:0px;
                 top:0px;
                 text-align:center;
-
                 
                /* @include fluid-type(
                     top,
@@ -1493,7 +1494,7 @@
             width:100%;
             display:none;
             right:0px;
-            background-color: $color-red;
+            background-color: nth($scheme, 3);
             z-index:20;// ensure above all else
             @include fluid-type(
                 height,
@@ -1936,6 +1937,7 @@
 
         #preview-label{
         font-family: $medium-font-family;
+        opacity: 0;
         }
 
         //before submit possible; disable button:
@@ -2027,8 +2029,7 @@
 
         ul.wpuf-form li.has-error {
         background:transparent;
-        border:1px solid $color-red;
-
+        border:none;
 
             .wpuf-label{
                 @include fluid-type(
@@ -2048,10 +2049,20 @@
                 map-get($gutter, xs) * 0.25, // bit messy ":(
                 map-get($gutter,xxl) * 0.25
             ); // fixed sizing 
+            }
 
+            input{
+            border:1px solid $color-red;
+          
+                &:focus{
+                border:2px solid $color-red;
+                }
+            
             }
 
         }// ul.wpuf-form li.has-error
+
+        
 
         ul.wpuf-form .wpuf-error-msg{
         color: $color-red;
@@ -2115,18 +2126,54 @@
         ); // fixed sizing
         }
 
+        ul.wpuf-form li.post_title{
+        display:none;// no need to show this 
+        }
+
         ul.wpuf-form li .wpuf-label .required {
         color:$color-red;
         }
         
         ul.wpuf-form li .wpuf-fields .wpuf-help{
-            margin:0;
+        margin:0;
+        color: #666;
+        margin: 2px 0 5px 0;
+        // font-size: 12px;
+        font-style: initial;
+        font-family: $medium-font-family;
+        display: block;
+        @include fluid-type(
+            font-size,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($fontsize, xs) * 0.5,
+            map-get($fontsize,xxl) * 0.5
+        ); // fixed sizing
+        @include fluid-type(
+            line-height,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($lineheight, xs) * 0.5,
+            map-get($lineheight,xxl) * 0.5
+        ); // fixed sizing
         }
-        
+
+        .wpuf-success{
+        text-align:center;
+        background: nth($scheme, 3);
+        color: nth($scheme, 2);     
+        border:none;
+        }
         // END wpuf-form - css over rides
 
         //submission previewed; change styles
         &.can-edit.dev-layout-grid-on.submission-previewed{  
+
+
+            #preview-label{
+            opacity: 1;
+            }
+
             .exports{
             display:block;
             }
@@ -2141,9 +2188,9 @@
                 color: nth($scheme, 2);   
                 }
 
-                &.button-primary-disabled{
+                &.button-primary-disabled{ //when its submitting
                 border: 1px solid $color-red;
-                color: nth($scheme, 3)!important;
+                color: nth($scheme, 2)!important;
                 background: $color-red!important;
                 text-shadow:none!important;
                 }
@@ -2174,8 +2221,12 @@
                     }
                 }
                 a#download-image{
+
                 border: 1px solid nth($scheme, 3);
-                display: block; 
+               // display: block; 
+                    //dont display yet?
+
+                    display:none;
                 @include fluid-type(
                     line-height,
                     map-get($breakpoints, xs),
@@ -2217,7 +2268,7 @@
                     }
                 }
                 a#download-image{
-                display: block;   
+                display:none;   
                 }
 
             }// .export-options
@@ -2236,12 +2287,49 @@
             display:none;
             }
 
+            #preview-label{
+            display:none
+            }
+            .exports{
+            width: 50%;
+            flex: 0 0 75%;
+            float: right;
+            margin-left: 25%;
+            
+                #export-image-wrap{
+                border:none;
+
+                    img{
+                    width: 100%!important;
+                    height: auto!important;
+                    max-height: initial;
+                    }
+                }
+            }// .exports
+
             .export-options{
+                width: 50%;
+                flex: 0 0 75%;
+                float: right;
+                margin-left: 25%;
 
                 a#load-image{
                 display: none;   
                 }
      
+                a#download-image{
+                display: block; 
+                border:1px solid $color-red;
+                color:nth($scheme, 2);
+                background: $color-red;
+
+                    &:hover{
+                    color: $color-red;
+                    background:nth($scheme, 2);
+                    }
+             
+                }
+
                 a#reload-page{
                 display: block; 
                 border: 1px solid nth($scheme, 3);

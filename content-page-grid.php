@@ -54,7 +54,7 @@
     $edit = true;
     $post_id = get_the_ID();
     $url     = site_url( 'wp-json/acf/v3/posts/' ) . $post_id;
-	$post  = get_post( $post_id );
+	  $post  = get_post( $post_id );
       
 
     else:  // not logged in 
@@ -465,16 +465,7 @@
 
                               </div><!-- .grid-item-options-item  -->
 
-
-
-
-                              <!-- TO DO:
-
-                                - suggest to add a reset value for position x, y and scale; because the slider too fidly?
-                                              --or have number value field aswell?
-                              -->
                               <div class="grid-item-options-item button-options-item site-grid-item site-grid-xxxs-16 site-grid-sm-4" style="display:none;">
-
 
                                   <button type="button" class="btn acf-image-remove" id="acf-image-remove-<?php echo esc_attr( $v['item_id'] ); ?>">
                                   Remove image
@@ -564,8 +555,6 @@
                       <?php endif;//is_user_logged_in() ?>
 
 
-
-
                     <?php // $itemid++;
                     endforeach; ?>
 
@@ -573,14 +562,13 @@
 
                 </div><!-- grid -->
                   
-                <div id="background-map">
+                <div id="background-map" data-html2canvas-ignore="true">
+                  <!-- review this bg-map - do we even need this? -->
                 <img src="<?php echo get_template_directory_uri() ?>/dist/img/freeling-bg.jpg"/>
                 </div>
 
               </div>
-
-
-          
+  
 
         </div><!-- repeater-wrap -->
 
@@ -593,11 +581,10 @@
     </div><!--.grid-container-->
 
     <div id="outer-front-layer">
+   
+      <?php //additional content *consier furher divs etc. ?>
 
-    
-    <?php //additional content *consier furher divs etc. ?>
-
-      <img src="<?php echo get_template_directory_uri() ?>/dist/img/freeling-front-outer.png"/>
+        <img src="<?php echo get_template_directory_uri() ?>/dist/img/freeling-front-outer.png"/>
            
     </div><!--.outer-front-layer-->
     
@@ -609,6 +596,7 @@
     </div><!--.outer-bg-layer-->
 
 </div><!--.grid-layer-->
+
 
 <div class="submission-form-wrap">  
 
@@ -653,7 +641,7 @@
                 </a> 
 
                 <a id="download-image" type="button" class="btn site-grid-item btn-primary download-image grid-xs-12">
-                  Download Image
+                  Download Your Image
                 </a>
 
                 <a href="<?php the_permalink(); ?>"id="reload-page" type="button" class="btn btn-primary download-image grid-xs-12">
