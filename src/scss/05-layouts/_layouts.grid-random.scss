@@ -20,6 +20,18 @@
     // body.#{nth($scheme, 1)}.wp-admin .acf-block-preview // but we are applying to the block we can't target ".th-block"  because most classes in this doc are targetting rthe s
     {
   
+        .touch-notification-wrapper,
+        .small-screen-notification-wrapper{
+        background: nth($scheme, 3);
+        color: nth($scheme, 2);
+        @include fluid-type(
+        padding-top padding-bottom,
+        map-get($breakpoints, xs),
+        map-get($breakpoints,xxl),
+        map-get($lineheight, xs) * 2,
+        map-get($lineheight,xxl) * 2
+        );     
+        }
 
         .repeater-wrap {
             width: 100%;
@@ -2366,8 +2378,57 @@
 }//scheme
 
 
+
+//by default, don't display until the js adds the appropriate class
+.touch-notification-wrapper,
+.small-screen-notification-wrapper,
+.grid-layer,
+.submission-form-wrap{
+display:none;  
+}
+
+//end by default, don't display until the js adds the appropriate class
+
+body.is-not-touch {
+
+    .touch-notification-wrapper{
+    display:none;
+    }
  
- 
+    .small-screen-notification-wrapper{
+    display:block;
+     
+        @media (min-width: map-get($breakpoints, lg)) {
+        display:none; 
+        }      
+
+    }
+    .grid-layer,
+    .submission-form-wrap{
+    display:none;
+
+        @media (min-width: map-get($breakpoints, lg)) {
+        display:block; 
+        }   
+    }
+
+}//body.is-not-touch
+
+body.is-touch {
+
+    .touch-notification-wrapper{
+    display:block;
+    }
+    .small-screen-notification-wrapper{
+    display:none;  
+    }
+    .grid-layer,
+    .submission-form-wrap{
+    display:none;
+    }
+
+}//body.is-touch
+
 
 body.toggles-on {
     overflow: hidden;

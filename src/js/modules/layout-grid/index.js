@@ -352,11 +352,9 @@ export default function init() {
       }).then(canvas => {
           
         var img = document.createElement("img"); // create an image object
-            img.src = canvas.toDataURL(); // get canvas content as data URI
-          
+            img.src = canvas.toDataURL(); // get canvas content as data URI    
             getCanvas = canvas;
 
-         
           //create images
           document.querySelector("#export-image-wrap").appendChild(img);
           //create canvas
@@ -366,11 +364,9 @@ export default function init() {
           // https://stackoverflow.com/questions/15153776/convert-base64-string-to-an-image-file
           // $('body').find("textarea[name='submission_description']").val(img.src);
 
-
           $('body').addClass("submission-previewed");// submit button now clickable
 
           //change width of export options buttons to fit next to preview image
-
           $('.export-options').removeClass("grid-md-9").addClass("grid-md-6")
      
           $('body').removeClass("capturing-image");
@@ -378,7 +374,6 @@ export default function init() {
           //if the update class was added lets remove it; as there are no more update once we generate the next image:
           $('body').removeClass("update-available");
 
-  
         });//  }).then(canvas => 
  
       }, 1);
@@ -840,9 +835,7 @@ export default function init() {
 
           } //if ($('body').hasClass("is-touch")
 
-
           // $(window).scrollTop($(window).scrollTop() + 1);
-
           //trigger initial scroll to ensure all object are layed out (includign thenegative offests)
           /// far too much shite in this function - tidy up
 
@@ -859,7 +852,11 @@ export default function init() {
           
           }// if (isEditModeActive === true)
 
-
+          setTimeout(function () {
+            // console.log("trigger layoutComplete");     
+            $grid.packery('layout').trigger('layoutComplete'); // this works - but lets ensure its on the correct place
+  
+          }, 100);
 
         } else if (breakpointName === '"default"' && isPackeryInit) {
           // disable packery if default and already intialized
@@ -880,46 +877,19 @@ export default function init() {
           }
 
         } else{
-
           // AOS.refreshHard(); //review
           // console.log( "AOS.refreshHard(); - mobile?");
-
         }
-
-        $(window).resize(function() {
-          console.log("resize(function()");
-          // $grid.packery('reloadItems')
-        });
-    
-        setTimeout(function () {
-          console.log("setTimeout(function)");
-
-          // $(window).trigger('resize');//to ensure the layout is correct; bit buggy atm
-          //  window.resizeTo(windowwidth, windowheight)
-          // var gridwidth = $(window).width();
-          // var newgridwidth =((gridwidth) +1);
-          // $(window).css("width",newgridwidth);
-  
-         
-          // $grid.packery('reloadItems');
- 
-          // $grid.packery('initShiftLayout', storedcoordinates, 'data-item-id');
-          // $grid.packery('reloadItems')
-          $grid.packery('layout').trigger('layoutComplete'); // this works - but lets ensure its on the correct place
-
-        }, 100);
-      
-
+          
       } //  function checkPackery()
 
-  
       checkPackery();
       // AOS.init();
 
       // check this on resize, debounced
       $(window).on('resize', debounce(checkPackery, 200));
 
-    }); //var $grid = $thisgrid.imagesLoaded(function() {
+    }); //var $grid = $thisgrid.imagesLoaded(function()
 
   } // function initiatepackery()
 

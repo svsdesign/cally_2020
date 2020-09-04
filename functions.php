@@ -37,30 +37,28 @@ function svs_add_crossorigina( $tag, $handle ) {
 add_filter( 'script_loader_tag', 'svs_add_crossorigina', 10, 2 );
 
 
-
-
 function cally_2020_style() {   
 wp_enqueue_style( 'style', get_stylesheet_uri() );
 }
-
 // add_action( 'wp_enqueue_scripts', 'cally_2020_style' );
-
 
 
 // Add theme gulp'ed & minified CSS/JS
 function svs_add_theme_files() {
 
     wp_enqueue_media(); // front end WP media scripts
-
-
 	
     if ( !is_admin() ) :
         // Remove as we don't want WP built it jQuery
 		wp_deregister_script( 'jquery' );
 		
 		//remove jquery ui script as its clashing with Discuz and my script equeue below
-		wp_deregister_script( 'jquery-ui-core' );
-	
+	 	wp_deregister_script( 'jquery-ui-core' );
+		//But have added back in again, because was causing issue with front end; seem to al lwork at
+		//if not maybe try and move wp_enqueue_media() from above to somewhere else after?		
+		
+		// /wp-includes/js/plupload/plupload.js
+		
     endif;
 
     // Main budkled site styles
@@ -73,14 +71,14 @@ function svs_add_theme_files() {
     if ( $_SERVER['REMOTE_ADDR'] === '::1' || $_SERVER['REMOTE_ADDR'] === '127.0.0.1' ):
 
         wp_enqueue_script( 'jquery', get_template_directory_uri() .'/dist/js/jquery.js', array(), null, false );
-        wp_enqueue_script( 'jquery ui', get_template_directory_uri() .'/dist/js/jquery-ui.min.js', array(), null, false );
+     	wp_enqueue_script( 'jquery ui', get_template_directory_uri() .'/dist/js/jquery-ui.min.js', array(), null, false );
         wp_enqueue_script( '__bs_script__', 'http://'. $_SERVER['SERVER_NAME'] .':3000/browser-sync/browser-sync-client.js', array(), '2.17.3', true );
-
+ 
     else:
 
-        wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js', array(), null, false );
-        wp_enqueue_script( 'jquery ui', get_template_directory_uri() .'/dist/js/jquery-ui.min.js', array(), null, false );
-
+       wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js', array(), null, false );
+	   wp_enqueue_script( 'jquery ui', get_template_directory_uri() .'/dist/js/jquery-ui.min.js', array(), null, false );
+ 
     endif;
 
     // Pull in any vendors scripts and site app
@@ -132,10 +130,6 @@ function svs_admin_block_assets() {
 
 }
 add_action( 'enqueue_block_editor_assets', 'svs_admin_block_assets' );
-
-
-
-
 
 
 
