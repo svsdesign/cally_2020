@@ -29,6 +29,36 @@ console.log("images loaded applied here")
 
   };//function images($block)
 
+  export function introbanner($block){
+    // console.log("images loaded applied here")
+      
+    var $thisbannerblock = $block.find("img");  // just target img?
+
+    $thisbannerblock.each(function() {  
+
+     console.log("each 'intro banner block image '");
+         
+            var $thisbannerimg = $(this);
+
+            $thisbannerimg.imagesLoaded( {
+                // options...
+                },
+                function() {
+                console.log("images have loaded");
+                var oldSrc = $thisbannerimg.attr('src'),
+                    newSrc =$thisbannerimg.attr('data-src');
+                    $thisbannerimg.attr('src', newSrc);
+                    $thisbannerimg.addClass("loaded"); // possibly not need
+
+                }
+
+            ); // 
+
+        });//  $thisimageblock.each(function()
+
+  };//function introbanner($block){
+    
+
 export function slideshow($block){
 
     //$.getScript( ""+themeurl+'/assets/js/site.js', function( data, textStatus, jqxhr ) {

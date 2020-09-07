@@ -398,42 +398,50 @@ function modify_walker_data_attr( $item_output, $item, $depth, $args )
 	}
  
 	
-		
-	// grid template
-	// review this - delete it probably not needed anymore
- 	    function my_gridpage_comment_template( $comment, $args, $depth ) {
-		?>
 	
-			<div class="comment">
-			a comment
+// grid template
+// review this - delete it probably not needed anymore
+	function my_gridpage_comment_template( $comment, $args, $depth ) {
+	?>
 
-				<?php  
-				// $comment_id = "comment_".$comment."";
-				$testfield = get_field('test', $comment);
-				if( $testfield ): ?>
+		<div class="comment">
+		a comment
+
+			<?php  
+			// $comment_id = "comment_".$comment."";
+			$testfield = get_field('test', $comment);
+			if( $testfield ): ?>
+		
+			<?php echo $testfield ;?>
+
+			<?php endif; ?>
+			<br>
 			
-				<?php echo $testfield ;?>
+			<?php  
+			// $comment_id = "comment_".$comment."";
+			$testfield = get_field('an_image_test', $comment);
 
-				<?php endif; ?>
-				<br>
-				
-				<?php  
-				// $comment_id = "comment_".$comment."";
-				$testfield = get_field('an_image_test', $comment);
+			if( $testfield ): ?>
 
-				if( $testfield ): ?>
-
-					<img src="<?php the_field('an_image_test', $comment); ?>" />
-				
-				<?php endif; ?>
+				<img src="<?php the_field('an_image_test', $comment); ?>" />
 			
-			</div>
-			
-		<?php
-	}
+			<?php endif; ?>
+		
+		</div>
+		
+	<?php
+}
 
 
 //END ACF COMMENTS
+
+
+
+add_action( 'wp_enqueue_scripts', 'remove_default_stylesheet', 20 );
+function remove_default_stylesheet() {
+      wp_dequeue_style( 'cookie-notice-front' ); // cookie notice plugin
+}
+
 
 
 /*

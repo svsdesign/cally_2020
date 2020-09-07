@@ -98,8 +98,10 @@
 @import "04-blocks/block-slideshow";  // Slideshow block
 @import "04-blocks/block-contact";  // contact block
 @import "04-blocks/block-video";  // contact block
+@import "04-blocks/block-intro-banner";  // intro blocks
 
 
+@import "05-layouts/layouts.global";  
 @import "05-layouts/layouts.blocks";  
 @import "05-layouts/layouts.grid-random";  // layout grid - ENSURE css updatex accordibngly
 @import "05-layouts/layouts.news";  

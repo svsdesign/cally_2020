@@ -11,9 +11,72 @@
 ?>
 
 
-<?php if ( is_home()):?>
-is home content-news.php
-<?php the_content();?>
+<?php if ( is_front_page()):
+	
+	//ensure this to be the same as archive markup as per below I rekcon?
+
+	$featureimage = get_field('feature_image'); // image
+	//$featureimagecredit =  get_field('feature_image_credit');  // text
+	$date = get_the_date('jS F Y');
+	$categories = get_the_category( $post->ID )
+	?>
+				
+		<a data-barba-prevent="self" href="<?php echo the_permalink();?>" class="">
+
+			<div class="header-wrap">
+				
+				<div class="post-title">
+					<?php the_title();?>
+				</div>
+
+				<div class="line">
+				</div>
+
+				<div class="date">
+					<?php echo $date;?>
+				</div>
+				
+			</div><!--header-wrap-->
+
+			<?php if($featureimage)://	$featureimage available?>
+			
+				<div class="image-wrap">
+             
+					 <img class="apply-image-load thumb-image-item" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="<?php echo esc_url($featureimage['url']); ?>" alt="<?php echo esc_attr($featureimage['alt']); ?>" />
+ 				  
+				 </div><!-- .image-wrap -->			 
+
+			<?php else: // $featureimage not available?>
+				
+
+				<?php 
+				/*
+				foreach($categories as $category){
+				$categoryid = $category->cat_ID;
+				//echo $categoryid;
+				};
+
+				if($categoryid == '7' ): // if merchandise: ?>
+				
+					<img class="thumb-image-item place-holder" src="<?php echo bloginfo('template_directory'); ?>/dist/img/news_placeholder_1.png">
+ 
+				<?php elseif ($categoryid == '8' ): // if release: ?>
+				
+					<img class="thumb-image-item place-holder" src="<?php echo bloginfo('template_directory'); ?>/dist/img/release_placeholder_square.png">
+ 
+				<?php elseif ($categoryid == '1' ): // if Uncategorised: ?>
+					
+					<img class="thumb-image-item place-holder" src="<?php echo bloginfo('template_directory'); ?>/dist/img/news_placeholder_1.png">
+ 		
+				<?php else: // No Category has been ticked: ?>
+
+					<img class="thumb-image-item place-holder" src="<?php echo bloginfo('template_directory'); ?>/dist/img/news_placeholder_1.png">
+ 
+				<?php endif; //$categories  */ ?>
+
+			<?php endif; //$featureimage  ?>
+ 
+		</a>
 
 <?php endif;// is home */?>
 

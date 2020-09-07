@@ -16,12 +16,15 @@
 		<div class="grid-row-holder">
 
 			<div class="footer-branding grid-item grid-xs-12 grid-md-6">
-				<span class="title">
-				Cultivating CAlly -
-				</span>
-				<span class="sub-title">
-				A Community Garden Project
-				</span>
+			
+				<a href="<?php echo get_home_url();?>">
+					<span class="title">
+					Cultivating CAlly -
+					</span>
+					<span class="sub-title">
+					A Community Garden Project
+					</span>
+				</a>
 			</div>
 				
 			<div class="footer-socials grid-item grid-xs-12 grid-md-6">

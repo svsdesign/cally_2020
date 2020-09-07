@@ -213,17 +213,22 @@ Author URI: http://svs.design
       .grid-container{
 
         .footer-branding{
-          
-          .title{
-          clear: both;
-          display: block;
-          font-family: $bold-font-family; 
-          }
-          .sub-title{
-          clear: both;
-          display: block; 
-          font-family: $medium-italic-font-family;
 
+          a{
+          display:block;
+         color: nth($scheme, 2);
+
+            .title{
+            clear: both;
+            display: block;
+            font-family: $bold-font-family; 
+            }
+            .sub-title{
+            clear: both;
+            display: block; 
+            font-family: $medium-italic-font-family;
+
+            }
           }
           
         }//.footer-branding

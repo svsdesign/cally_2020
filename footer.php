@@ -17,7 +17,7 @@
 
 <?php wp_footer(); //?>
 
-<?php echo do_shortcode('[cookies_revoke]')?>
+<?php// echo do_shortcode('[cookies_revoke]')?>
 
  
 

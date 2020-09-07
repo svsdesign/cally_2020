@@ -138,11 +138,13 @@ function loadjscssfile(filename, filetype) {
     afterEnter(data) {
       console.log("afterEnter: namespace = front-page");
       
+        imageopacity();
         opacity();
-        // domReady(siteload);
+        domReady(blocks);
 
+        // domReady(siteload);
         // domReady(frontpage);
-        // domReady(blocks);
+    
  
 
     }

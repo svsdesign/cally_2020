@@ -167,44 +167,44 @@ export function devGrid(){
 
 // console.log("dev grid");
 
-if ($('.dev-grid').length > 0) 
-{
-    
-  var introHeight = $('#intro-area').height(),
-      documentGridHeight = $('#main.wrapper').height(),
-      $baselines = $(".dev-base-lines");
-      pxlineheight = '10',//px
-      vwlineheight = '1vw',//vw
-      baselinecount =  documentGridHeight / pxlineheight;
-      $baselines.css("height",documentGridHeight);// set height of the baseline area as documentGridHeight
+  if ($('.dev-grid').length > 0) 
+  {
+      
+    var introHeight = $('#intro-area').height(),
+        documentGridHeight = $('#main.wrapper').height(),
+        $baselines = $(".dev-base-lines");
+        pxlineheight = '10',//px
+        vwlineheight = '1vw',//vw
+        baselinecount =  documentGridHeight / pxlineheight;
+        $baselines.css("height",documentGridHeight);// set height of the baseline area as documentGridHeight
 
-      $('.dev-base-lines .base-line').remove(); // remove existing item(s);
+        $('.dev-base-lines .base-line').remove(); // remove existing item(s);
 
- /* temp removed
-      for (var i=0; i<baselinecount; i++){
-           $('.dev-base-lines').append('<div class="base-line"></div>');
-      };
- */     
+  /* temp removed
+        for (var i=0; i<baselinecount; i++){
+            $('.dev-base-lines').append('<div class="base-line"></div>');
+        };
+  */     
 
-    $('.dev-grid-toggle').click(function(){
-     //console.log("click") ;       
-      if ($('body').hasClass('dev-grid-on')) {
-        // turn grid off:
+      $('.dev-grid-toggle').click(function(){
+      //console.log("click") ;       
+        if ($('body').hasClass('dev-grid-on')) {
+          // turn grid off:
 
-        $('body').removeClass('dev-grid-on');
+          $('body').removeClass('dev-grid-on');
 
-      } else {
-        // turn grid on:
-        $('body').addClass('dev-grid-on');
+        } else {
+          // turn grid on:
+          $('body').addClass('dev-grid-on');
 
-      }// if grid on
+        }// if grid on
 
-    }); // click
+      }); // click
 
-  /*
-.dev-grid
-*/
-}
+    /*
+  .dev-grid
+  */
+  }
 
 /* delet this I  reckon - or maybe integrate teh resize to make things upate accordingly */
 /*
@@ -743,3 +743,52 @@ export function removeCommentBubble(){
   
 };//removeCommentBubble()
    
+
+
+
+export function hoverDiv($thisitem) {
+
+ console.log("hoverDiv($thisitem)");
+  
+//  $thisitem.css("background","red");
+
+
+  var hovermouseX = ($thisitem.width() / 2), //was 0,
+    hovermouseY = ($thisitem.height() / 2), //was 0,
+    hoverlimitX = $thisitem.width(), // was 9999,
+    hoverlimitY = $thisitem.height(); // was 9999;
+
+  $thisitem.on({
+    mousemove: function (e) {
+      var hoveroffset = $thisitem.offset();
+      hovermouseX = Math.min(e.pageX - hoveroffset.left, hoverlimitX);
+      hovermouseY = Math.min(e.pageY - hoveroffset.top, hoverlimitY);
+      if (hovermouseX < 0) hovermouseX = 0;
+      if (hovermouseY < 0) hovermouseY = 0;
+
+      console.log("hoverDiv($thisitem)");
+
+    }
+  });
+
+  // cache the selector
+var hoverfollower = $thisitem.find('.inner-follow'),
+    hoverxp = 0,
+    hoveryp = 0;
+
+  // TODO ensure this isn't constaly running?
+
+  var hoverloop = setInterval(function () {
+    // change 12 to alter damping higher is slower
+    hoverxp += (hovermouseX - hoverxp) / 1;//was 12
+    hoveryp += (hovermouseY - hoveryp) / 1;//was 12
+    hoverfollower.css({
+      left: hoverxp,
+      top: hoveryp
+    });
+
+  }, 10); // was 30
+
+
+
+} //function hoverDiv($thisitem)

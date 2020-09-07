@@ -86,8 +86,19 @@ TO DO - this stylesheet is a mess + review inline with the inp css tht arent not
     }
 
     a.cn-revoke-inline{
-    display: none;// just hide this at all times  + trigger clicking it through other dom elements
-    }
+    display:block;
+    border: 1px solid nth($scheme, 3);
+    background: nth($scheme, 2);
+    color: nth($scheme, 3);
+    text-align:center;
+    @include fluid-type(padding, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*0.5, map-get($lineheight, lg)*0.5); // fixed sizing 
+
+        &:hover{
+        border: 1px solid nth($scheme, 3);
+        background: nth($scheme, 3);
+        color: nth($scheme, 2);
+        }
+   }
 
     .cn-position-top {
         top: 0

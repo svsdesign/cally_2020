@@ -454,6 +454,7 @@
                 display: none;
                 cursor: pointer;
                 position: absolute;
+                line-height:initial;
                /* @include fluid-type(
                     padding-left padding-right padding-bottom,
                     map-get($breakpoints, xs),
@@ -926,6 +927,7 @@
                 }
 
                 .text-wrap {
+                    display:none;// no need to have this
                     opacity: 0;
                     z-index: 3; //above the two images;
                     color: nth($scheme, 2);
@@ -1464,7 +1466,7 @@
                     // @include fluid-type(top, map-get($breakpoints, xs), map-get($breakpoints,xxl), map-get($lineheight, xs)*2, map-get($lineheight,xxl)*2);
                     text-align: center;
                     height: inherit;
-                    line-height: 55vw; // maybve needs reviewing
+                    // line-height: 55vw; // maybve needs reviewing
 
                     @media (min-width: map-get($breakpoints, xxs)) {
                         // text-align: right;
@@ -1482,7 +1484,21 @@
                     }
 
                     .is-off {
-                        display: block;
+                    display: block;
+                        .follow{
+                        // background:green;
+                        height: 55vw;
+
+                          .inner-follow{
+                            width:20vw;
+                            height:5vw;
+                            // background:red;
+                            line-height:5vw;
+                            position:relative;
+                            margin-left:-10vw;
+                            margin-top:-2.5vw;
+                          }  
+                        }
                     }
                 } //.dev-layout-grid-toggle
 
@@ -1848,7 +1864,8 @@
                 a#load-image{
                 border: 1px solid $color-red; 
                 color: $color-red;
-    
+                display:block;
+                
                 @include fluid-type(
                     height line-height,
                     map-get($breakpoints, xs),

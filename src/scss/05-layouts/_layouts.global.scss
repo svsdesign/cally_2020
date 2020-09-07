@@ -1,0 +1,27 @@
+ /*
+Theme Name: cally 2020
+Theme URI:  cultivatingcally.com
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+
+//to fix issues with extra space at bottom of body
+html{
+overflow:scroll;
+background-color:$dark;
+}
+
+
+
+@each $scheme in $schemes { // start colour scheme
+ 
+  body.#{nth($scheme, 1)}:not(.wp-admin), // ensure we're not applying to admin 
+  body.#{nth($scheme, 1)}.wp-admin .acf-block-preview // but we are applying to the block we can't target ".th-block"  because most classes in this doc are targetting rthe s
+  {
+  overflow: hidden;  
+  }//body
+
+}//scheme
+
+ //END to fix issues with extra space at bottom of body

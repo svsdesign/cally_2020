@@ -1,6 +1,7 @@
 import {
   images,
   slideshow,
+  introbanner,
   map
 } from '../../modules/blocks/all'
 
@@ -15,6 +16,21 @@ import {
 export default function blocks(){
 
 
+
+    // if blocks exist: intro-banner-block
+    if ($('.intro-banner-block').length > 0)
+    {
+      
+      $('.intro-banner-block').each(function() {
+
+      console.log("each .intro-banner-block");
+
+      var $thisblock = $(this);
+           introbanner($thisblock);// run js if introitem exist
+      });
+
+    };// .slideshow-block
+
     // if blocks exist: image-one-col-block
     if ($('.image-one-col-block, .text-two-col-image-block-left-header, .image-multi-col-block, .text-image-two-col-block, .client-logos-block').length > 0)
     {
@@ -24,7 +40,7 @@ export default function blocks(){
       console.log("each .image-one-col-block, .text-two-col-image-block-left-header, .image-multi-col-block, .text-image-two-col-block, .client-logos-block");
 
       var $thisblock = $(this);
-            images($thisblock);// run js if slideshow item exist
+            images($thisblock);// run js if  image item exist
       });
 
     };// .slideshow-block

@@ -1,0 +1,27 @@
+ /*
+Theme Name: cally 2020
+Theme URI:  cultivatingcally.com
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+
+
+
+.th-block.intro-banner-block{
+overflow: visible!important;
+position: relative;
+padding-bottom:15vw;// to offset the scaled image
+     
+    .image-wrap{
+    transform: scale(1.3);   
+    }
+    
+    h1.image-caption{
+    position:absolute;
+    top: 0px;
+    z-index:5;
+    }
+
+} //.intro-banner-block
+

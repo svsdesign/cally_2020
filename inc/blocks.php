@@ -49,6 +49,21 @@ function my_acf_init() {
             'keywords'          => array('thonecolheader'),
         ));
 
+        	
+		// Intro Banner
+
+  		 acf_register_block(array(
+            'name'              => 'thintrobanner', 
+            'title'             => __('Intro Block'), // review this
+            'description'       => __('Intro Block'), // review this
+            'render_callback'   => 'my_acf_block_render_callback',
+            'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
+            'enqueue_assets'    => function(){          
+             wp_enqueue_script('th-intro-banner', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thintrobanner/assets/js/script.js', array( 'jquery' ), '', true );
+            },
+            'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
+            'keywords'          => array('thintrobanner'),
+        ));
 		
 		// one column: Image
 
@@ -64,6 +79,8 @@ function my_acf_init() {
             'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
             'keywords'          => array('thonecolimage'),
         ));
+
+
 		// multi column: Image
 
 

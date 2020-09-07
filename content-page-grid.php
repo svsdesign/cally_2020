@@ -128,7 +128,11 @@
                 <div class="dev-layout-grid-toggle site-grid-item site-grid-xxxs-16 site-grid-xxs-16">
 
                     <div class="is-off">
-                    Click to Start
+                      <div class="follow">
+                          <div class="inner-follow">
+                          Click to Start
+                          </div>
+                        </div>
                     </div>
 
                     <div class="is-on">
@@ -158,9 +162,13 @@
 
                       <div class="dev-layout-grid-toggle site-grid-item site-grid-xxxs-16 site-grid-xxs-16">
 
-                          <div class="is-off">
-                          Click to Start
-                          </div>
+                        <div class="is-off">
+                          <div class="follow">
+                              <div class="inner-follow">
+                              Click to Start
+                              </div>
+                            </div>
+                        </div>
 
                          <!-- <div class="is-on"> not need
                           Close Edit Mode
@@ -645,7 +653,9 @@
               </label>
 
               <div class="exports grid-item grid-xs-12 grid-sm-12 grid-md-3">
-                  
+             
+                  <!-- <canvas id = "my-canvas" width="2200" height="1100"></canvas> -->
+
                       <div id="canvas-wrap">
                       </div><!-- #canvas-wrap -->
 

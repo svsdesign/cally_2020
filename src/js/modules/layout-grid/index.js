@@ -29,12 +29,20 @@ https://stackoverflow.com/questions/23681325/convert-canvas-to-pdf
 */
 
 import {
-  detectAttrChange
+  detectAttrChange,
+  hoverDiv
+
 } from '../../utilities/helpers';
 
 
 export default function init() {
 
+  var mediaImage, // becomes wp.media library
+    $imagethumb = $('.acf-image-edit'),
+    newitemid, // declare before use
+    submissionname, //move elswhere
+    $startbutton = $('.dev-layout-grid-toggle');
+  
   // console.log("layout-grid/index.js");
 
   // external js: packery.pkgd.js, draggabilly.pkgd.js
@@ -94,7 +102,6 @@ export default function init() {
     }, this);
     this.shiftLayout();
   };
-
  
   //----------------------------------------
   // The magic
@@ -156,98 +163,8 @@ export default function init() {
   });
 
 
-  // move these variables elsewhere I reckon - near init
-
-  var mediaImage, // becomes wp.media library
-    $imagethumb = $('.acf-image-edit'),
-    newitemid; // declare before use
-
-
-/* not using this
-
-  $imagethumb.click(function () {
-
-    var $this = $(this),
-      thisitemid = $this.closest(".layout-grid-item").attr("data-item-id"),
-      $thisitem = $(`.layout-grid-item[data-item-id=${thisitemid}]`),
-      $thisimage = $thisitem.find(".acf-image");
-
-    //  console.log("thisitemid"+thisitemid+"");
-
-    if (!$.isFunction(wp.media)) {
-      //console.log("! $.isFunction( wp.media )");
-      return;
-    }
-
-    if (mediaImage) {
-      console.log("mediaImage");
-      mediaImage.open();
-      return;
-    }
-
-    mediaImage = wp.media({
-      library: {
-        type: 'image'
-      },
-      multiple: false
-    });
-
-    mediaImage.on('select', function () {
-      // after I've selected say item one (regardless of position; so could be any time) - replaced the image
-      // then start replacing other images - its still replaces this intial item
-      // console.log("mediaImage.on( 'select', function()");
-      // console.log("$thisimage"+ $thisimage+"");
-
-      //var $thisitem = $thisitem;
-      var image = mediaImage.state().get('selection').first().toJSON(),
-          $thisitem = $thisimage.closest(".layout-grid-item"),
-          thisimagewidth = image.width,
-          thisimageheight = image.height;
-
-
-      $('.media-modal-close').trigger('click');
-
-      $thisimage.val(image.id); // set id value on input field
-      $thisitem.find('img').remove(); // remove existing image
-      $thisitem.find('.image-wrap').append($('<img src="' + image.url + '"">'));
-      $thisitem.find('.image-wrap').append($('<img class="place-holder" src="' + image.url + '"">'));
-
-
-      convertImgToDataURLviaCanvas(image.url, function (base64_data) {
-        console.log(" convertImgToDataURLviaCanvas");
-        //  $thisplaceholder.attr("src",base64_data);
-        $thisitem.find('img.place-holder').attr("src", base64_data);
-        // $thisimage.insertAfter('<img src="'+base64_data+'"/>');
-      });
-
-
-      gridImageOrientation($thisitem, thisimagewidth, thisimageheight); // calculate new ratio + assign classes
-
-      // scroll to the active item
-      $('html, body').animate({
-
-        scrollTop: $thisitem.offset().top
-      }, 200);
-
-      // console.log("scrolling");
-
-      // console.log("thisitemwidth"+thisitemwidth+"");
-
-      // $thisitem.find('.image-wrap img').css("width","100%");
-      // $thisitem.find('.image-wrap img').css("height","auto");
-
-      // $thisitem.find('.image-wrap img').css("width",image.width);
-      // $thisitem.find('.image-wrap img').css("height",image.height);
-
-    }); //mediaImage.on( 'select', function()
-
-    mediaImage.open();
-
-    return false;
-
-  }); //    $imagethumb.click( function()
-*/
-
+ 
+  
   // TYPE: Repeater
   //----------------------------------------
 
@@ -334,20 +251,41 @@ export default function init() {
     // end delete this - if working
 
     */
+console.log("Window.innerWidth = " + window.innerWidth +"")
+     var thescale =  (1 / window.innerWidth)*1000;
+     console.log("thescale = " + thescale +"")
+  
+        // theheight = 
     //  html2canvas(document.querySelector("#grid-wraps"), {
       html2canvas(document.querySelector(".grid-layer"), {
+
+// https://makitweb.com/take-screenshot-of-webpage-with-html2canvas/
+//https://stackoverflow.com/questions/36472094/how-to-set-image-to-fit-width-of-the-page-using-jspdf
 
         //when scale is 4, values not saving into the databse; issuew ith number of characters maybe?
 
 
-         scale:2, // instead of scale: //scale: 2 will double the resolution from the default 96dpi)
+        //  scale:1, // instead of scale: //scale: 2 will double the resolution from the default 96dpi)
         // //consider setting equal size; so imports are always the same?
         //ie set height and width instead of scale?
-        
-        // //2:1 ration - width:height
-        // width: 4800, // this set canvas size but not image
-        // height: 2400// this set canvas size but not image
-        scrollY: (window.pageYOffset * -1) //https://stackoverflow.com/questions/18935518/on-render-in-html2canvas-the-page-is-scrolled-to-the-top
+
+          // logging:true,
+
+          // 1:4 ratio
+          // 5 x 16 squares as main grid + 
+          // 2 cols left + 2 cols right + 3 rows top + 3 rows bottom
+          //
+          scale:thescale,
+        //  width:1100, 
+        //  height:550,
+          // windowWidth:1100,
+          // windowHeight:550,
+          scrollY: (window.pageYOffset * -1), //https://stackoverflow.com/questions/18935518/on-render-in-html2canvas-the-page-is-scrolled-to-the-top
+
+          // windowWidth:Window.innerWidth,
+          // windowHeight:Window.innerHeight,
+          // width: 2200, // this set canvas size but not image
+          // height: 1100,// this set canvas size but not image
 
       }).then(canvas => {
           
@@ -581,7 +519,7 @@ export default function init() {
                 var $thisUiId = $thisUi.attr('id'),
                     $originalimage = $newlastitem.find('img:not(.place-holder)');
 
-                     console.log("$thisUiId" +$thisUiId+"");
+                    //  console.log("$thisUiId" +$thisUiId+"");
 
                       // change this based on abovecode of init item
 
@@ -592,7 +530,7 @@ export default function init() {
                           width: 'auto',
                           style: 'dropdown',
                           change: function( event, ui ) { 
-                              console.log("change" +ui+"");
+                              // console.log("change" +ui+"");
                               // $(ui.item.element).css("background","red");
                             var thisimage = $(ui.item.element).attr("data-segment-image");
                             var imagetype = $(ui.item.element).attr("data-segment-type");
@@ -612,7 +550,7 @@ export default function init() {
                           //change  
                           select: function( event, ui ) {
                               // $(ui).selectmenu( "close" ); // close
-                                console.log("close this grid-item-options-toggle");
+                                // console.log("close this grid-item-options-toggle");
                                 $newlastitem.find('.grid-item-options-toggle').click();//trigger click
                               }//select
                         })
@@ -635,8 +573,7 @@ export default function init() {
  
                 var positions = $thisgrid.packery('getShiftPositions', 'data-item-id'),
                   jsonpositions = JSON.stringify(positions);
-                  // localStorage.setItem("lastname", "Smith");
-
+ 
                 $coordinates.val(jsonpositions);
                 verifyItemsRepeater($closestrepeater); // verify items
 
@@ -893,8 +830,7 @@ export default function init() {
 
   } // function initiatepackery()
 
-  var submissionname; //move elswhere
-    //  posttitle
+ 
 
   $('input[name="submission_name"]').on('change', function () {
 
@@ -971,6 +907,8 @@ export default function init() {
    console.log("clearing local storage");
    localStorage.removeItem('gridContent');
    localStorage.removeItem('coordinates');
+
+   //  trigger relayout 
 
   }); //  $(".dev-toggle").click(function ( )
   //initial innit
@@ -1052,7 +990,10 @@ export default function init() {
   } //initgrid()
 
   initgriditems(); // start initial init
+  hoverDiv($startbutton);//
   onSubmission();// even listner for attr change
+
+  
 } //export default function init()
 
 export function canvasChange(){
@@ -1146,8 +1087,10 @@ export function itemEdit($thisitem, $grid) {
     $this.find(".inner-grid-item").css("transform", "rotate(" + thisnewrotatevalue + "deg)"); // to do - ensure cross browser
     $this.find('.grid-item-options-toggle-rotate .rotate').css("transform", "rotate(" + thisnewrotatevalue + "deg)");
     $this.find('input.input-rotate').val(thisnewrotatevalue);
-
-    
+ 
+    //update local storage:
+    var gridContent = document.getElementById("tester-grid-id").innerHTML;//
+    localStorage.setItem("gridContent",gridContent);
 
     // Canvas has Changed as soon as items are rotated
     canvasChange(); 
@@ -1283,8 +1226,14 @@ export function itemEdit($thisitem, $grid) {
 
   }); //$inputfields.change(function()
 
+   //update local storage:
+   var gridContent = document.getElementById("tester-grid-id").innerHTML;//
+   localStorage.setItem("gridContent",gridContent);
+
 } // function itemedit(itemid){ // for new items
 
+ 
+//not using this function I don't think
 // export function imageEdit(itemid, $grid) { // for new items
 export function imageEdit(itemid) { // for new items
 
@@ -1402,6 +1351,7 @@ export function imageEdit(itemid) { // for new items
 
 
 } // function imageEdit($imagethumb)
+
 
 export function imageRemove(itemid) { // for new items
 
