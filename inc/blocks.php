@@ -51,7 +51,6 @@ function my_acf_init() {
 
         	
 		// Intro Banner
-
   		 acf_register_block(array(
             'name'              => 'thintrobanner', 
             'title'             => __('Intro Block'), // review this

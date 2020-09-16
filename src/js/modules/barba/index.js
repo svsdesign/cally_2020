@@ -127,11 +127,14 @@ function loadjscssfile(filename, filetype) {
     namespace: 'layout-grid',
     afterEnter(data) {
       console.log("afterEnter: namespace = layout grid");
- 
+ // consider changing this - atm it takes ages before the banner image is shown;
+ // Because its waiting for all the images to load, inc
+
       opacity();
+      // blocks();
+      // 
       domReady(layoutgrid);
       domReady(blocks);
- 
     }
   }, {
     namespace: 'front-page',

@@ -20,6 +20,52 @@
     // body.#{nth($scheme, 1)}.wp-admin .acf-block-preview // but we are applying to the block we can't target ".th-block"  because most classes in this doc are targetting rthe s
     {
   
+    overflow: hidden; // no scrolling until loaded
+
+       //submission loader - 
+       .page-loader-wrap{
+        position: fixed;
+        width:100%;
+        display:block;
+        right:0px;
+        top:0px;
+        bottom:0px;
+        left:0px;
+        background-color: nth($scheme, 2);
+        z-index:7;// ensure above all else- but not menu
+        height:100%;
+
+            .page-loader{
+            // color: white;
+           /* @include fluid-type(
+                line-height,
+                map-get($breakpoints, xs),
+                map-get($breakpoints,xxl),
+                map-get($lineheight, xs) * 2,
+                map-get($lineheight,xxl) * 2
+            );*/
+            line-height:100vh;
+            text-align: center;
+            color: nth($scheme, 3);
+            width:100%;
+            // @include center-align(absolute, 0);
+            height:100%;
+            font-family: $bold-font-family;
+
+                &:after {
+                content: ' .';
+                animation: dots 1s steps(5, end) infinite;            
+                }
+
+
+            
+            }
+            
+        }//.page-loader-wrap
+
+
+
+
         .touch-notification-wrapper,
         .small-screen-notification-wrapper{
         background: nth($scheme, 3);
@@ -1260,6 +1306,89 @@
         // border-top:2px solid nth($scheme, 3);
         z-index:4;//ensure below nav
 
+            .reset-holder{
+            position:absolute;
+            top:0px;
+            right:0px;
+            width:100%;
+            left:0px;
+            @include fluid-type(
+                top,
+                map-get($breakpoints, xs),
+                map-get($breakpoints,xxl),
+                map-get($lineheight, xs) * 0.125,
+                map-get($lineheight,xxl) * 0.125
+            );
+            
+            @include fluid-type(
+                right,
+                map-get($breakpoints, xs),
+                map-get($breakpoints,xxl),
+                map-get($gutter, xs) * 1,
+                map-get($gutter,xxl) * 1
+            );  
+
+                a{
+                color: nth($scheme, 2);
+                background:nth($scheme, 3);
+                float: right;
+                display: block;
+                width: auto;
+                    @include fluid-type(
+                        padding-right padding-left,
+                        map-get($breakpoints, xs),
+                        map-get($breakpoints,xxl),
+                        map-get($gutter, xs) * 1,
+                        map-get($gutter,xxl) * 1
+                    );  
+                    @include fluid-type(
+                        font-size,
+                        map-get($breakpoints, xs),
+                        map-get($breakpoints,xxl),
+                        map-get($fontsize, xs) * 0.5,
+                        map-get($fontsize,xxl) * 0.5
+                        ); // fixed sizing
+                        @include fluid-type(
+                        line-height,
+                        map-get($breakpoints, xs),
+                        map-get($breakpoints,xxl),
+                        map-get($lineheight, xs) * 1,
+                        map-get($lineheight,xxl) * 1
+                        ); // fixed sizing
+ 
+
+                    .small{
+                    display: block;
+                    clear:both;
+
+                        @include fluid-type(
+                        font-size,
+                        map-get($breakpoints, xs),
+                        map-get($breakpoints,xxl),
+                        map-get($fontsize, xs) * 0.5,
+                        map-get($fontsize,xxl) * 0.5
+                        ); // fixed sizing
+                        @include fluid-type(
+                        line-height,
+                        map-get($breakpoints, xs),
+                        map-get($breakpoints,xxl),
+                        map-get($lineheight, xs) * 0.5,
+                        map-get($lineheight,xxl) * 0.5
+                        ); // fixed sizing
+ 
+                    }//.small
+
+                  
+                    &:hover{
+                    border: 1px solid nth($scheme, 2); 
+                    background: nth($scheme, 3); 
+                    color:nth($scheme, 2);         
+                    }
+              
+                } //a         
+
+            } //.reset-holder
+
             .grid-container{
                margin-top:15vw;// review 
             }
@@ -1895,20 +2024,33 @@
 
         //images loaded
         &:not(.images-loaded) {
+           
             img {
-                opacity: 0; // look to apply transitions on image elements
+            opacity: 0; // look to apply transitions on image elements
             }
+
         } //body:not(.images-loaded)
 
         &.images-loaded.page-template-page-grid {
-
+    
             img {
-                opacity: 1; // look to apply transitions on image elements
+            opacity: 1; // look to apply transitions on image elements
             }
+
         } //body.images-loaded.page-template-page-grid {
+       
 
-        //Ensure only images are visible when copying to canvas
+        &.page-content-loaded {
+        overflow: initial;
 
+            .page-loader-wrap{
+            display:none;// freeling page loader
+            }   
+         
+        } //body.page-content-loaded{
+
+
+        //Ensure only images are visible when copying to canvas:
         &.capturing-image{
  
             .layout-grid-item{
@@ -2091,8 +2233,6 @@
 
         }// ul.wpuf-form li.has-error
 
-        
-
         ul.wpuf-form .wpuf-error-msg{
         color: $color-red;
         @include fluid-type(
@@ -2144,6 +2284,7 @@
             outline: none;
             }
         }
+
         .wpuf-fields textarea.textareafield {
         resize: none;
         @include fluid-type(
@@ -2389,6 +2530,15 @@
             }// .export-options    
 
         }//body.can-edit.dev-layout-grid-on.submission-previewed.form-submitted
+
+        //if edit active; ensure nothing obscured
+        &.edit-active{
+
+            #outer-front-layer{
+            // opacity:0;
+            mix-blend-mode: darken; // this work on all browser?
+            }
+        }// &.edit-active
 
     }//body.#{nth($scheme, 1)}:not(.wp-admin) // ensure we're not applying to admin 
 

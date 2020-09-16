@@ -38,14 +38,20 @@
  */
 ?>
 
+<div class="page-loader-wrap"> 
+
+    <div class="page-loader">
+    Please wait, Interactive Grid Loading  
+    </div>
+          
+</div><!--.page-loader-wrap-->
+
 <div class="grid-container">
 
+  <?php //additional content:
+  the_content();?>
 
-
-    <?php //additional content:
-    the_content();?>
-
- </div><!--.grid-container-->
+</div><!--.grid-container-->
 
 
  
@@ -92,7 +98,6 @@
   <div class="grid-container">
 
     <div class="site-grid-item site-grid-xxxs-16 site-grid-xxs-16">
-
       Sorry, our interactive grid is not supported on touch devices, please visit this page on a Desktop instead.
     </div><!-- .site-grid-item -->
 
@@ -114,6 +119,15 @@
 </div><!--touch-noticication-wrapper-->
 
 <div class="grid-layer">
+  
+    <div class="reset-holder" data-html2canvas-ignore="true">
+
+      <a id="clear-local-storage" type="button" class="clear-local-storage btn btn-primary download-image grid-xs-12">
+        Reset Layout 
+        <span  class="small">Clears all data and reloads page</span>
+      </a> 
+      
+    </div>
 
     <div class="grid-container">
 
@@ -251,9 +265,6 @@
 
                       <button type="button" class="btn site-grid-item site-grid-xxxs-16 site-grid-xxs-2 btn-primary add-row">Add Item</button>
                       <button type="submit" class="btn site-grid-item site-grid-xxxs-16 site-grid-xxs-2 btn-success">Save All</button>
-
-                      <button type="button"  class="clear-local-storage site-grid-item site-grid-xxxs-16 site-grid-xxs-16">Clear LocalStorage</button><!-- .clear-local-storage -->
-
                       <div class="response-message-wrap site-grid-item">
 
                           <div class="response-message">
@@ -278,13 +289,7 @@
 
                   </div><!-- .grid-options-wrap-->
 
-                  <?php  /* was this before adding same options as logged in 
-                              <div class="form-group" style="display:none">
-                              <label>Packery Posistions</label>
-                              <input type="text" name="fields[coordinates]" class="form-control coordinates" rows="3"  id="coordinates-<?php echo $post_id?>" value="<?php echo esc_attr( get_field( 'coordinates' )); ?>">
-                              </div>
-                  */?>
-
+          
             <?php endif;//is_user_logged_in() ?>
 
               <div id="grid-wraps">
@@ -670,7 +675,7 @@
               </div><!--.exports -->
 
               <div class="export-options grid-item grid-xs-12 grid-sm-12 grid-md-9">
-                
+         
                 <a id="load-image" type="button" class="btn btn-primary download-image grid-xs-12">
                   Preview Image
                 </a> 
@@ -679,7 +684,7 @@
                   Download Your Image
                 </a>
 
-                <a href="<?php the_permalink(); ?>"id="reload-page" type="button" class="btn btn-primary download-image grid-xs-12">
+                <a href="<?php the_permalink(); ?>" id="reload-page" type="button" class="btn btn-primary download-image grid-xs-12">
                   Start Again
                 </a> 
 

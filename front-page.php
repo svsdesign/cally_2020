@@ -102,7 +102,7 @@ wp_reset_query();
 		    		));
 			
 				if ($paginate):?>
-			adfasdf
+
 					<div class="page-nav">
 
 						<div class="grid-container">

@@ -30,7 +30,7 @@ console.log("images loaded applied here")
   };//function images($block)
 
   export function introbanner($block){
-    // console.log("images loaded applied here")
+  console.log("images loaded applied here")
       
     var $thisbannerblock = $block.find("img");  // just target img?
 

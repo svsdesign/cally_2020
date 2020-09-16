@@ -41,9 +41,12 @@ export default function init() {
     $imagethumb = $('.acf-image-edit'),
     newitemid, // declare before use
     submissionname, //move elswhere
-    $startbutton = $('.dev-layout-grid-toggle');
+    $startbutton = $('.dev-layout-grid-toggle'),
   
-  // console.log("layout-grid/index.js");
+
+    OgGridContent,// declare before use
+    OgCoordinates;
+    // console.log("layout-grid/index.js");
 
   // external js: packery.pkgd.js, draggabilly.pkgd.js
   // add Packery.prototype methods
@@ -65,7 +68,7 @@ export default function init() {
 
   Packery.prototype.initShiftLayout = function (positions, attr) {
 
-    //  console.log("hello here"+positions+"");
+   console.log("hello here"+positions+"");
 
     if (!positions) {
       // if no initial positions, run packery layout
@@ -394,6 +397,8 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
                   thisimagewidth, // declare - but don't assign value yet
                   thisimageheight; // declare - but don't assign value yet
 
+                  
+
                 if ($originalimage.length > 0) {
                   gridImageOrientation($thisitem, thisimagewidth, thisimageheight);
                   itemEdit($thisitem, $grid); // allow editing of heights, width, z-index etc.
@@ -404,7 +409,7 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
                   // https://stackoverflow.com/questions/22172604/convert-image-url-to-base64
 
                   convertImgToDataURLviaCanvas(thisimageurl, function (base64_data) {
-                    console.log(" $griditems. each base64_data");
+                    // console.log(" $griditems. each base64_data");
                     $thisplaceholder.attr("src", base64_data);
                     // $thisimage.insertAfter('<img src="'+base64_data+'"/>');
                   });
@@ -422,10 +427,9 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
                 // $('#'+$thisUiId+'').css("background","red");
                 // $thisUi.iconselectmenu()
                 // $thisitem.css("opacity","0.2");
-  // resolve this
- 
-              //https://stackoverflow.com/questions/39064344/jqueryui-adding-an-image-in-option
- 
+  
+                
+
                 $('#'+$thisUiId+'')
                   .iconselectmenu({
                     appendTo:$thisUiAppend,
@@ -459,7 +463,7 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
                   .iconselectmenu("menuWidget")
                   .addClass("ui-menu-icons avatar");  
 
-                  // $('#'+$thisUiId+'').css("background","red");
+                  //  $('#'+$thisUiId+'').css("background","red");
                   // $('#'+$thisUiId+'').iconselectmenu("open");// open by default - doesn't seem to work - i guess because I can't open all in one go... as opening one closes others
                   
               }); //$('.layout-grid-item').each( function( )
@@ -656,18 +660,27 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
             if ($('body').hasClass('logged-in')) {
 
                 $grid.packery('initShiftLayout', initPositions, 'data-item-id');
-                console.log("storedcoordinates" +initPositions+"");
+                // console.log("storedcoordinates" +initPositions+"");
 
-              }else{
+            
+              }else{ //not logged in
 
                 // console.log("not logged in here ");
                 // var storedcoordinates = JSON.parse(localStorage.getItem('coordinates'));
                 var storedcoordinates = localStorage.getItem('coordinates');
 
-                // console.log("storedcoordinates" +storedcoordinates+"");
+               if (storedcoordinates  == null){
+                //if coordinates cleared or not existed; use orginal ones
+                 var storedcoordinates = initPositions;
+
+                 console.log("initPositins" +initPositions+"");
+               }
+
+                console.log("storedcoordinates - in local storage:" +storedcoordinates+"");
                 $grid.packery('initShiftLayout', storedcoordinates, 'data-item-id');
 
-            }
+                
+            }//if ($('body').hasClass('logged-in'))
 
             if ($('body').hasClass('logged-in')) {
               // console.log("logged in");
@@ -680,7 +693,7 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
 
               // save drag positions on event
               $grid.on('dragItemPositioned', function () {
-              console.log("$grid.on( 'dragItemPositioned'");
+               console.log("$grid.on( 'dragItemPositioned - logged in'");
                 // console.log("positions" +positions+ "");
 
                 // save drag positions
@@ -698,6 +711,12 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
 
                 // canvashasChanged
                 canvasChange();    
+
+                      
+                if ($('.item-edit-active').length){
+                  // console.log("close menu if it exists:");           
+                   $('.item-edit-active').find('.grid-item-options-toggle').click();//trigger click
+                }
                
                 //END review this _ its positions + also suggest placing into one fucntion so we can use it in other places aswell
  
@@ -721,34 +740,46 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
 
               // save drag positions on event
               $grid.on('dragItemPositioned', function () {
-                // console.log("$grid.on( 'dragItemPositioned'");
-                // console.log("positions" +positions+ "");
+               console.log("dragItemPositioned - not logged in");
+                  //ensure not overflow + but trigger this before we then save the coordinates etc
+ 
+                 $grid.packery('layout').trigger('layoutComplete');
 
                 // save drag positions
                 var positions = $grid.packery('getShiftPositions', 'data-item-id');
-                // from local storage:
-                // localStorage.setItem( 'dragPositions', JSON.stringify( positions ) );
+                  console.log("positions" +positions+ "");
 
+            
                 var jsonpositions = JSON.stringify(positions);
                 //console.log("posititions = "+jsonpositions+"");
                 // console.log("posititions = " + JSON.stringify(positions) + "");
 
+             
                 // updat the text area value
                 $coordinates.val(jsonpositions);
                 $coordinates.attr('value', jsonpositions);
 
                 localStorage.setItem("coordinates",  jsonpositions);
+               // canvashasChanged
+                  canvasChange();  
+             
+                  if ($('.item-edit-active').length){
+                    // console.log("close menu if it exists:");           
+                     $('.item-edit-active').find('.grid-item-options-toggle').click();//trigger click
+                  }
 
-                  // canvashasChanged
-                  canvasChange();    
+                   // $('body').trigger('resize');  // trying to solve overflow issues
+                      /* delete this
+                  var newwidth = $(window).width();
+                  var newheight = $(window).height();
 
-                //  TODO - update this for unique gird
-                // $('.coordinates').val(jsonpositions);
-                // $('.coordinates').attr('value', jsonpositions);
-
+                  console.log("newheight " +newheight +"");
+                  
+                  window.resizeTo(newwidth, newheight) */
+              
               }); // $grid.on('dragItemPositioned', function ()
 
-           } //if logged in
+            } //if ($('body').hasClass('logged-in'))
 
             // Bind to scroll
             // $(window).scroll(function () {
@@ -756,21 +787,21 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
             //   gridfade(); // run fade function on scroll
             // }); // scroll function
 
-          if ($('body').hasClass("is-touch")) {
+            if ($('body').hasClass("is-touch")) {
 
-              console.log("ensure to have touch screen message enabled")
-            // $(window).scroll(function () {
+                console.log("ensure to have touch screen message enabled")
+              // $(window).scroll(function () {
 
-              // activeTouchItem();
-              // ActiveTouchItem();//
-              // if we have a touch device + before breakpoint - body is-touch we
-              // TO DO; add "hover state" style
+                // activeTouchItem();
+                // ActiveTouchItem();//
+                // if we have a touch device + before breakpoint - body is-touch we
+                // TO DO; add "hover state" style
 
-              //ebd if touch
+                //ebd if touch
 
-            // }); // scroll function
+              // }); // scroll function
 
-          } //if ($('body').hasClass("is-touch")
+            } //if ($('body').hasClass("is-touch")
 
           // $(window).scrollTop($(window).scrollTop() + 1);
           //trigger initial scroll to ensure all object are layed out (includign thenegative offests)
@@ -802,7 +833,7 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
           // AOS.refreshHard(); //review
           isPackeryInit = false;
          
-          console.log( "Hellow vbreakpoint - mobile?");
+          console.log( "Hello breakpoint - mobile?");
 
           // edit mode - close it - but set variable to true to re-open on 
           if ($('body').hasClass("dev-layout-grid-on")) {
@@ -830,8 +861,6 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
 
   } // function initiatepackery()
 
- 
-
   $('input[name="submission_name"]').on('change', function () {
 
     submissionname = $('input[name="submission_name"]').val();
@@ -845,7 +874,6 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
     console.log("posttitle =" +posttitle+"");
 
   });
-
 
   $("#load-image").on('click', function () {
     //load image before download possible
@@ -902,15 +930,6 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
   }); //  $(".dev-toggle").click(function ( )
   // dev toggle - TO DO - move this elsewhere
 
-  $(".clear-local-storage").click(function () {
-
-   console.log("clearing local storage");
-   localStorage.removeItem('gridContent');
-   localStorage.removeItem('coordinates');
-
-   //  trigger relayout 
-
-  }); //  $(".dev-toggle").click(function ( )
   //initial innit
 
   // ensure to target each grid that might exist on teh page
@@ -941,6 +960,11 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
 
     } else {
 
+      // if not logged in we look if local storage has saved.
+      // if not use the what's and save the og content as a variable?
+      // there and save it to the local storage
+      //
+
       if (localStorage.getItem("gridContent") === null) {
 
         // console.log("each grid");
@@ -949,42 +973,84 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
   
         verifyItemsRepeater($thisgrid); // initial - move to better place - or inside an init function of sorts
         initiatepackery($thisgrid);
-
+        var OgGridContent = document.getElementById("tester-grid-id").innerHTML;
         var gridContent = document.getElementById("tester-grid-id").innerHTML;//
         localStorage.setItem("gridContent",gridContent);
         console.log("gridContent" +gridContent+"");
 
       } else {
-
-
-        console.log("HAS local storage gridContent" +gridContent+"");
-
+        var OgGridContent = document.getElementById("tester-grid-id").innerHTML;
         var gridContent = localStorage.getItem("gridContent");
 
-          // gridContent.innerHTML = '<pre>' + localStorage.getItem('gridContent') + '</pre>';
+        // console.log("HAS local storage gridContent" +gridContent+"");
+
+      // gridContent.innerHTML = '<pre>' + localStorage.getItem('gridContent') + '</pre>';
 
       
               // localStorage.setItem("coordinates",  jsonpositions);
-              $("#tester-grid-id").empty();
-              $("#tester-grid-id").append(gridContent);
+        $("#tester-grid-id").empty();
 
-            // $("#tester-grid-id").css("background","red");
+        $("#tester-grid-id").append(gridContent);
+            // I should look into what is being appended here; and remove the aditional/existing Iconwidget DOM stuff  
+        $("#tester-grid-id").find('.ui-selectmenu-button').remove(); 
+        $("#tester-grid-id").find('.ui-selectmenu-menu.ui-front').remove(); 
 
-              verifyItemsRepeater($thisgrid); // initial - move to better place - or inside an init function of sorts
-              initiatepackery($thisgrid);
+
+            verifyItemsRepeater($thisgrid);
+            //init function of sorts
+            initiatepackery($thisgrid);
         
         
-        //     console.log("gridContent" +gridContent+"");
-        //     localStorage.setItem("gridContent",gridContent);
+          // console.log("gridContent" +gridContent+"");
+          // localStorage.setItem("gridContent",gridContent);
 
+        $("#clear-local-storage").click(function () {
+
+          console.log("clearing local storage");
+          localStorage.removeItem('gridContent');
+          localStorage.removeItem('coordinates');
+       
+          location.reload();
+
+     /* I've tried to re-initate the whole packery stuff; but quite complimcated + gave uip
+          $("#tester-grid-id").empty();
+          $("#tester-grid-id").append(OgGridContent);
+
+
+
+          $("#tester-grid-id").find('.ui-selectmenu-button').remove(); 
+          $("#tester-grid-id").find('.ui-selectmenu-menu.ui-front').remove(); 
+
+          // $thisUi = $thisitem.find('.image-ui'),
+          // $thisUiAppend = $thisUi.parent('label'),
+         // $("#tester-grid-id").css("background","red");
+          
+         var $thisgrid = $('#tester-grid-id');//#tester-grid-id .grid
+         $thisgrid.css("background","red");
+          verifyItemsRepeater($thisgrid); // initial - move to better place - or inside an init function of sorts
+          initiatepackery($thisgrid);
+    
+          
+          //need to change coordinates to orginals 
+
+          // and also serve up the html;
+
+          // I guess this means I have to store this data; i.e before "replacing it" - store it elsewhere?
+
+          //  trigger relayout 
+          // $thisgrid.packery('layout'); // don't layout on z-index, as it re-arranges existinglayout
+     END I've tried to re-initate the whole packery stuff; but quite complimcated + gave uip
+
+           */
+      
+         }); //  $(".dev-toggle").click(function ( )
       
 
       }//if (localStorage.getItem("gridContent") === null) 
 
     }// if ($("body").hasClass("logged-in"))
   
- 
-      
+    
     });
 
   } //initgrid()
@@ -993,8 +1059,10 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
   hoverDiv($startbutton);//
   onSubmission();// even listner for attr change
 
-  
 } //export default function init()
+
+
+
 
 export function canvasChange(){
   console.log("canvasChange()");
@@ -1050,6 +1118,7 @@ export function itemEdit($thisitem, $grid) {
     if ($this.hasClass("item-edit-active")) {
 
       $this.removeClass("item-edit-active");
+      $('body').removeClass("edit-active");
 
     } else {
 
@@ -1057,6 +1126,7 @@ export function itemEdit($thisitem, $grid) {
       $('.layout-grid-item.repeater-item').removeClass("item-edit-active");
       //add active
       $this.addClass("item-edit-active");
+      $('body').addClass("edit-active");
       // $this.find('.image-ui').css("background","red");
       // $postfield.selectmenu( "open" );// doesnt work because not initiated yet?
       $this.find('.ui-button').click(); // the post object select field; ensure its open
@@ -1115,7 +1185,7 @@ export function itemEdit($thisitem, $grid) {
 
     // console.log("thisfield type= "+thisfieldtype);
 
-    // TODO - @tom - I epext there's maybe a better way of writtin this js, using less lines + an "input item variable" of sorts?
+
     if (thisfieldtype == "image_rotate") {
 
   console.log("rotate input on pinput change");
@@ -1232,7 +1302,6 @@ export function itemEdit($thisitem, $grid) {
 
 } // function itemedit(itemid){ // for new items
 
- 
 //not using this function I don't think
 // export function imageEdit(itemid, $grid) { // for new items
 export function imageEdit(itemid) { // for new items

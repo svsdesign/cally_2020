@@ -114,22 +114,27 @@ export function orientation(){
 
 export function opacity(){
 
-    // $("body").addClass('pre-loaded');
-
     $("body").imagesLoaded(function(){ // consider a lazloadng options?
 
-      // console.log("Images have loaded")
+      console.log("Images have loaded in opacity() in helpers.js")
         
         function waitloading(){
 
         // $("body").addClass('loaded'); was this- bbut change to:
         //reivew as it might cause issues
-         $("body").addClass('images-loaded');  
+        $("body").addClass('images-loaded');  
+
+        if ($("body").hasClass("page-template-page-grid")){
+          // as it takes ages to load; loader shown
+          // this hides it after load
+          console.log("grid loader removing")
+          $("body").addClass('page-content-loaded');             
+        }
 
         }; //waitloading()
         setTimeout(waitloading, 200);
 
-     }); //imagesloaded
+    }); //imagesloaded
 
 };//opacity
 
