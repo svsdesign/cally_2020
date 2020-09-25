@@ -168,8 +168,8 @@
           */?>
 
 <?php /*    <form id="grid" action="<?php echo esc_url( $url ); ?>" method="<?php echo $edit ? 'PUT' : 'POST'; ?>">
- */?>         <div id="grid">
-
+ */?>        <div id="grid" class="grid-row-holder">
+   
               <div class="site-grid-container dev-layout-grid-toggle-wrap">
 
                   <div class="site-grid-row-holder">

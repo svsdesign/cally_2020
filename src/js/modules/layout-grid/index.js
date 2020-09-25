@@ -742,12 +742,12 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
               $grid.on('dragItemPositioned', function () {
                console.log("dragItemPositioned - not logged in");
                   //ensure not overflow + but trigger this before we then save the coordinates etc
- 
+                  console.log("positions" +positions+ "");
+
                  $grid.packery('layout').trigger('layoutComplete');
 
                 // save drag positions
                 var positions = $grid.packery('getShiftPositions', 'data-item-id');
-                  console.log("positions" +positions+ "");
 
             
                 var jsonpositions = JSON.stringify(positions);
