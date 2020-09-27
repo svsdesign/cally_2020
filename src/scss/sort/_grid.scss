@@ -59,6 +59,7 @@ body.black-scheme
 
 // grid container
 .grid-container {
+position: relative;//added so I can include absolute elemenrts (the overview items)
 width: 100%;
 margin-right: auto;
 margin-left: auto;

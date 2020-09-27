@@ -5,7 +5,8 @@ import {
   freezeheadroom,
   unfreezeheadroom,
   forceheadroompin,
-  unforceheadroompin
+  unforceheadroompin,
+  SetSubmenuHeight
  } from '../../utilities/helpers';
 
  export default function init() {
@@ -35,7 +36,23 @@ import {
                 "unpinned": "unpinned",
                 "frozen": "frozen",
 
-              }
+              },
+              onPin : function() {
+
+                console.log("headroom onPin function");
+                const headRoomStatus = "onPin";//$("#header-nav-area").height();      
+
+                SetSubmenuHeight(headRoomStatus);
+
+              },
+              onUnpin : function() {
+                // const headHeight = 0;
+                const headRoomStatus = "onUnpin";
+                console.log("headroom onUnPin function");
+                SetSubmenuHeight(headRoomStatus);
+
+              },
+
 
           });
     

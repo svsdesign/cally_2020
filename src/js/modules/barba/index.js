@@ -29,6 +29,7 @@ import frontpage from '../front-page/index'
 */
 import blocks from '../../modules/blocks/index';
 import layoutgrid from '../../modules/layout-grid/index';
+import overview from '../../modules/overview/index';
 
 // import siteload from '../../modules/siteload/index'
 
@@ -98,6 +99,8 @@ function loadjscssfile(filename, filetype) {
 
        opacity();
        domReady(blocks);
+       domReady(overview);//review this
+
 
     }
   },{

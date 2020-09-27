@@ -54,18 +54,94 @@ export function detectTouch(){
 
 //TO DO change to jquery markup?
 export function SetAppHeight() {
+ 
+  const initSubmenuHeight = () => {
+    const doc = document.documentElement
+   doc.style.setProperty('--submenu-height', `${window.innerHeight}px`)   
+ }//ainitSubmenuHeight
+
+  const initHeadroomHeight = () => {
+
+    var headHeight = $("#header-nav-area").height();      
+
+    const doc = document.documentElement;
+   doc.style.setProperty('--headroom-height', headHeight +'px')   
+ 
+ 
+
+  //  SetSubmenuHeight(headHeight);
+ 
+  }//appHeigh
+ 
+
+
 
   const appHeight = () => {
      const doc = document.documentElement
     doc.style.setProperty('--site-height', `${window.innerHeight}px`)   
+ 
   }//appHeigh
  
   window.addEventListener('resize', appHeight)
   appHeight();
+  initSubmenuHeight();
+  initHeadroomHeight();
 
 }//function SetAppHeight()
 
+ 
+export function SetSubmenuHeight(headRoomStatus) {
 
+
+  console.log("SetSubmenuHeight");
+  console.log(" headRoomStatust" + headRoomStatus +"");
+
+    const SubmenuHeight = () => {
+      const doc = document.documentElement;
+     
+      if (headRoomStatus == "onPin"){
+        var headHeight = $("#header-nav-area").outerHeight();       
+
+        
+        } else if (headRoomStatus == "onUnpin"){
+          var headHeight = 0;      
+
+      }
+      
+      // console.log("headheight" +headHeight+"");
+
+
+      doc.style.setProperty('--submenu-height', `${(window.innerHeight - headHeight)}px`)   
+  
+    }//SubmenuHeight 
+  
+    const headroomHeight = () => {
+      const doc = document.documentElement;
+      if (headRoomStatus == "onPin"){
+        var headHeight = $("#header-nav-area").outerHeight();      
+
+        
+        } else if (headRoomStatus == "onUnpin"){
+        
+          var headHeight = 0;      
+
+        }
+        
+
+      doc.style.setProperty('--headroom-height', headHeight +'px')   
+    }//headHeight 
+
+
+
+
+  window.addEventListener('resize', SubmenuHeight);
+  window.addEventListener('resize', headroomHeight);
+
+  SubmenuHeight();
+  headroomHeight();
+
+}//function SetAppHeight()
+ 
 export function detectAttrChange() {
 console.log("detectAttrChange()");
 

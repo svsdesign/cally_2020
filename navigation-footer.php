@@ -19,14 +19,14 @@
 			
 				<a href="<?php echo get_home_url();?>">
 					<span class="title">
-					Cultivating CAlly -
+					Cultivating Cally -
 					</span>
 					<span class="sub-title">
-					A Community Garden Project
+					The Community Gardening Project
 					</span>
 				</a>
 			</div>
-				
+			
 			<div class="footer-socials grid-item grid-xs-12 grid-md-6">
 				<ul>
 					<li>
@@ -47,6 +47,54 @@
 				</ul>
 			</div><!-- .footer-socials -->
 			
+
+			<div class="footer-sponsors cally-branding grid-item grid-xs-12">
+			
+					
+				<div class="grid-row-holder">
+
+					<div class="cally-fest-branding grid-item grid-xs-12 grid-md-6">
+
+						<span class="title">
+						A legacy project brought to you by 
+						</span>
+				
+						<a href="https://thecallyfestival.com/">
+						<?php get_template_part( '/dist/svg/inline-cally-fest_svg' ); ?>						 
+						</a>
+
+					</div><!-- .cally-fest-branding -->
+
+					<div class="sponsor-branding grid-item grid-xs-12 grid-md-6">
+						
+						<ul>
+							<li>
+								<a class="sponsor-link" href="">
+								isling
+								<?php //get_template_part( '/dist/svg/inline-twitter_svg' ); ?>						 
+								</a>
+							</li>
+							<li>
+								<a class="sponsor-link" href="">
+								ipa
+								<?php //get_template_part( '/dist/svg/inline-twitter_svg' ); ?>						 
+								</a>
+							</li>
+							<li>
+								<a class="sponsor-link" href="">
+								mayor fund
+								<?php //get_template_part( '/dist/svg/inline-twitter_svg' ); ?>						 
+								</a>
+							</li>
+						</ul>
+
+					</div>
+
+				</div><!-- .grid-row-holder -->
+
+			</div><!-- .footer-sponsor -->
+
+
 			<div class="footer-navigation grid-item grid-xs-12">
 
 				<div class="grid-row-holder">

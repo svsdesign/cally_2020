@@ -19,7 +19,10 @@ background-color:$dark;
   body.#{nth($scheme, 1)}:not(.wp-admin), // ensure we're not applying to admin 
   body.#{nth($scheme, 1)}.wp-admin .acf-block-preview // but we are applying to the block we can't target ".th-block"  because most classes in this doc are targetting rthe s
   {
-  overflow: hidden;  
+  // overflow: hidden; was this
+  // changed to the following because of the sticky navs on various pages.
+  overflow-y: hidden;  
+  overflow: initial;
   }//body
 
 }//scheme

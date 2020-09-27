@@ -1,0 +1,190 @@
+
+@each $scheme in $schemes { // start colour scheme
+ 
+    body.#{nth($scheme, 1)}:not(.wp-admin) // ensure we're not applying to admin 
+    // body.#{nth($scheme, 1)}.wp-admin .acf-block-preview // but we are applying to the block we can't target ".th-block"  because most classes in this doc are targetting rthe s
+    {
+  
+   
+        .project-overview{
+        // border: 1px solid rgba(255, 0, 0, 0.185);//delete eventually
+        position:absolute;
+        // height: var(--site-height);
+        height:var(--submenu-height);       
+        top:0;
+        width:100%;
+        left: 0;
+        right: 0;
+        bottom:0px;
+        z-index: 7;
+       
+            .overview-images{
+            position:relative;
+            height: inherit;
+            width: inherit;
+            }
+
+             ul.sections{
+            // background:green;
+            display: flex;
+            position: absolute;
+            width: 100%;
+            height:100%;
+            left: 0px;
+            bottom:0px;
+            
+
+                li{
+                display: none;
+                position: absolute;
+                height: inherit;
+                width: inherit;
+
+                    &.page-is-active{
+                    display: block;
+                    // border: 1px solid rgba(255, 251, 0, 0.185);//delete eventually
+                    // width:100%;
+                    }
+
+                    &.section-is-active{
+                        display: block;
+                        // border: 1px solid rgba(247, 0, 255, 0.185);//delete eventually
+                        // width:100%;
+                        z-index: 7;
+                    }
+
+                    .area{
+                    width:100%;
+                    height:100%;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    }
+
+                }
+
+                li.overview-bg{
+                display: block;
+                width:100%; 
+                height:100%;
+                position: relative;
+
+                    &.bg-is-active{
+                    display: block;
+                    width:100%;   
+                    }
+
+                }
+                    
+            }
+
+        }  
+
+        .sub-navigation-wrap{
+        // border: 1px solid #00800047; //delete eventually
+        position: sticky;
+        height: var(--submenu-height);
+        top:var(--headroom-height);
+        display: flex;
+        z-index: 8;
+        pointer-events: none;
+
+            .sub-navigation{
+            height: inherit;
+            width: 100%;
+            overflow: visible;
+            position: relative;
+
+                .nav-positioner{
+                transform: rotate(-90deg);
+                transform-origin: top right; 
+                width:var(--submenu-height);
+                position:absolute;
+                top:0px;
+                right:0px;
+                left:initial;
+                bottom:initial;
+                height:auto;
+
+                     ul.sections{
+                    pointer-events: initial;
+                    display: flex;
+                    position: relative;
+                    width:80%;/// maybe consider breakpoints here depeneind on screen sizesa and orientations
+                    margin: auto;
+                    max-width: 80vw;
+
+                        li{
+                        display: inline-flex;
+                        list-style: none;
+                        margin:auto;
+                        white-space: nowrap;
+
+                            a{
+                            text-decoration:none;
+                            color: nth($scheme, 3);
+                            border-bottom:0px;
+                            @include fluid-type(
+                                padding-left padding-right,
+                                map-get($breakpoints, xs),
+                                map-get($breakpoints,xxl),
+                                map-get($lineheight, xs) * 0.25,
+                                map-get($lineheight,xxl) * 0.25
+                                );     
+                            }
+
+                            
+                            &.line{
+                            pointer-events: none;//ensure js can't interact with these li elements
+                            color: nth($scheme, 3);
+                            width: 100%;
+                            width: -moz-available;       /* For Mozzila */
+                            width: -webkit-fill-available;  /* For Chrome */
+                            width: stretch;                 
+                            position:relative;
+
+                                &::after{
+                                content:'';
+                                border-bottom:1px solid nth($scheme, 3);
+                                display: block;
+                                position: absolute;
+                                width: 100%;
+                                left: 0;
+                                right: 0;
+                                top: 0;
+                         
+                                }
+  
+                            }
+
+                            &.page-is-active.line,
+                            &.section-is-active.line{
+                            color:$highlight;
+                            
+                                &::after{
+                                border-bottom:1px solid $highlight;                             
+                                }
+                            }
+
+                            &.page-is-active,
+                            &.section-is-active{
+                            
+                                a{
+                                color:$highlight;
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+                
+            }
+
+        }//.sub-navigation-wrap
+
+    }//   body.#{nth($scheme, 1)}:not(.wp-admin)
+
+}//@each $scheme in $schemes { // start colour scheme

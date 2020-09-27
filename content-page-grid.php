@@ -600,10 +600,13 @@
 
                 </div><!-- grid -->
                   
-                <div id="background-map" data-html2canvas-ignore="true">
+                  <?php /*
+                div id="background-map" data-html2canvas-ignore="true">
                   <!-- review this bg-map - do we even need this? -->
                 <img src="<?php echo get_template_directory_uri() ?>/dist/img/freeling-bg.jpg"/>
                 </div>
+
+                */?>
 
               </div>
   
@@ -629,7 +632,7 @@
     <div id="outer-bg-layer">
   
       <?php //additional content *consier furher divs etc. ?>
-      <img src="<?php echo get_template_directory_uri() ?>/dist/img/freeling-bg-outer.png"/>
+      <img src="<?php echo get_template_directory_uri() ?>/dist/img/freeling-bg-outer_v5.jpg"/>
            
     </div><!--.outer-bg-layer-->
 

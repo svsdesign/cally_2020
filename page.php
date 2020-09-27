@@ -8,6 +8,7 @@
  *  
  * 
  *  TO DO - rmove all trace of theseus & configure correctly accoridngly
+ *  ensure overview grid on displayed on all pages
  */
 get_header();
 
@@ -32,8 +33,10 @@ if ( have_posts() ) :?>
 
 					 
 			else: /* other pages - use same template as Privacy Policy */?>
- 
-		  		<?php get_template_part( 'content-page' )?>
+
+			<?php get_template_part( 'overview' ); // ensure this only displayed on teh appropriate pages
+
+		  	get_template_part( 'content-page' )?>
 
 			<?php endif;
 

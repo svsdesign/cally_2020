@@ -16,7 +16,7 @@
 
 @each $scheme in $schemes { // start colour scheme
  
-    body.#{nth($scheme, 1)}:not(.wp-admin) // ensure we're not applying to admin 
+    body.#{nth($scheme, 1)}.page-template-page-grid:not(.wp-admin) // ensure we're not applying to admin & only targetting correct page
     // body.#{nth($scheme, 1)}.wp-admin .acf-block-preview // but we are applying to the block we can't target ".th-block"  because most classes in this doc are targetting rthe s
     {
   
@@ -611,6 +611,9 @@
                  
                 }
                 .ui-selectmenu-text{
+                // no need to display this at all?
+                display:none;
+
                     @include fluid-type(
                         padding-left,
                         map-get($breakpoints, xs),
@@ -629,6 +632,7 @@
                 right:0px;
                 background-color: nth($scheme, 3);
                 color: nth($scheme, 2);
+                top: 0px!important; // ensure aloways aligned to top
 
                     /* select with CSS avatar icons */
                     option.avatar {
@@ -685,7 +689,14 @@
                         );*/
                         padding:0;
                         height:inherit;
-                        max-height: 18vw;// can only be one grid size unit  for overflow issues on parent container//30vw;
+                        @include fluid-type(
+                            margin-left padding-top margin-right padding-bottom,
+                            map-get($breakpoints, xs),
+                            map-get($breakpoints,xxl),
+                            map-get($lineheight, xs) * 0.25,
+                            map-get($lineheight,xxl)* 0.25
+                        );
+                        max-height: 19vw;// can only be one grid size unit  for overflow issues on parent container//30vw;
                         display: grid;
                         border:0px;
                         // grid-template-columns:10vw;//$iconwidth1;//1fr;// repeat(auto-fill, $iconwidth1);
@@ -702,8 +713,10 @@
                             map-get($lineheight, xs) * 0.25,
                             map-get($lineheight,xxl)* 0.25
                         );*/
-                        width:15vw;// = 2 x iconwidth $iconwidth1!important;//to overide the css set via js jquery ui
-                        max-width:15vw;//might need reviewing
+                        // width:16vw;// = 2 x iconwidth $iconwidth1!important;//to overide the css set via js jquery ui
+                        // was 15vw, but need to ensure catering for border spacing
+                        width:16vw;
+                        max-width:16vw;//might need reviewing
                         margin:auto;
                         background: nth($scheme, 3);
 
@@ -716,7 +729,7 @@
                         height:inherit;// allows item to change based on active child or
                         text-align:center;
                         font-size:0px!important;
-                        margin:auto;
+                         margin: 0; // was auto
                         @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*0.75, map-get($fontsize, lg)*0.75); // fixed sizing 
                         // @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*0.75, map-get($fontsize, xxl)*0.75); // viewport sizing 
                         // @include fluid-type(line-height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
@@ -750,7 +763,8 @@
                                     background-position: 0 0;
                                     background-size: contain;
                                     background-blend-mode: none;
-                                    background-color:nth($scheme, 2);
+                                    // background-color:nth($scheme, 2);
+                                    background-color: $color-red;
                                     width:100%;
                                     // height: 9vw;//10vw; might need reviewing
                                     display: block;
@@ -767,6 +781,21 @@
                             opacity:0; 
                             }
 
+                            &:first-of-type{
+                            // no need to show the first item - as it just turn select of again
+                            display:none;
+                            }
+
+                            &:last-of-type{
+
+                                @include fluid-type(
+                                    margin-bottom,
+                                    map-get($breakpoints, xs),
+                                    map-get($breakpoints,xxl),
+                                    map-get($lineheight, xs) * 0.25,
+                                    map-get($lineheight,xxl)* 0.25
+                                );
+                            }
                           
                         }//.ui-menu-item
 
@@ -774,7 +803,6 @@
 
                 } // .ui-front 
                 
-
 
                 .input-id {
                     // review + delte probably
