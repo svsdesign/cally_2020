@@ -908,16 +908,19 @@ console.log("Window.innerWidth = " + window.innerWidth +"")
 
   });
 
-  // dev toggle - TO DO - move this elsewhere
+
   $(".dev-layout-grid-toggle").click(function () {
 
     if ($('body').hasClass("dev-layout-grid-on")) {
 
       $('body').removeClass('dev-layout-grid-on');
-  
+      $("#size-wrap").removeClass('grid-container');
+
     } else {
 
       $('body').addClass('dev-layout-grid-on');
+      $("#size-wrap").addClass('grid-container');
+
       console.log("scrolling to the top of grid")
     
       $('html, body').animate({

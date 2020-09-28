@@ -1,0 +1,51 @@
+ /*
+Theme Name: cally 2020
+Theme URI:  cultivatingcally.com
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+ 
+
+@each $scheme in $schemes { // start colour scheme
+ 
+  body.#{nth($scheme, 1)}:not(.wp-admin){ // ensure we're not applying to admin 
+  
+    
+    .grid-container.main{
+    //  background: red;
+
+
+    @include fluid-type(
+      padding-bottom,
+      map-get($breakpoints, xs),
+      map-get($breakpoints,xxl),
+      map-get($lineheight, xs) * 1,
+      map-get($lineheight,xxl) * 1
+      );    
+    }//.grid-container.main
+
+    .grid-container.news-home-wrapper{
+    // background: green;
+
+      .news-home-title-wrapper{
+        text-align: center;
+        font-family: $bold-font-family; 
+        @include fluid-type(
+          padding-top padding-bottom,
+          map-get($breakpoints, xs),
+          map-get($breakpoints,xxl),
+          map-get($lineheight, xs) * 1,
+          map-get($lineheight,xxl) * 1
+          );     
+      }
+ 
+
+    } //.grid-container.news-home-wrapper
+
+
+  }//body
+
+}//scheme
+
+ //END to fix issues with extra space at bottom of body

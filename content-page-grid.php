@@ -129,7 +129,8 @@
       
     </div>
 
-    <div class="grid-container">
+    <div id="size-wrap"><!--this shouidl only be this class once the deve toggle has been clicked -->
+    <!-- <div id="size-wrap" class="grid-container"> this shouidl only be this class once the deve toggle has been clicked -->
 
       <?php if ( is_user_logged_in() ) :?>
       

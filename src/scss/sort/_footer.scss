@@ -214,13 +214,14 @@ Author URI: http://svs.design
 
         .footer-branding{
         order: 2;  
-        @media (min-width: map-get($breakpoints, md)) { 
+          @media (min-width: map-get($breakpoints, md)) { 
           order: 1;  
           }
 
           a{
           display:block;
           color: nth($scheme, 2);
+          border-bottom:none;
 
             .title{
             clear: both;
@@ -266,6 +267,7 @@ Author URI: http://svs.design
 
 
               a{
+                border-bottom:none;
                 color: nth($scheme, 2);
                 svg{
                   width: 100%;
@@ -321,9 +323,16 @@ Author URI: http://svs.design
           
             ul{
             text-align: center;
-            
+            display: flex;
               @media (min-width: map-get($breakpoints, md)) { 
-              float: right;
+                float: right;
+                @include fluid-type(
+                  margin-top,
+                  map-get($breakpoints, xs),
+                  map-get($breakpoints,xxl),
+                  map-get($lineheight, xs) * 1,
+                  map-get($lineheight,xxl) * 1
+                );     
               }
           
               li{
@@ -334,6 +343,8 @@ Author URI: http://svs.design
 
                 a{
                   color: nth($scheme, 2);
+                  border-bottom:none;
+
                   svg{
                     width: 100%;
                   }

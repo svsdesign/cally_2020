@@ -47,7 +47,12 @@
 				 </div><!-- .image-wrap -->			 
 
 			<?php else: // $featureimage not available?>
-				
+			
+				<div class="image-wrap">
+
+					<img class="apply-image-load thumb-image-item" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="<?php echo bloginfo('template_directory'); ?>/dist/img/floral-placholder-v1.png" alt="image" />
+
+				</div><!-- .image-wrap -->			 
 
 				<?php 
 				/*
@@ -191,7 +196,13 @@
 							</div><!-- .image-wrap -->			 
 
 						<?php else: // $featureimage not available?>
-							
+						
+							<div class="image-wrap">
+
+							<img class="apply-image-load thumb-image-item" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="<?php echo bloginfo('template_directory'); ?>/dist/img/floral-placholder-v1.png" alt="image" />
+
+							</div><!-- .image-wrap -->			 
+
 						<?php 
 						/*
 						foreach($categories as $category){
@@ -271,6 +282,12 @@
 
 			<?php else: // $featureimage not available?>
 				
+				<div class="image-wrap">
+
+					<img class="apply-image-load thumb-image-item" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="<?php echo bloginfo('template_directory'); ?>/dist/img/floral-placholder-v1.png" alt="image" />
+
+				</div><!-- .image-wrap -->	
+
 
 				<?php 
 				/*

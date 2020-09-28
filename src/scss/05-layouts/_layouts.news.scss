@@ -20,8 +20,8 @@ Author URI: http://svs.design
             margin-bottom,
             map-get($breakpoints, xs),
             map-get($breakpoints,xxl),
-            map-get($lineheight, xs) * 2,
-            map-get($lineheight,xxl) * 2
+            map-get($lineheight, xs) * 0.25,
+            map-get($lineheight,xxl) * 0.25
           );
           @include fluid-type(
             line-height,
@@ -83,6 +83,17 @@ Author URI: http://svs.design
 
       // div:not(.related-items-wrap){
 
+        .news-item{
+          @include fluid-type(
+            margin-bottom,
+            map-get($breakpoints, xs),
+            map-get($breakpoints,xxl),
+            map-get($gutter, xs) * 1,
+            map-get($gutter,xxl) * 1
+          );
+
+        }
+
         .header-wrap{
           display: flex;
           width: 100%;
@@ -100,7 +111,15 @@ Author URI: http://svs.design
     }//&.post-type-archive-news
 
     &.single-news{
-
+      .header-wrap{
+      @include fluid-type(
+        margin-bottom,
+        map-get($breakpoints, xs),
+        map-get($breakpoints,xxl),
+        map-get($lineheight, xs) * 2,
+        map-get($lineheight,xxl) * 2
+      );
+      }
       .header-wrap.related-header-wrap{
         display: flex;
         width: 100%;
