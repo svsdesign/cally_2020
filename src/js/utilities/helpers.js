@@ -824,8 +824,14 @@ export function removeCommentBubble(){
    
 export function hoverDiv($thisitem) {
 
-  // console.log("hoverDiv($thisitem)");
+ console.log("hoverDiv($thisitem)");
      $thisitem = $thisitem;
+ /* to do
+
+ still issue with scrip running to man times
+
+ */
+
  
     var checkhoverDiv = function ($thisitem) {
 
