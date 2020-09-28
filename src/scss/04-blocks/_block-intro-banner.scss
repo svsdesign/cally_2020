@@ -14,7 +14,7 @@ position: relative;
 padding-bottom:15vw;// to offset the scaled image
      
     .image-wrap{
-    transform: scale(1.3);   
+    transform: scale(1.27);// was 1.3 - but overflow issue on dom
     }
     
     h1.image-caption{

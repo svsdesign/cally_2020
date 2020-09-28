@@ -4,8 +4,8 @@
         <polygon id="path-3" points="0.0508566677 0.037969727 1.636533 0.037969727 1.636533 4.18604651 0.0508566677 4.18604651"></polygon>
     </defs>
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Footer" transform="translate(-1300.000000, -782.000000)">
-            <g   style="mix-blend-mode: screen;" transform="translate(1300.000000, 782.000000)">
+        <g transform="translate(-1300.000000, -782.000000)">
+            <g style="mix-blend-mode: screen;" transform="translate(1300.000000, 782.000000)">
                 <g id="Group-3" transform="translate(0.000000, 15.069767)">
                     <mask id="mask-2" fill="white">
                         <use xlink:href="#path-1"></use>

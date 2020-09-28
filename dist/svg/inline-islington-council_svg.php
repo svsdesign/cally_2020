@@ -1,5 +1,4 @@
 <svg class="svg-icon svg-icon-islington-council" width="161px" height="27px" viewBox="0 0 161 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-
     <defs>
         <polygon id="islington-path-1" points="0.200099639 0.356192308 21.3087618 0.356192308 21.3087618 26.9688462 0.200099639 26.9688462"></polygon>
     </defs>

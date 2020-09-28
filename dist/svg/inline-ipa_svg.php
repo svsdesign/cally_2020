@@ -2,7 +2,7 @@
 
 <svg class="svg-icon svg-icon-ipa" width="123px" height="45px" viewBox="0 0 123 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
-        <rect x="1132" y="794" width="124" height="47" id="rect-1"></rect>
+    <rect x="1132" y="794" width="124" height="47" id="rect-1"></rect> 
     </defs>
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g transform="translate(-1132.000000, -794.000000)">
@@ -12,4 +12,4 @@
             </g>
         </g>
     </g>
-</svg>
+</svg> 
