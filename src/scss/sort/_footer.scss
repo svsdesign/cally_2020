@@ -341,7 +341,8 @@ Author URI: http://svs.design
               list-style: none;
               width:25%;
 
-                a{
+                a.proj-sponsor-link{
+                
                   color: nth($scheme, 2);
                   border-bottom:none;
 

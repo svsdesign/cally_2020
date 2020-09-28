@@ -19,7 +19,7 @@
 		</div>
 
 		<div class="sub-title grid-item grid-xs-12 grid-md-6">
-		"Want to be kept posted on the parks development? Sign up to our mailing list to receive the latest news, information on workshops ... [this copy to be refined]"
+		"Want to be kept posted on the parks development? Sign up to our mailing list to receive the latest news, information on workshops ... [this copy to be refined - send to Si; no CMS for this]"
 		</div><!--.sub-title-->
 
 	</div><!--.intro-wrap grid-container -->

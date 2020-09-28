@@ -17,7 +17,7 @@
 
 		<div class="footer-socials grid-item grid-xs-12 grid-md-6">
 			
-			<ul>
+				<ul>
 					<li>
 						<a class="social-link" href="">
 						<?php get_template_part( '/dist/svg/inline-twitter_svg' ); ?>						 
@@ -71,21 +71,21 @@
 						
 						<ul>
 							<li>
-								<a class="sponsor-link" href="">
+								<a class="proj-sponsor-link" href="">
  								<?php get_template_part( '/dist/svg/inline-islington-council_svg' ); ?>						 
 
 								<?php //get_template_part( '/dist/svg/inline-twitter_svg' ); ?>						 
 								</a>
 							</li>
 							<li>
-								<a class="sponsor-link" href="">
+								<a class="proj-sponsor-link" href="">
  								<?php get_template_part( '/dist/svg/inline-ipa_svg' ); ?>						 
 
 								<?php //get_template_part( '/dist/svg/inline-twitter_svg' ); ?>						 
 								</a>
 							</li>
 							<li>
-								<a class="sponsor-link" href="">
+								<a class="proj-sponsor-link" href="">
  								<?php get_template_part( '/dist/svg/inline-mayor-fund_svg' ); ?>						 
  								<?php //get_template_part( '/dist/svg/inline-twitter_svg' ); ?>						 
 								</a>
