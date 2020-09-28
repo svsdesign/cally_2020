@@ -17,11 +17,11 @@ export default function init() {
   {
 
 
-      $('ul.sections li').mouseenter(function(){
+      $('ul.sections li a').mouseenter(function(){
 
       
-        var $this = $(this),
-            thissection = $(this).attr("data-section-title"),
+        var $this = $(this).parent("li"),
+            thissection = $this.attr("data-section-title"),
             $nextline = $('ul.sections li[data-section-title="'+thissection+'"]').next(".line"),
             $previousline = $('ul.sections li[data-section-title="'+thissection+'"]').prev( ".line" );
 

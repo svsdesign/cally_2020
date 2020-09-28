@@ -6,7 +6,39 @@
  *  http://svs.design
  *
  *  
- */?>
+ */
+
+
+$introtext = get_field('introduction_text'); // intorcopy
+
+	if( is_page('about-plan') ):
+		
+	// need to determine if U wan t to serve up alink or #hash?
+	// $fs_link = "page-is-active";
+// 	about + plan  page 
+
+	
+?>
+
+
+<?php elseif( is_page('freeling-street') ): 
+$fs_activeclass = "page-is-active";
+
+?>		
+
+
+<?php elseif( is_page('bridgeman-road') ): 
+$br_activeclass = "page-is-active";
+//	bridgeman-road
+?>
+
+<?php elseif( is_page('estate-walk') ):
+$ew_activeclass = "page-is-active";
+?>
+
+<?php endif;?>
+ 
+			
 
 
 
@@ -20,8 +52,7 @@
 
 				<li data-section-title="bridgeman-road"
 					class="<?php if (isset($br_activeclass)): { echo $br_activeclass;}endif;?>">
-					<a href="">
-
+					<a href="<?php echo home_url();?>/bridgeman-road/">
 					Bridgeman Road
 					</a>
 
@@ -36,7 +67,7 @@
 				<li data-section-title="freeling-street"
 					class="<?php if (isset($fs_activeclasss)): { echo $fs_activeclass;}endif;?>">
 
-					<a class="" href="">
+					<a href="<?php echo home_url();?>/freeling-street/">
  					Freeling Street
 					</a>
 
@@ -50,7 +81,7 @@
 
 				<li data-section-title="estate-walk"
 					class="<?php if (isset($ew_activeclass)): { echo $ew_activeclass;}endif;?>">
-					<a href="">
+					<a href="<?php echo home_url();?>/estate-walk/">
 					Estate Walk
 					</a>
 				</li>
@@ -62,39 +93,23 @@
 	</div><!-- .sub-navigation -->
 
 </div><!-- .sub-navigation-wrap -->
-
-
  
 <div class="project-overview">
 
-	<?php if( is_page('about-plan') ):
-		
-		// need to determine if U wan t to serve up alink or #hash?
-		// $fs_link = "page-is-active";
-// 	about + plan  page 
+	
+	<?php if($introtext):?>
 
-		?>
+		<div class="intro-wrap">
 
-	<?php elseif( is_page('freeling-street') ): 
-	$fs_activeclass = "page-is-active";
+			<h1 class="title intro">
 
-	?>		
+				<?php echo $introtext; ?>
 
-	freeling street
+			</h1><!-- .title-intro -->	
 
-	<?php elseif( is_page('bridgeman-road') ): 
-	$br_activeclass = "page-is-active";
-	//	bridgeman-road
-	?>
+		</div><!-- .intro-wrap-->
 
-
-	<?php elseif( is_page('estate-walk') ):
-	$ew_activeclass = "page-is-active";
-	?>
-
-	estate-walk
-
-	<?php endif;?>
+	<?php endif; // $introtext?>
 
 	<div class="overview-images">
 	
@@ -102,29 +117,26 @@
 
 			<li data-section-title="bridgeman-road"
 				class="<?php if (isset($br_activeclass)): { echo $br_activeclass;}endif;?>">
-				<a href="">
+				<a href="<?php echo home_url();?>/bridgeman-road/">
+ 				</a>
 				<div class="area bridgeman-area" style="background-image: url(<?php echo get_template_directory_uri() ?>/dist/img/overview-bridgeman-square.png);">
 				</div>
-				</a>
-
 			</li>
 		
 			 <li data-section-title="freeling-street"
 				 class="<?php if (isset($fs_activeclasss)): { echo $fs_activeclass;}endif;?>">
-
-				<a class="" href="">
-				<div class="area freeling-area" style="background-image: url(<?php echo get_template_directory_uri() ?>/dist/img/overview-freeling-square.png);">
-				</div>
+				 <a href="<?php echo home_url();?>/freeling-street/">
  				</a>
-
+				 <div class="area freeling-area" style="background-image: url(<?php echo get_template_directory_uri() ?>/dist/img/overview-freeling-square.png);">
+				</div>
 			</li>
 			
 			 <li data-section-title="estate-walk"
 			 	class="<?php if (isset($ew_activeclass)): { echo $ew_activeclass;}endif;?>">
-				<a href="">
+				 <a href="<?php echo home_url();?>/estate-walk/">
+ 				</a>
 				<div class="area estate-area" style="background-image: url(<?php echo get_template_directory_uri() ?>/dist/img/overview-walkway-square.png);">
 				</div>
-				</a>
 			</li>
 
 			<li class="overview-bg bg-is-active">

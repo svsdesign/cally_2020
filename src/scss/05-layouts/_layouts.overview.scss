@@ -18,6 +18,14 @@
         bottom:0px;
         z-index: 7;
        
+
+            .intro-wrap{
+            position: absolute;
+            top:0px;
+            z-index: 9;
+            pointer-events: none;
+            }
+
             .overview-images{
             position:relative;
             height: inherit;
@@ -35,25 +43,45 @@
             
 
                 li{
-                display: none;
+                display: block;
                 position: absolute;
                 height: inherit;
                 width: inherit;
+                // background:yellow;
+                pointer-events: none;
+
+                    a{
+                    border-bottom: none;
+                    height: 33.33%;
+                    pointer-events: initial;
+                    position: absolute;
+                    width: 100%;
+                    z-index: 2;
+                    top:66.66%
+                    }
 
                     &.page-is-active{
-                    display: block;
-                    // border: 1px solid rgba(255, 251, 0, 0.185);//delete eventually
-                    // width:100%;
-                    }
+                    // display: block;
+                    z-index: 7;
+
+                        .area{
+                        display:block;
+                        }
+
+                    }//li.page-is-active
 
                     &.section-is-active{
-                        display: block;
-                        // border: 1px solid rgba(247, 0, 255, 0.185);//delete eventually
-                        // width:100%;
-                        z-index: 7;
-                    }
+                    // display: block; 
+                    z-index: 7;
+
+                        .area{
+                        display:block;
+                        }
+
+                    }//li.section-is-active
 
                     .area{
+                    display: none;
                     width:100%;
                     height:100%;
                     background-size: contain;
@@ -61,17 +89,41 @@
                     background-position: center center;
                     }
 
-                }
+                    &:nth-child(2){
+                      
+                        a{
+                        top:33.33%;
+                        // background:red;
+
+                        }
+                    }
+
+                    &:nth-child(3){
+                    
+                        a{
+                        top:0;//66.66%;
+                        // background:green;
+                        }
+
+                    }
+
+                }// li
 
                 li.overview-bg{
                 display: block;
                 width:100%; 
                 height:100%;
                 position: relative;
+                z-index: 6;
 
                     &.bg-is-active{
                     display: block;
                     width:100%;   
+                    
+                        .area{
+                        display:block;
+                        }
+
                     }
 
                 }
@@ -105,6 +157,10 @@
                 left:initial;
                 bottom:initial;
                 height:auto;
+                @media (min-width: map-get($breakpoints, sm)) { 
+                right:-5vw;
+                }
+
 
                      ul.sections{
                     pointer-events: initial;

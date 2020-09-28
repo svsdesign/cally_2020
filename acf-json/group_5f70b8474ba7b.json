@@ -1,0 +1,73 @@
+{
+    "key": "group_5f70b8474ba7b",
+    "title": "Project Overview",
+    "fields": [
+        {
+            "key": "field_5f70b851b8db6",
+            "label": "Introduction Text",
+            "name": "introduction_text",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_rest": 0,
+            "edit_in_rest": 0,
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "101"
+            }
+        ],
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "271"
+            }
+        ],
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "275"
+            }
+        ],
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "104"
+            }
+        ],
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "191"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1601222782
+}
