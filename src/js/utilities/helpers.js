@@ -815,61 +815,113 @@ export function unforceheadroompin(){
 export function removeCommentBubble(){
   // console.log(" function removeCommentBubble()")
 
-
   if ($('#wpd-bubble-wrapper').length){
   // console.log("#wpd-bubble-wrapper exists")
   $('#wpd-bubble-wrapper').remove();// remove it
   } //if($('#wpd-bubble-wrapper').length)
 
-  
 };//removeCommentBubble()
    
-
-
-
 export function hoverDiv($thisitem) {
 
- console.log("hoverDiv($thisitem)");
-  
-//  $thisitem.css("background","red");
+  // console.log("hoverDiv($thisitem)");
+     $thisitem = $thisitem;
+ 
+    var checkhoverDiv = function ($thisitem) {
+
+      var hovermouseX = ($thisitem.width() / 2), //was 0,
+          hovermouseY = ($thisitem.height() / 2), //was 0,
+          hoverlimitX = $thisitem.width(), // was 9999,
+          hoverlimitY = $thisitem.height(); // was 9999;
+
+          $thisitem.on({
+            mousemove: function (e) {
+              var hoveroffset = $thisitem.offset();
+              hovermouseX = Math.min(e.pageX - hoveroffset.left, hoverlimitX);
+              hovermouseY = Math.min(e.pageY - hoveroffset.top, hoverlimitY);
+              if (hovermouseX < 0) hovermouseX = 0;
+              if (hovermouseY < 0) hovermouseY = 0;
+
+              console.log("hoverDiv($thisitem)");
+
+            }
+          });
+
+          // cache the selector
+        var hoverfollower = $thisitem.find('.inner-follow'),
+            hoverxp = 0,
+            hoveryp = 0;
+
+          // TODO ensure this isn't constaly running?
+
+          var hoverloop = setInterval(function () {
+            // change 12 to alter damping higher is slower
+            hoverxp += (hovermouseX - hoverxp) / 1;//was 12
+            hoveryp += (hovermouseY - hoveryp) / 1;//was 12
+            hoverfollower.css({
+              left: hoverxp,
+              top: hoveryp
+            });
+
+          }, 10); // was 30
+   
+    };// checkhoverDiv($thisitem)
+
+    window.addEventListener('resize', function () {
+
+      // console.log("resizing?");
+
+        var $thisitem = $('.dev-layout-grid-toggle');
+        checkhoverDiv = null; // kills previous functions
+
+        // redeclare the function, using same var name
+
+        var checkhoverDiv = function ($thisitem) {
+
+        var hovermouseX = ($thisitem.width() / 2), //was 0,
+          hovermouseY = ($thisitem.height() / 2), //was 0,
+          hoverlimitX = $thisitem.width(), // was 9999,
+          hoverlimitY = $thisitem.height(); // was 9999;
+
+        $thisitem.on({
+          mousemove: function (e) {
+            var hoveroffset = $thisitem.offset();
+            hovermouseX = Math.min(e.pageX - hoveroffset.left, hoverlimitX);
+            hovermouseY = Math.min(e.pageY - hoveroffset.top, hoverlimitY);
+            if (hovermouseX < 0) hovermouseX = 0;
+            if (hovermouseY < 0) hovermouseY = 0;
+
+            console.log("hoverDiv($thisitem)");
+
+          }
+        });
+
+        // cache the selector
+        var hoverfollower = $thisitem.find('.inner-follow'),
+          hoverxp = 0,
+          hoveryp = 0;
+
+        // TODO ensure this isn't constaly running?
+
+        var hoverloop = setInterval(function () {
+          // change 12 to alter damping higher is slower
+          hoverxp += (hovermouseX - hoverxp) / 1;//was 12
+          hoveryp += (hovermouseY - hoveryp) / 1;//was 12
+          hoverfollower.css({
+            left: hoverxp,
+            top: hoveryp
+          });
+
+        }, 10); // was 30
 
 
-  var hovermouseX = ($thisitem.width() / 2), //was 0,
-    hovermouseY = ($thisitem.height() / 2), //was 0,
-    hoverlimitX = $thisitem.width(), // was 9999,
-    hoverlimitY = $thisitem.height(); // was 9999;
 
-  $thisitem.on({
-    mousemove: function (e) {
-      var hoveroffset = $thisitem.offset();
-      hovermouseX = Math.min(e.pageX - hoveroffset.left, hoverlimitX);
-      hovermouseY = Math.min(e.pageY - hoveroffset.top, hoverlimitY);
-      if (hovermouseX < 0) hovermouseX = 0;
-      if (hovermouseY < 0) hovermouseY = 0;
+        };// checkhoverDiv($thisitem)
 
-      console.log("hoverDiv($thisitem)");
+        checkhoverDiv($thisitem);// trigger
 
-    }
-  });
-
-  // cache the selector
-var hoverfollower = $thisitem.find('.inner-follow'),
-    hoverxp = 0,
-    hoveryp = 0;
-
-  // TODO ensure this isn't constaly running?
-
-  var hoverloop = setInterval(function () {
-    // change 12 to alter damping higher is slower
-    hoverxp += (hovermouseX - hoverxp) / 1;//was 12
-    hoveryp += (hovermouseY - hoveryp) / 1;//was 12
-    hoverfollower.css({
-      left: hoverxp,
-      top: hoveryp
     });
 
-  }, 10); // was 30
-
-
+    checkhoverDiv($thisitem);// initial
 
 } //function hoverDiv($thisitem)
