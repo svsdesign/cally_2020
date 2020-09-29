@@ -828,11 +828,11 @@ export function hoverDiv($thisitem) {
      $thisitem = $thisitem;
  /* to do
 
- still issue with scrip running to man times
+ still issue with scrip running to many times
 
  */
 
- 
+
     var checkhoverDiv = function ($thisitem) {
 
       var hovermouseX = ($thisitem.width() / 2), //was 0,
