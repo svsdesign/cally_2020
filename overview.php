@@ -22,26 +22,23 @@ $introtext = get_field('introduction_text'); // intorcopy
 
 
 <?php elseif( is_page('freeling-street') ): 
-$fs_activeclass = "page-is-active";
+$fs_activeclass = "page-is-active section-is-active";
 
 ?>		
 
 
 <?php elseif( is_page('bridgeman-road') ): 
-$br_activeclass = "page-is-active";
+$br_activeclass = "page-is-active section-is-active";
 //	bridgeman-road
 ?>
 
 <?php elseif( is_page('estate-walk') ):
-$ew_activeclass = "page-is-active";
+$ew_activeclass = "page-is-active section-is-active";
 ?>
 
 <?php endif;?>
  
 			
-
-
-
 <div class="sub-navigation-wrap">
 
 	<div class="sub-navigation">
@@ -57,12 +54,11 @@ $ew_activeclass = "page-is-active";
 					</a>
 
 				</li>
+			
 				<li class="line 
 				<?php if (isset($br_activeclass)): { echo $br_activeclass;}endif;?>
 				<?php if (isset($fs_activeclass)): { echo $fs_activeclass;}endif;?>
-				">
-				
-				</li>	
+				"></li>	
 
 				<li data-section-title="freeling-street"
 					class="<?php if (isset($fs_activeclasss)): { echo $fs_activeclass;}endif;?>">

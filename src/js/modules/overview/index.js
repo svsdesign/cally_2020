@@ -41,8 +41,8 @@ export default function init() {
 
                 $('ul.sections li').removeClass('section-is-active');
                     // I think that ass soon as we have an initial mouseent that the is page active class no longer required?
-
-                $('ul.sections li').removeClass('page-is-active');
+                // kepe 
+                // $('ul.sections li').removeClass('page-is-active');
 
                 
                 //add new classes

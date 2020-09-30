@@ -65,7 +65,7 @@
                     z-index: 7;
 
                         .area{
-                        display:block;
+                        // display:block;
                         }
 
                     }//li.page-is-active
@@ -213,7 +213,15 @@
   
                             }
 
-                            &.page-is-active.line,
+                            &.page-is-active{
+                            border-bottom:1px solid nth($scheme, 3);
+                            }
+
+                            &.page-is-active.section-is-active{
+                            border-bottom:1px solid $highlight;
+                            }
+
+                            // &.page-is-active.line,
                             &.section-is-active.line{
                             color:$highlight;
                             
@@ -222,7 +230,8 @@
                                 }
                             }
 
-                            &.page-is-active,
+                            // &.page-is-active,
+
                             &.section-is-active{
                             
                                 a{

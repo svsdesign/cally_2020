@@ -430,31 +430,60 @@ export function previewSite(){
 }//previewSite();
 
 export function menuPositioner(){
-  //  console.log("menupositioner");
+ console.log("menupositioner");
 
-var $positioner = $("#positioner")
+var $body = $('body'),
+    $positioner = $("#positioner"),
     $menu = $("#menu-header-navigation"),
     $menuitems = $menu.children(),
     numberofmenuitems = $menuitems.length,
     $activemenuitem = $menu.children().filter(".current-menu-item"),
     positionerwidth = (100/numberofmenuitems);
-
+    
     $menuitems.each(function() {
       var number = $(this).index() +1;
     // $(this).prepend("<span>" +  + "</span>");
       $(this).attr( "menu-number", number);
 
     });
- 
-    activemenuitemnumber = $activemenuitem.attr( "menu-number");
-    applymarginleft = ((activemenuitemnumber * positionerwidth) - positionerwidth)+"%";
 
-    //console.log("activemenuitemnumber" +activemenuitemnumber+"");
-    $positioner.css("width",positionerwidth+"%");
-    $positioner.css("margin-left", applymarginleft+"%");
-    $positioner.animate({
-        marginLeft: applymarginleft
-    }, 500);
+    if ($body.hasClass('home')){
+
+      console.log("is body");
+  
+    } else if ($body.hasClass('single-news')){
+
+      console.log("is single news");
+    var $activemenuitem = $menu.children().filter(".news-link"),
+    
+    
+      activemenuitemnumber = $activemenuitem.attr( "menu-number");
+      applymarginleft = ((activemenuitemnumber * positionerwidth) - positionerwidth)+"%";
+  
+      //console.log("activemenuitemnumber" +activemenuitemnumber+"");
+      $positioner.css("width",positionerwidth+"%");
+      $positioner.css("margin-left", applymarginleft+"%");
+      $positioner.animate({
+          marginLeft: applymarginleft
+      }, 500);
+
+    } else {
+
+    // default rules:
+
+      activemenuitemnumber = $activemenuitem.attr( "menu-number");
+      applymarginleft = ((activemenuitemnumber * positionerwidth) - positionerwidth)+"%";
+  
+      //console.log("activemenuitemnumber" +activemenuitemnumber+"");
+      $positioner.css("width",positionerwidth+"%");
+      $positioner.css("margin-left", applymarginleft+"%");
+      $positioner.animate({
+          marginLeft: applymarginleft
+      }, 500);
+      
+    }// if class
+
+ 
 
 }//menupositioner()
 
