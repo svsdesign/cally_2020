@@ -32,7 +32,7 @@
         bottom:0px;
         left:0px;
         background-color: nth($scheme, 2);
-        z-index:7;// ensure above all else- but not menu
+        z-index:8;// ensure above all else- but not menu
         height:100%;
 
             .page-loader{
