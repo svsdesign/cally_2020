@@ -1031,10 +1031,10 @@ export default function init() {
 
         console.log("if local storage");
 
-                  // var OgGridContent = document.getElementById("tester-grid-id").innerHTML;
-                  // var gridContent = localStorage.getItem("gridContent");
+                // var OgGridContent = document.getElementById("tester-grid-id").innerHTML;
+                // var gridContent = localStorage.getItem("gridContent");
 
-          /*
+        /*
                   var string = "This is my compression test.";
           alert("Size of sample is: " + string.length);
           var compressed = LZString.compress(string);
@@ -1042,12 +1042,12 @@ export default function init() {
           string = LZString.decompress(compressed);
           alert("Sample is: " + string);
           */
-              console.log("compressed local storage gridContent" +localStorage.getItem('gridContent')+"");
+              // console.log("compressed local storage gridContent" +localStorage.getItem('gridContent')+"");
 
             var gridContent = LZString.decompress(localStorage.getItem('gridContent'));
             //  JSON.parse(localStorage.getItem('gridContent'));
         // var gridContent = JSON.parse(localStorage.getItem('gridContent'));
-          console.log("decompressed local storage gridContent" +gridContent+"");
+          // console.log("decompressed local storage gridContent" +gridContent+"");
       //  console.log("how to reduce this?!");
 
       

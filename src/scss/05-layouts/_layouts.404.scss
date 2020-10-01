@@ -1,0 +1,30 @@
+ /*
+Theme Name: cally 2020
+Theme URI:  cultivatingcally.com
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+
+@each $scheme in $schemes { // start colour scheme
+ 
+  body.error404.#{nth($scheme, 1)}:not(.wp-admin), // ensure we're not applying to admin 
+  body.error404.#{nth($scheme, 1)}.wp-admin .acf-block-preview // but we are applying to the block we can't target ".th-block"  because most classes in this doc are targetting rthe s
+  {
+ 
+ 
+  
+   #line-top-404{
+     }
+
+
+    #copy-404{
+      display: flex;
+      align-items: center;
+      height:30vh;
+      text-align:center;
+    }
+
+  }//body
+
+}//scheme

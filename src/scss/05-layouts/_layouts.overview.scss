@@ -138,7 +138,7 @@
         height: var(--submenu-height);
         top:var(--headroom-height);
         display: flex;
-        z-index: 8;
+        z-index: 7;//ensure below the page loader
         pointer-events: none;
 
             .sub-navigation{
@@ -152,7 +152,7 @@
                 transform: rotate(-90deg);
                 transform-origin: top right; 
                 width:var(--submenu-height);
-                min-width:80vw;// maybe needs reviewing
+                min-width:80vh;// maybe needs reviewing
                 position:absolute;
                 top:0px;
                 right:0px;
