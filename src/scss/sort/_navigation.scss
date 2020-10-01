@@ -326,12 +326,8 @@ Author URI: http://svs.design
     @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*4, map-get($lineheight, xxl)*4); // viewport sizing
   
         @media (min-width: map-get($breakpoints, lg)) {
-
-   //review this - just have same value; no animation:
-   //     @include animation(0, 0.5s, animation-slide-in-left, ease);
-        // or reflect teh height of the full navigation
-        @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*8, map-get($lineheight, lg)*8); // fixed sizing // offset grid 
-        @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*8, map-get($lineheight, xxl)*8); // viewport sizing
+        // @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*8, map-get($lineheight, lg)*8); // fixed sizing // offset grid 
+        // @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*8, map-get($lineheight, xxl)*8); // viewport sizing
         }
    
     }// .main-fixer
@@ -797,7 +793,7 @@ Author URI: http://svs.design
   &.home{
 
       #menu-positioner-wrap{
-      opacity:0;
+      // opacity:0;
       }
 
   }//body.home

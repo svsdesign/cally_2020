@@ -99,7 +99,7 @@ function loadjscssfile(filename, filetype) {
 
        opacity();
        domReady(blocks);
-       domReady(overview);//review this
+       domReady(overview);//review this; as we migh not have this on each /every page (such as privacy policies?)
 
 
     }
@@ -136,8 +136,10 @@ function loadjscssfile(filename, filetype) {
       opacity();
       // blocks();
       // 
+      domReady(overview);
       domReady(layoutgrid);
       domReady(blocks);
+
     }
   }, {
     namespace: 'front-page',

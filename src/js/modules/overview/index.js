@@ -10,7 +10,7 @@ import {
 
 export default function init() {
 
-  console.log("overview js functions");
+  // console.log("overview js functions");
 
 
   if ($(".project-overview").length > 0) 
@@ -18,15 +18,14 @@ export default function init() {
 
 
       $('ul.sections li a').mouseenter(function(){
-
-      
+  
         var $this = $(this).parent("li"),
             thissection = $this.attr("data-section-title"),
             $nextline = $('ul.sections li[data-section-title="'+thissection+'"]').next(".line"),
             $previousline = $('ul.sections li[data-section-title="'+thissection+'"]').prev( ".line" );
 
-     console.log("'ul.sections li  hover")
-     console.log("thissections = "+thissection+"")
+            //  console.log("'ul.sections li  hover")
+            //  console.log("thissections = "+thissection+"")
 
           // ensure headroom pinned
               if ($this.hasClass('section-is-active')){

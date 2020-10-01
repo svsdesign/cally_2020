@@ -1,10 +1,14 @@
 
  
 // Utilities.
-import { domReady,
-          opacity
+import {
+          domReady,
+          opacity,
+          imageopacity
  } from './utilities/helpers';
- import { orientation } from './utilities/helpers';
+
+ import { orientation 
+} from './utilities/helpers';
 
 
 // Modules.
@@ -12,17 +16,21 @@ import { domReady,
 
 const adminapp = {
 
+  
   init() {
     // Modules.
-    console.log("Admin App ");
+    console.log("Admin App js why is jquery not working - here ?! ");
     // example();
     // domReady(blocks);
+    // orientation();
+    //  domReady(orientation);
+     imageopacity()
      opacity();
-     orientation();
 
   }
+
 
 };
 
 domReady(adminapp.init);
- 
+// console.log("what the fuck");

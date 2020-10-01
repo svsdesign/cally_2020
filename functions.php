@@ -97,36 +97,36 @@ function svs_add_theme_files() {
         'nonce' => wp_create_nonce( 'wp_rest' )
     );
     wp_localize_script( TXTDOMAIN .'-app', 'WP_settings', $theme_vars );
-
-
 	
 }
 add_action( 'wp_enqueue_scripts', 'svs_add_theme_files' );
-
-
-
-
+ 
 function svs_admin_enqueue_scripts() {
+	// wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js', array(), null, false );
+	// wp_enqueue_script( 'jquery ui', get_template_directory_uri() .'/dist/js/jquery-ui.min.js', array(), null, false );
+	wp_enqueue_script( TXTDOMAIN .'-app-admin', get_template_directory_uri() . '/dist/js/app.admin.min.js', array(), filemtime( get_stylesheet_directory().'/dist/js/app.admin.min.js' ), true );
 
-	wp_enqueue_script( TXTDOMAIN .'-app-admin', get_template_directory_uri() . '/dist/js/app.admin.min.js', array('jquery'), filemtime( get_stylesheet_directory().'/dist/js/app.admin.min.js' ), true );
-
+	// wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js', array(), null, false ); 
+//	wp_enqueue_script( TXTDOMAIN .'-app-admin', get_template_directory_uri() . '/dist/js/app.admin.min.js', array('jquery'), filemtime( get_stylesheet_directory().'/dist/js/app.admin.min.js' ), true );
 }
+
 add_action('acf/input/admin_enqueue_scripts', 'svs_admin_enqueue_scripts');
 
-//do_action( 'wp_enqueue_media' );
-
-
-
+//  do_action( 'wp_enqueue_media' );
+ 
 function svs_admin_block_assets() {
+
+	//  wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js', array(), null, false );
+	//  wp_enqueue_script( 'jquery ui', get_template_directory_uri() .'/dist/js/jquery-ui.min.js', array(), null, false );
+
+	// wp_enqueue_script("jquery");
 
 	//wp_enqueue_style('admin-artist-block',''.get_stylesheet_directory_uri().'/template-parts/blocks/inpartist/assets/css/style.css', array(), '1');
 	wp_enqueue_style('admin-blocks',''.get_stylesheet_directory_uri().'/dist/css/admin.style.min.css', array(), '1');
  	//enquire js
 	// wp_enqueue_script('th-admin-enquire', ''.get_stylesheet_directory_uri().'/assets/js/enquire.js', array( 'jquery' ), '', true );
-
-
 	 // admin js: - review
-	//   wp_enqueue_script('inp-admin-site', ''.get_stylesheet_directory_uri().'/dist/js/app.admin.min.js', array( 'jquery' ), '', true );
+	//   wp_enqueue_script('admin-site', ''.get_stylesheet_directory_uri().'/dist/js/app.admin.min.js', array( 'jquery' ), '', true );
 
 }
 add_action( 'enqueue_block_editor_assets', 'svs_admin_block_assets' );
@@ -163,6 +163,8 @@ wp_enqueue_script( 'site', get_template_directory_uri() . '/assets/js/site.js', 
 
 add_action( 'wp_enqueue_scripts', 'site_scripts' );
 */
+
+
 
 /* ALLOW SVG UPLOADS*/
 	
@@ -230,6 +232,42 @@ function add_favicon() {
 
 /* START ADMIN BLOCKS */
 
+
+/**
+ * Allow Block options
+ *
+ */
+ /* to do - change this to cultivating cally blocks
+function allowed_block_types( $allowed_blocks, $post ) {
+ 
+	$allowed_blocks = array(
+        'acf/inpquote',
+        'acf/inpcredit',
+        'acf/inpartist',
+        'acf/inptext',
+        'acf/inpsound',
+        'acf/inprelease',
+        'acf/inpimage',
+        'acf/inpgallery',
+        // 'acf/inpmerch', enable when finished
+        'acf/inpevent',
+        'acf/inpspacer'
+	);
+ 
+	if( $post->post_type === 'page' ) {
+        $allowed_blocks[] = 
+       // 'core/shortcode';
+        'core/paragraph';// consider keeping this
+
+	}
+ 
+	return $allowed_blocks;
+ 
+}
+add_filter( 'allowed_block_types', 'allowed_block_types', 10, 2 );
+*/
+ 
+
 /*
 function legit_block_editor_styles() {
 wp_enqueue_style( 'legit-editor-styles', get_theme_file_uri( '/style-editor.css' ), false, '2.3', 'all' );} 
@@ -238,28 +276,8 @@ add_action( 'enqueue_block_editor_assets', 'legit_block_editor_styles' );
 }
 */
 
-function my_admin_block_assets() {
-// Delete this I think
-
-	//https://wp.zacgordon.com/2017/12/26/how-to-add-javascript-and-css-to-gutenberg-blocks-the-right-way-in-plugins-and-themes/
-	//https://support.advancedcustomfields.com/forums/topic/js-fires-before-block-is-rendered/
-	//https://kinsta.com/blog/critical-rendering-path/
-	//https://modularwp.com/gutenberg-block-custom-styles/
-
-	//wp_enqueue_style('admin-artist-block',''.get_stylesheet_directory_uri().'/template-parts/blocks/inpartist/assets/css/style.css', array(), '1');
-	wp_enqueue_style('admin-blocks',''.get_stylesheet_directory_uri().'/admin-style.css', array(), '1');
-
-	//enquire js
-	wp_enqueue_script('th-admin-enquire', ''.get_stylesheet_directory_uri().'/assets/js/enquire.js', array( 'jquery' ), '', true );
 
 
-	 // admin js: - review
-	wp_enqueue_script('th-admin-site', ''.get_stylesheet_directory_uri().'/assets/js/site-admin.js', array( 'jquery' ), '', true );
-
-
-}
-//  add_action( 'enqueue_block_editor_assets', 'my_admin_block_assets' );
- 
 /* END ADMIN BLOCKS */
 
 

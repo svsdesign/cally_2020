@@ -48,7 +48,12 @@
 
 <div class="grid-container">
 
-  <?php //additional content:
+
+  <?php 
+  get_template_part( 'overview' ); 
+
+
+ //additional content:
   the_content();?>
 
 </div><!--.grid-container-->

@@ -165,10 +165,10 @@ Author URI: http://svs.design
     //Start Buttons:
 
     .button-link{
-
+    border-bottom:none!important;
     display: block;
     width: 100%;
-    border: 1px solid nth($scheme, 3);
+    border: 1px solid nth($scheme, 3)!important;
     text-align: center;
     // line-height: 0;
     font-family: $light-font-family;
@@ -193,7 +193,9 @@ Author URI: http://svs.design
       -webkit-transition: background-color 100ms linear;
       -ms-transition: background-color 100ms linear;
       transition: background-color 100ms linear;
+      border-bottom:none!important;
       }
+      
 
     }
 

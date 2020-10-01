@@ -409,7 +409,7 @@ export default function init() {
 
               $griditems.each(function (i) {
 
-                console.log("each grid item - iniitally");
+                // console.log("each grid item - iniitally");
 
                 var $thisitem = $(this),
                   $originalimage = $thisitem.find('img:not(.place-holder)'),
@@ -449,14 +449,6 @@ export default function init() {
 
                 } //if ($originalimage.length > 0)
            
-           
-                 console.log("$thisUi" + $thisUi+"");
-               $('#'+$thisUiId+'').css("background","red");
-                // $thisUi.iconselectmenu()
-                // $thisitem.css("opacity","0.2");
-  
-                
-
                 $('#'+$thisUiId+'')
                   .iconselectmenu({
                     appendTo:$thisUiAppend,

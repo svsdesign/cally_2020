@@ -18,19 +18,12 @@ if ( have_posts() ) :?>
 
 
 <div data-barba="container" data-barba-namespace="layout-grid"> <!-- ajax wrapper start -->
-<?php// echo $namespace?>
-
-		<?php while ( have_posts() ) : the_post();
-
-			// if( is_page('theseus') ): /*if is_page('work') */
-
-		 
-		  		 get_template_part( 'content-page-grid' );?>
  
+	<?php while ( have_posts() ) : the_post();
 
-			<?php //endif;
+		get_template_part( 'content-page-grid' );
 
-		endwhile;?>
+	endwhile;?>
 
 	<?php /*	// If comments are open or we have at least one comment, load up the comment template.
 		if ( comments_open() || get_comments_number() ) :?>
@@ -42,7 +35,6 @@ if ( have_posts() ) :?>
 			</div>
  		<?php
 	endif; */ ?>
-
 
 </div ><!-- data-barba="container" data-barba-namespace=" ">  ajax wrapper start -->
 
