@@ -1,7 +1,87 @@
 <?php
 
 // Add WP-admin customisations
- 
+
+function mttd_save_image_data($image_data) {
+    $post_id = get_the_ID();
+
+    if (preg_match('/^data:image\/(\w+);base64,/', $image_data, $type)) {
+        $image_data = substr($image_data, strpos($image_data, ',') + 1);
+        $type = strtolower($type[1]); // jpg, png, gif
+
+        if (!in_array($type, [ 'jpg', 'jpeg', 'gif', 'png' ])) {
+            throw new \Exception('invalid image type');
+        }
+        $image_data = str_replace( ' ', '+', $image_data );
+        $image_data = base64_decode($image_data);
+
+        if ($image_data === false) {
+            throw new \Exception('base64_decode failed');
+        }
+    } else {
+        throw new \Exception('did not match data URI with image data');
+    }
+
+    $filename = "submission-{$post_id}.{$type}";
+
+    // file_put_contents($filename, $image_data);
+
+
+    $upload_dir = wp_upload_dir();
+
+    if ( wp_mkdir_p( $upload_dir['path'] ) ) {
+        $file = $upload_dir['path'] . '/' . $filename;
+    }
+    else {
+        $file = $upload_dir['basedir'] . '/' . $filename;
+    }
+
+    file_put_contents( $file, $image_data );
+
+    $wp_filetype = wp_check_filetype( $filename, null );
+
+    $attachment = array(
+        'post_mime_type' => $wp_filetype['type'],
+        'post_title' => sanitize_file_name( $filename ),
+        'post_content' => '',
+        'post_status' => 'inherit'
+    );
+
+    $attach_id = wp_insert_attachment( $attachment, $file );
+    require_once( ABSPATH . 'wp-admin/includes/image.php' );
+    $attach_data = wp_generate_attachment_metadata( $attach_id, $file );
+    wp_update_attachment_metadata( $attach_id, $attach_data );
+
+    return $attach_id;
+}
+
+function my_acf_load_field( $field ) {
+    if( $field['name'] == 'image-data_hidden_field' ) :
+
+        if( get_field('an_image_test') == '' ):
+
+            $image_data = get_field('image-data_hidden_field');
+            $attachment_id = mttd_save_image_data( $image_data );
+
+            update_field('an_image_test', $attachment_id);
+
+        endif;
+    endif;
+
+    // $attachment_id
+
+    return $field;
+}
+
+// Apply to all fields.
+// add_filter('acf/load_field', 'my_acf_load_field');
+
+// Apply to select fields.
+// add_filter('acf/load_field/type=select', 'my_acf_load_field');
+
+// Apply to fields named "custom_select".
+add_filter('acf/load_field', 'my_acf_load_field');
+
 // Hide coordinates field
 add_filter('acf/prepare_field/name=coordinates', 'mttd_hide_acf_fields');
 function mttd_hide_acf_fields( $field ) {
@@ -19,7 +99,6 @@ function mttd_hide_acf_fields( $field ) {
 
     return $field;
 }
- 
 
 // Capture pre-sanitised filename for images
 add_action( 'wp_handle_upload_prefilter', '_remember_presanitized_filename' );
@@ -75,13 +154,13 @@ function acf_set_featured_image( $value, $post_id, $field ) {
 if(in_array('plugin-directory/wordpress-seo/wp-seo.php', apply_filters('active_plugins', get_option('active_plugins')))) {
 
     // Disable the WPSEO v3.1+ Primary Category feature.
-     
+
     add_filter( 'wpseo_primary_term_taxonomies', '__return_empty_array' );
     remove_action( 'admin_notices', array( Yoast_Notification_Center::get(), 'display_notifications' ) );
     remove_action( 'all_admin_notices', array( Yoast_Notification_Center::get(), 'display_notifications' ) );
 
     //Disable the WPSEO v3.1+ Primary Category feature.
-   
+
     add_filter( 'wpseo_primary_term_taxonomies', '__return_empty_array' );
 }
 */
