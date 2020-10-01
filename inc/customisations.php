@@ -2,8 +2,7 @@
 
 // Add WP-admin customisations
 
-function mttd_save_image_data($image_data) {
-    $post_id = get_the_ID();
+function mttd_save_image_data($image_data, $post_id) {
 
     if (preg_match('/^data:image\/(\w+);base64,/', $image_data, $type)) {
         $image_data = substr($image_data, strpos($image_data, ',') + 1);
@@ -23,10 +22,6 @@ function mttd_save_image_data($image_data) {
     }
 
     $filename = "submission-{$post_id}.{$type}";
-
-    // file_put_contents($filename, $image_data);
-
-
     $upload_dir = wp_upload_dir();
 
     if ( wp_mkdir_p( $upload_dir['path'] ) ) {
@@ -55,32 +50,47 @@ function mttd_save_image_data($image_data) {
     return $attach_id;
 }
 
-function my_acf_load_field( $field ) {
-    if( $field['name'] == 'image-data_hidden_field' ) :
+/**
+* Update the custom field when the form submits
+*
+* @param type $post_id
+*/
+function mttd_save_post( $post_id ) {
 
-        if( get_field('an_image_test') == '' ):
+    $post_type = get_post_type( $post_id );
 
-            $image_data = get_field('image-data_hidden_field');
-            $attachment_id = mttd_save_image_data( $image_data );
+    if("submissions" === $post_type) :
 
-            update_field('an_image_test', $attachment_id);
+        $image_data = get_field('image-data_hidden_field', $post_id);
 
+        if( $image_data != '' ):
+            $attachment_id = mttd_save_image_data( $image_data, $post_id );
+            update_field('an_image_test', $attachment_id, $post_id);
         endif;
+
+    endif;
+}
+add_action( 'wpuf_add_post_after_insert', 'mttd_save_post' );
+
+function mttd_acf_save_field( $field ) {
+    $post_id = get_the_ID();
+
+    if( get_field('an_image_test') == '' ):
+
+        $image_data = get_field('image-data_hidden_field', $post_id);
+
+        if( $image_data != '' ):
+            $attachment_id = mttd_save_image_data( $image_data, $post_id );
+            update_field('an_image_test', $attachment_id, $post_id);
+        endif;
+
     endif;
 
-    // $attachment_id
 
     return $field;
 }
+add_filter('acf/load_field/name=image-data_hidden_field', 'mttd_acf_save_field');
 
-// Apply to all fields.
-// add_filter('acf/load_field', 'my_acf_load_field');
-
-// Apply to select fields.
-// add_filter('acf/load_field/type=select', 'my_acf_load_field');
-
-// Apply to fields named "custom_select".
-add_filter('acf/load_field', 'my_acf_load_field');
 
 // Hide coordinates field
 add_filter('acf/prepare_field/name=coordinates', 'mttd_hide_acf_fields');
