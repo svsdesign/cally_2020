@@ -15,14 +15,14 @@ get_header(); ?>
 	
 		<div class="grid-container main">
 
-			<div id="404-line-top" class="th-block line-block block-z-index-2">  
+			<div id="line-top-404" class="th-block line-block block-z-index-2">  
 
 				<div class="line">
 				</div>
 
 			</div><!-- .line-block -->
 
-			<div id="404-copy" class="th-block text-two-col-block-header two-col-block block-z-index-2">  
+			<div id="copy-404" class="th-block text-two-col-block-header two-col-block block-z-index-2">  
 								
 				<h1 class="intro clear-col-item">
 				404 
@@ -34,7 +34,7 @@ get_header(); ?>
 			
 			</div><!--id="404" class="block-z-index-2"-->  
 
-			<div id="404-line-bott0m" class="th-block line-block block-z-index-2">  
+			<div id="line-bottom-404" class="th-block line-block block-z-index-2">  
 
 				<div class="line">
 				</div>

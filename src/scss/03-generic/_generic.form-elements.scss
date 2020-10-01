@@ -17,6 +17,7 @@ Author URI: http://svs.design
         border: 1px solid nth($scheme, 3); 
         border-bottom:none;
         text-align:center;
+        -webkit-appearance: none;
         
         @include fluid-type(
             line-height,

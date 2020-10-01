@@ -92,19 +92,92 @@ Author URI: http://svs.design
             map-get($gutter,xxl) * 1
           );
 
-        }
-
-        .header-wrap{
-          display: flex;
+          a{
+          position: relative;
           width: 100%;
-          color: nth($scheme, 3);
+          display: block;
+          border-bottom:0px;
 
-          .line{
-            width: 100%;
-            border-top: 1px solid nth($scheme, 3);
+            &:hover{
+              border-bottom:0px;
+            }
+
           }
 
-        }//.header-wrap
+          .header-wrap{
+            display: flex;
+            width: 100%;
+            color: nth($scheme, 3);
+
+            .line{
+              width: 100%;
+              border-top: 1px solid nth($scheme, 3);
+            }
+
+          }//.header-wrap
+
+          .text-wrap{
+          position: relative;
+          z-index: 2;
+          // background: rgb(255,253,244);
+          // background: linear-gradient(0deg, rgba(255,253,244,1) 0%, rgba(255,253,244,0) 100%);
+          bottom:0px;
+
+            @media (min-width: map-get($breakpoints, lg)) {
+            position: absolute;
+            }
+
+            .news-intro {
+            @include type-large;
+            width: 100%;// review?
+            @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // px sizing
+            @include fluid-type(padding-left padding-right, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($gutter, lg), map-get($gutter, xxl)); // viewport sizing
+        
+              @media (min-width: map-get($breakpoints, lg)) {
+                width: 50%;// review?
+        
+              }
+
+           
+            }
+
+          }// .text-wrap
+
+          .image-wrap{
+          opacity: 0.8;
+          position: relative;
+
+            &:before{
+              content:'';
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              z-index: 2;
+              background: rgb(255,253,244);
+              background: linear-gradient(0deg, rgba(255,253,244,1) 5vw, rgba(255,253,244,0) 100%);
+            }
+
+          }
+
+        &.smaller-item{
+          // background-color: red;
+
+          .text-wrap{
+     
+              .news-intro {
+              @include type-news-med-large;
+              
+                @media (min-width: map-get($breakpoints, lg)) {
+                  width: 100%;// review?
+                }
+              
+              }
+    
+            }// .text-wrap
+    
+        }
+
+      }// .news-item
 
       // }//.related-items-wrap
 

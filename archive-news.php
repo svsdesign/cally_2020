@@ -43,24 +43,25 @@ Workshops, a gallery of designs, related projects and relevant news.
 
 					<?php
 					// the loop
-					$itemno = 1;
+					$itemnumber = 0;
+
 					while ( $news_query->have_posts() ) : $news_query->the_post(); 
 
 						$newsid = get_the_ID();	
-						// $itemnumber++;			
+						$itemnumber++;			
 						// end get fields
 						// echo $newsid;
-						// if  ($itemnumber > 10) {// after the 10th item
+						if  ($itemnumber > 1) {// after the 1st item
 						// for article items; 
-						$layoutclass = 'grid-xs-12 ';//grid-item-md-3 grid-item-lg-2 
-						// } else{
-						//$layoutclass = $itemnumber.'-number';
+							 $layoutclass = 'smaller-item grid-xs-12 grid-md-6';//grid-item-md-3 grid-item-lg-2 
+						 } else{
+					 		$layoutclass = 'grid-xs-12';//.$itemnumber.'-number';
 			
-						// };
+						};
 
 						?>
 		
-						<article class="news-item item-<?php echo $newsid;?> grid-item <?php echo $layoutclass;?>">
+						<article class="news-item-<?php echo $itemnumber;?> news-item post-item-<?php echo $newsid;?> grid-item <?php echo $layoutclass;?>">
 							<?php get_template_part( 'content', 'news' );?>
 						</article>
 

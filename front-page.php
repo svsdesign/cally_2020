@@ -18,11 +18,9 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post();
 				
-				//get_template_part( 'theseus-page' ); was this - but now just use content? or content-page?
-			// was this - but not sure if this is a good way to work?	get_template_part( 'content' );
-							get_template_part( 'content-page' );
-				// maybe my ajax issues are dereived from this?
-
+				get_template_part( 'overview' ); // ensure this only displayed on teh appropriate pages
+ 				get_template_part( 'content-page' );
+ 
 			endwhile;?>
 
 		</div><!--  class="grid-container main #site-wrap -->

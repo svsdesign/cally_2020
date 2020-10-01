@@ -240,6 +240,18 @@ TO DO: ensure browser prefixes specified
   @include fluid-type(line-height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*2, map-get($lineheight, lg)*2); // fixed sizing 
   @include fluid-type(line-height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*2, map-get($lineheight, xxl)*2); // viewport sizing
   }
+
+  @mixin type-news-med-large{
+  
+    font-family: $light-font-family;
+    
+    @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*1.5, map-get($fontsize, lg)*1.5); // fixed sizing 
+    @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*1.5, map-get($fontsize, xxl)*1.5); //  viewport sizing
+    
+    @include fluid-type(line-height, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1.25, map-get($lineheight, lg)*1.25); // fixed sizing 
+    @include fluid-type(line-height, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1.25, map-get($lineheight, xxl)*1.25); // viewport sizing
+    }
+    
   
   @mixin h3
    {
