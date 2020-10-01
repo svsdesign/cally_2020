@@ -168,6 +168,9 @@ gulp.task('watch', () => {
     gulp.watch([pkg.paths.src.scss + "**/app.admin.scss"], gulp.series('adminsass', 'reload'));
 
     gulp.watch([pkg.paths.src.js + "**/*.js"], gulp.series('js', 'reload'));
+    gulp.watch([pkg.paths.src.js + "**/app.admin.min.js"], gulp.series('adminjs', 'reload'));
+
+
     // gulp.watch('src/**/*.{js,css}', gulp.series('reload'));
     gulp.watch('./**/*.php', gulp.series('reload'));
 });

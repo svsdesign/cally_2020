@@ -65,7 +65,7 @@
                     z-index: 7;
 
                         .area{
-                        display:block;
+                        // display:block;
                         }
 
                     }//li.page-is-active
@@ -146,21 +146,32 @@
             width: 100%;
             overflow: visible;
             position: relative;
+            min-height: 50vh; // aim to have it display better on load
 
                 .nav-positioner{
                 transform: rotate(-90deg);
                 transform-origin: top right; 
                 width:var(--submenu-height);
+                min-width:80vw;// maybe needs reviewing
                 position:absolute;
                 top:0px;
                 right:0px;
                 left:initial;
                 bottom:initial;
                 height:auto;
+             
                 @media (min-width: map-get($breakpoints, sm)) { 
-                right:-5vw;
-                }
+                    right:-5vw;
 
+                    @include fluid-type(
+                    margin-right,
+                    map-get($breakpoints, xs),
+                    map-get($breakpoints,xxl),
+                    map-get($gutter, xs) *1,
+                    map-get($gutter,xxl) *1
+                    );     
+            
+                }
 
                      ul.sections{
                     pointer-events: initial;
@@ -213,7 +224,15 @@
   
                             }
 
-                            &.page-is-active.line,
+                            &.page-is-active{
+                            border-bottom:1px solid nth($scheme, 3);
+                            }
+
+                            &.page-is-active.section-is-active{
+                            border-bottom:1px solid $highlight;
+                            }
+
+                            // &.page-is-active.line,
                             &.section-is-active.line{
                             color:$highlight;
                             
@@ -222,7 +241,8 @@
                                 }
                             }
 
-                            &.page-is-active,
+                            // &.page-is-active,
+
                             &.section-is-active{
                             
                                 a{

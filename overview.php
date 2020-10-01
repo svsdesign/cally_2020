@@ -16,32 +16,25 @@ $introtext = get_field('introduction_text'); // intorcopy
 	// need to determine if U wan t to serve up alink or #hash?
 	// $fs_link = "page-is-active";
 // 	about + plan  page 
-
-	
 ?>
 
 
 <?php elseif( is_page('freeling-street') ): 
-$fs_activeclass = "page-is-active";
-
+$fs_activeclass = "page-is-active section-is-active";
+//freeling-street
 ?>		
 
-
 <?php elseif( is_page('bridgeman-road') ): 
-$br_activeclass = "page-is-active";
-//	bridgeman-road
+$br_activeclass = "page-is-active section-is-active";
+//bridgeman-road
 ?>
 
 <?php elseif( is_page('estate-walk') ):
-$ew_activeclass = "page-is-active";
+$ew_activeclass = "page-is-active section-is-active";
 ?>
 
 <?php endif;?>
  
-			
-
-
-
 <div class="sub-navigation-wrap">
 
 	<div class="sub-navigation">
@@ -52,36 +45,35 @@ $ew_activeclass = "page-is-active";
 
 				<li data-section-title="bridgeman-road"
 					class="<?php if (isset($br_activeclass)): { echo $br_activeclass;}endif;?>">
-					<a href="<?php echo home_url();?>/bridgeman-road/">
+					<a href="<?php echo home_url();?>/about-plan/bridgeman-road/">
 					Bridgeman Road
 					</a>
 
 				</li>
+			
 				<li class="line 
 				<?php if (isset($br_activeclass)): { echo $br_activeclass;}endif;?>
 				<?php if (isset($fs_activeclass)): { echo $fs_activeclass;}endif;?>
-				">
-				
-				</li>	
+				"></li>	
 
 				<li data-section-title="freeling-street"
-					class="<?php if (isset($fs_activeclasss)): { echo $fs_activeclass;}endif;?>">
+					class="<?php if (isset($fs_activeclass)): { echo $fs_activeclass;}endif;?>">
 
-					<a href="<?php echo home_url();?>/freeling-street/">
+					<a href="<?php echo home_url();?>/about-plan/freeling-street/">
  					Freeling Street
 					</a>
 
 				</li>
+
 				<li class="line
 				<?php if (isset($ew_activeclass)): { echo $ew_activeclass;}endif;?>
 				<?php if (isset($fs_activeclass)): { echo $fs_activeclass;}endif;?>
-				">
-				
-			</li>	
+				"></li>	
 
 				<li data-section-title="estate-walk"
-					class="<?php if (isset($ew_activeclass)): { echo $ew_activeclass;}endif;?>">
-					<a href="<?php echo home_url();?>/estate-walk/">
+					class="<?php if (isset($ew_activeclass)): { echo $ew_activeclass;}endif;?>
+					">
+					<a href="<?php echo home_url();?>/about-plan/estate-walk/">
 					Estate Walk
 					</a>
 				</li>
@@ -96,10 +88,9 @@ $ew_activeclass = "page-is-active";
  
 <div class="project-overview">
 
-	
 	<?php if($introtext):?>
 
-		<div class="intro-wrap">
+		<div class="intro-wrap grid-item">
 
 			<h1 class="title intro">
 

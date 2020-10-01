@@ -134,6 +134,25 @@ Author URI: http://svs.design
     overflow: hidden;
     pointer-events: initial;
     }
+
+    .sub-menu{
+   
+      @include fluid-type(padding-top,
+      map-get($breakpoints, lg),
+      map-get($breakpoints, xxl), 
+      map-get($gutter, lg), 
+      map-get($gutter, xxl)
+      );
+      position: relative;
+      overflow: hidden;
+      width: auto;
+      float: left;
+
+      @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
+      display:none;
+      }
+
+    }// .sub-menu
   
     .menu-item{
     display: block;
@@ -190,6 +209,11 @@ Author URI: http://svs.design
             }
 
         }//&.current_page_item
+
+        &.blank-link{
+        pointer-events:none;
+        opacity: 0;
+        }
   
     }//.menu-item
 
@@ -302,12 +326,8 @@ Author URI: http://svs.design
     @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*4, map-get($lineheight, xxl)*4); // viewport sizing
   
         @media (min-width: map-get($breakpoints, lg)) {
-
-   //review this - just have same value; no animation:
-   //     @include animation(0, 0.5s, animation-slide-in-left, ease);
-        // or reflect teh height of the full navigation
-        @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*8, map-get($lineheight, lg)*8); // fixed sizing // offset grid 
-        @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*8, map-get($lineheight, xxl)*8); // viewport sizing
+        // @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*8, map-get($lineheight, lg)*8); // fixed sizing // offset grid 
+        // @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*8, map-get($lineheight, xxl)*8); // viewport sizing
         }
    
     }// .main-fixer
@@ -766,6 +786,59 @@ Author URI: http://svs.design
         }
 
     }//&.main-reached
+
+
+
+
+  &.home{
+
+      #menu-positioner-wrap{
+      // opacity:0;
+      }
+
+  }//body.home
+
+  &.single-news{
+
+   .menu-item.news-link{
+    
+    a{
+      border-bottom: none;
+
+          @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
+         // border-color: nth($scheme, 3);     
+          // no longerneeded so keep transparent
+          border-color: transparent;
+          color: $highlight!important;//nth($scheme, 2);
+          }
+
+      }
+    
+    }
+  
+  }//body.single-news
+
+  &.page-child.parent-pageid-101, // local (about + plan)
+  &.page-child.parent-pageid-104{ // live:staging (about + plan)
+    
+    .menu-item.about-link{
+      
+      a{
+        border-bottom: none;
+
+            @media (min-width: map-get($breakpoints, lg)) { /* after toggle -  */
+          // border-color: nth($scheme, 3);     
+            // no longerneeded so keep transparent
+            border-color: transparent;
+            color: $highlight!important;//nth($scheme, 2);
+            }
+
+        }
+      
+      }
+
+  }//&.page-child.parent-pageid-101
+
 
   }// body
 
