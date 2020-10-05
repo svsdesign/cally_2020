@@ -12,11 +12,8 @@ Author URI: http://svs.design
   body.error404.#{nth($scheme, 1)}.wp-admin .acf-block-preview // but we are applying to the block we can't target ".th-block"  because most classes in this doc are targetting rthe s
   {
  
- 
-  
-   #line-top-404{
-     }
-
+    #line-top-404{
+    }
 
     #copy-404{
       display: flex;

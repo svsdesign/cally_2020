@@ -55,6 +55,8 @@ export function detectTouch(){
 //TO DO change to jquery markup?
 export function SetAppHeight() {
  
+  var $ = $ || jQuery;
+
   const initSubmenuHeight = () => {
     const doc = document.documentElement
    doc.style.setProperty('--submenu-height', `${window.innerHeight}px`)   
@@ -189,7 +191,9 @@ export function orientation(){
 } // function orientation
 
 export function opacity(){
- 
+    
+    var $ = $ || jQuery; // svs addition added based on Tom's fix
+
     console.log("opacity() function")
 
 
@@ -220,7 +224,8 @@ export function opacity(){
 
 export function imageopacity(){
     console.log("images loaded applied here")
-    
+      var $ = $ || jQuery; // svs addition added based on Tom's
+
       var $thisimageblock = $("body").find("img.apply-image-load");  // just target img?
    
       $thisimageblock.each(function() {  

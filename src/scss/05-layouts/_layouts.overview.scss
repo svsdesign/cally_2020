@@ -261,6 +261,32 @@
 
         }//.sub-navigation-wrap
 
+
+        // TO DO: how can I easily "scale up" / zoom into the image?
+
+        //freeling street:
+        &.page-id-104 // local
+        {
+            // background:rgb(153, 0, 255);
+
+        }
+
+
+        //estate walk:
+        &.page-id-275 // local
+        {
+            // background:red;
+
+        }
+
+          //bridgeman road
+          &.page-id-271 // local
+          {
+            //   background:green;
+  
+          }
+        // END TO DO: how can I easily "scale up" / zoom into the image?
+
     }//   body.#{nth($scheme, 1)}:not(.wp-admin)
 
 }//@each $scheme in $schemes { // start colour scheme

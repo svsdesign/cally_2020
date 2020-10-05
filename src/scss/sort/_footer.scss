@@ -250,7 +250,7 @@ Author URI: http://svs.design
             display: flex;
             @media (min-width: map-get($breakpoints, md)) { 
             text-align: right;
-            float: right;
+            // float: right;
             }
                  
             li{
@@ -260,9 +260,10 @@ Author URI: http://svs.design
               list-style: none;
               margin:auto;
               
-              @media (min-width: map-get($breakpoints, md)) { 
+              @media (min-width: map-get($breakpoints, lg)) { 
                 @include fluid-type(margin-right, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($gutter, xs)*1, map-get($gutter, xs)*1);
-          
+                @include fluid-type(width, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1.5, map-get($lineheight, xs)*1.5);
+
               }
 
 
@@ -286,6 +287,11 @@ Author URI: http://svs.design
 
         .footer-sponsors{
         order: 3;  
+
+        @media (min-width: map-get($breakpoints, md)) { 
+          @include fluid-type(margin-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*4, map-get($lineheight, xs)*4);
+
+        }
 
           .cally-fest-branding{
 

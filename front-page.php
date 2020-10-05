@@ -18,7 +18,7 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post();
 				
-				get_template_part( 'overview' ); // ensure this only displayed on teh appropriate pages
+				get_template_part( 'overview' );
  				get_template_part( 'content-page' );
  
 			endwhile;?>

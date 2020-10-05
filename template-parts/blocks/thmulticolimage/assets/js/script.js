@@ -1,5 +1,6 @@
 
 
+var $ = $ || jQuery;
 
 (function($){
       //  console.log("(function($)");
@@ -21,7 +22,7 @@
  var initializeBlock = function images($block){
      // console.log("images loaded applied here")
     // console.log("each multicolumnimage block?");
-  
+
     var $thisimageblock = $block.find("img");  // just target img?
 
         $thisimageblock.each(function() {  

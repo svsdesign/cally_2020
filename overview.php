@@ -59,7 +59,7 @@ $ew_activeclass = "page-is-active section-is-active";
 				<li data-section-title="freeling-street"
 					class="<?php if (isset($fs_activeclass)): { echo $fs_activeclass;}endif;?>">
 
-					<a href="<?php echo home_url();?>/about-plan/freeling-street/">
+					<a data-barba-prevent="self" href="<?php echo home_url();?>/about-plan/freeling-street/">
  					Freeling Street
 					</a>
 
@@ -116,7 +116,7 @@ $ew_activeclass = "page-is-active section-is-active";
 		
 			 <li data-section-title="freeling-street"
 				 class="<?php if (isset($fs_activeclasss)): { echo $fs_activeclass;}endif;?>">
-				 <a href="<?php echo home_url();?>/freeling-street/">
+				 <a data-barba-prevent="self" href="<?php echo home_url();?>/freeling-street/">
  				</a>
 				 <div class="area freeling-area" style="background-image: url(<?php echo get_template_directory_uri() ?>/dist/img/overview-freeling-square.png);">
 				</div>
