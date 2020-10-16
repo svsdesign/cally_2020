@@ -71,10 +71,10 @@ export function slideshow($block){
 
       $thisgallery.flickity({
             imagesLoaded: true, 
-            setGallerySize: false, //if you prefer to size the carousel with CSS, rather than using the size of cells.
+            setGallerySize: true,//false, //if you prefer to size the carousel with CSS, rather than using the size of cells.
       // default cellAlign: 'center'
             percentPosition: false, 
-            freeScroll: false, 
+            freeScroll: true, //false, 
             wrapAround: true, 
             arrowShape: { 
                 x0: 20,

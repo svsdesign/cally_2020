@@ -365,7 +365,6 @@ export default function init() {
         console.log("breakpointName: " +breakpointName+"");
         console.log("checkbreakpointName: " +checkbreakpointName+"");
         console.log("widescreenbreakpointName: " + widescreenbreakpointName+"");
-
         console.log("isPackeryInit: " +isPackeryInit+"");
 
         // if (breakpointName === "widescreen" && !isPackeryInit) {
