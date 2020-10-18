@@ -539,14 +539,17 @@ var $body = $('body'),
 
 }//menupositioner()
 
-export function menuClasses(data, target) {
-console.log("menuClasses" +data+ + target+"");
+export function menuClasses(thislinkdata, target) {
+// console.log("menuClasses" +data+ + target+"");
 
   $('.menu-item.' + target).each(function () {
     $(this).removeClass(target);
+    // $(this).css("background","red");
   });
 
-  $(`.menu-item > a[href$="${ data.next.url.path }"]`).closest('.menu-item').each(function () {
+  console.log("menuClasses" +thislinkdata+"");
+
+  $(`.menu-item > a[href$="${ thislinkdata }"]`).closest('.menu-item').each(function () {
     $(this).addClass(target);
   });
 

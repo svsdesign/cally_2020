@@ -219,6 +219,7 @@ barba.hooks.afterLeave((data) => {
   if (data.next.url.path) {
 
     console.log("IF (data.next.url.path - apply menuclass changes")
+    console.log("data.next.url.path" + data.next.url.path +"");
 
     const currentMenu = 'current-menu-item',
       currentPage = 'current_page_item',
@@ -226,17 +227,18 @@ barba.hooks.afterLeave((data) => {
       currentMenuParent = 'current-menu-parent',
       currentPageAncestor = 'current_page_ancestor';
 
+    var thislinkdata = data.next.url.path;
       // console.log("menuClasses")
-    menuClasses(data, currentMenu);
-    menuClasses(data, currentPage);
-    menuClasses(data, currentMenuAncestor);
-    menuClasses(data, currentMenuParent);
-    menuClasses(data, currentPageAncestor);
+    menuClasses(thislinkdata, currentMenu);
+    menuClasses(thislinkdata, currentPage);
+    menuClasses(thislinkdata, currentMenuAncestor);
+    menuClasses(thislinkdata, currentMenuParent);
+    menuClasses(thislinkdata, currentPageAncestor);
 
   } else{
 //    no (data.next.url.path
 
-    console.log("no (data.next.url.path?")
+    // console.log("no (data.next.url.path?")
 
   }//if ( data.next.url.path
 
