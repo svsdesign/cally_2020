@@ -229,13 +229,18 @@ barba.hooks.afterLeave((data) => {
 
     var thislinkdata = data.next.url.path;
     console.log("thislinkdata" +thislinkdata+"");
-
+    console.log("home_directory " +home_directory +"");
+    
     if (thislinkdata == "/"){
-
-      console.log("home url")
+;
       console.log("we can assume its the home url on staging or live?");
 
-      thislinkdata = thislinkdata;
+      console.log("staging"+ home_directory +"")
+      // thislinkdata = thislinkdata;
+      thislinkdata = home_directory;
+
+      // console.log("data.next.url" +data.next.url+"") // this an object
+
 
     } else if( thislinkdata == "/cally-2020/"){
       console.log("home url")
