@@ -547,7 +547,7 @@ export function menuClasses(thislinkdata, target) {
     // $(this).css("background","red");
   });
 
-  console.log("menuClasses" +thislinkdata+"");
+  console.log("menuClasses = " +thislinkdata+"");
 
   $(`.menu-item > a[href$="${ thislinkdata }"]`).closest('.menu-item').each(function () {
     $(this).addClass(target);
