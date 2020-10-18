@@ -228,13 +228,35 @@ barba.hooks.afterLeave((data) => {
       currentPageAncestor = 'current_page_ancestor';
 
     var thislinkdata = data.next.url.path;
-      // console.log("menuClasses")
-    menuClasses(thislinkdata, currentMenu);
-    menuClasses(thislinkdata, currentPage);
-    menuClasses(thislinkdata, currentMenuAncestor);
-    menuClasses(thislinkdata, currentMenuParent);
-    menuClasses(thislinkdata, currentPageAncestor);
+    console.log("thislinkdata" +thislinkdata+"");
 
+    if (thislinkdata == "/"){
+
+      console.log("home url")
+      console.log("we can assume its the home url on staging or live?");
+
+      thislinkdata = thislinkdata;
+
+    } else if( thislinkdata == "/cally-2020/"){
+      console.log("home url")
+
+      console.log("we can assume its home url on local");
+
+      thislinkdata = thislinkdata;
+   
+
+    } else {
+      thislinkdata = thislinkdata;
+      console.log("else - so what kinda links we dealing wth?")
+
+    }
+      // console.log("menuClasses")
+      menuClasses(thislinkdata, currentMenu);
+      menuClasses(thislinkdata, currentPage);
+      menuClasses(thislinkdata, currentMenuAncestor);
+      menuClasses(thislinkdata, currentMenuParent);
+      menuClasses(thislinkdata, currentPageAncestor);
+ 
   } else{
 //    no (data.next.url.path
 
