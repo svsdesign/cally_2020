@@ -133,12 +133,34 @@ function loadjscssfile(filename, filetype) {
  // consider changing this - atm it takes ages before the banner image is shown;
  // Because its waiting for all the images to load, inc
 
+   
+
       opacity();
       // blocks();
-      // 
       domReady(overview);
       domReady(layoutgrid);
       domReady(blocks);
+
+
+      if(window.location.hash) {
+        // Fragment exists
+        // console.log("hash =");
+        // console.log(window.location.hash);
+
+         var $thisscroll = $(window.location.hash);
+      
+         setTimeout(function(){
+          // console.log("start fucking scroll you cunt");
+
+            $('html, body').animate({
+
+              scrollTop: $thisscroll.offset().top// top of generated image
+
+            }, 1000); 
+
+          }, 1); // wait a second or so
+        
+      } 
 
     }
   }, {
@@ -232,8 +254,8 @@ barba.hooks.afterLeave((data) => {
     console.log("home_directory " +home_directory +"");
     
     if (thislinkdata == "/"){
-;
-      console.log("we can assume its the home url on staging or live?");
+
+      // console.log("we can assume its the home url on staging or live?");
 
       console.log("staging"+ home_directory +"")
       // thislinkdata = thislinkdata;
@@ -244,9 +266,8 @@ barba.hooks.afterLeave((data) => {
 
 
     } else if( thislinkdata == "/cally-2020/"){
-      console.log("home url")
-
-      console.log("we can assume its home url on local");
+   //   console.log("home url")
+   // console.log("we can assume its home url on local");
 
       thislinkdata = thislinkdata;
    

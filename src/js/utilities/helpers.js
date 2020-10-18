@@ -703,6 +703,24 @@ export function map($block){ // review this function; do I need it?
 */
 // end map funtion
 
+export function hoverTips($selector){
+
+
+  if ($selector = $('input.wpuf-submit-button')){
+
+    console.log("add tool tip to the submit");
+    // - but like the drag things?
+
+    $selector.append("<div>hello</div>");
+
+  }
+
+
+ }//export function hoverTips($selector)
+
+
+
+
 export function clickcookierevoke() {
   // trigger a click on the default revoke button
   $('a.th-cookie-revoke').click(function() {
@@ -713,7 +731,6 @@ export function clickcookierevoke() {
 
 export function topAnimation(){
   // console.log("function topAnimation()");
-
 
   setTimeout(function(){ 
     // console.log("hello");

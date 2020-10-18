@@ -690,7 +690,7 @@
                 </a> 
 
                 <a id="download-image" type="button" class="btn site-grid-item btn-primary download-image grid-xs-12">
-                  Download Your Image
+                  Download Your Submission Image
                 </a>
 
                 <a href="<?php the_permalink(); ?>" id="reload-page" type="button" class="btn btn-primary download-image grid-xs-12">

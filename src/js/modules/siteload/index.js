@@ -13,7 +13,7 @@ export default function siteLoad(){
 
    $('.fade-item').css( 'opacity', 0 ); // intial run
      fade(); // intial run
-     topAnimation();// start top animation (large)
+    //  topAnimation();// start top animation (large)
     //  topAnimationSmall();// start top animation (small)
     
     $('body').removeClass('site-loading'); //ensure people can now scroll
