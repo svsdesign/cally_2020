@@ -15,7 +15,6 @@
 <?php get_header(); ?>
 
 <div data-barba="container" data-barba-namespace="index"> <!-- ajax wrapper start -->
-index.php	
 
 </div><!-- data-barba="container" data-barba-namespace="-->
 

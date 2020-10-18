@@ -36,6 +36,10 @@ Author URI: http://svs.design
 
   }//body
 
+  #editor{ // wp cms editor area
+   background-color: nth($scheme, 3)
+  }
+
 }//@each $scheme in $schemes { // start colour scheme
 
 //https://wordpress.stackexchange.com/questions/359092/are-there-ways-to-make-the-gutenberg-editor-wider-and-the-html-block-higher?noredirect=1&lq=1

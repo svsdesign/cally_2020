@@ -30,7 +30,8 @@ https://stackoverflow.com/questions/23681325/convert-canvas-to-pdf
 
 import {
   detectAttrChange,
-  hoverDiv
+  hoverDiv,
+  succesScroll
 
 } from '../../utilities/helpers';
 
@@ -42,20 +43,18 @@ export default function init() {
     newitemid, // declare before use
     submissionname, //move elswhere
     $startbutton = $('.dev-layout-grid-toggle'),
-  
+
 
     OgGridContent,// declare before use
     OgCoordinates;
     // console.log("layout-grid/index.js");
 
-  // external js: packery.pkgd.js, draggabilly.pkgd.js
-  // add Packery.prototype methods
-  // get JSON-friendly data for items posiredtions
 
 
-  
-      
 
+    // console.log("startSaving" +startSaving+"")
+
+    
 
   Packery.prototype.getShiftPositions = function (attrName) {
     // attrName = attrName || 'id';
@@ -220,6 +219,8 @@ export default function init() {
   function onSubmission(){
     // form can submitted now
     detectAttrChange();
+
+    succesScroll();// check this wokring
   }// onSubmission()
 
 
@@ -346,6 +347,8 @@ export default function init() {
       var isPackeryInit = false;
       var isEditModeActive;
       var isGridItemsActive = false;
+      var startSaving = true; // declare 
+
 
       function checkPackery() {
 
@@ -588,9 +591,7 @@ export default function init() {
                 imageRemove(itemid); // allow delete of image
                 itemEdit($(clone), $grid); // allow edit on other fields of cloned item
 
-                // and would update coordinates here aswell
-
-                // to do: ensure this is taregetting the right grid:
+ 
                 $grid.packery('appended', $(clone));
  
                 var positions = $thisgrid.packery('getShiftPositions', 'data-item-id'),
@@ -601,11 +602,13 @@ export default function init() {
 
                 //update coordinates
                 localStorage.setItem("coordinates", jsonpositions);
+                
+                
                 //update html for local storage
    
-                var $cleangrid = $("#tester-grid-id");
+                // var $cleangrid = $("#tester-grid-id");
 
-                  cleanGridContent($cleangrid);
+                  // cleanGridContent($cleangrid);
                         
 
                 // review this UX behaviour:
@@ -652,19 +655,17 @@ export default function init() {
                   // console.log("posititions = " + jsonpositions + "");
 
                   // TODO ensure we are updating the correct grid coordinates here:
-                  // $('#coordinates').val(jsonpositions);
-                  $coordinates.val(jsonpositions);
+                   $coordinates.val(jsonpositions);
 
 
-                    var $cleangrid = $("#tester-grid-id");
+                    // var $cleangrid = $("#tester-grid-id");
 
-                    cleanGridContent($cleangrid);
+                    // cleanGridContent($cleangrid);
               
 
                    // console.log("gridContent" +gridContent+"");
     
-                  //  verifyItemsRepeater();
-                   verifyItemsRepeater($closestrepeater);
+                    verifyItemsRepeater($closestrepeater);
 
                 }
                 // verifyItemsRepeater();
@@ -914,7 +915,7 @@ export default function init() {
     var imgageData = getCanvas.toDataURL("image/png");
         // submissionname = $('input[data-input-type]').val();
    
-        console.log("submissionname on download =" +submissionname+"");
+        // console.log("submissionname on download =" +submissionname+"");
     //  console.log("name" +submissionname +'');
 
     // TO DO figure out isues with space on not a problem is reality?
@@ -937,12 +938,11 @@ export default function init() {
       $('body').addClass('dev-layout-grid-on');
       $("#size-wrap").addClass('grid-container');
 
-      console.log("scrolling to the top of grid")
+      // console.log("scrolling to the top of grid")
     
       $('html, body').animate({
         scrollTop: $('.grid-layer').offset().top - 0 // top of grid            
        }, 'slow');
-
 
     } //click
 
@@ -953,24 +953,7 @@ export default function init() {
 
   // ensure to target each grid that might exist on teh page
   function initgriditems() {
-
-/*
-    function isLocalStorageNameSupported() 
-    {
-        var testKey = 'test', storage = window.sessionStorage;
-        try 
-        {
-            storage.setItem(testKey, '1');
-            storage.removeItem(testKey);
-            return localStorageName in win && win[localStorageName];
-        } 
-        catch (error) 
-        {
-            return false;
-        }
-    }
-*/
-
+ 
  //remove this eventualy or use it to provide further displaimers re storage facilities
     function isLocalStorageNameSupported()    {
       // Safari, in Private Browsing Mode, looks like it supports localStorage but all calls to setItem
@@ -988,12 +971,10 @@ export default function init() {
       }
   }
 
-    // isLocalStorageNameSupported();
+  isLocalStorageNameSupported(); // try this out and improved messages
   
 
-
-
-    localStorageSize();
+    //localStorageSize(); to check size
 
 
     $('.grid').each(function () {
@@ -1016,7 +997,8 @@ export default function init() {
       // console.log("localStorage" +localStorage+"");
 
       if (localStorage.getItem("gridContent") === null) {
-      console.log("if not local storage");
+     
+        // console.log("if not local storage");
 
 
         verifyItemsRepeater($thisgrid); // initial - move to better place - or inside an init function of sorts
@@ -1024,49 +1006,22 @@ export default function init() {
         // var OgGridContent = document.getElementById("tester-grid-id").innerHTML;
         var gridContent = document.getElementById("tester-grid-id").innerHTML;//
 
-        
-
       } else {
 
-        console.log("if local storage");
+        // console.log("if local storage");
 
-                // var OgGridContent = document.getElementById("tester-grid-id").innerHTML;
-                // var gridContent = localStorage.getItem("gridContent");
-
-        /*
-                  var string = "This is my compression test.";
-          alert("Size of sample is: " + string.length);
-          var compressed = LZString.compress(string);
-          alert("Size of compressed sample is: " + compressed.length);
-          string = LZString.decompress(compressed);
-          alert("Sample is: " + string);
-          */
-              // console.log("compressed local storage gridContent" +localStorage.getItem('gridContent')+"");
-
-            var gridContent = LZString.decompress(localStorage.getItem('gridContent'));
-            //  JSON.parse(localStorage.getItem('gridContent'));
-        // var gridContent = JSON.parse(localStorage.getItem('gridContent'));
-          // console.log("decompressed local storage gridContent" +gridContent+"");
-      //  console.log("how to reduce this?!");
-
-      
+          
+        var gridContent = LZString.decompress(localStorage.getItem('gridContent'));
+            
         $("#tester-grid-id").empty();
 
         $("#tester-grid-id").append(gridContent);
-            // I should look into what is being appended here; and remove the aditional/existing Iconwidget DOM stuff  
-      
-      // these items might not exist anymore now
-            // $("#tester-grid-id").find('.ui-selectmenu-button').remove(); 
-        // $("#tester-grid-id").find('.ui-selectmenu-menu.ui-front').remove(); 
-
-
-            verifyItemsRepeater($thisgrid);
-            //init function of sorts
-            initiatepackery($thisgrid);
-        
-        
    
-
+          verifyItemsRepeater($thisgrid);
+        //init function of sorts
+          initiatepackery($thisgrid);
+      
+    
         $("#clear-local-storage").click(function () {
 
           console.log("clearing local storage");
@@ -1094,8 +1049,6 @@ export default function init() {
 } //export default function init()
 
 
-
-
 export function canvasChange(){
   console.log("canvasChange()");
 
@@ -1110,9 +1063,31 @@ export function canvasChange(){
   }/* else{
     console.log("change detected be non preview click yet;")
 
- }  */
- //if($("body").hasClass("submission-previewed")
+   }  */
+     //store latest data to local storage
+  
+ // only run this function onces
+   if (startSaving == true){
 
+    console.log("starSaving Function - this should only happens");
+
+    startSaving = false;// so only runs onces
+
+    setInterval(function(){
+      
+      var $cleangrid = $("#tester-grid-id");
+    
+      console.log("clean grid function - i.e storing data")
+    
+      cleanGridContent($cleangrid);
+    
+    }, 30000)
+
+   }
+
+
+
+   
 }//CanvasChange()
 
 export function removeClassByPrefix($this, prefix) {
@@ -1197,7 +1172,7 @@ export function itemEdit($thisitem, $grid) {
     //store latest data to local storage
     var $cleangrid = $("#tester-grid-id");
 
-     cleanGridContent($cleangrid);
+    //  cleanGridContent($cleangrid);
 
   }); // $this.click
 
@@ -1329,11 +1304,6 @@ export function itemEdit($thisitem, $grid) {
     };
 
   }); //$inputfields.change(function()
-
-  
-  // var $cleangrid = $("#tester-grid-id");
-
-  // cleanGridContent($cleangrid);
 
 } // function itemedit(itemid){ // for new items
 
@@ -1684,11 +1654,11 @@ export function cleanGridContent($cleangrid){
   // var gridContent = document.getElementById("tester-grid-id").innerHTML;//
   var gridContent = $cleangridcontent.prop('outerHTML');//.innerHTML;
 
-  // compress to LZ string
+  // compress to LZ string - this is quite a lot of CPU processsing
   
-  localStorage.setItem("gridContent",LZString.compress(gridContent));
+   localStorage.setItem("gridContent",LZString.compress(gridContent));
 
-  localStorageSize(); // check if makes difference?
+  // localStorageSize(); // check if makes difference?
 
 } // function CleanGridContent ()
 

@@ -5,3 +5,23 @@ Author: Simon van Stipriaan
 Author URI: http://svs.design
 */
 
+
+.text-one-col-block{
+ 
+     
+
+    h3{
+        @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing 
+        @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
+    }
+
+    .details{
+        @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // fixed sizing 
+        @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing    
+    }
+
+
+   
+
+} //.text-two-col-jobs-block
+

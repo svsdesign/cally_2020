@@ -214,6 +214,14 @@ Author URI: http://svs.design
         pointer-events:none;
         opacity: 0;
         }
+
+        &.logo-weight{
+          
+          a{
+          font-family: $bold-font-family;
+          }
+
+        }
   
     }//.menu-item
 

@@ -20,7 +20,7 @@
     var initializeBlock = function( $block ) {
             
         //$block.find('img').doSomething();
-        // console.log('initializeBlock = function( $block ) - slideshow block');
+    console.log('HERE? initializeBlock = function( $block ) - slideshow block');
  
         var $thisgallery = $block.find(".slideshow-carousel"),   // review this   class name 
         // console.log('initializeBlock = function( $block ) - slideshow block from its own script.js file');
@@ -28,7 +28,8 @@
             $thisimageblock = $thisgallery.find("img");  // just target img?
             $thisimageblock.each(function() {  
 
-             // console.log("each image?);
+            console.log("each image?");
+            // why is flickity not corect size?
              
                   var $thisimage = $(this);
 

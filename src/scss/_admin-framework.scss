@@ -13,17 +13,15 @@
 // @import "03-generic/generic.form-elements"; not needed
 
 @import "sort/grid";
-// @import "sort/icons";
+@import "sort/admin";
 @import "sort/typography";
-
-
- 
 
 @import "04-blocks/block-one-col";  // 1 column text block
 @import "04-blocks/block-two-col";  // 2 column text block
 
 @import "04-blocks/block-two-col-left-header";  // 2 column text block: left header
 @import "04-blocks/block-two-col-left-header-image";  // 2 column text block: left header + Image
+@import "04-blocks/block-two-col-image";  // 2 column text block with image
 
 @import "04-blocks/block-two-col-jobs";  // 2 column text block: jobs
 
@@ -38,7 +36,5 @@
 @import "05-layouts/layouts.blocks";  
 @import "05-layouts/layouts.overview";  
 // @import "05-layouts/layouts.404";  
-
-
 
 /* admin only side styling */

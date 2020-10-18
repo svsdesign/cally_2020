@@ -23,8 +23,7 @@ $introtext = get_field('introduction_text'); // intorcopy
 $fs_activeclass = "page-is-active section-is-active";
 //freeling-street
 ?>		
-
-<?php elseif( is_page('bridgeman-road') ): 
+ <?php elseif( is_page('bridgeman-road') ): 
 $br_activeclass = "page-is-active section-is-active";
 //bridgeman-road
 ?>
@@ -115,7 +114,7 @@ $ew_activeclass = "page-is-active section-is-active";
 			</li>
 		
 			 <li data-section-title="freeling-street"
-				 class="<?php if (isset($fs_activeclasss)): { echo $fs_activeclass;}endif;?>">
+				 class="<?php if (isset($fs_activeclass)): { echo $fs_activeclass;}endif;?>">
 				 <a data-barba-prevent="self" href="<?php echo home_url();?>/freeling-street/">
  				</a>
 				 <div class="area freeling-area" style="background-image: url(<?php echo get_template_directory_uri() ?>/dist/img/overview-freeling-square.png);">

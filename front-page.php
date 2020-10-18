@@ -31,6 +31,7 @@ get_header(); ?>
 
 	<!-- START NEWS "archive posts" -->
 
+			<?php /* temp turned off untill news available
 	<div class="grid-container news-home-wrapper">
 
 		<div class="news-home-title-wrapper">
@@ -119,6 +120,8 @@ get_header(); ?>
 		wp_reset_query();?>
 
 	</div><!-- class="news-home-wrapper"-->
+
+	*/?>
 
 </div><!-- data-barba="container" data-barba-namespace="-->
 

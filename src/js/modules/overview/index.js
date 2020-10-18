@@ -11,11 +11,11 @@ import {
 export default function init() {
 
   // console.log("overview js functions");
-
-
-  if ($(".project-overview").length > 0) 
+ 
+  if ($("body.page-id-101.page-parent .project-overview").length > 0) 
   {
 
+    console.log("about page");
 
       $('ul.sections li a').mouseenter(function(){
   

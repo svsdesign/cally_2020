@@ -149,17 +149,42 @@ console.log("detectAttrChange()");
 
 
   $(".wpuf-submit").on("remove", function () {
+ 
     // alert("Element was removed");
 
+    
+   
     // $(".wpuf-success").css("background","red");
-    $("body").addClass('form-submitted');    
+
+     $("body").addClass('form-submitted');    
   
-        function removeSuccess(){
+    
+    function startScroll(){
+      // $(window).scrollTop(eOffset - wHeight + eHeight); // See below for explanation
+
+      console.log("scroll now");
+    
+        var wHeight = $(window).height();
+        var eOffset = $('.wpuf-success').offset().top;
+        var eHeight = $('.wpuf-success').height();
+
+        $('html, body').animate({
+            scrollTop: (eOffset - wHeight + eHeight)
+            // scrollTop: $(".submission-form-wrap").offset().top
+
+        }, 100);
+     
+       
+    }; //startScroll
+
+    setTimeout(startScroll, 500); 
+    
+    function removeSuccess(){
 
          $(".wpuf-success").css("display","none");
 
-        }; //waitloading()
-        setTimeout(removeSuccess, 6000);
+      }; //removeSuccess()
+      setTimeout(removeSuccess, 6000);
 
   })
 
@@ -169,8 +194,9 @@ console.log("detectAttrChange()");
 
 export function orientation(){
 // review this - we might need it to esnure image orienations are correct
+  var $ = $ || jQuery; // svs addition added based on Tom's fix
 
-//  console.log("hello orientation function")
+    console.log("hello orientation function")
 
   var winwidth = $(window).width(); // should be inner weidth
   var winheight = $(window).height(); // inner height
@@ -192,10 +218,10 @@ export function orientation(){
 
 export function opacity(){
     
-    var $ = $ || jQuery; // svs addition added based on Tom's fix
 
     console.log("opacity() function")
 
+    var $ = $ || jQuery; // svs addition added based on Tom's fix
 
   //  $("body").imagesLoaded(function(){ // consider a lazloadng options?
   console.log("removed imagesloaded")
@@ -890,8 +916,10 @@ export function removeCommentBubble(){
    
 export function hoverDiv($thisitem) {
 
- console.log("hoverDiv($thisitem)");
+//  console.log("hoverDiv($thisitem)");
      $thisitem = $thisitem;
+
+     var hoverloop;// declare
  /* to do
 
  still issue with scrip running to many times
@@ -900,6 +928,8 @@ export function hoverDiv($thisitem) {
 
 
     var checkhoverDiv = function ($thisitem) {
+
+      // console.log("initial chekchover div hover div");
 
       var hovermouseX = ($thisitem.width() / 2), //was 0,
           hovermouseY = ($thisitem.height() / 2), //was 0,
@@ -914,7 +944,7 @@ export function hoverDiv($thisitem) {
               if (hovermouseX < 0) hovermouseX = 0;
               if (hovermouseY < 0) hovermouseY = 0;
 
-              console.log("hoverDiv($thisitem)");
+              // console.log("hoverDiv($thisitem)");
 
             }
           });
@@ -924,9 +954,8 @@ export function hoverDiv($thisitem) {
             hoverxp = 0,
             hoveryp = 0;
 
-          // TODO ensure this isn't constaly running?
-
-          var hoverloop = setInterval(function () {
+ 
+          hoverloop = setInterval(function () {
             // change 12 to alter damping higher is slower
             hoverxp += (hovermouseX - hoverxp) / 1;//was 12
             hoveryp += (hovermouseY - hoveryp) / 1;//was 12
@@ -934,38 +963,50 @@ export function hoverDiv($thisitem) {
               left: hoverxp,
               top: hoveryp
             });
+            // console.log("interval in inital")
 
-          }, 10); // was 30
+          }, 100); // was 10
    
     };// checkhoverDiv($thisitem)
 
     window.addEventListener('resize', function () {
 
-      // console.log("resizing?");
 
-        var $thisitem = $('.dev-layout-grid-toggle');
-        checkhoverDiv = null; // kills previous functions
+      if ($('body').hasClass('dev-layout-grid-on')){
+        console.log("resizing for hover div - but grid now active");
+
+        return;
+
+      } else{
+        console.log("resizing for hover div");
+
+        $thisitem = $('.dev-layout-grid-toggle'); //overrid the current var?
+      
+        checkhoverDiv = null; // should kills previous functions
+        // hoverloop = null;
+        clearInterval(hoverloop);
 
         // redeclare the function, using same var name
 
         var checkhoverDiv = function ($thisitem) {
+          console.log("check hover div after resize");
 
         var hovermouseX = ($thisitem.width() / 2), //was 0,
           hovermouseY = ($thisitem.height() / 2), //was 0,
           hoverlimitX = $thisitem.width(), // was 9999,
           hoverlimitY = $thisitem.height(); // was 9999;
 
-        $thisitem.on({
-          mousemove: function (e) {
-            var hoveroffset = $thisitem.offset();
-            hovermouseX = Math.min(e.pageX - hoveroffset.left, hoverlimitX);
-            hovermouseY = Math.min(e.pageY - hoveroffset.top, hoverlimitY);
-            if (hovermouseX < 0) hovermouseX = 0;
-            if (hovermouseY < 0) hovermouseY = 0;
+          $thisitem.on({
+            mousemove: function (e) {
+              var hoveroffset = $thisitem.offset();
+              hovermouseX = Math.min(e.pageX - hoveroffset.left, hoverlimitX);
+              hovermouseY = Math.min(e.pageY - hoveroffset.top, hoverlimitY);
+              if (hovermouseX < 0) hovermouseX = 0;
+              if (hovermouseY < 0) hovermouseY = 0;
 
-            console.log("hoverDiv($thisitem)");
+              // console.log("hoverDiv($thisitem)");
 
-          }
+            }
         });
 
         // cache the selector
@@ -973,9 +1014,7 @@ export function hoverDiv($thisitem) {
           hoverxp = 0,
           hoveryp = 0;
 
-        // TODO ensure this isn't constaly running?
-
-        var hoverloop = setInterval(function () {
+          hoverloop = setInterval(function () {
           // change 12 to alter damping higher is slower
           hoverxp += (hovermouseX - hoverxp) / 1;//was 12
           hoveryp += (hovermouseY - hoveryp) / 1;//was 12
@@ -983,8 +1022,8 @@ export function hoverDiv($thisitem) {
             left: hoverxp,
             top: hoveryp
           });
-
-        }, 10); // was 30
+          console.log("interval in resize")
+         }, 100); // was 10
 
 
 
@@ -992,8 +1031,39 @@ export function hoverDiv($thisitem) {
 
         checkhoverDiv($thisitem);// trigger
 
+      }
+
     });
 
-    checkhoverDiv($thisitem);// initial
+
+    $(".dev-layout-grid-toggle").click(function () {
+      //clear loop as soon as user starts the grid
+      clearInterval(hoverloop);
+    });
+
+  checkhoverDiv($thisitem);// initial
+
+
+
 
 } //function hoverDiv($thisitem)
+
+
+
+
+export function succesScroll(){
+
+ 
+// nod sure need this funcntion
+
+// once clicked evennt listen for this div
+
+if ($(".wpuf-success").length) {
+
+console.log("succes avaijlabve");
+}
+
+
+
+
+} //function succesScroll

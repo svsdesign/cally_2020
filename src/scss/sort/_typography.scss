@@ -164,7 +164,7 @@ Author URI: http://svs.design
     //Start Buttons:
 
     .button-link{
-    border-bottom:none!important;
+    // border-bottom:none!important;
     display: block;
     width: 100%;
     border: 1px solid nth($scheme, 3)!important;
@@ -187,15 +187,21 @@ Author URI: http://svs.design
 
       &:hover{
       // border: 2px solid nth($scheme, 3);
+      border: 1px solid nth($scheme, 3)!important;
+
       background-color: nth($scheme, 3);
       color: nth($scheme, 2);
       -webkit-transition: background-color 100ms linear;
       -ms-transition: background-color 100ms linear;
       transition: background-color 100ms linear;
-      border-bottom:none!important;
+      // border-bottom:none!important;
       }
       
+      &:visited{
+      border: 1px solid nth($scheme, 3)!important;
 
+      // border-bottom:none!important;
+      }
     }
 
   }// body

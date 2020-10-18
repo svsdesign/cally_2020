@@ -10,7 +10,7 @@ import {
 } from '../../utilities/helpers';
 
  
-//  console.log('blocks.js');
+   console.log('blocks.js');
 
 
 export default function blocks(){

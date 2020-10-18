@@ -165,7 +165,7 @@ function my_acf_init() {
             'render_callback'   => 'my_acf_block_render_callback',
             'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
             'enqueue_assets'    => function(){
-            //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
+                wp_enqueue_script('th-two-col-left-header-image-show-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thtwocolleftheaderimage/assets/js/script.js', array( 'jquery' ), '', true );
             },
             'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
             'keywords'          => array('thtwocolleftheaderimage'),
@@ -219,7 +219,7 @@ function my_acf_init() {
             'render_callback'   => 'my_acf_block_render_callback',
             'category'          => 'common',// https://www.advancedcustomfields.com/resources/acf_register_block_type/ + https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
             'enqueue_assets'    => function(){
-            //  wp_enqueue_script('inp-text-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/inptext/assets/js/script.js', array( 'jquery' ), '', true );
+            wp_enqueue_script('th-client-logos-script', ''.get_stylesheet_directory_uri().'/template-parts/blocks/thclientlogos/assets/js/script.js', array( 'jquery' ), '', true );
             },
             'icon'              => 'admin-comments',//https://developer.wordpress.org/resource/dashicons/
             'keywords'          => array('thclientlogos'),

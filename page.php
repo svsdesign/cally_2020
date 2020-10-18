@@ -21,10 +21,9 @@ if ( have_posts() ) :?>
 
 		<?php while ( have_posts() ) : the_post();
 
-			if( is_page('theseus') ): /*if is_page('work') */
+			if( is_page('block-showcase') ): /*if is_page('work') */
 
-				get_template_part( 'theseus-page' );
-
+				get_template_part( 'content-page' );
 
 			elseif( is_page('privacy-policy') ): 
 		 

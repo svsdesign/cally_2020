@@ -76,7 +76,7 @@ if( $columnsizing == '25-75' ) {
 
                         <?php if( $subtitle ): ?>
 
-                             <div class="subtitle">
+                             <div class="sub-title">
                                 
                                 <?php echo $subtitle; ?>
        

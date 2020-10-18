@@ -171,7 +171,7 @@ gulp.task('watch', () => {
     gulp.watch([pkg.paths.src.js + "**/app.admin.min.js"], gulp.series('adminjs', 'reload'));
 
 
-    // gulp.watch('src/**/*.{js,css}', gulp.series('reload'));
+    gulp.watch('src/**/*.{js,css}', gulp.series('reload'));
     gulp.watch('./**/*.php', gulp.series('reload'));
 });
 

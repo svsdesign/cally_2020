@@ -55,7 +55,7 @@ if( !empty($block['align']) ) {
 
                           <?php if( $subtitle ): ?>
 
-                            <h3 class="subtitle">
+                            <h3 class="sub-title">
                                 <?php echo $subtitle; ?>
                             </h3><!-- .subtitle -->
                      

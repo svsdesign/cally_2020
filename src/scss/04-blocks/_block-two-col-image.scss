@@ -1,0 +1,28 @@
+ /*
+Theme Name: cally 2020
+Theme URI:  cultivatingcally.com
+Author: Simon van Stipriaan 
+Author URI: http://svs.design
+*/
+
+
+
+
+.text-image-two-col-block{
+
+    .text-area{
+        @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+        @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing
+        }
+
+    .image-wrap{
+	}
+
+    .image-caption{
+        @include fluid-type(padding-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*1, map-get($lineheight, lg)*1); // fixed sizing 
+        @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*1, map-get($lineheight, xxl)*1); // viewport sizing
+
+    }
+
+} //.text-image-two-col-block
+

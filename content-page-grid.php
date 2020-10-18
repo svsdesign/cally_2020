@@ -711,22 +711,22 @@
        
           <div class="grid-container">
 
-          <?php
+    <?php
 
-//uploading imnages
-//https://rudrastyh.com/wordpress/how-to-add-images-to-media-library-from-uploaded-files-programmatically.html
-// https://stackoverflow.com/questions/11511511/how-to-save-a-png-image-server-side-from-a-base64-data-string
+      //uploading imnages
+      //https://rudrastyh.com/wordpress/how-to-add-images-to-media-library-from-uploaded-files-programmatically.html
+      // https://stackoverflow.com/questions/11511511/how-to-save-a-png-image-server-side-from-a-base64-data-string
 
-          //  https://stackoverflow.com/questions/49442428/attach-canvas-image-created-to-input-file-to-upload-it-html5-jquery
-     
-          
-//          https://stackoverflow.com/questions/30323004/generate-post-request-for-storing-images-in-wordpress
-
-     //https://stackoverflow.com/questions/22329481/compressing-base64-data-uri-images    
-         //https://www.codegrepper.com/code-examples/php/convert+base64+to+image+php+example
+      //  https://stackoverflow.com/questions/49442428/attach-canvas-image-created-to-input-file-to-upload-it-html5-jquery
 
 
-// https://stackoverflow.com/questions/23323840/ajax-send-save-base64-encoded-image-to-server
+      // https://stackoverflow.com/questions/30323004/generate-post-request-for-storing-images-in-wordpress
+
+      //https://stackoverflow.com/questions/22329481/compressing-base64-data-uri-images    
+      //https://www.codegrepper.com/code-examples/php/convert+base64+to+image+php+example
+
+
+      // https://stackoverflow.com/questions/23323840/ajax-send-save-base64-encoded-image-to-server
 
          echo do_shortcode("[wpuf_form id='310']"); ?>
           <?php// echo do_shortcode("[wpuf_edit]");?>
