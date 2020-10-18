@@ -49,6 +49,7 @@ export default function init() {
     OgCoordinates;
     // console.log("layout-grid/index.js");
 
+    var startSaving = true; // declare 
 
 
 
@@ -217,15 +218,55 @@ export default function init() {
   } // function makedraggable($newitem){
 
   function onSubmission(){
-    // form can submitted now
+    //changes after submission:
     detectAttrChange();
 
-    succesScroll();// check this wokring
   }// onSubmission()
-
-
-
   
+
+  function canvasChange(){
+    console.log("canvasChange()");
+  
+    // if we have generated an initial preview:
+    if($("body").hasClass("submission-previewed")){
+          //once an edit has been made to the canvas, we can allow update availability
+  
+          $("body").addClass("update-available");
+          $("a#load-image").text("Update Preview Image");
+         
+  
+    }/* else{
+      console.log("change detected be non preview click yet;")
+  
+     }  */
+  
+  }//CanvasChange()
+
+  function updateLocalStorage(){
+  
+   // only run this function onces
+   if (startSaving == true){
+  
+    console.log("starSaving Function - this should only happens");
+
+    startSaving = false;// so only runs onces
+    
+    
+    // cleanGridContent($cleangrid); // run straight away + then set interval
+
+      setInterval(function(){
+        var $cleangrid = $("#tester-grid-id");
+
+            console.log("clean grid function - i.e storing data")
+      
+        cleanGridContent($cleangrid); // save data to local
+      
+      }, 30000)//saves every 30seconds -- this too much?
+
+   }// if (startSaving == true)
+
+  }// function saveCanvas
+
   function captureCanvas(){
     console.log("function captureCanvas()");
     $('body').addClass("capturing-image");//hide none image elements
@@ -347,7 +388,6 @@ export default function init() {
       var isPackeryInit = false;
       var isEditModeActive;
       var isGridItemsActive = false;
-      var startSaving = true; // declare 
 
 
       function checkPackery() {
@@ -469,9 +509,7 @@ export default function init() {
 
                       //  console.log("imagetype = "+imagetype+"");
                        updateImageObject($thisitem, imagetype);
-
-                        // canvashasChanged as soon as items are changed
-                        canvasChange();    
+ 
   
                     }, //change functions
                      //change  
@@ -566,11 +604,7 @@ export default function init() {
                             // console.log("imagetype = "+imagetype+"");
 
                             updateImageObject($thisitem, imagetype)
-                  
-                        
-                            // Canvas has Changed as soon as items are changed
-                            canvasChange();    
-
+                                          
                           }, //change functions
                           //change  
                           select: function( event, ui ) {
@@ -740,19 +774,11 @@ export default function init() {
                    $('.item-edit-active').find('.grid-item-options-toggle').click();//trigger click
                 }
                
-                //END review this _ its positions + also suggest placing into one fucntion so we can use it in other places aswell
- 
-                // localStorage.setItem("coordinates",  jsonpositions);
-
-                //  TODO - update this for unique gird
-                // $('.coordinates').val(jsonpositions);
-                // $('.coordinates').attr('value', jsonpositions);
-
               }); // $grid.on('dragItemPositioned', function ()
 
             } else { //if ($(body).hasClass('logged-in')){
 
-              console.log("not logged in");
+              // console.log("not logged in");
 
               $grid.find('.layout-grid-item').each(function (i, itemElem) {
                 var draggie = new Draggabilly(itemElem);
@@ -782,7 +808,8 @@ export default function init() {
                 $coordinates.attr('value', jsonpositions);
 
                 localStorage.setItem("coordinates",  jsonpositions);
-               // canvashasChanged
+             
+                // canvashasChanged
                   canvasChange();  
              
                   if ($('.item-edit-active').length){
@@ -794,16 +821,13 @@ export default function init() {
 
             } //if ($('body').hasClass('logged-in'))
 
-            // Bind to scroll
-            // $(window).scroll(function () {
-            //   // consider removing some variable declartion from the fade function: and place elsewhere
-            //   gridfade(); // run fade function on scroll
-            // }); // scroll function
+ 
 
             if ($('body').hasClass("is-touch")) {
 
                 console.log(" TO DO ensure to have touch screen message enabled")
-              // $(window).scroll(function () {
+           
+                // $(window).scroll(function () {
 
                 // activeTouchItem();
                 // ActiveTouchItem();//
@@ -816,10 +840,7 @@ export default function init() {
 
             } //if ($('body').hasClass("is-touch")
 
-          // $(window).scrollTop($(window).scrollTop() + 1);
-          //trigger initial scroll to ensure all object are layed out (includign thenegative offests)
-          /// far too much shite in this function - tidy up
-
+        
           isPackeryInit = true;
           // if edit mode was alredy active
           console.log(isEditModeActive+ "isEditModeActive");
@@ -870,8 +891,7 @@ export default function init() {
       } //  function checkPackery()
 
       checkPackery();
-      // AOS.init();
-
+ 
       // check this on resize, debounced
       $(window).on('resize', debounce(checkPackery, 200));
 
@@ -910,14 +930,10 @@ export default function init() {
   $("#download-image").on('click', function () {
    // Now browser starts downloading it instead of just showing it
 
-    // console.log("hello dowload click - ensure to update the picture name is submiossion title exists");
-  
-    var imgageData = getCanvas.toDataURL("image/png");
-        // submissionname = $('input[data-input-type]').val();
    
-        // console.log("submissionname on download =" +submissionname+"");
-    //  console.log("name" +submissionname +'');
-
+    var imgageData = getCanvas.toDataURL("image/png");
+    
+     
     // TO DO figure out isues with space on not a problem is reality?
 
     var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
@@ -946,6 +962,9 @@ export default function init() {
 
     } //click
 
+    //start the local storage updating interval
+    updateLocalStorage();   
+
   }); //  $(".dev-toggle").click(function ( )
   // dev toggle - TO DO - move this elsewhere
 
@@ -953,25 +972,25 @@ export default function init() {
 
   // ensure to target each grid that might exist on teh page
   function initgriditems() {
- 
- //remove this eventualy or use it to provide further displaimers re storage facilities
+  
+    //remove this eventualy or use it to provide further displaimers re storage facilities
     function isLocalStorageNameSupported()    {
-      // Safari, in Private Browsing Mode, looks like it supports localStorage but all calls to setItem
-  // throw QuotaExceededError. We're going to detect this and just silently drop any calls to setItem
-  // to avoid the entire page breaking, without having to do a check at each usage of Storage.
-      if (typeof localStorage === 'object') {
-        try {
-            localStorage.setItem('localStorage', 1);
-            localStorage.removeItem('localStorage');
-        } catch (e) {
-            Storage.prototype._setItem = Storage.prototype.setItem;
-            Storage.prototype.setItem = function() {};
-            alert('Your web browser does not support storing settings locally. In Safari, the most common cause of this is using "Private Browsing Mode". Some settings may not save or some features may not work properly for you.');
+        // Safari, in Private Browsing Mode, looks like it supports localStorage but all calls to setItem
+    // throw QuotaExceededError. We're going to detect this and just silently drop any calls to setItem
+    // to avoid the entire page breaking, without having to do a check at each usage of Storage.
+        if (typeof localStorage === 'object') {
+          try {
+              localStorage.setItem('localStorage', 1);
+              localStorage.removeItem('localStorage');
+          } catch (e) {
+              Storage.prototype._setItem = Storage.prototype.setItem;
+              Storage.prototype.setItem = function() {};
+              alert('Your web browser does not support storing settings locally. In Safari, the most common cause of this is using "Private Browsing Mode". Some settings may not save or some features may not work properly for you.');
+          }
         }
-      }
-  }
+    }
 
-  isLocalStorageNameSupported(); // try this out and improved messages
+    isLocalStorageNameSupported(); // try this out and improved messages
   
 
     //localStorageSize(); to check size
@@ -1040,7 +1059,7 @@ export default function init() {
     
     });
 
-  } //initgrid()
+  } //initgriditems()
 
   initgriditems(); // start initial init
   hoverDiv($startbutton);//
@@ -1049,46 +1068,6 @@ export default function init() {
 } //export default function init()
 
 
-export function canvasChange(){
-  console.log("canvasChange()");
-
-  // if we have generated an initial preview:
-  if($("body").hasClass("submission-previewed")){
-        //once an edit has been made to the canvas, we can allow update availability
-
-        $("body").addClass("update-available");
-        $("a#load-image").text("Update Preview Image");
-       
-
-  }/* else{
-    console.log("change detected be non preview click yet;")
-
-   }  */
-     //store latest data to local storage
-  
- // only run this function onces
-   if (startSaving == true){
-
-    console.log("starSaving Function - this should only happens");
-
-    startSaving = false;// so only runs onces
-
-    setInterval(function(){
-      
-      var $cleangrid = $("#tester-grid-id");
-    
-      console.log("clean grid function - i.e storing data")
-    
-      cleanGridContent($cleangrid);
-    
-    }, 30000)
-
-   }
-
-
-
-   
-}//CanvasChange()
 
 export function removeClassByPrefix($this, prefix) {
   var regx = new RegExp('\\b' + prefix + '.*?\\b', 'g');
@@ -1164,25 +1143,10 @@ export function itemEdit($thisitem, $grid) {
     $this.find(".inner-grid-item").css("transform", "rotate(" + thisnewrotatevalue + "deg)"); // to do - ensure cross browser
     $this.find('.grid-item-options-toggle-rotate .rotate').css("transform", "rotate(" + thisnewrotatevalue + "deg)");
     $this.find('input.input-rotate').val(thisnewrotatevalue);
- 
-    
-    // Canvas has Changed as soon as items are rotated
-    canvasChange(); 
 
-    //store latest data to local storage
-    var $cleangrid = $("#tester-grid-id");
-
-    //  cleanGridContent($cleangrid);
 
   }); // $this.click
 
-
-  /*$postfield.css("background","red");
-  $postfield.on('selectmenuchange', function() {
-   console.log("$postfield");
-
-  });
-  */
 
   $inputfields.on('input', function () {
 
@@ -1603,8 +1567,7 @@ https://github.com/airesvsg/acf-to-rest-api
 
 
 export function localStorageSize(){
-
-     
+    
   var _lsTotal = 0,
   _xLen, _x;
 for (_x in localStorage) {

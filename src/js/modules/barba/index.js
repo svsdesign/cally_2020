@@ -214,20 +214,31 @@ barba.hooks.afterLeave((data) => {
   // https://github.com/barbajs/barba/issues/419
   // TODO: reveiw other active classes; is this all of them, I think so
 
+  console.log("afterleave")
+
   if (data.next.url.path) {
+
+    console.log("IF (data.next.url.path - apply menuclass changes")
+
     const currentMenu = 'current-menu-item',
       currentPage = 'current_page_item',
       currentMenuAncestor = 'current-menu-ancestor',
       currentMenuParent = 'current-menu-parent',
       currentPageAncestor = 'current_page_ancestor';
 
+      // console.log("menuClasses")
     menuClasses(data, currentMenu);
     menuClasses(data, currentPage);
     menuClasses(data, currentMenuAncestor);
     menuClasses(data, currentMenuParent);
     menuClasses(data, currentPageAncestor);
 
-  } //if ( data.next.url.path
+  } else{
+//    no (data.next.url.path
+
+    console.log("no (data.next.url.path?")
+
+  }//if ( data.next.url.path
 
   // set up additional clasess + variables
  
@@ -266,9 +277,6 @@ barba.hooks.afterLeave((data) => {
 
     removeCommentBubble();// remove any comment stuff we don't want to show after ajax page change
     // the scripts get re-loaded anyway next time enter the comment page - because prevent barbb
-
-
-
 
 
 

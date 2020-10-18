@@ -13,22 +13,27 @@
 <div id="signup" class="">
 
 	<div class="intro-wrap grid-container">
-			
-		<div class="title grid-item grid-xs-12">
-		Sign up to our Newsletter
-		</div>
 
-		<div class="sub-title grid-item grid-xs-12 grid-md-6">
- 		Receive the latest news and updates on the project and for more opportunities to get involved to create greener community. 
-  		</div><!--.sub-title-->
+		<!--<div class="grid-row-holder"> -->
+	
+			<div class="title grid-item grid-xs-12">
+			Sign up to our Newsletter
+			</div>
 
+			<div class="sub-title grid-item grid-xs-12 grid-md-6">
+			Receive the latest news and updates on the project and for more opportunities to get involved to create greener community. 
+			</div><!--.sub-title-->
+
+		<!--</div> .grid-row-holder--> 
+	  
 	</div><!--.intro-wrap grid-container -->
 
 	<div id="" class="form grid-container">
 
 		<div class="grid-row-holder">
 
-			<form action="//inperspectiverecords.us7.list-manage.com/subscribe/post?u=1eb4408a7a26cc71023383a12&amp;id=2303a5b371" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate grid-item grid-xs-12" target="_blank">
+			<form action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate grid-item grid-xs-12" target="_blank">
+			<!--<form action="//inperspectiverecords.us7.list-manage.com/subscribe/post?u=1eb4408a7a26cc71023383a12&amp;id=2303a5b371" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate grid-item grid-xs-12" target="_blank"> -->
 
 				<div>
 					<input type="email" placeholder="Enter Email" name="EMAIL" id="mce-EMAIL" class="email" title="The domain portion of the email address is invalid (the portion after the @)." pattern="^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*(\.\w{2,})+$" required>

@@ -90,11 +90,11 @@ endif; ?>
 
 <?php if( get_field('colour_scheme', 'option') == 'black' ): ?>
 
- <body data-barba="wrapper" <?php body_class('animation-fix site-loading black-scheme dev-grid-on can-edit'.$keep_intro_logo_class.''); ?>>
+ <body data-barba="wrapper" <?php body_class('animation-fix site-loading black-scheme can-edit'.$keep_intro_logo_class.''); ?>>
 
 <?php else: ?>
 
- <body data-barba="wrapper" <?php body_class('animation-fix site-loading white-scheme dev-grid-on can-edit'.$keep_intro_logo_class.''); ?>>
+ <body data-barba="wrapper" <?php body_class('animation-fix site-loading white-scheme can-edit'.$keep_intro_logo_class.''); ?>>
 
 <?php endif; ?>
  

@@ -145,20 +145,12 @@ export function SetSubmenuHeight(headRoomStatus) {
 }//function SetAppHeight()
  
 export function detectAttrChange() {
-console.log("detectAttrChange()");
-
+// console.log("detectAttrChange()");
 
   $(".wpuf-submit").on("remove", function () {
- 
-    // alert("Element was removed");
-
-    
-   
-    // $(".wpuf-success").css("background","red");
-
-     $("body").addClass('form-submitted');    
   
-    
+     $("body").addClass('form-submitted');    
+   
     function startScroll(){
       // $(window).scrollTop(eOffset - wHeight + eHeight); // See below for explanation
 
@@ -169,15 +161,14 @@ console.log("detectAttrChange()");
         var eHeight = $('.wpuf-success').height();
 
         $('html, body').animate({
-            scrollTop: (eOffset - wHeight + eHeight)
-            // scrollTop: $(".submission-form-wrap").offset().top
+            // scrollTop: (eOffset - wHeight + eHeight)
+          scrollTop: $(".exports-wrap").offset().top// top of generated image
 
-        }, 100);
-     
+        }, 1000); 
        
     }; //startScroll
 
-    setTimeout(startScroll, 500); 
+    setTimeout(startScroll, 1); 
     
     function removeSuccess(){
 
@@ -187,8 +178,6 @@ console.log("detectAttrChange()");
       setTimeout(removeSuccess, 6000);
 
   })
-
-
   
 }//function detectAttrChange()
 
@@ -551,6 +540,7 @@ var $body = $('body'),
 }//menupositioner()
 
 export function menuClasses(data, target) {
+console.log("menuClasses" +data+ + target+"");
 
   $('.menu-item.' + target).each(function () {
     $(this).removeClass(target);
@@ -1050,6 +1040,7 @@ export function hoverDiv($thisitem) {
 
 
 
+/*
 
 export function succesScroll(){
 
@@ -1067,3 +1058,4 @@ console.log("succes avaijlabve");
 
 
 } //function succesScroll
+*/
