@@ -84,7 +84,7 @@ $ew_activeclass = "page-is-active section-is-active";
 	</div><!-- .sub-navigation -->
 
 </div><!-- .sub-navigation-wrap -->
- 
+<?php if(! is_page('home') ): ?>
 <div class="project-overview">
 
 	<?php if($introtext):?>
@@ -139,3 +139,7 @@ $ew_activeclass = "page-is-active section-is-active";
 	</div><!-- .overview-images -->
 
 </div><!-- .project-overview -->
+<?php else:?>
+	svs to insert better home page section here
+
+<?php endif;?>
