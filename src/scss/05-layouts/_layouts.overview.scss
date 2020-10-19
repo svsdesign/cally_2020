@@ -84,9 +84,9 @@
                     display: none;
                     width:100%;
                     height:100%;
-                    background-size: contain;
+                    // background-size: contain;
                     background-repeat: no-repeat;
-                    background-position: center center;
+                    // background-position: center center;
                     }
 
                     &:nth-child(2){
@@ -138,7 +138,7 @@
         height: var(--submenu-height);
         top:var(--headroom-height);
         display: flex;
-        z-index: 7;//ensure below the page loader
+        z-index: 8;//ensure below the page loader
         pointer-events: none;
 
             .sub-navigation{
@@ -179,7 +179,7 @@
                     position: relative;
                     width:80%;/// maybe consider breakpoints here depeneind on screen sizesa and orientations
                     margin: auto;
-                    max-width: 80vw;
+                    max-width: 80vh;//was 80vw;
 
                         li{
                         display: inline-flex;
@@ -262,12 +262,74 @@
         }//.sub-navigation-wrap
 
 
-        // TO DO: how can I easily "scale up" / zoom into the image?
+        
+
+
+        //About +  Plan
+        &.page-id-101 // local
+        {
+
+            .sub-navigation-wrap{
+            min-height: 100vw; // ensures we can see everything; no cropping goibng on
+            }
+
+            .project-overview{
+                      
+                .intro-wrap{
+                
+                }
+    
+                .overview-images{
+                // background:red;
+                position:relative;
+                height:var(--site-height);       
+                width: 100vw;
+                margin-left:-10vw;
+                margin-right: -10vw;
+                @include fluid-type(margin-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*-4, map-get($lineheight, lg)*-4); // fixed sizing // offset grid 
+                @include fluid-type(margin-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*-4, map-get($lineheight, xxl)*-4); // viewport sizing
+                min-height: 100vw; // ensures we can see everything; no cropping goibng on
+
+                  .area{
+                    // background-size:175vw auto;
+                    // background-position: center center;
+        
+                    }
+
+                }
+            }
+
+        }
+
+
 
         //freeling street:
         &.page-id-104 // local
         {
-            // background:rgb(153, 0, 255);
+            .project-overview{
+                      
+                .intro-wrap{
+                
+                }
+    
+                .overview-images{
+                // background:red;
+                position:relative;
+                height:var(--site-height);       
+                width: 100vw;
+                margin-left:-10vw;
+                margin-right: -10vw;
+                @include fluid-type(margin-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*-4, map-get($lineheight, lg)*-4); // fixed sizing // offset grid 
+                @include fluid-type(margin-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*-4, map-get($lineheight, xxl)*-4); // viewport sizing
+              
+                  .area{
+                    // background-size:175vw auto;
+                    background-position: center center;
+        
+                    }
+
+                }
+            }
 
         }
 
@@ -275,16 +337,90 @@
         //estate walk:
         &.page-id-275 // local
         {
-            // background:red;
+        // background:red;
+
+                 .project-overview{
+                      
+                    .intro-wrap{
+                    
+                    }
+        
+                    .overview-images{
+                    // background:red;
+                    position:relative;
+                    height:var(--site-height);       
+                    width: 100vw;
+                    margin-left:-10vw;
+                    margin-right: -10vw;
+                     @include fluid-type(margin-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*-4, map-get($lineheight, lg)*-4); // fixed sizing // offset grid 
+                    @include fluid-type(margin-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*-4, map-get($lineheight, xxl)*-4); // viewport sizing
+                  
+                      .area{
+                        // background-size:175vw auto;
+                        background-position: top right;
+            
+                        }
+
+                    }
+                }
 
         }
 
           //bridgeman road
           &.page-id-271 // local
           {
-            //   background:green;
+            .project-overview{
+                      
+                .intro-wrap{
+                
+                }
+    
+                .overview-images{
+                // background:red;
+                position:relative;
+                height:var(--site-height);       
+                width: 100vw;
+                margin-left:-10vw;
+                margin-right: -10vw;
+                 @include fluid-type(margin-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*-4, map-get($lineheight, lg)*-4); // fixed sizing // offset grid 
+                @include fluid-type(margin-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*-4, map-get($lineheight, xxl)*-4); // viewport sizing
+              
+                  .area{
+                    // background-size:175vw auto;
+                    background-position: bottom left;
+        
+                    }
+
+                }
+            }
+           
   
           }
+
+
+          &.horizontal{
+            // background-color: yellow;
+
+
+            .area{
+            background-size:100vw auto;
+
+            }
+    
+                
+          }
+
+          &.vertical{
+            // background-color: green;
+
+
+            .area{
+            background-size:auto 100vh;
+            }
+
+            
+          }
+
         // END TO DO: how can I easily "scale up" / zoom into the image?
 
     }//   body.#{nth($scheme, 1)}:not(.wp-admin)

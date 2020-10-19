@@ -69,7 +69,10 @@ Author URI: http://svs.design
       @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*0, map-get($lineheight, lg)*0); // fixed sizing // offset grid 
       @include fluid-type(padding-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*0, map-get($lineheight, xxl)*0); // viewport sizing
       @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*0, map-get($lineheight, xxl)*0); // viewport sizing
+
       }
+
+     
 
     }//#header-nav-area
 
@@ -787,7 +790,17 @@ Author URI: http://svs.design
         width: 100%;// was inherit - but breaking:(
         overflow: visible;// review this
         background: nth($scheme, 2);
-        }
+       
+        
+          &.headroom--top{
+            // @media (min-width: map-get($breakpoints, lg)) {
+            background:transparent;
+            // }
+          }
+    
+          // background-color: red;
+
+        }// #header-nav-area
 
         #main{
        //  padding-top: 20px;// review this - basically needs to be the height of the toggle area/ header-nav-area

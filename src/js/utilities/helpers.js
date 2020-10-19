@@ -187,21 +187,30 @@ export function orientation(){
 
     console.log("hello orientation function")
 
-  var winwidth = $(window).width(); // should be inner weidth
-  var winheight = $(window).height(); // inner height
-  var isHorizontal;
 
-  if (winwidth > winheight ) {
-    /* horizontal orientation */
-    $("body").addClass('horizontal');
-    $("body").removeClass('vertical');
+    function checkOrientation(){
 
-   } else{
-    /* vertical orientation */
-    $("body").removeClass('horizontal');
-    $("body").addClass('vertical');
+      var winwidth = $(window).width(); // should be inner weidth
+      var winheight = $(window).height(); // inner height
+      // var isHorizontal;
 
-  }//else
+      if (winwidth > winheight ) {
+        /* horizontal orientation */
+        $("body").addClass('horizontal');
+        $("body").removeClass('vertical');
+
+      } else{
+        /* vertical orientation */
+        $("body").removeClass('horizontal');
+        $("body").addClass('vertical');
+
+      }//else
+
+    }
+    checkOrientation();// run initial
+    // check on resize;
+    window.addEventListener('resize', checkOrientation);
+
 
 } // function orientation
 
