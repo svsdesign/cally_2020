@@ -1060,7 +1060,8 @@ export default function init() {
       }); //  $(".dev-toggle").click(function ( )
 
 
-    $(".helper-icon").click(function () {
+        //allow clicking on icon + also full area once open
+    $(".helper-icon, .helper-window").click(function () {
 
       console.log("click helper icon");
 

@@ -121,9 +121,14 @@
       
       <div class="helper-icon-wrapper">
         <div class="helper-icon">
-          <div class="text">
-                ?
+          
+          <div class="text text-off">
+              ?
           </div>
+          <div class="text text-on">
+             X
+          </div>
+
         </div>
       </div><!-- .helper-icon-wrapper -->
       

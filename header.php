@@ -62,6 +62,10 @@
 
 
 <!-- end meta -->
+
+
+
+
  
 
 <?php wp_head(); ?>
@@ -77,6 +81,20 @@
  var gMapsLoaded = false; // maybe I need to put this variable else where?
  //console.log("Header gMapsLoaded = " +gMapsLoaded+"");
 </script>
+
+
+  <!-- Google Analytics -->
+<script>
+     console.log("intial GA seteup here?");
+
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-180964259-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  <!-- End Google Analytics -->
+
+
 </head>
 
 

@@ -1394,11 +1394,19 @@
                     text-align:center;
                     cursor:pointer;
 
-                    .text{
-                     pointer-events:none;
-                    }
+                        .text{
+                        pointer-events:none;
 
-                   }
+                            &.text-off{
+                            display:block;
+                            }
+                            &.text-on{
+                            display:none;
+                            }
+
+                        }
+
+                    }
 
                 }
                 .helper-window-wrapper{
@@ -2219,7 +2227,23 @@
                      
                         .helper-icon-wrapper{
                         position:absolute;
-                         }
+
+                            .helper-icon{
+                            
+                                .text{
+                                  
+                                    &.text-off{
+                                    display:none;
+                                    }
+                                    &.text-on{
+                                    display:block;
+                                    }
+
+                                }
+                          
+                            }
+
+                        }//.helper-icon-wrapper
                         .helper-window-wrapper{
                         opacity:1;
                         position:relative;
@@ -2771,11 +2795,13 @@ body:not(.logged-in){
 
 //Test
 /* conditional CSS - https://adactio.com/journal/5429 */
+
 body:after {
     content: 'default';
     display: block;
     visibility: hidden;
     height: 0;
+    overflow:hidden;
 }
 
 /* widescreen */

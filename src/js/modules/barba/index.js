@@ -184,10 +184,17 @@ function loadjscssfile(filename, filetype) {
 
  
 barba.hooks.once((data) => {
-  console.log("once - all namespaces");
+  console.log("once - all namespaces - set up analytics");
   // domReady(siteLoad);
+// UA-180964259-1
 
-  
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+
+    
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -198,6 +205,13 @@ barba.hooks.once((data) => {
 }); //barba.hooks.once((data) =>
 // "Note that beforeOnce, once and afterOnce global hooks are not permitted. - so what to do here
  
+barba.hooks.after(() => {
+  console.log("after - setting GAn stuff ehre")
+  ga('set', 'page', window.location.pathname);
+  ga('send', 'pageview');
+});
+
+
 
 // https://github.com/barbajs/barba/issues/51#issuecomment-531465899
 //applies to all namespaces:
