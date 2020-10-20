@@ -109,16 +109,19 @@
 		<?php the_content();?>
 	</div><!--post-wrap-->
 
-	<?php // If comments are open or we have at least one comment, load up the comment template.
-		if ( comments_open() || get_comments_number() ) :?>
+	<?php // If comments are open
+		if ( comments_open()):
+			//if we have at least one comment, load up the comment template.
+			// if (get_comments_number() ) :?>
 
 			<div class="comments-wrap">
 		
 				<?php comments_template();?>
 	
 			</div>
-
 		<?php
+		// endif; 
+		
 	endif; ?>
 
 	<?php if ( $related ) : 
