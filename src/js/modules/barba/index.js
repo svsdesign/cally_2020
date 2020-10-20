@@ -182,11 +182,15 @@ function loadjscssfile(filename, filetype) {
 });
 
 
- 
+ /*
 barba.hooks.once((data) => {
 }); //barba.hooks.once((data) =>
-// "Note that beforeOnce, once and afterOnce global hooks are not permitted. - so what to do here
- 
+// "Note that beforeOnce, once and afterOnce global hooks are not permitted
+
+*/
+
+
+
 barba.hooks.after(() => {
   // console.log("after - setting GAn stuff ehre")
   ga('set', 'page', window.location.pathname);

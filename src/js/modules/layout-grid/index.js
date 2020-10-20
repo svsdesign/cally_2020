@@ -44,19 +44,12 @@ export default function init() {
     submissionname, //move elswhere
     $startbutton = $('.dev-layout-grid-toggle'),
 
-
     OgGridContent,// declare before use
     OgCoordinates;
     // console.log("layout-grid/index.js");
 
-    var startSaving = true; // declare 
-
-
-
-    // console.log("startSaving" +startSaving+"")
-
-    
-
+    var startSaving = true; // declare  - make sure this is killed after page changes aswell (chgekc if it keeps running)
+ 
   Packery.prototype.getShiftPositions = function (attrName) {
     // attrName = attrName || 'id';
     //
@@ -111,10 +104,6 @@ export default function init() {
     this.shiftLayout();
   };
  
-  //----------------------------------------
-  // The magic
-  //----------------------------------------
-
   $('form#grid').submit(function (e) {
     e.preventDefault();
     var _this = $(this),
@@ -170,12 +159,6 @@ export default function init() {
     return false;
   });
 
-
- 
-  
-  // TYPE: Repeater
-  //----------------------------------------
-
   var verifyItemsRepeater = function ($closestrepeater) {
     // var thisrepeater = = $('.repeater .remove-row');
     var $thisrepeater = $closestrepeater,
@@ -222,7 +205,6 @@ export default function init() {
     detectAttrChange();
 
   }// onSubmission()
-  
 
   function canvasChange(){
     console.log("canvasChange()");
@@ -1083,13 +1065,19 @@ export default function init() {
 
   } //initgriditems()
 
-  initgriditems(); // start initial init
-  hoverDiv($startbutton);//
-  onSubmission();// even listner for attr change
+
+  if($(body).hasClass('is-not-touch')){
+      
+    initgriditems(); // start initial init
+    hoverDiv($startbutton);//
+    onSubmission();// even listner for attr change
+    
+  } else{
+
+    console.log("is touch - don't load the grid functions")
+  }
 
 } //export default function init()
-
-
 
 export function removeClassByPrefix($this, prefix) {
   var regx = new RegExp('\\b' + prefix + '.*?\\b', 'g');
@@ -1412,7 +1400,6 @@ export function imageEdit(itemid) { // for new items
 
 } // function imageEdit($imagethumb)
 
-
 export function imageRemove(itemid) { // for new items
 
   // console.log("imageedelete function itemid" + itemid + "");
@@ -1437,7 +1424,6 @@ export function imageRemove(itemid) { // for new items
 
 
 } // function imageRemove($imagethumb)
-
 
 export function convertImgToDataURLviaCanvas(url, callback) {
   let img = new Image();
@@ -1502,9 +1488,7 @@ export function updateImageObject($thisitem, imagetype){
 
 }//export function updateImageObject()
 
-
 /* to do - delete the following stuff */
-
 /*
 Considerations:
 if more items are added or removed after the local files is saved, the layout will break - so ensure that I clear / reset /rewrite the files
@@ -1512,7 +1496,6 @@ or change the variable name (with the associated arrangment data) everything the
 
   /*   localStorage.setItem(
   this will require cookies + consent tools accordingly I  think*/
-
 /* use this if I don't use the above
     // make all grid-items draggable
     $grid.find('.layout-grid-item').each( function( i, gridItem ) {
@@ -1586,8 +1569,6 @@ https://github.com/airesvsg/acf-to-rest-api
 
 */
 
-
-
 export function localStorageSize(){
     
   var _lsTotal = 0,
@@ -1622,7 +1603,6 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
 
 }//export function localStorageSize()
 
-
 export function cleanGridContent($cleangrid){
 
   console.log("cleanGridContent($cleangrid)");
@@ -1646,7 +1626,6 @@ export function cleanGridContent($cleangrid){
   // localStorageSize(); // check if makes difference?
 
 } // function CleanGridContent ()
-
 
 export function gridImageOrientation($thisitem, thisimagewidth, thisimageheight) {
 
@@ -1756,7 +1735,6 @@ export function gridImageOrientation($thisitem, thisimagewidth, thisimageheight)
 
 
 } //  function gridimageorientation($thisitem)
-
 
 export function gridfade() {
   // review this function
