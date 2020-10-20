@@ -1042,39 +1042,42 @@ export default function init() {
       
       }//if (localStorage.getItem("gridContent") === null) 
 
-          $("#clear-local-storage").click(function () {
-
-          console.log("clearing local storage");
-          localStorage.removeItem('gridContent');
-          localStorage.removeItem('coordinates');
-       
-          location.reload();
       
-         }); //  $(".dev-toggle").click(function ( )
-      
-         $(".helper-icon").click(function () {
-
-            console.log("click helper icon");
-
-            $this = $(this);
-        
-            if ($('body').hasClass("helper-on")){
-              
-              $('body').removeClass("helper-on")
-
-            } else {
-              $('body').addClass("helper-on")
-
-            } //if  
-      
-         }); //  $(".helper-icon").click(function () 
       
 
-
-
-    }// if ($("body").hasClass("logged-in"))
+      }// if ($("body").hasClass("logged-in"))
   
+      //allow this click options regardless of user logged in or not
+
+    $("#clear-local-storage").click(function () {
+
+      console.log("clearing local storage");
+      localStorage.removeItem('gridContent');
+      localStorage.removeItem('coordinates');
     
+      location.reload();
+  
+      }); //  $(".dev-toggle").click(function ( )
+
+
+    $(".helper-icon").click(function () {
+
+      console.log("click helper icon");
+
+      // $this = $(this);
+  
+      if ($('body').hasClass("helper-on")){
+        
+        $('body').removeClass("helper-on")
+
+      } else {
+        $('body').addClass("helper-on")
+
+      } //if  
+
+   }); //  $(".helper-icon").click(function () 
+
+
     });
 
   } //initgriditems()

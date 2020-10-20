@@ -19,17 +19,17 @@
 			
 				<ul>
 					<li>
-						<a class="social-link" href="">
+						<a target="_blank" class="social-link" href="https://twitter.com/CultivatingClly">
 						<?php get_template_part( '/dist/svg/inline-twitter_svg' ); ?>						 
 						</a>
 					</li>
 					<li>
-						<a class="social-link" href="">
+						<a target="_blank" class="social-link" href="https://www.instagram.com/CultivatingCally/">
 						<?php get_template_part( '/dist/svg/inline-instagram_svg' ); ?>						 
 						</a>
 					</li>
 					<li>
-						<a class="social-link" href="">
+						<a target="_blank" class="social-link" href="https://www.facebook.com/Cultivatingcally">
 						<?php get_template_part( '/dist/svg/inline-facebook_svg' ); ?>						 
 						</a>
 					</li>

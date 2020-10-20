@@ -182,14 +182,22 @@ function loadjscssfile(filename, filetype) {
 });
 
 
-/*
+ 
 barba.hooks.once((data) => {
   console.log("once - all namespaces");
-  domReady(siteLoad);
+  // domReady(siteLoad);
+
+  
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-180964259-1');
+ 
 
 }); //barba.hooks.once((data) =>
 // "Note that beforeOnce, once and afterOnce global hooks are not permitted. - so what to do here
-*/
+ 
 
 // https://github.com/barbajs/barba/issues/51#issuecomment-531465899
 //applies to all namespaces:

@@ -32,7 +32,7 @@
 
 		<div class="grid-row-holder">
 
-			<form action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate grid-item grid-xs-12" target="_blank">
+			<form action="https://cultivatingcally.us2.list-manage.com/subscribe/post?u=052e57ce742dfa5b6604a8882&amp;id=e20f85a122" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate grid-item grid-xs-12" target="_blank">
 			<!--<form action="//inperspectiverecords.us7.list-manage.com/subscribe/post?u=1eb4408a7a26cc71023383a12&amp;id=2303a5b371" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate grid-item grid-xs-12" target="_blank"> -->
 
 				<div>
