@@ -131,41 +131,7 @@ function svs_admin_block_assets() {
 }
 add_action( 'enqueue_block_editor_assets', 'svs_admin_block_assets' );
 
-
-
-/* 
-
-TOD O - ensure the headroom scripts are added to the vendords
-
-function site_scripts() {
-
-wp_enqueue_script(
-    'headroom',
-    'https://cdnjs.cloudflare.com/ajax/libs/headroom/0.10.3/headroom.min.js',
-    array('jquery'),
-    false,
-    true
-);
-
-wp_enqueue_script(
-    'headroom-jquery',
-    'https://cdnjs.cloudflare.com/ajax/libs/headroom/0.10.3/jQuery.headroom.min.js',
-    array('jquery'),
-    false,
-    true
-);
  
-wp_enqueue_script( 'navigation', get_template_directory_uri() . '/assets/js/navigation.js', array('jquery'), '1.0.0', true );
-
-wp_enqueue_script( 'site', get_template_directory_uri() . '/assets/js/site.js', array('jquery'), false, true );
-
-}
-
-add_action( 'wp_enqueue_scripts', 'site_scripts' );
-*/
-
-
-
 /* ALLOW SVG UPLOADS*/
 	
 function cc_mime_types( $mimes ){
@@ -206,7 +172,7 @@ add_action( 'init', 'register_navigations' );
 /* End Add Navigations */
 
 
-/* Admin favicons  - TO DO - ensure files exist before adding php function */
+/* Admin favicons  - TO DO - ensure files exist before adding php function 
 
 function add_favicon() {
     $favicon_url = get_stylesheet_directory_uri();
@@ -224,7 +190,7 @@ function add_favicon() {
 //TO DO - ensure files exist before adding php function
 //add_action('login_head', 'add_favicon');
 //add_action('admin_head', 'add_favicon');
-
+*/
 
 /* End admin favicons */
 
@@ -280,9 +246,6 @@ add_action( 'enqueue_block_editor_assets', 'legit_block_editor_styles' );
 
 /* END ADMIN BLOCKS */
 
-
-
-
 add_filter('admin_body_class', 'wpse_320244_admin_body_class');
 
 function wpse_320244_admin_body_class($classes) {
@@ -321,10 +284,6 @@ function wpse_320244_admin_body_class($classes) {
 
     return $classes;
 }
-
-
-
-
 
 //start svs added - as part of acf api:
 function _checked( $haystack, $current, $echo = true ) {
@@ -371,50 +330,52 @@ function modify_walker_data_attr( $item_output, $item, $depth, $args )
 }
 //ACF COMMENTS
 
- 
-	//news
-	function my_news_comment_template( $comment, $args, $depth ) {
- 	?>
- 
-		<div class="comment">
 
-			<?php  
-			// $comment_id = "comment_".$comment."";
-			$testfield = get_field('test', $comment);
-			if( $testfield ): ?>
- 		
-			<?php echo $testfield ;?>
 
-			<?php endif; ?>
-			<br>
-			<?php 
-			$testfield2 = get_field('field_test', $comment);
-			if( $testfield2 ): ?>
- 
- 			<?php echo $testfield2 ;?>
+/*
+//news
+function my_news_comment_template( $comment, $args, $depth ) {
+?>
 
-			<?php endif; ?>
-			<br>
-			<?php
-			$tags = get_field('test_tag', $comment);?>
-				<?php if( $tags ): ?>
- 			<ul>
-			 <?php echo $tags ;?>
+	<div class="comment">
 
-			</ul>
-			<br>
-			<?php endif;  ?>
+		<?php  
+		// $comment_id = "comment_".$comment."";
+		$testfield = get_field('test', $comment);
+		if( $testfield ): ?>
+	
+		<?php echo $testfield ;?>
 
-			<?php if( get_field('image_test', $comment) ): ?>
- 				<img src="<?php the_field('image_test', $comment); ?>" />
-			
-			<?php endif; ?>
-		
-		</div>
-		
+		<?php endif; ?>
+		<br>
+		<?php 
+		$testfield2 = get_field('field_test', $comment);
+		if( $testfield2 ): ?>
+
+		<?php echo $testfield2 ;?>
+
+		<?php endif; ?>
+		<br>
 		<?php
-	}
- 
+		$tags = get_field('test_tag', $comment);?>
+			<?php if( $tags ): ?>
+		<ul>
+			<?php echo $tags ;?>
+
+		</ul>
+		<br>
+		<?php endif;  ?>
+
+		<?php if( get_field('image_test', $comment) ): ?>
+			<img src="<?php the_field('image_test', $comment); ?>" />
+		
+		<?php endif; ?>
+	
+	</div>
+	
+	<?php
+}
+
 	
 	
 // grid template
@@ -452,6 +413,8 @@ function modify_walker_data_attr( $item_output, $item, $depth, $args )
 
 
 //END ACF COMMENTS
+
+*/
 
 
 

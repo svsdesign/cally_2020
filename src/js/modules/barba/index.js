@@ -192,7 +192,7 @@ barba.hooks.once((data) => {
 
 
 barba.hooks.after(() => {
-  // console.log("after - setting GAn stuff ehre")
+  // console.log("after - setting GAn stuff ehre") - but this assumes cookie consent was checked
   ga('set', 'page', window.location.pathname);
   ga('send', 'pageview');
 });

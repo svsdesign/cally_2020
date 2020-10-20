@@ -1067,7 +1067,7 @@ export default function init() {
 
 
   if($('body').hasClass('is-not-touch')){
-    console.log("is not touch - load the grid functions")
+    // console.log("is not touch - load the grid functions")
   
     initgriditems(); // start initial init
     hoverDiv($startbutton);//
