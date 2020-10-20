@@ -1066,12 +1066,13 @@ export default function init() {
   } //initgriditems()
 
 
-  if($(body).hasClass('is-not-touch')){
-      
+  if($('body').hasClass('is-not-touch')){
+    console.log("is not touch - load the grid functions")
+  
     initgriditems(); // start initial init
     hoverDiv($startbutton);//
     onSubmission();// even listner for attr change
-    
+
   } else{
 
     console.log("is touch - don't load the grid functions")
