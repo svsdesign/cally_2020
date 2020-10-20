@@ -183,7 +183,7 @@ TO DO: ensure browser prefixes specified
   // small
   @mixin type-small{
   font-family: $light-font-family; 
-  
+  font-weight: initial;
   @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*0.75, map-get($fontsize, lg)*0.75); // fixed sizing 
   @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*0.75, map-get($fontsize, xxl)*0.75); // fixed sizing 
   
@@ -194,6 +194,7 @@ TO DO: ensure browser prefixes specified
   // mmedium
   @mixin type-medium{
   font-family: $medium-font-family;
+  font-weight: initial;
   /*
    @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*1, map-get($fontsize, lg)*1); // fixed sizing 
     @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*1, map-get($fontsize, xxl)*1); // viewport sizing 
@@ -207,7 +208,7 @@ TO DO: ensure browser prefixes specified
   
   @mixin h2{
   font-family: $medium-font-family;
-  
+  font-weight: initial;
   @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*1, map-get($fontsize, lg)*1); // fixed sizing 
   @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*1, map-get($fontsize, xxl)*1); // fixed sizing 
   
@@ -233,7 +234,7 @@ TO DO: ensure browser prefixes specified
   @mixin type-large{
   
   font-family: $light-font-family;
-  
+  font-weight:initial;
   @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*2.5, map-get($fontsize, lg)*2.5); // fixed sizing 
   @include fluid-type(font-size, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($fontsize, lg)*2.5, map-get($fontsize, xxl)*2.5); //  viewport sizing
   
@@ -242,7 +243,7 @@ TO DO: ensure browser prefixes specified
   }
 
   @mixin type-news-med-large{
-  
+    font-weight: initial;
     font-family: $light-font-family;
     
     @include fluid-type(font-size, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($fontsize, xs)*1.5, map-get($fontsize, lg)*1.5); // fixed sizing 
@@ -255,12 +256,14 @@ TO DO: ensure browser prefixes specified
   
   @mixin h3
    {
+    font-weight: initial;
   //font-family: $bold-font-family;
   font-family: $medium-font-family;
   }
   
   @mixin h4
   {
+    font-weight: initial;
   font-family: $light-font-family; 
   }
    
