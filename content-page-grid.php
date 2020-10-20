@@ -70,32 +70,15 @@
 
     else:  // not logged in 
 
-//gonzales example; local storage?
- /*
-    $edit = true;
-	
-	if ( $edit ) {
-		global $post;
-
-		$post_id = get_the_ID();// was1;
-		$url     = site_url( 'wp-json/acf/v3/post/' ) . $post_id;
-		$post    = get_post( $post_id );
-		
-		setup_postdata( $post );
-	} else {
-		$url = site_url( 'wp-json/wp/v3/posts' );
-    }*/
-
     $edit = true;
     $post_id = get_the_ID();
     $url     = site_url( 'wp-json/acf/v3/posts/' ) . $post_id;
  
     // $url     = site_url( 'wp-json/acf/v3/posts/' ) . $post_id ."?_wpnonce=<nonce>"; / 
     // $url     = site_url( 'wp-json/acf/v3/posts/' ) . $post_id ."?_wpnonce=&lt;nonce&gt;";
-	$post  = get_post( $post_id );
+  	$post  = get_post( $post_id );
       
- 
- 
+
     endif;//is_user_logged_in() ?>
 
 <div class="touch-notification-wrapper">
@@ -133,6 +116,33 @@
       </a> 
       
     </div>
+
+    <div class="helper-holder" data-html2canvas-ignore="true">
+      
+      <div class="helper-icon-wrapper">
+        <div class="helper-icon">
+          <div class="text">
+                ?
+          </div>
+        </div>
+      </div><!-- .helper-icon-wrapper -->
+      
+      <div class="helper-window-wrapper">
+        <div class="helper-window">
+ 
+        <div class="help-gif">   
+        
+          <img src="<?php echo get_template_directory_uri() ?>/dist/img/freeling-bg-outer_v5.jpg"/>
+
+        </div>
+        <div class="help-text">
+        </div>   
+
+        </div><!-- .helper-holder -->
+      </div><!-- .helper-window-wrapper -->
+
+    </div><!-- .helper-holder -->
+
 
     <div id="size-wrap"><!--this shouidl only be this class once the deve toggle has been clicked -->
     <!-- <div id="size-wrap" class="grid-container"> this shouidl only be this class once the deve toggle has been clicked -->

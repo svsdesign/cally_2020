@@ -150,8 +150,7 @@ function loadjscssfile(filename, filetype) {
          var $thisscroll = $(window.location.hash);
       
          setTimeout(function(){
-          // console.log("start fucking scroll you cunt");
-
+         
             $('html, body').animate({
 
               scrollTop: $thisscroll.offset().top// top of generated image

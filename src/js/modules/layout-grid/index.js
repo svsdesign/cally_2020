@@ -1040,8 +1040,9 @@ export default function init() {
         //init function of sorts
           initiatepackery($thisgrid);
       
-    
-        $("#clear-local-storage").click(function () {
+      }//if (localStorage.getItem("gridContent") === null) 
+
+          $("#clear-local-storage").click(function () {
 
           console.log("clearing local storage");
           localStorage.removeItem('gridContent');
@@ -1051,8 +1052,25 @@ export default function init() {
       
          }); //  $(".dev-toggle").click(function ( )
       
+         $(".helper-icon").click(function () {
 
-      }//if (localStorage.getItem("gridContent") === null) 
+            console.log("click helper icon");
+
+            $this = $(this);
+        
+            if ($('body').hasClass("helper-on")){
+              
+              $('body').removeClass("helper-on")
+
+            } else {
+              $('body').addClass("helper-on")
+
+            } //if  
+      
+         }); //  $(".helper-icon").click(function () 
+      
+
+
 
     }// if ($("body").hasClass("logged-in"))
   
