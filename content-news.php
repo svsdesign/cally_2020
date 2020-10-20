@@ -112,6 +112,7 @@
 	<?php // If comments are open
 		if ( comments_open()):
 			//if we have at least one comment, load up the comment template.
+			//what if we do want to display some existn comments but have it closed - review maybe
 			// if (get_comments_number() ) :?>
 
 			<div class="comments-wrap">
