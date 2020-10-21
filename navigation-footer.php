@@ -107,7 +107,7 @@
 					'container_class' =>'menu-footer grid-item grid-xs-12 grid-md-7 grid-lg-8',
 					) );?>
 					
-					<div class="svs-branding grid-item grid-xs-6 grid-md-3 grid-lg-2">
+			<!--		<div class="svs-branding grid-item grid-xs-6 grid-md-3 grid-lg-2">
 					
 						<div class="svs-wrap">
 							by:
@@ -115,7 +115,7 @@
 							svs.design
 							</a>
 						</div>
-
+					-->
 
 					</div>
 					<div class="copyright grid-item grid-xs-6 grid-md-2 grid-lg-2">
