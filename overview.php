@@ -140,6 +140,4 @@ $ew_activeclass = "page-is-active section-is-active";
 
 </div><!-- .project-overview -->
 <?php else:?>
-	svs to insert better home page section here
-
 <?php endif;?>
