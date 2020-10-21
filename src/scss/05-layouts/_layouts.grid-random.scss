@@ -1272,6 +1272,8 @@
         .exports{
         display: none;// no need to show this atm; untill preview button pressed
 
+       
+
             #canvas-wrap{
             position:relative;
 
@@ -1324,6 +1326,10 @@
 
         
         }//.exports
+
+        .more-interaction{
+         display:none;
+        }
       
         // onluy apply these values athe desired layout nbreakpoint
 
@@ -2679,9 +2685,12 @@
             display:none;
             }
 
+
+
             #preview-label{
             display:none
             }
+
             .exports{
             width: 100%;
             flex: 0 0 100%;
@@ -2697,7 +2706,8 @@
                     max-height: initial;
                     }
                 }
-            }// .exports
+
+            }// exports
 
             .export-options{
                 width: 100%;
@@ -2751,7 +2761,22 @@
 
             }// .export-options    
 
+
+            .more-interaction{
+                display:block!important;
+                @include fluid-type(
+                    margin-top,
+                    map-get($breakpoints, xs),
+                    map-get($breakpoints,xxl),
+                    map-get($lineheight, xs) * 2,
+                    map-get($lineheight,xxl) * 2
+                ); // fixed sizing
+      
+            }
+
         }//body.can-edit.dev-layout-grid-on.submission-previewed.form-submitted
+
+
 
         //if edit active; ensure nothing obscured
         &.edit-active{

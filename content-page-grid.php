@@ -185,7 +185,7 @@
 
        <?php get_template_part( '/dist/svg/inline-move_arrow_svg' ); ?>						 
         </div>
-       to Move an item
+       to move an item
        </div>   
 
       </div><!-- .helper-item-1 -->
@@ -712,6 +712,7 @@
 
 <div class="submission-form-wrap">  
 
+
     <div class="exports-wrap">
 
       <!--<div class="submission-loader-wrap" data-html2canvas-ignore="true"> -->
@@ -762,6 +763,9 @@
                   Start Again
                 </a> 
 
+
+            
+
               </div><!--.export-options-->
             
             </div><!--.grid-row-holder -->
@@ -799,5 +803,17 @@
 
     </div><!--.form-wrap -->
 
+
+    <div class="more-interaction">
+    
+      <div class="grid-container">
+
+      Why not become part of the conversation?
+                      
+      <a class="button-link" data-barba-prevent="self" href="http://wordpress-456974-1437931.cloudwaysapps.com/news/freeling-street-comments/">Click here</a>
+    
+      </div><!--grid-container"-->
+
+    </div>
 
 </div><!--.submission-form-wrap -->
