@@ -71,21 +71,21 @@
 						
 						<ul>
 							<li>
-								<a class="proj-sponsor-link" href="">
+								<a class="proj-sponsor-link" href="https://www.islington.gov.uk/">
  								<?php get_template_part( '/dist/svg/inline-islington-council_svg' ); ?>						 
 
 								<?php //get_template_part( '/dist/svg/inline-twitter_svg' ); ?>						 
 								</a>
 							</li>
 							<li>
-								<a class="proj-sponsor-link" href="">
+								<a class="proj-sponsor-link" href="https://islingtonplay.org.uk/">
  								<?php get_template_part( '/dist/svg/inline-ipa_svg' ); ?>						 
 
 								<?php //get_template_part( '/dist/svg/inline-twitter_svg' ); ?>						 
 								</a>
 							</li>
 							<li>
-								<a class="proj-sponsor-link" href="">
+								<a class="proj-sponsor-link" href="https://www.london.gov.uk/what-we-do/environment/parks-green-spaces-and-biodiversity/greener-city-fund">
  								<?php get_template_part( '/dist/svg/inline-mayor-fund_svg' ); ?>						 
  								<?php //get_template_part( '/dist/svg/inline-twitter_svg' ); ?>						 
 								</a>

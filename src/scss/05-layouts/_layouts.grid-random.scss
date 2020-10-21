@@ -2248,12 +2248,74 @@
                         opacity:1;
                         position:relative;
                         pointer-events: initial;
+                        height:100%;
 
-                            img{
-                                width: 75vw;
-                                height:auto;
-                                margin: auto;
-                                display: block;
+                            .helper-window{
+                            width: 80vw;
+                            margin: auto;
+                            height:100%;
+                            align-items: center;
+                            display: flex;
+                            flex-basis: 100%;
+
+
+                                .helper-item{
+                                // width:33.33%;
+                                // float:left;
+                                display:flex;
+                                flex-basis: 100%;
+
+                                width: 33.34%;
+                                }
+
+                                img{
+                                    width: 100%;
+                                    height:auto;
+                                    margin: auto;
+                                    display: block;
+                                }
+
+                                .help-text{
+                                background-color:nth($scheme, 2);
+                                color:nth($scheme, 3);
+                                flex-basis: 100%;
+
+                                    .svg-icon{
+                                    display:initial;
+ 
+                                    @include fluid-type(
+                                        width height,
+                                        map-get($breakpoints, xs),
+                                        map-get($breakpoints,xxl),
+                                        map-get($lineheight, xs) * 0.5,
+                                        map-get($lineheight,xxl) * 0.5
+                                    ); // fixed sizing
+                                    
+                                        svg{
+                                            @include fluid-type(
+                                                width height,
+                                                map-get($breakpoints, xs),
+                                                map-get($breakpoints,xxl),
+                                                map-get($lineheight, xs) * 0.5,
+                                                map-get($lineheight,xxl) * 0.5
+                                            ); // fixed sizing
+
+                                        }
+
+                                    }
+                                    
+                                    svg,
+                                    path,
+                                    polygon{
+                                    fill:nth($scheme, 3);
+                                    }
+
+                                }
+                                .help-gif{
+                                flex-basis: 100%;
+                                background-color:nth($scheme, 2);   
+                               }
+
                             }
                         }
                 

@@ -133,17 +133,67 @@
       </div><!-- .helper-icon-wrapper -->
       
       <div class="helper-window-wrapper">
-        <div class="helper-window">
+        <div class="helper-window ">
  
-        <div class="help-gif">   
-        
-          <img src="<?php echo get_template_directory_uri() ?>/dist/img/freeling-explainer-v1.gif"/>
+       
+        <div class="helper-item helper-item-1 grid-item">
+       
+       <div class="help-gif grid-item">   
+       
+         <img src="<?php echo get_template_directory_uri() ?>/dist/img/edit-sample.gif"/>
 
+       </div>
+       <div class="help-text grid-item">
+
+       Click <b> Edit </b>to change an item
+       </div>   
+
+      </div><!-- .helper-item-1 -->
+
+
+      <div class="helper-item helper-item-2 grid-item">
+       
+       <div class="help-gif grid-item">   
+       
+         <img src="<?php echo get_template_directory_uri() ?>/dist/img/rotate-sample.gif"/>
+
+       </div>
+       <div class="help-text grid-item">
+ 
+       Click
+       <div class="svg-icon">
+       <?php get_template_part( '/dist/svg/inline-rotate_arrow_svg' ); ?>						 
+       </div>
+
+       to rotate an item
+       </div>   
+
+      </div><!-- .helper-item-1 -->
+
+
+      <div class="helper-item helper-item-1 grid-item">
+       
+       <div class="help-gif grid-item">   
+       
+         <img src="<?php echo get_template_directory_uri() ?>/dist/img/drag-sample.gif"/>
+
+       </div>
+       <div class="help-text grid-item">
+
+       Click and hold 
+       <div class="svg-icon">
+
+       <?php get_template_part( '/dist/svg/inline-move_arrow_svg' ); ?>						 
         </div>
-        <div class="help-text">
-        </div>   
+       to Move an item
+       </div>   
 
-        </div><!-- .helper-holder -->
+      </div><!-- .helper-item-1 -->
+
+
+      
+
+        </div><!-- .helper-window -->
       </div><!-- .helper-window-wrapper -->
 
     </div><!-- .helper-holder -->
