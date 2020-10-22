@@ -115,9 +115,9 @@
 							svs.design
 							</a>
 						</div>
-					-->
+				
 
-					</div>
+					</div> 	-->
 					<div class="copyright grid-item grid-xs-6 grid-md-2 grid-lg-2">
 
 					&copy; <?php echo date("Y"); ?>
