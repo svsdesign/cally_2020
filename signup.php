@@ -21,7 +21,7 @@
 			</div>
 
 			<div class="sub-title grid-item grid-xs-12 grid-md-6">
-			Receive the latest news and updates on the project and for more opportunities to get involved to create greener community. 
+			Receive the latest news and updates on the project and for more opportunities to get involved to create a greener community. 
 			</div><!--.sub-title-->
 
 		<!--</div> .grid-row-holder--> 
