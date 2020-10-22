@@ -32,9 +32,15 @@ $br_activeclass = "page-is-active section-is-active";
 $ew_activeclass = "page-is-active section-is-active";
 ?>
 
+<?php elseif( is_page('get-involved') ):
+//$ew_activeclass = "page-is-active section-is-active";
+?>
+
 <?php endif;?>
  
 <div class="sub-navigation-wrap">
+
+<?php if(! is_page('get-involved') )://don't display these linkson get involved page ?>
 
 	<div class="sub-navigation">
 
@@ -83,61 +89,102 @@ $ew_activeclass = "page-is-active section-is-active";
 
 	</div><!-- .sub-navigation -->
 
+<?php endif;?>
+
 </div><!-- .sub-navigation-wrap -->
 <?php if(! is_page('home') ): ?>
-<div class="project-overview">
 
-	<?php if($introtext):?>
+	<?php if( is_page('get-involved') )://don't display these linkson get involved page ?>
 
-		<div class="intro-wrap grid-item">
+		<div class="project-overview">
 
-			<h1 class="title intro">
+			<?php if($introtext):?>
 
-				<?php echo $introtext; ?>
+				<div class="intro-wrap grid-item">
 
-			</h1><!-- .title-intro -->	
+					<h1 class="title intro">
 
-		</div><!-- .intro-wrap-->
+						<?php echo $introtext; ?>
 
-	<?php endif; // $introtext?>
+					</h1><!-- .title-intro -->	
 
-	<div class="overview-images">
+				</div><!-- .intro-wrap-->
+
+			<?php endif; // $introtext?>
+
+			<div class="overview-images">
+
+				<ul class="sections">
+
+					<li class="overview-bg bg-is-active">
+						<div class="area" style="background-position:center; background-image: url(<?php echo get_template_directory_uri() ?>/dist/img/communal-garden.jpg);">
+						</div>
+					</li>
+
+				</ul>
+				
+			</div><!-- .overview-images -->
+
+		</div><!-- .project-overview -->
+
+	<?php else:?>
+
+		<div class="project-overview">
+
+			<?php if($introtext):?>
+
+				<div class="intro-wrap grid-item">
+
+					<h1 class="title intro">
+
+						<?php echo $introtext; ?>
+
+					</h1><!-- .title-intro -->	
+
+				</div><!-- .intro-wrap-->
+
+			<?php endif; // $introtext?>
+
+			<div class="overview-images">
+
+				<ul class="sections">
+
+					<li data-section-title="bridgeman-road"
+						class="<?php if (isset($br_activeclass)): { echo $br_activeclass;}endif;?>">
+						<a href="<?php echo home_url();?>/bridgeman-road/">
+						</a>
+						<div class="area bridgeman-area" style="background-image: url(<?php echo get_template_directory_uri() ?>/dist/img/overview-bridgeman-square.png);">
+						</div>
+					</li>
+				
+					<li data-section-title="freeling-street"
+						class="<?php if (isset($fs_activeclass)): { echo $fs_activeclass;}endif;?>">
+						<a data-barba-prevent="self" href="<?php echo home_url();?>/freeling-street/">
+						</a>
+						<div class="area freeling-area" style="background-image: url(<?php echo get_template_directory_uri() ?>/dist/img/overview-freeling-square.png);">
+						</div>
+					</li>
+					
+					<li data-section-title="estate-walk"
+						class="<?php if (isset($ew_activeclass)): { echo $ew_activeclass;}endif;?>">
+						<a href="<?php echo home_url();?>/estate-walk/">
+						</a>
+						<div class="area estate-area" style="background-image: url(<?php echo get_template_directory_uri() ?>/dist/img/overview-walkway-square.png);">
+						</div>
+					</li>
+
+					<li class="overview-bg bg-is-active">
+						<div class="area" style="background-image: url(<?php echo get_template_directory_uri() ?>/dist/img/overview-grey-square.jpg);">
+						</div>
+					</li>
+
+				</ul>
+				
+			</div><!-- .overview-images -->
+
+		</div><!-- .project-overview -->
+
+	<?php endif;// if( is_page('get-involved') )?>
 	
-		<ul class="sections">
 
-			<li data-section-title="bridgeman-road"
-				class="<?php if (isset($br_activeclass)): { echo $br_activeclass;}endif;?>">
-				<a href="<?php echo home_url();?>/bridgeman-road/">
- 				</a>
-				<div class="area bridgeman-area" style="background-image: url(<?php echo get_template_directory_uri() ?>/dist/img/overview-bridgeman-square.png);">
-				</div>
-			</li>
-		
-			 <li data-section-title="freeling-street"
-				 class="<?php if (isset($fs_activeclass)): { echo $fs_activeclass;}endif;?>">
-				 <a data-barba-prevent="self" href="<?php echo home_url();?>/freeling-street/">
- 				</a>
-				 <div class="area freeling-area" style="background-image: url(<?php echo get_template_directory_uri() ?>/dist/img/overview-freeling-square.png);">
-				</div>
-			</li>
-			
-			 <li data-section-title="estate-walk"
-			 	class="<?php if (isset($ew_activeclass)): { echo $ew_activeclass;}endif;?>">
-				 <a href="<?php echo home_url();?>/estate-walk/">
- 				</a>
-				<div class="area estate-area" style="background-image: url(<?php echo get_template_directory_uri() ?>/dist/img/overview-walkway-square.png);">
-				</div>
-			</li>
-
-			<li class="overview-bg bg-is-active">
-				 <div class="area" style="background-image: url(<?php echo get_template_directory_uri() ?>/dist/img/overview-grey-square.jpg);">
-				</div>
-			</li>
-
-		</ul>
-		
-	</div><!-- .overview-images -->
-
-</div><!-- .project-overview -->
-<?php else:?>
-<?php endif;?>
+<?php endif;//if(! is_page('home') ):  ?>

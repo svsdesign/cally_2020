@@ -261,10 +261,6 @@
 
         }//.sub-navigation-wrap
 
-
-        
-
-
         //About +  Plan
         &.page-id-101 // local
         {
@@ -301,8 +297,6 @@
 
         }
 
-
-
         //freeling street:
         &.page-id-104 // local
         {
@@ -332,7 +326,6 @@
             }
 
         }
-
 
         //estate walk:
         &.page-id-275 // local
@@ -366,9 +359,47 @@
 
         }
 
-          //bridgeman road
-          &.page-id-271 // local
-          {
+        //bridgeman road
+        &.page-id-271 // local
+        {
+        .project-overview{
+                    
+            .intro-wrap{
+            
+            }
+
+            .overview-images{
+            // background:red;
+            position:relative;
+            height:var(--site-height);       
+            width: 100vw;
+            margin-left:-10vw;
+            margin-right: -10vw;
+                @include fluid-type(margin-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*-4, map-get($lineheight, lg)*-4); // fixed sizing // offset grid 
+            @include fluid-type(margin-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*-4, map-get($lineheight, xxl)*-4); // viewport sizing
+            
+                .area{
+                // background-size:175vw auto;
+                background-position: bottom left;
+    
+                }
+
+            }
+        }
+        
+
+        }
+
+
+
+        //Get involved
+        &.page-id-2 // local
+        {
+
+         /*   .sub-navigation-wrap{
+            min-height: 100vw; // ensures we can see everything; no cropping goibng on
+            }
+*/
             .project-overview{
                       
                 .intro-wrap{
@@ -382,20 +413,32 @@
                 width: 100vw;
                 margin-left:-10vw;
                 margin-right: -10vw;
-                 @include fluid-type(margin-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*-4, map-get($lineheight, lg)*-4); // fixed sizing // offset grid 
+                @include fluid-type(margin-top, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs)*-4, map-get($lineheight, lg)*-4); // fixed sizing // offset grid 
                 @include fluid-type(margin-top, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg)*-4, map-get($lineheight, xxl)*-4); // viewport sizing
-              
+                // min-height: 100vw; // ensures we can see everything; no cropping goibng on
+
                   .area{
                     // background-size:175vw auto;
-                    background-position: bottom left;
+                    // background-position: center center;
         
                     }
 
                 }
+            }//project overview
+
+            .sub-navigation-wrap{
+                // border: 1px solid #00800047; //delete eventually
+                position: sticky;
+                height:var(--site-height);
+                top:var(--site-height);
+                display: flex;
+                z-index: 8;//ensure below the page loader
+                pointer-events: none;
+
             }
-           
-  
-          }
+
+        }
+
 
 
           &.horizontal{

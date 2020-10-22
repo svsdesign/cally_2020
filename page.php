@@ -29,6 +29,12 @@ if ( have_posts() ) :?>
 		 
 		  		get_template_part( 'content-page' );
 
+			elseif( is_page('get-involved') ): ?>
+
+				<?php
+				get_template_part( 'overview' );
+				get_template_part( 'content-page' );
+
 			else: /* other pages - use same template as Privacy Policy */?>
 			
  			<?php get_template_part( 'overview' ); // ensure this only displayed on teh appropriate pages

@@ -811,7 +811,7 @@
       <h1 class="title intro">
         Want to join the Freeling Street discussion?
                       
-        <a class="button-link" data-barba-prevent="self" href="https://cultivatingcally.com/news/freeling-street-comments/">Click here</a>
+        <a class="button-link" data-barba-prevent="self" href="<?php echo home_url();?>/news/freeling-street-comments/">Click here</a>
       </h1>
 
       </div><!--grid-container"-->
