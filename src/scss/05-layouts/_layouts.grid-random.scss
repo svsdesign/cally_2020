@@ -389,7 +389,7 @@
         /* ---- grid ---- */
 
         .grid {
-        max-width: 100vw; //review
+        max-width: 80vw; //this was 100vw - but why!?
         width: 100%; //review - this will cause issue in the gutenber UI
         // overflow: visible;// so vertical ofsett can be seend
         // overflow: hidden; // otherwise horizontal offset overflows
@@ -2762,7 +2762,7 @@
             }// .export-options    
 
 
-            .more-interaction{
+             .more-interaction{
                 display:block!important;
                 @include fluid-type(
                     margin-top,

@@ -265,32 +265,10 @@ export default function init() {
        console.log("delete existing image");
        $('#export-image-wrap').find('img').remove(); // delete existing img
     }
-    // Way to increase resolution of the image generated via toDataURL
-    //https://github.com/niklasvh/html2canvas/issues/241
-    // https://stackoverflow.com/questions/18316065/set-quality-of-png-with-html2canvas
-            
 
-    // delete this:
-    //https://stackoverflow.com/questions/18935518/on-render-in-html2canvas-the-page-is-scrolled-to-the-top
-    // review this - to ensure position is relative maybe?
-    // window.scrollTo(0, 0); // review thgus
-    /*
-
-      Unsupported CSS properties
-      These CSS properties are NOT currently supported by html2canvas
-
-      Amongst others:
-      box-shadow <<< NOTE THIS!!!
-
-    // end delete this - if working
-
-    */
-  // console.log("Window.innerWidth = " + window.innerWidth +"")
+    
      var thescale =  (1 / window.innerWidth)*1000;
-    //  console.log("thescale = " + thescale +"")
-  
-        // theheight = 
-    //  html2canvas(document.querySelector("#grid-wraps"), {
+ 
       html2canvas(document.querySelector(".grid-layer"), {
 
 // https://makitweb.com/take-screenshot-of-webpage-with-html2canvas/
@@ -734,6 +712,8 @@ export default function init() {
                console.log("$grid.on( 'dragItemPositioned - logged in'");
                 // console.log("positions" +positions+ "");
 
+                $grid.packery('layout').trigger('layoutComplete');
+
                 // save drag positions
                 var positions = $grid.packery('getShiftPositions', 'data-item-id');
                 // from local storage:
@@ -1045,7 +1025,7 @@ export default function init() {
         //allow clicking on icon + also full area once open
     $(".helper-icon, .helper-window").click(function () {
 
-      console.log("click helper icon");
+      // console.log("click helper icon");
 
       // $this = $(this);
   
@@ -1074,8 +1054,7 @@ export default function init() {
     onSubmission();// even listner for attr change
 
   } else{
-
-    console.log("is touch - don't load the grid functions")
+    //console.log("is touch - don't load the grid functions")
   }
 
 } //export default function init()
