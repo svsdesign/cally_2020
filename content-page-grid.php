@@ -120,7 +120,7 @@
     <div class="helper-holder" data-html2canvas-ignore="true">
       
       <div class="helper-icon-wrapper">
-        <div class="helper-icon">
+        <div class="helper-icon pulse">
           
           <div class="text text-off">
               ?
@@ -761,10 +761,7 @@
 
                 <a href="<?php the_permalink(); ?>" id="reload-page" type="button" class="btn btn-primary download-image grid-xs-12">
                   Start Again
-                </a> 
-
-
-            
+                </a>     
 
               </div><!--.export-options-->
             

@@ -1034,7 +1034,9 @@ export default function init() {
         $('body').removeClass("helper-on")
 
       } else {
-        $('body').addClass("helper-on")
+      
+        $('body').addClass("helper-on");
+        $(".helper-icon").removeClass("pulse");
 
       } //if  
 

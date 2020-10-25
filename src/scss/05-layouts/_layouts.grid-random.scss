@@ -350,10 +350,6 @@
             // background-color: red;
             width: 100%;
 
-
-
-            
-
             .grid-layer {
                 position: fixed;
                 opacity: 0;
@@ -1355,50 +1351,52 @@
 
                 .helper-icon-wrapper{
                 pointer-events: initial;
+                position:absolute;
+                z-index:2;
+                bottom:5vw;
+                left:5vw;
 
-                    position:absolute;
-                    z-index:2;
-                    @include fluid-type(
-                        top left,
-                        map-get($breakpoints, xs),
-                        map-get($breakpoints,xxl),
-                        map-get($lineheight, xs) *0.25,
-                        map-get($lineheight,xxl) *0.25
-                    );
-
+           /*     @include fluid-type(
+                    left,
+                    map-get($breakpoints, xs),
+                    map-get($breakpoints,xxl),
+                    map-get($lineheight, xs) *0.25,
+                    map-get($lineheight,xxl) *0.25
+                );
+                */
                     .helper-icon{
                     pointer-events: initial;
-
                     border-radius: 50%;
                     border: 4px solid nth($scheme, 3);
                     float:left;
                     font-family:$bold-font-family;
-                    @include fluid-type(
-                        height width,
-                        map-get($breakpoints, xs),
-                        map-get($breakpoints,xxl),
-                        map-get($lineheight, xs) * 1.5,
-                        map-get($lineheight,xxl) * 1.5
-                    );
-
-                    @include fluid-type(
-                        line-height,
-                        map-get($breakpoints, xs),
-                        map-get($breakpoints,xxl),
-                        map-get($fontsize, xs) *1.625,
-                        map-get($fontsize,xxl) *1.625
-                    );
-                    @include fluid-type(
-                        font-size,
-                        map-get($breakpoints, xs),
-                        map-get($breakpoints,xxl),
-                        map-get($fontsize, xs) *1,
-                        map-get($fontsize,xxl) *1
-                    );
                     color:nth($scheme, 3);
                     background:nth($scheme, 2);
                     text-align:center;
                     cursor:pointer;
+
+                        @include fluid-type(
+                            height width,
+                            map-get($breakpoints, xs),
+                            map-get($breakpoints,xxl),
+                            map-get($lineheight, xs) * 1.5,
+                            map-get($lineheight,xxl) * 1.5
+                        );
+                        @include fluid-type(
+                            line-height,
+                            map-get($breakpoints, xs),
+                            map-get($breakpoints,xxl),
+                            map-get($fontsize, xs) *1.625,
+                            map-get($fontsize,xxl) *1.625
+                        );
+                        @include fluid-type(
+                            font-size,
+                            map-get($breakpoints, xs),
+                            map-get($breakpoints,xxl),
+                            map-get($fontsize, xs) *1,
+                            map-get($fontsize,xxl) *1
+                        );
+              
 
                         .text{
                         pointer-events:none;
@@ -1412,8 +1410,11 @@
 
                         }
 
+                        &.pulse {
+                        animation: pulse 2s ease 0s infinite;
+                        }
+                            
                     }
-
                 }
                 .helper-window-wrapper{
                 opacity:0px;
@@ -2250,6 +2251,7 @@
                             }
 
                         }//.helper-icon-wrapper
+
                         .helper-window-wrapper{
                         opacity:1;
                         position:relative;
@@ -2327,7 +2329,6 @@
                 
                     }//helper-holder
                 
-
 
             }//grid-layer
 

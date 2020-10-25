@@ -81,6 +81,7 @@ Author URI: http://svs.design
     h1.intro{
     @include type-large;
     width: 100%;// review?
+    
     @include fluid-type(padding-bottom, map-get($breakpoints, xs), map-get($breakpoints, lg), map-get($lineheight, xs), map-get($lineheight, lg)); // px sizing
     @include fluid-type(padding-bottom, map-get($breakpoints, lg), map-get($breakpoints, xxl), map-get($lineheight, lg), map-get($lineheight, xxl)); // viewport sizing
 
