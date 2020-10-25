@@ -72,7 +72,7 @@
 						<ul>
 							<li>
 								<a class="proj-sponsor-link" href="https://www.islington.gov.uk/">
- 								<?php get_template_part( '/dist/svg/inline-islington-council_svg' ); ?>						 
+ 								<?php get_template_part( '/dist/svg/inline-supported-by-islington-council_svg' ); ?>						 
 
 								<?php //get_template_part( '/dist/svg/inline-twitter_svg' ); ?>						 
 								</a>
