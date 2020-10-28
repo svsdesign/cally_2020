@@ -10,23 +10,29 @@
  */
 ?>
  
-<?php the_content();?>
 
- 
-<?php
-$image_data = get_field('image-data_hidden_field'); //text
-                                        
-  if ( $image_data ) : ?>
-    
-    <?php 
-//echo     $test; 
+<?php if ( is_user_logged_in() ):
 
- 
-echo '<img class="submission-image" src="'.$image_data.'"/>';
-?>
- 
-<?php 
-// echo '<img src="data:image/jpeg;base64,'.base64_encode($test).'">';
-?>  
+the_content();?>
 
-<?php endif; 
+ <?php else: ?>
+
+      <?php
+      $image_data = get_field('image-data_hidden_field'); //text
+                              
+      if ( $image_data ) : ?>
+
+      <?php 
+      //echo     $test; 
+
+
+      echo '<img class="submission-image" src="'.$image_data.'"/>';
+      ?>
+
+      <?php 
+      // echo '<img src="data:image/jpeg;base64,'.base64_encode($test).'">';
+      ?>  
+
+  <?php endif; 
+
+endif;?>
