@@ -39,6 +39,14 @@ Author URI: http://svs.design
         display:block;
         }
 
+        .submission-name{
+          @include h2;
+        }
+        .submission-header{
+          @include type-small;
+        }
+
+
       }// &.single-submissions
 
     }//body
