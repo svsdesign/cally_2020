@@ -190,14 +190,11 @@ barba.hooks.once((data) => {
 */
 
 
-
 barba.hooks.after(() => {
  console.log("after - setting GAn stuff ehre");// - but this assumes cookie consent was checked
   ga('set', 'page', window.location.pathname);
   ga('send', 'pageview');
 });
-
-
 
 // https://github.com/barbajs/barba/issues/51#issuecomment-531465899
 //applies to all namespaces:

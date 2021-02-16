@@ -29,7 +29,7 @@ get_header();?>
 
 <?php endif;?>
 
-<?php wp_reset_query(); //reset?>	
+<?php// wp_reset_query(); //reset?>	
 
 </div><!-- class="ajax-container" data-barba="container" data-barba-namespace -->
 
