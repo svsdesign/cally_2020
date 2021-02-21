@@ -423,12 +423,12 @@
                           
                           </div><!--grid-item-options-toggle-->
                         
-                          <div class="move-arrow-area">
+                          <div class="move-arrow-area" data-html2canvas-ignore="true">
                             <?php get_template_part( '/dist/svg/inline-move_arrow_svg' ); ?>						 
                            </div>
 
 
-                          <div class="btn grid-item-options-toggle grid-item-options-toggle-rotate">
+                          <div class="btn grid-item-options-toggle grid-item-options-toggle-rotate" data-html2canvas-ignore="true">
 
                             <div class="rotate" style="
                                 transform:

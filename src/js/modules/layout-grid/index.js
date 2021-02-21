@@ -251,6 +251,10 @@ export default function init() {
 
   function captureCanvas(){
     console.log("function captureCanvas()");
+    //ensure not active grid items:
+    $('.layout-grid-item.repeater-item').removeClass("item-edit-active");
+
+
     $('body').addClass("capturing-image");//hide none image elements
     // As its takes seconds for this class + consequent css rules to "take affect?"
     //timeoutadded; seem to solv ethe issue in chrome
