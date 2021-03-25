@@ -44,7 +44,7 @@
 					Cultivating Cally -
 					</span>
 					<span class="sub-title">
-					The Community Gardening Project
+					A Community Gardening Project
 					</span>
 				</a>
 			</div>
